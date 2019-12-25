@@ -1,0 +1,25 @@
+###### syncronize modification from ~/.spacemacs
+SPC f e R
+
+###### spacemacs mode
+SPC or M m  - open spacemacs root
+
+###### spacemacs help
+SPC h 
+SPC h SPC - browse spacemacs layers and it's packages.el file
+
+###### create workspaces
+SPC l w 2 - create workspace number 2
+2gt - switch to workspace 2
+
+###### buffer
+SPC b b - list buffers and recently opened files
+SPC TAB - quickly access last buffer
+
+###### toogle various editor config
+SPC t - toggle various config
+M-x whitespace-mode
+M-x whitespace-toggle-options
+
+################################################################################
+M g g - goto line number

@@ -1,0 +1,55 @@
+#list top 10 file by size
+git rev-list --objects --all | grep -f <(git verify-pack -v .git/objects/pack/*.idx| sort -k 3 -n | cut -f 1 -d " " | tail -10)
+
+#verify object size
+git count-objects -v
+
+#remove a big file (powershell-6.2.0-linux-arm32.tar.gz) once it is submitted by mistake
+git filter-branch --index-filter 'git rm --cached --ignore-unmatch powershell-6.2.0-linux-arm32.tar.gz' -- --all
+rm -Rf .git/refs/original
+rm -Rf .git/logs/
+git gc --aggressive --prune=now
+
+#verify object size
+git count-objects -v
+
+###############################
+git config merge.renameLimit 999999	#max
+git config merge.renameLimit 8768 	#default
+
+#revert to previous version of a file
+git co <commit_id> -- path_to_file
+
+#rename a branch
+git branch -m new-name # If you are on the branch you want to rename:
+git branch -m old-name new-name # If you are on a different branch:
+
+#show short stats of a commit
+git show --stat @
+git show --name-only @~2
+
+#history
+git log <filename> #see entire git history for a file
+
+#diff between remote branch
+git diff origin/master origin/feature-xyz
+
+# git clean 
+git clean -n
+git clean -f
+
+################################################################################
+#git rebase first commit
+git rebase -i --root
+
+#git change author of commits
+git rebase -i -p <commit-id>
+#now choose edit on commits that needs author change
+git commit --amend --author="your-name <youremail@yourcompany.com>" --no-edit
+git rebase --continue
+#repeat this proccess for each of the commits
+################################################################################
+
+
+
+

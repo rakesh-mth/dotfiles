@@ -1,0 +1,38 @@
+" windows
+" map <Tab> <C-W>w
+" map <Bar> <C-W>v<C-W><Right>
+
+
+
+fun! TermGit(vertical)
+    " set shell=\"c:\program\ files\Git\bin\sh.exe\ --login\"\ -f 
+    let command = a:vertical ? 'vs' : 'sp' 
+    let command = command . " | term " . "\"c:\\program\ files\\Git\\bin\\bash.exe\""
+    exe command
+    startinsert
+endf
+fun! TabTermGit()
+    exec 'tabnew'
+    let command = "term \"c:\\program\ files\\Git\\bin\\bash.exe\""
+    exe command 
+    startinsert
+endf
+
+
+
+" select buffer
+function! s:buflist()
+  redir => ls
+  silent ls
+  redir END
+  return split(ls, '\n')
+endfunction
+function! s:bufopen(e)
+  execute 'buffer' matchstr(a:e, '^[ 0-9]*')
+endfunction
+nnoremap <silent> <Leader><Enter> :call fzf#run({
+\   'source':  reverse(<sid>buflist()),
+\   'sink':    function('<sid>bufopen'),
+\   'options': '+m',
+\   'down':    len(<sid>buflist()) + 2
+\ })<CR>

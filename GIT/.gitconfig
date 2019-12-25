@@ -1,0 +1,42 @@
+[user]
+	name = rakesh-mth
+	email = 46665723+rakesh-mth@users.noreply.github.com
+[core]
+	editor = vim
+[push]
+    default = simple
+[diff]
+    tool = p4merge
+[difftool "p4merge"]
+    path = C:/Program Files/Perforce/p4merge.exe
+    cmd = p4merge.exe \"$LOCAL\" \"$REMOTE\"
+[merge]
+    tool = p4merge
+[mergetool "p4merge"]
+    path = C:/Program Files/Perforce/p4merge.exe
+    cmd = p4merge.exe \"$BASE\" \"$LOCAL\" \"$REMOTE\" \"$MERGED\"
+[credential]
+    helper = wincred
+[alias]
+    lg = log --pretty=format:'%Cred%h%Creset %C(bold yellow)<%an>%Creset -%Cgreen%ad%Creset %s'
+    pm = !git checkout master && git pull
+    branch-name = "!git rev-parse --abbrev-ref HEAD"
+    publish = "!git push -u origin $(git branch-name)"
+    pmr = "!f() { \
+        branch_name=$(git rev-parse --abbrev-ref HEAD); \
+        git checkout master; git pull; git checkout $branch_name; git rebase master; \
+     }; f"
+    fmr = "!git fetch && git rebase origin/master"
+    pf = "!git push -u origin $(git branch-name) --force"
+    cr = "!git add . -u && git commit -m test && git rebase -i @~2"
+    cp = "!git add . -u && git commit && git publish"
+    crpf = !git cr && git pf
+    pr = "!git pull --rebase"
+    ds = "!git diff --staged"
+    st = status
+    pb = publish
+    co = checkout
+    br = branch
+    ci = commit
+[difftool]
+	prompt = false

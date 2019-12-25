@@ -1,0 +1,200 @@
+so $MYVIMRC - source init.vim
+:so % - if currently editing init.vim
+
+######disable tab in nvim-qt
+nvim-qt --no-ext-tabline
+
+*************************************************************
+#####################normal mode commands####################
+#####################normal mode commands####################
+######SCROLL
+zt - scroll to the top - by keeping cursor on same line
+zz - scroll to middle - by keeping cursor on same line
+xb - scroll to the bottom - by keeping cursor on same line
+
+C+e - scroll screen up - by keeping cursor on same line
+C+y - scroll screen down - by keeping cursor on same line
+C+u - up 
+C+d - down
+C+f - down a page
+C+b - up a page 
+
+gg - begining of file
+G - end of file
+10gg / 10G - move to line number 10
+
+######Line movement
+$ - move to last char of the line (includes white space)
+g_ - move to last non white / tab char of the line
+0 - move to begining of line
+^ - move to begining of a line (non white space char)
++ - move begining of next line
+- - move begining of previous line
+
+######Word movement
+w/W - mode a word forward
+b/B - move a word backward
+e - move end of a word forward
+ge - move end of a word backward
+
+######Copy paste
+"+p - pase from system buffer
+"+y - yank to system buffer
+
+######Delete char
+x - to delete a char under cursor
+X - to delete a cursor before char under cursor
+D - delete from current location till end of line
+d% - delete until next matching braces
+
+######Delete a word
+dw, dW, db, dB, de, DE - delte a word backward and forward with movement
+
+######search under cursur
+* - search forward for word under cursor
+# - search backward for word under cursor
+
+######repeat last command 
+@: - repeast last command, then use @@
+
+######uppercase
+[count]~ - {operator} - uppercase char under cursor. use [count]~ for count number of char.
+g~[motion or TextObject] - { operator } - uppercase selection
+gu/gU[motion or TextObject] - {operator} - go uppercase 
+
+######recoding in vim
+q<register> - start recording. replace content of register with recording.
+q - stop recording
+@<register> - replay recording
+
+######mark in vim
+m[a-z|A-Z] - set a mark in vim. A-Z is global mark. a-z is local mark.
+`[a-z|A-Z] - jump to a mark.
+
+######fold in vim (code folding)
+[count]zr - unfold everything, use count for depth (ex: 4 level unfold)
+[count]zm - fold everything, use count for depth (ex: 4 level folding)
+za - toggle fold for a section
+zo - unfold a fold (open a fold)
+zc - fold a section (close a fold)
+
+#############################BUFFERS#########################
+C-i - next location in buffer, switch to next buffer if no more next location in current buffer (:bnext)
+C-o - previous location in buffer, switch to previous buffer if there is no previous location in current buffer (:bprev)
+C-^ / C-6 - switch between current buffer and last buffer
+
+#############################WINDOWS#########################
+<C-w>n - :new horizontal split (editing a new empty buffer)
+<C-w>s - :split window horizontally (editing current buffer)
+<C-w>v - :vsplit window vertically (editing current buffer)
+<C-w>c - :close window
+<C-w>o - close all windows, leaving :only the current window open
+<C-w>w - go to next window
+<C-w>p - go to previous window
+<C-w><Up> - go to window above
+<C-w><Down> - go to window below
+<C-w><Left> - go to window on left
+<C-w><Right> - go to window on right
+<C-w>{K,J,H,L} - move window up, down, left and right
+
+#############################TABS#########################
+[count]gt - switch to next tab, when count is suppilied jump to nth tab 
+[count]gT - switch to previous tab, when count is supplied jump to nth tab in reverse
+
+######quit in fuzzy find mode
+<C-q>/<C-g> - quit from fuzzy find window
+
+######command line window
+q: - open command line windows
+
+######
+[count]o/O<esc> - add count number of lines above and below
+
+######zoom text
+CMD++ / CMD+- - zoom text in neovim in terminal (iterm2) in mac
+
+*************************************************************
+#####################insert mode commands####################
+#####################insert mode commands####################
+######Copy and paste
+<C-r>+ - copy from clipboard 
+<C-r>* - on linux 
+<C-r>reg - where reg is any vim register
+
+<C-p> - complete word (default vim completion)
+<C-x><C-l> - complete line (default vim completion)
+
+
+*************************************************************
+#####################command mode commands####################
+#####################command mode commands####################
+:@+ - view current clipboard in command line
+
+######paste cureent word under cursur in current buffer
+:<C-r><C-w>
+
+######list down all options od a command
+:colorscheme <C-d>
+
+######Find files in any directory
+:FZF <path> - where path can be any folder, similar command is :Files <path>
+
+######refresh buffers if modified outside vim
+:bufdo e
+
+######open buffer in a new split
+:sbuffer <file-name>
+:sbn - create a split and switch to next buffer 
+
+######tab in split windows and tab
+:sp | term
+:vs | term
+:tabe | term
+
+######diffing in vim
+:diffsplit - diff two files
+:diffoff - stop current diff
+:diffput - put version of change from target or merged split window to index window (keep cursor in target or merged window)
+:diffget - get version of change from target or merged split window to index window (keep cursor in index window)
+]c or [c - move between changes in diff mode (normal mode)
+- - toggle current file between staged and unstaged mode (fugitive plugin, Gstatus command)
+s/u - stage or unstage current file under cursor (fugitive plugin, Gstatus command)
+= - toggle inline diff for the file under cursor (fugitive plugin, Gstatus command)
+<C-n>/<C-p> or ]c/[c - move between changes in inline diff mode (fugitive plugin, Gstatus command)
+dd/dv - perform Gdiffsplit / Gvdiffsplit on the file under the cursor (fugitive plugin)
+cc - create a commit
+ca - amend the last commit and edit the message.
+
+######diff in split view
+:windo diffthis - start diffing
+:diffoff! - stop diff
+
+######copy section of code from another location in the file
+:-10,-8co.
+
+######delete a range of line from any other place
+:+10d - delete 10th line below cursor 
+:-10d - delete 10th line above cursor
+
+######quick fix command (location window command starts with l)
+:cn - next location in the quickfix list, use @@ in normal mode to repeat last command.
+:cp - previous location in quickfix list, use @@ in normal mode to repeat last command.
+:ccl - close quickfix window
+:cc - open currently selected file in quickfix window without switching to quickfix window
+:colder / cnewer - move around older and newer quickfix list
+:chistory - list history of quickfix window (max 10 allowed)
+
+######easy search (install silver searcher, and ripgrep)
+:Ag <word> - search words - opens in terminal, seleact all <A-a> and press enter to go to copen.
+:Rg <word> - search words - opens in terminal, seleact all <A-a> and press enter to go to copen.
+
+######sessions
+:mksession icagraphics.vim
+
+######enable spell checking
+:set spell
+
+######help: key-notation
+:help key-notation
+:help map-which-keys
+:help map-special-chars
