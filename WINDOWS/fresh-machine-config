@@ -1,0 +1,20 @@
+#admin powershell
+choco install -y neovim emacs vim fd ripgrep ag fzf ctags llvm 7zip git python2 python3 nodejs ruby hunspell.portable
+
+# user command prompt
+py -2 -m pip install pynvim
+py -3 -m pip install pynvim
+choco install nodejs.install
+gem install neovim
+
+#download dictionary and extract it to c:\hunspell
+http://downloads.sourceforge.net/wordlist/hunspell-en_US-2019.10.06.zip
+
+
+# install spacemacs
+git clone https://github.com/syl20bnr/spacemacs ~/.emacs.d
+
+# font for emacs
+git clone https://github.com/adobe-fonts/source-code-pro.git
+# font for vim
+git clone https://github.com/powerline/fonts.git
