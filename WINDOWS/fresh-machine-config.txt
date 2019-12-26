@@ -2,10 +2,13 @@
 choco install -y neovim emacs vim fd ripgrep ag fzf ctags llvm 7zip git python2 python3 nodejs ruby hunspell.portable
 
 # user command prompt
-py -2 -m pip install pynvim
-py -3 -m pip install pynvim
+py -2 -m pip install --upgrade pip
+py -3 -m pip install --upgrade pip
+py -2 -m pip install --user pynvim neovim-remote
+py -3 -m pip install --user pynvim neovim-remote
 choco install nodejs.install
 gem install neovim
+
 
 #download dictionary and extract it to c:\hunspell
 http://downloads.sourceforge.net/wordlist/hunspell-en_US-2019.10.06.zip

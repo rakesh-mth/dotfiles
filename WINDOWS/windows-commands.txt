@@ -1,0 +1,35 @@
+# sys admin commands
+system properties - sysdm.cpl
+network properties - ncpa.cpl or control netconnections
+user account - netplwiz.exe
+Add or Remove Programs - appwiz.cpl
+display  desk.cpl
+folder option - control folders
+mouse - control mouse or main.cpl
+Keyboard - control keyboard
+sound - mmsys.cpl
+Date and Time - timedate.cpl
+printer -  control printers
+user accounts - control userpasswords
+Personalization - control desktop
+fonts - control fonts
+firewall - firewall.cpl
+Power Options - powercfg.cpl
+Internet Options - inetcpl.cpl
+Device Manager - devmgmt.msc or hdwwiz.cpl
+Action Center - wscui.cpl
+
+# Keys
+W+PauseBreak - pc->properties
+W+T - focus taskbar
+W+U - display settings
+W+I - windows settings
+W+A - Manage notification
+W+S - search apps, files 
+W+D - show desktop (restore app on second attempt)
+W+G - game mode
+W+K - wireless display and audio devices
+W+X - start menu right click
+W+V - clipboard history
+W+M - minimize all app (does not restore on second attempt)
+
