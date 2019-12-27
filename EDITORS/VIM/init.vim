@@ -163,6 +163,9 @@
 " productivity
     noremap <leader>] ]]zz
     noremap <leader>[ [[zz
+    noremap <leader>lu mqO<Esc>`q| " add a line above 
+    noremap <leader>ld mqo<Esc>`q| " add a line below
+    noremap <leader>cc <Esc>6i#<Esc>A| " add 6 # and place cursor at the end (comment begin)
 
 " terminals : map esc key to switch to normal mode from terminal mode
     tnoremap <Esc> <C-\><C-n>

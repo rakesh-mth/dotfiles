@@ -4,6 +4,9 @@ so $MYVIMRC - source init.vim
 ######disable tab in nvim-qt
 nvim-qt --no-ext-tabline
 
+######comments in vimrc / init.vim
+nmap <Leader>f :foo<Return>|  " Do foo -> make sure there is no space between maping and |
+
 *************************************************************
 #####################normal mode commands####################
 #####################normal mode commands####################
@@ -36,6 +39,14 @@ w/W - mode a word forward
 b/B - move a word backward
 e - move end of a word forward
 ge - move end of a word backward
+
+######Jump around
+'. or `. - jump to the last change (1> begining of line, 2> exact cursor position)
+`` - Return to the cursor position before the latest jump
+'' - Return to the line where the cursor was before the latest jump.
+[count]g; - go to [count] older positions in change list
+[count]g, — go to [count] new cursor positions in change list
+
 
 ######Copy paste
 "+p - pase from system buffer
@@ -70,6 +81,7 @@ q - stop recording
 ######mark in vim
 m[a-z|A-Z] - set a mark in vim. A-Z is global mark. a-z is local mark.
 `[a-z|A-Z] - jump to a mark.
+'[a-z][A-Z] - jump to start of the line where mark was set
 
 ######fold in vim (code folding)
 [count]zr - unfold everything, use count for depth (ex: 4 level unfold)
@@ -133,6 +145,9 @@ CMD++ / CMD+- - zoom text in neovim in terminal (iterm2) in mac
 ######copy entire file to clipboard
 :%y+ - copy entire file to clipboard from command line mode (gg"+yG - from normal mode)
 
+######delete entire file
+:%d - delete entire file from command line mode
+
 ######paste cureent word under cursur in current buffer
 :<C-r><C-w>
 
@@ -141,6 +156,11 @@ CMD++ / CMD+- - zoom text in neovim in terminal (iterm2) in mac
 
 ######Find files in any directory
 :FZF <path> - where path can be any folder, similar command is :Files <path>
+
+######jumps, changes, marks
+:jumps - show jumps
+:marks - show marks
+:changes - show all changes
 
 ######refresh buffers if modified outside vim
 :bufdo e
