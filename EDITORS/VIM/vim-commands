@@ -130,6 +130,9 @@ CMD++ / CMD+- - zoom text in neovim in terminal (iterm2) in mac
 #####################command mode commands####################
 :@+ - view current clipboard in command line
 
+######copy entire file to clipboard
+:%y+ - copy entire file to clipboard from command line mode (gg"+yG - from normal mode)
+
 ######paste cureent word under cursur in current buffer
 :<C-r><C-w>
 

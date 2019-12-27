@@ -38,6 +38,13 @@ git diff origin/master origin/feature-xyz
 git clean -n
 git clean -f
 
+#git config
+git config --list # list all of the git config 
+git config --show-origin user.name # show actual user name that will be used for a repo or global user name if not is repo
+git config --global user.name # show user name (globally) - may not be correct in overriden by a included file in .gitconfig
+git config user.name # display user name used by a repo
+git config user.name <user-name> # set user name per repo (be in repo folder)
+
 ################################################################################
 #git rebase first commit
 git rebase -i --root
