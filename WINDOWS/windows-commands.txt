@@ -1,4 +1,4 @@
-# sys admin commands
+###### windows administrative commands
 system properties - sysdm.cpl
 network properties - ncpa.cpl or control netconnections
 user account - netplwiz.exe
@@ -19,7 +19,7 @@ Internet Options - inetcpl.cpl
 Device Manager - devmgmt.msc or hdwwiz.cpl
 Action Center - wscui.cpl
 
-# Keys
+###### Keys
 W+PauseBreak - pc->properties
 W+T - focus taskbar
 W+U - display settings
@@ -32,4 +32,9 @@ W+K - wireless display and audio devices
 W+X - start menu right click
 W+V - clipboard history
 W+M - minimize all app (does not restore on second attempt)
+
+################################################################################
+robocopy:
+    default: robocopy src_folder dest_folder /e
+    do not copy links: robocopy src_folder dest_folder /e /XJ /XJD /XJF /R:1 /W:1 /ETA
 

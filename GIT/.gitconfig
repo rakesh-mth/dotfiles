@@ -33,10 +33,13 @@
     crpf = !git cr && git pf
     pr = "!git pull --rebase"
     ds = "!git diff --staged"
+    pb = "!git publish"
     st = status
-    pb = publish
     co = checkout
     br = branch
     ci = commit
+    dt = difftool
 [difftool]
 	prompt = false
+[include]
+    path = ~/.gitconfig-work
