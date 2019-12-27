@@ -1,0 +1,9 @@
+######build ycm (YouCompleteMe plugin)
+
+# neovim (refer to init.vim for path)
+cd %USERPROFILE%\.nvim\plugged\YouCompleteMe
+python install.py --clangd-completer --msvc 15 # using vs 2017 (use 14 for 2015)
+
+# for vim (refer to init.vim for path)
+cd %USERPROFILE%\.vim\plugged\YouCompleteMe
+python install.py --clangd-completer --msvc 15 # using vs 2017 (use 14 for 2015)
