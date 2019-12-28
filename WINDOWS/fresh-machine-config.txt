@@ -1,12 +1,14 @@
 #admin powershell
-choco install -y neovim emacs vim fd ripgrep ag fzf ctags llvm 7zip git python2 python3 nodejs ruby hunspell.portable
+choco install -y neovim emacs vim fd ripgrep ag fzf ctags llvm 7zip git python2 python3 nodejs ruby golang rust hunspell.portable  
+# vim needs python version 3.7 
+choco install -y python --version=3.7.3
 
 # user command prompt
 py -2 -m pip install --upgrade pip
 py -3 -m pip install --upgrade pip
 py -2 -m pip install --user pynvim neovim-remote
 py -3 -m pip install --user pynvim neovim-remote
-choco install nodejs.install
+npm install -g neovim typescript
 gem install neovim
 
 

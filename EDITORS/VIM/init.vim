@@ -81,7 +81,6 @@
     " productivity plugins
     Plug 'arcticicestudio/nord-vim' " nord color scheme
     Plug 'trevordmiller/nova-vim' " nova color schema
-    Plug 'sheerun/vim-polyglot' " used by nova color schema
     Plug 'JulioJu/neovim-qt-colors-solarized-truecolor-only' " solarized color scheme for neovim
     Plug 'altercation/vim-colors-solarized' " solarized color scheme. if not in gui then make sure terminal use solarized scheme.
     Plug 'vim-airline/vim-airline'
@@ -97,10 +96,12 @@
     Plug 'szw/vim-tags' " auto generate tags using ctags, command TagsGenerate
     Plug 'soramugi/auto-ctags.vim' " auto generate tags using ctags, commands Ctags
     Plug 'airblade/vim-gitgutter' " git plugin to show changed lines 
+    Plug 'arp242/auto_mkdir2.vim' " auto create directory during file save if directory does not exist
     Plug 'tpope/vim-fugitive' " git plugin that wraps git commands
     Plug 'tpope/vim-dispatch' " background jobs. commands: :Make
     Plug 'tpope/vim-unimpaired' " commonly used ex commands, ]q [q ]Q [Q etc...
     Plug 'tpope/vim-sensible' " some defaults agreed
+    Plug 'tpope/vim-eunuch' " Vim sugar for the UNIX shell commands that need it the most. Mkdir!
     " NERD tree will be loaded on the first invocation of NERDTreeToggle command
     Plug 'scrooloose/nerdtree', { 'on': 'NERDTreeToggle' }
     Plug 'Xuyuanp/nerdtree-git-plugin'
@@ -108,14 +109,19 @@
     else
         Plug 'SirVer/ultisnips' " Track the engine. for snippets.
         Plug 'ycm-core/YouCompleteMe', { 'do': './install.py' } " code completion
+        Plug 'neoclide/coc.nvim', {'branch': 'release'} " Intellisense engine for vim8 & neovim, full language server protocol support as VSCode
     endif
-    Plug 'neoclide/coc.nvim', {'branch': 'release'} " Intellisense engine for vim8 & neovim, full language server protocol support as VSCode
     Plug 'honza/vim-snippets' " Snippets are separated from the engine. Add this if you want them:
     " Code to execute when the plugin is lazily loaded on demand
     Plug 'junegunn/goyo.vim', { 'for': 'markdown' }
     " language support
     Plug 'PProvost/vim-ps1' " powershell syntax coloring
     Plug 'rust-lang/rust.vim' " rust language support
+    Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' } " golang support
+    Plug 'HerringtonDarkholme/yats.vim' " Add a syntax file for typescript. YATS is the best
+    Plug 'mhartington/nvim-typescript', {'do': './install.sh'} " typescript support
+    Plug 'sheerun/vim-polyglot' " used by nova color schema, multiple programming language support (basic)
+    Plug 'mattn/webapi-vim' " webapi neede by rust pluggin
     if !has('nvim')
         Plug 'rhysd/vim-healthcheck'
     endif
@@ -340,6 +346,7 @@
     noremap <leader>p "*p
     noremap <leader>Y "+y
     noremap <leader>P "+p
+    noremap <leader>yy "+yy
 
 " update args with git listed files
     noremap <leader>a :args `git ls-files`<cr> 2<C-o>

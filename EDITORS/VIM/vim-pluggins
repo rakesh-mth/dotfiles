@@ -1,9 +1,12 @@
 ######build ycm (YouCompleteMe plugin)
+######install llvm, go, rust, python, node, npm, tsserver
 
 # neovim (refer to init.vim for path)
 cd %USERPROFILE%\.nvim\plugged\YouCompleteMe
-python install.py --clangd-completer --msvc 15 # using vs 2017 (use 14 for 2015)
+# using vs 2017 (use 14 for 2015)
+python install.py --clang-completer --clangd-completer --go-completer --rust-completer --ts-completer --msvc 15
 
 # for vim (refer to init.vim for path)
 cd %USERPROFILE%\.vim\plugged\YouCompleteMe
-python install.py --clangd-completer --msvc 15 # using vs 2017 (use 14 for 2015)
+# using vs 2017 (use 14 for 2015)
+python install.py --clang-completer --clangd-completer --go-completer --rust-completer --ts-completer --msvc 15
