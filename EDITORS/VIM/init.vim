@@ -116,6 +116,9 @@
     " language support
     Plug 'PProvost/vim-ps1' " powershell syntax coloring
     Plug 'rust-lang/rust.vim' " rust language support
+    if !has('nvim')
+        Plug 'rhysd/vim-healthcheck'
+    endif
 
     " Initialize plugin system
     call plug#end()
@@ -182,10 +185,12 @@
     nmap <leader>mn <C-w>1000<
 
 " tabs : change tabs using \tn1, \tn2, \tn3..., and Alt-1, Alt-2, Alt-3...
-    nnoremap <A-0> 10gt
-    for idx in range( 1, 9 )
-        execute 'nnoremap <M-' . idx . '> ' . idx . 'gt'
-    endfor
+    function AltMapping()
+        nnoremap <M-0> 10gt
+        for idx in range( 1, 9 )
+            execute 'nnoremap <M-' . idx . '> ' . '<C-[>' . idx . 'gt'
+        endfor
+    endfunction
     nnoremap <silent> <leader>tn :exe "tabn" nr2char(getchar())<cr>
 
 " for plugin vim-tags and auto-ctags - auto generate tags on file saving. using vim-tags by defualt.
@@ -454,7 +459,15 @@
         autocmd!    
         autocmd! User goyo.vim echom 'Goyo is now loaded!'
     augroup END
-    
+
+    function VimEnterFunction()
+        call AltMapping()
+    endfun
+    augroup VimEnterGroup
+        autocmd!
+        autocmd VimEnter * call VimEnterFunction()
+    augroup END
+
 " build rfwin projects
     noremap <leader>mrg :Dispatch ctxmake gfxrender<CR>
     noremap <leader>brg :!msbuild CitrixReceiver\WFCAll.sln  /t:src\pal\gfxrender /p:Configuration=Release /p:Platform=win32<CR>

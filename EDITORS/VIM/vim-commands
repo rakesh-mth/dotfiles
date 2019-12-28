@@ -109,9 +109,22 @@ C-^ / C-6 - switch between current buffer and last buffer
 <C-w><Right> - go to window on right
 <C-w>{K,J,H,L} - move window up, down, left and right
 
-#############################TABS#########################
+#############################g-commands######################
+gE - backwards end of word motion
+g_ - to the last non-blank character of a line
+gt & gT - tab navigation
+g, & g; - back and forth through the change list
+gu & gU - case changing
+gn - visually select current pattern
+gv - reselect previous visual selection
+gi - start insert mode in the same position Insert mode was last stopped
+gf - go to file under cursor (My personal favorite)
+
+#############################TABS############################
 [count]gt - switch to next tab, when count is suppilied jump to nth tab 
 [count]gT - switch to previous tab, when count is supplied jump to nth tab in reverse
+<C-PgDn> - goto next tab
+<C-PgUp> - goto previous tab
 
 ######quit in fuzzy find mode
 <C-q>/<C-g> - quit from fuzzy find window
@@ -169,6 +182,14 @@ CMD++ / CMD+- - zoom text in neovim in terminal (iterm2) in mac
 :sbuffer <file-name>
 :sbn - create a split and switch to next buffer 
 
+######tab normal mode commands
+:tabf { file_path } - open / find file in new tab
+:tabonly - close all other tabs and keep current tab
+:tabc  - close current tab
+:tabm {i} - move current tab to position i
+:tabn / tabp - goto next or previous tab
+:tabfirst / tablast - goto first or last tab
+
 ######tab in split windows and tab
 :sp | term
 :vs | term
@@ -216,6 +237,9 @@ ca - amend the last commit and edit the message.
 
 ######enable spell checking
 :set spell
+
+######find mapping
+:verbose noremap <M-1> - display file and location where <M-1> mapping is defined
 
 ######help: key-notation
 :help key-notation
