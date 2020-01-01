@@ -1,19 +1,22 @@
 #admin powershell
-choco install -y neovim emacs vim fd ripgrep ag fzf ctags llvm 7zip git python2 python3 nodejs ruby golang rust hunspell.portable  
+choco install -y neovim emacs vim fd ripgrep ag fzf ctags llvm wget 7zip git python2 python3 nodejs ruby golang rust hunspell.portable
 # vim needs python version 3.7 
 choco install -y python --version=3.7.3
 
 # user command prompt
 py -2 -m pip install --upgrade pip
-py -3 -m pip install --upgrade pip
+py -3.7 -m pip install --upgrade pip
 py -2 -m pip install --user pynvim neovim-remote
-py -3 -m pip install --user pynvim neovim-remote
-npm install -g neovim typescript
+py -3.7 -m pip install --user pynvim neovim-remote
+npm install -g neovim tern typescript
 gem install neovim
 
 
 #download dictionary and extract it to c:\hunspell
-http://downloads.sourceforge.net/wordlist/hunspell-en_US-2019.10.06.zip
+mkdir c:\hunspell
+cd c:\hunspell
+wget http://downloads.sourceforge.net/wordlist/hunspell-en_US-2019.10.06.zip
+7z e hunspell-en_US-2019.10.06.zip
 
 
 # install spacemacs
@@ -23,3 +26,13 @@ git clone https://github.com/syl20bnr/spacemacs ~/.emacs.d
 git clone https://github.com/adobe-fonts/source-code-pro.git
 # font for vim
 git clone https://github.com/powerline/fonts.git
+
+
+# neovim (refer to init.vim for path), # using vs 2017 (use 14 for 2015)
+cd %USERPROFILE%\.nvim\plugged\YouCompleteMe
+python install.py --clang-completer --clangd-completer --go-completer --rust-completer --ts-completer --msvc 15
+# for vim (refer to init.vim for path)
+cd %USERPROFILE%\.vim\plugged\YouCompleteMe
+python install.py --clang-completer --clangd-completer --go-completer --rust-completer --ts-completer --msvc 15
+
+
