@@ -29,12 +29,22 @@ git clone https://github.com/adobe-fonts/source-code-pro.git
 # font for vim
 git clone https://github.com/powerline/fonts.git
 
-
+################################################################################
+######VIM
 # neovim (refer to init.vim for path), # using vs 2017 (use 14 for 2015)
 cd %USERPROFILE%\.nvim\plugged\YouCompleteMe
 python install.py --clang-completer --clangd-completer --go-completer --rust-completer --ts-completer --msvc 15
 # for vim (refer to init.vim for path)
 cd %USERPROFILE%\.vim\plugged\YouCompleteMe
 python install.py --clang-completer --clangd-completer --go-completer --rust-completer --ts-completer --msvc 15
+
+################################################################################
+######EMACS 
+# install python packages in virtualenv - required for python development
+py -3.7 -m pip install --user virtualenvwrapper
+virtualenv -p c:\Python37\python.exe %USERPROFILE%\python-envs\python37
+virtualenv -p c:\Python27\python.exe %USERPROFILE%\python-envs\python27
+%USERPROFILE%\python-envs\python37\scripts\activate
+pip install flake8 isort yapf python-language-server pyls-isort pyls-mypy importmagic epc ptvsd
 
 
