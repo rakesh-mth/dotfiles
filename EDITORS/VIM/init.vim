@@ -30,6 +30,7 @@
     set history=10000       " history of ex command. nvim default: 10000, vim default: 1000. keep is consistent to 10000.
     filetype plugin on
     syntax on
+    let mapleader = "\<Space>" " map leader key to Space
 
 " install plug.vim (bootstrap plugin)
     if has('macunix') || has('unix')
@@ -230,7 +231,7 @@
     let NERDTreeMinimalUI = 1
     let NERDTreeDirArrows = 1
     let NERDTreeShowLineNumbers=1
-    nnoremap <silent> <leader>nt :NERDTreeToggle<Enter> :normal zz<CR> :wincmd p<CR>
+    nnoremap <silent> <leader>ft :NERDTreeToggle<Enter> :normal zz<CR> :wincmd p<CR>
     nnoremap <silent> <leader>nf :NERDTreeFind<CR> :normal zz<CR> :wincmd p<CR>
 
 " for plugin ultisnips : Trigger configuration. Do not use <tab> if you use https://github.com/Valloric/YouCompleteMe.
