@@ -7,10 +7,12 @@ choco install -y python --version=3.7.3
 py -2 -m pip install --upgrade pip
 py -3.7 -m pip install --upgrade pip
 py -2 -m pip install --user pynvim neovim-remote
-py -3.7 -m pip install --user pynvim neovim-remote
+py -3.7 -m pip install --user pynvim neovim-remote virtualenvwrapper
 npm install -g neovim tern typescript
 gem install neovim
 
+# add user script folder of python in path
+path: %USERPROFILE%\AppData\Roaming\Python\Python37\Scripts
 
 #download dictionary and extract it to c:\hunspell
 mkdir c:\hunspell
