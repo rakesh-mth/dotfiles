@@ -45,6 +45,8 @@ py -3.7 -m pip install --user virtualenvwrapper
 virtualenv -p c:\Python37\python.exe %USERPROFILE%\python-envs\python37
 virtualenv -p c:\Python27\python.exe %USERPROFILE%\python-envs\python27
 %USERPROFILE%\python-envs\python37\scripts\activate
+cd %USERPROFILE%\python-envs\python37\scripts
+mklink python3 python.exe
 pip install flake8 isort yapf python-language-server pyls-isort pyls-mypy importmagic epc ptvsd
 
 

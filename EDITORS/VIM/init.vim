@@ -231,8 +231,8 @@
     let NERDTreeMinimalUI = 1
     let NERDTreeDirArrows = 1
     let NERDTreeShowLineNumbers=1
-    nnoremap <silent> <leader>ft :NERDTreeToggle<Enter> :normal zz<CR> :wincmd p<CR>
-    nnoremap <silent> <leader>nf :NERDTreeFind<CR> :normal zz<CR> :wincmd p<CR>
+    nnoremap <silent> <leader>pt :NERDTreeToggle<Enter> :normal zz<CR> :wincmd p<CR>
+    nnoremap <silent> <leader>ptf :NERDTreeFind<CR> :normal zz<CR> :wincmd p<CR>
 
 " for plugin ultisnips : Trigger configuration. Do not use <tab> if you use https://github.com/Valloric/YouCompleteMe.
     let g:UltiSnipsExpandTrigger="<tab>"
@@ -242,9 +242,9 @@
     let g:UltiSnipsEditSplit="vertical"
 
 " for plugin fzf
-    noremap <leader>f :GFiles<CR>
-    noremap <leader>F :Files<CR>
-    noremap <leader>b :Buffers<CR>
+    noremap <leader>pf :GFiles<CR>
+    noremap <leader>pF :Files<CR>
+    noremap <leader>bb :Buffers<CR>
     noremap <leader>w :Windows<CR>
     noremap <leader>l :BLines<CR>
     noremap <leader>L :Lines<CR>
@@ -410,23 +410,23 @@
             let curWindow = "\+\+curwin"
             let insertMode = ""
         endif
-        execute 'nnoremap <silent> <leader>gs :new  \| term ' . curWindow . ' "c:\program files\Git\bin\bash.exe"<cr>' . insertMode
-        execute 'nnoremap <silent> <leader>gv :vnew \| term ' . curWindow . ' "c:\program files\Git\bin\bash.exe"<cr>' . insertMode
-        execute 'nnoremap <silent> <leader>gt :tabe \| term ' . curWindow . ' "c:\program files\Git\bin\bash.exe"<cr>' . insertMode
-        execute 'nnoremap <silent> <leader>bs :new  \| term ' . curWindow . ' C:\Windows\System32\bash.exe<cr>' . insertMode
-        execute 'nnoremap <silent> <leader>bv :vnew \| term ' . curWindow . ' C:\Windows\System32\bash.exe<cr>' . insertMode
-        execute 'nnoremap <silent> <leader>bt :tabe \| term ' . curWindow . ' C:\Windows\System32\bash.exe<cr>' . insertMode
-        execute 'nnoremap <silent> <leader>ps :new  \| term ' . curWindow . ' powershell<cr>' . insertMode
-        execute 'nnoremap <silent> <leader>pv :vnew \| term ' . curWindow . ' powershell<cr>' . insertMode
-        execute 'nnoremap <silent> <leader>pt :tabe \| term ' . curWindow . ' powershell<cr>' . insertMode
-        execute 'nnoremap <silent> <leader>cs :new  \| term ' . curWindow . ' cmd<cr>' . insertMode
-        execute 'nnoremap <silent> <leader>cv :vnew \| term ' . curWindow . ' cmd<cr>' . insertMode
-        execute 'nnoremap <silent> <leader>ct :tabe \| term ' . curWindow . ' cmd<cr>' . insertMode
+        execute 'nnoremap <silent> <leader>asgs :new  \| term ' . curWindow . ' "c:\program files\Git\bin\bash.exe"<cr>' . insertMode
+        execute 'nnoremap <silent> <leader>asgv :vnew \| term ' . curWindow . ' "c:\program files\Git\bin\bash.exe"<cr>' . insertMode
+        execute 'nnoremap <silent> <leader>asgt :tabe \| term ' . curWindow . ' "c:\program files\Git\bin\bash.exe"<cr>' . insertMode
+        execute 'nnoremap <silent> <leader>asbs :new  \| term ' . curWindow . ' C:\Windows\System32\bash.exe<cr>' . insertMode
+        execute 'nnoremap <silent> <leader>asbv :vnew \| term ' . curWindow . ' C:\Windows\System32\bash.exe<cr>' . insertMode
+        execute 'nnoremap <silent> <leader>asbt :tabe \| term ' . curWindow . ' C:\Windows\System32\bash.exe<cr>' . insertMode
+        execute 'nnoremap <silent> <leader>asps :new  \| term ' . curWindow . ' powershell<cr>' . insertMode
+        execute 'nnoremap <silent> <leader>aspv :vnew \| term ' . curWindow . ' powershell<cr>' . insertMode
+        execute 'nnoremap <silent> <leader>aspt :tabe \| term ' . curWindow . ' powershell<cr>' . insertMode
+        execute 'nnoremap <silent> <leader>ascs :new  \| term ' . curWindow . ' cmd<cr>' . insertMode
+        execute 'nnoremap <silent> <leader>ascv :vnew \| term ' . curWindow . ' cmd<cr>' . insertMode
+        execute 'nnoremap <silent> <leader>asct :tabe \| term ' . curWindow . ' cmd<cr>' . insertMode
         unlet curWindow insertMode
     else
-        nnoremap <silent> <leader>cs :sp \| term<cr><insert>
-        nnoremap <silent> <leader>cv :vs \| term<cr><insert>
-        nnoremap <silent> <leader>ct :tabe \| term<cr><insert>
+        nnoremap <silent> <leader>ascs :sp \| term<cr><insert>
+        nnoremap <silent> <leader>ascv :vs \| term<cr><insert>
+        nnoremap <silent> <leader>asct :tabe \| term<cr><insert>
     endif
 
 " auto commands on events

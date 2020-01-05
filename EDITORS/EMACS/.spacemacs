@@ -41,6 +41,7 @@ This function should only modify configuration layer settings."
      windows-scripts
      yaml
      lsp
+     dap
      ;; ----------------------------------------------------------------
      ;; Example of useful layers you may want to use right away.
      ;; Uncomment some layer names and press `SPC f e R' (Vim style) or
@@ -58,7 +59,7 @@ This function should only modify configuration layer settings."
      (shell :variables
             shell-default-height 30
             shell-default-position 'bottom
-            shell-default-term-shell "C:\Program Files\Git\bin\bash.exe")
+            shell-default-term-shell "c:/Program Files/Git/bin/bash")
      spell-checking
      syntax-checking
      treemacs
@@ -503,6 +504,13 @@ before packages are loaded."
       )
     )
   (global-set-key (kbd "<f8>") 'toggle-flycheck-error-buffer)
+  ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+  ;; run git bash 
+  (defun run-bash ()
+    (interactive)
+    (let ((shell-file-name "C:\\Program Files\\Git\\bin\\bash.exe"))
+      (shell "*bash*"))
+  )
   )
 
 ;; Do not write anything past this comment. This is where Emacs will
