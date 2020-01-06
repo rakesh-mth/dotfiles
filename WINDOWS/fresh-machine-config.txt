@@ -3,6 +3,10 @@ choco install -y neovim emacs vim fd ripgrep ag fzf ctags llvm wget 7zip git pyt
 # vim needs python version 3.7 
 choco install -y python --version=3.7.3
 
+# install BuildTools for Visual Studio 2017 (do not need full VS)
+https://visualstudio.microsoft.com/thank-you-downloading-visual-studio/?sku=BuildTools&rel=16
+alternate link: https://visualstudio.microsoft.com/downloads/#build-tools-for-visual-studio-2019
+
 # user command prompt
 py -2 -m pip install --upgrade pip
 py -3.7 -m pip install --upgrade pip
@@ -38,6 +42,8 @@ python install.py --clang-completer --clangd-completer --go-completer --rust-com
 # for vim (refer to init.vim for path)
 cd %USERPROFILE%\.vim\plugged\YouCompleteMe
 python install.py --clang-completer --clangd-completer --go-completer --rust-completer --ts-completer --msvc 15
+################################################################################
+
 
 ################################################################################
 ######EMACS 
@@ -45,9 +51,13 @@ python install.py --clang-completer --clangd-completer --go-completer --rust-com
 py -3.7 -m pip install --user virtualenvwrapper
 virtualenv -p c:\Python37\python.exe %USERPROFILE%\python-envs\python37
 virtualenv -p c:\Python27\python.exe %USERPROFILE%\python-envs\python27
-%USERPROFILE%\python-envs\python37\scripts\activate
+setx WORKON_HOME "%USERPROFILE%\python-envs"
 cd %USERPROFILE%\python-envs\python37\scripts
 mklink python3 python.exe
-pip install flake8 isort yapf python-language-server pyls-isort pyls-mypy importmagic epc ptvsd
+%USERPROFILE%\python-envs\python37\scripts\activate
+pip install flake8 isort yapf python-language-server pyls-isort pyls-mypy importmagic epc ptvsd autoflake
+######EMACS COMMAND TO SWITCH VIRTUAL ENV
+M-x pyvenv-workon (needs to be done before open a python file)
+################################################################################
 
 
