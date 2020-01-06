@@ -426,7 +426,9 @@
         execute 'nnoremap <silent> <leader>asct :tabe \| term ' . curWindow . ' cmd<cr>' . insertMode
         unlet curWindow insertMode
         nmap <leader>' <leader>asg
+        nmap <leader><leader>' <leader>asgv
         nmap <leader>" <leader>asc
+        nmap <leader><leader>" <leader>ascv
     else
         nnoremap <silent> <leader>ascs :sp \| term<cr><insert>
         nnoremap <silent> <leader>ascv :vs \| term<cr><insert>

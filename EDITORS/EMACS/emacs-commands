@@ -2,11 +2,13 @@
 SPC f e R
 
 ###### spacemacs mode
-SPC or M m  - open spacemacs root
+SPC or M-m  - open spacemacs root
+SPC SPC - open emacs command history (same as M-x)
 
 ###### spacemacs help
 SPC h 
 SPC h SPC - browse spacemacs layers and it's packages.el file
+SPC h v - location a variable is defined and it's current value
 
 ###### create workspaces
 SPC l w 2 - create workspace number 2
@@ -21,5 +23,13 @@ SPC t - toggle various config
 M-x whitespace-mode
 M-x whitespace-toggle-options
 
-################################################################################
+###### insert literal tab
+C-q TAB (or C-q C-i)
+
+###### goto line number
 M g g - goto line number
+
+
+################################################################################
+###### Python development
+M-x pyvenv-workon - activate a virtual env.
