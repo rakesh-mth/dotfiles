@@ -7,6 +7,22 @@ nvim-qt --no-ext-tabline
 ######comments in vimrc / init.vim
 nmap <Leader>f :foo<Return>|  " Do foo -> make sure there is no space between maping and |
 
+######Vim mapping of TAB, ENTER, BACKSPACE, and ESC
+Ctrl-I      Tab
+Ctrl-[      Esc
+Ctrl-M      Enter
+Ctrl-H      Backspace
+
+######VIM modes
+n: normal only
+v: visual and select
+o: operator-pending
+x: visual only
+s: select only
+i: insert
+c: command-line
+l: insert, command-line, regexp-search (and others. Collectively called "Lang-Arg" pseudo-mode)
+
 *************************************************************
 #####################normal mode commands####################
 #####################normal mode commands####################

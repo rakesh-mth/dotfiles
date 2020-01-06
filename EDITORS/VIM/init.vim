@@ -353,41 +353,43 @@
     noremap <leader>a :args `git ls-files`<cr> 2<C-o>
 
 " search TODO, FIXME or any text and put them in cwindow
-    function! AgToQuickfix(word, options)
+    function! AgCommand(word, options)
         if !executable('ag')
             return s:warn('ag is not found, please install the_silver_searcher')
         endif
         cexpr system("ag --nogroup --column --vimgrep " . a:options . " " . a:word)
     endfunc
-    function! RgToQuickfix(word, options)
+    function! RgCommand(word, options)
         if !executable('rg')
             return s:warn('rg is not found, please install ripgrep')
         endif
         cexpr system("rg --column --line-number --vimgrep " . a:options . " " . a:word)
     endfunc
-    nnoremap <leader>stc :silent vimgrep /TODO\\|FIXME/j % \| :cw<CR>
-    nnoremap <leader>sta :silent vimgrep /TODO\\|FIXME/j `git ls-files` \| :cw<CR>
-    nnoremap <leader>sav :execute 'silent vim! <cword> `git ls-files` \| copen \| cc'<cr>
-    nnoremap <leader>saai :call AgToQuickfix(expand("<cword>"), "--ignore-case")<cr>
-    nnoremap <leader>saac :call AgToQuickfix(expand("<cword>"), "--case-sensitive")<cr>
-    nnoremap <leader>sari :call RgToQuickfix(expand("<cword>"), "--ignore-case")<cr>
-    nnoremap <leader>sarc :call RgToQuickfix(expand("<cword>"), "--case-sensitive")<cr>
-    nnoremap <leader>sa  :execute 'normal <leader>sarc'<cr>
-    nnoremap <leader>*   :Rg <C-R><C-W><CR>
-    nnoremap <leader>#   :Ag <C-R><C-W><CR>
+    nnoremap <leader>stc  :silent vimgrep /TODO\\|FIXME/j % \| :cw<CR>
+    nnoremap <leader>sta  :silent vimgrep /TODO\\|FIXME/j `git ls-files` \| :cw<CR>
+    nnoremap <leader>sav  :execute 'silent vim! <cword> `git ls-files` \| copen \| cc'<cr>
+    nnoremap <leader>saai :call AgCommand(expand("<cword>"), "--ignore-case")<cr>
+    nnoremap <leader>saas :call AgCommand(expand("<cword>"), "--case-sensitive")<cr>
+    nnoremap <leader>sari :call RgCommand(expand("<cword>"), "--ignore-case")<cr>
+    nnoremap <leader>sars :call RgCommand(expand("<cword>"), "--case-sensitive")<cr>
+    nnoremap <leader>sa   :call RgCommand(expand("<cword>"), "--case-sensitive")<cr>
+    " nnoremap <leader>sa   :execute 'normal <leader>sars'<cr>
+    nnoremap <leader>*    :Rg <C-R><C-W><CR>
+    nnoremap <leader>#    :Ag <C-R><C-W><CR>
+    nnoremap <leader>/    :Rg 
     nnoremap <leader>\t  /\|.\{-}\|<cr>| "search tags in vim help documents
     command! -nargs=+ VimCpp execute 'silent vim! <args> **/*.cpp **/*.c **/*.h' | copen | cc
     command! -nargs=+ VimH execute 'silent vim! <args> **/*.h' | copen | cc
     command! -nargs=+ Vim execute 'silent vim! <args> `git ls-files`' | copen | cc
 
 " search and replace 
-    " nnoremap <leader>ra  :execute 'normal <leader>rarc'<cr>
     nnoremap <leader>rc  :%s/\<<C-r>=expand("<cword>")<CR>\>/
-    nnoremap <leader>ra  :call RgToQuickfix(expand("<cword>"), "-s")<cr> :cfdo! %s/\<<C-r>=expand("<cword>")<CR>\>//gc\|w<left><left><left><left><left>
-    nnoremap <leader>rari :call RgToQuickfix(expand("<cword>"), "-i")<cr> :cfdo! %s/\<<C-r>=expand("<cword>")<CR>\>//gc\|w<left><left><left><left><left>
-    nnoremap <leader>raai :call AgToQuickfix(expand("<cword>"), "-i")<cr> :cfdo! %s/\<<C-r>=expand("<cword>")<CR>\>//gc\|w<left><left><left><left><left>
-    nnoremap <leader>rarc :call RgToQuickfix(expand("<cword>"), "-s")<cr> :cfdo! %s/\<<C-r>=expand("<cword>")<CR>\>//gc\|w<left><left><left><left><left>
-    nnoremap <leader>raac :call AgToQuickfix(expand("<cword>"), "-s")<cr> :cfdo! %s/\<<C-r>=expand("<cword>")<CR>\>//gc\|w<left><left><left><left><left>
+    nnoremap <leader>raai :call AgCommand(expand("<cword>"), "-i")<cr> :cfdo! %s/\<<C-r>=expand("<cword>")<CR>\>//gc\|w<left><left><left><left><left>
+    nnoremap <leader>raas :call AgCommand(expand("<cword>"), "-s")<cr> :cfdo! %s/\<<C-r>=expand("<cword>")<CR>\>//gc\|w<left><left><left><left><left>
+    nnoremap <leader>rari :call RgCommand(expand("<cword>"), "-i")<cr> :cfdo! %s/\<<C-r>=expand("<cword>")<CR>\>//gc\|w<left><left><left><left><left>
+    nnoremap <leader>rars :call RgCommand(expand("<cword>"), "-s")<cr> :cfdo! %s/\<<C-r>=expand("<cword>")<CR>\>//gc\|w<left><left><left><left><left>
+    nnoremap <leader>ra   :call RgCommand(expand("<cword>"), "-s")<cr> :cfdo! %s/\<<C-r>=expand("<cword>")<CR>\>//gc\|w<left><left><left><left><left>
+    " nnoremap <leader>ra   :execute 'normal <leader>rars'<cr>
     nnoremap <leader>rav :Vim <cword><cr> :cfdo %s/\<<C-r>=expand("<cword>")<CR>\>//gc\|w<left><left><left><left><left>
     nnoremap <leader>rad :argdo! %s/\<<C-r>=expand("<cword>")<CR>\>//gc\|w<left><left><left><left><left>
     nnoremap <leader>rcd :cfdo! %s/\<<C-r>=expand("<cword>")<CR>\>//gc\|w<left><left><left><left><left>
@@ -410,19 +412,21 @@
             let curWindow = "\+\+curwin"
             let insertMode = ""
         endif
-        execute 'nnoremap <silent> <leader>asgs :new  \| term ' . curWindow . ' "c:\program files\Git\bin\bash.exe"<cr>' . insertMode
+        execute 'nnoremap <silent> <leader>asg  :new  \| term ' . curWindow . ' "c:\program files\Git\bin\bash.exe"<cr>' . insertMode
         execute 'nnoremap <silent> <leader>asgv :vnew \| term ' . curWindow . ' "c:\program files\Git\bin\bash.exe"<cr>' . insertMode
         execute 'nnoremap <silent> <leader>asgt :tabe \| term ' . curWindow . ' "c:\program files\Git\bin\bash.exe"<cr>' . insertMode
-        execute 'nnoremap <silent> <leader>asbs :new  \| term ' . curWindow . ' C:\Windows\System32\bash.exe<cr>' . insertMode
+        execute 'nnoremap <silent> <leader>asb  :new  \| term ' . curWindow . ' C:\Windows\System32\bash.exe<cr>' . insertMode
         execute 'nnoremap <silent> <leader>asbv :vnew \| term ' . curWindow . ' C:\Windows\System32\bash.exe<cr>' . insertMode
         execute 'nnoremap <silent> <leader>asbt :tabe \| term ' . curWindow . ' C:\Windows\System32\bash.exe<cr>' . insertMode
-        execute 'nnoremap <silent> <leader>asps :new  \| term ' . curWindow . ' powershell<cr>' . insertMode
+        execute 'nnoremap <silent> <leader>asp  :new  \| term ' . curWindow . ' powershell<cr>' . insertMode
         execute 'nnoremap <silent> <leader>aspv :vnew \| term ' . curWindow . ' powershell<cr>' . insertMode
         execute 'nnoremap <silent> <leader>aspt :tabe \| term ' . curWindow . ' powershell<cr>' . insertMode
-        execute 'nnoremap <silent> <leader>ascs :new  \| term ' . curWindow . ' cmd<cr>' . insertMode
+        execute 'nnoremap <silent> <leader>asc  :new  \| term ' . curWindow . ' cmd<cr>' . insertMode
         execute 'nnoremap <silent> <leader>ascv :vnew \| term ' . curWindow . ' cmd<cr>' . insertMode
         execute 'nnoremap <silent> <leader>asct :tabe \| term ' . curWindow . ' cmd<cr>' . insertMode
         unlet curWindow insertMode
+        nmap <leader>' <leader>asg
+        nmap <leader>" <leader>asc
     else
         nnoremap <silent> <leader>ascs :sp \| term<cr><insert>
         nnoremap <silent> <leader>ascv :vs \| term<cr><insert>
