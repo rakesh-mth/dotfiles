@@ -12,7 +12,8 @@ npm install -g neovim tern typescript
 gem install neovim
 
 # add user script folder of python in path
-path: %USERPROFILE%\AppData\Roaming\Python\Python37\Scripts
+for /f "usebackq tokens=2,*" %A in (`reg query HKCU\Environment /v PATH`) do set my_user_path=%B
+setx PATH "%my_user_path%;%USERPROFILE%\AppData\Roaming\Python\Python37\Scripts"
 
 #download dictionary and extract it to c:\hunspell
 mkdir c:\hunspell
