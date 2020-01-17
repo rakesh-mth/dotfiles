@@ -1,7 +1,12 @@
 #!/bin/bash
-ln -snf ~/workspace/rakesh-mth/dotfiles/GIT/.gitconfig ~/.gitconfig
-ln -snf ~/workspace/scripts/GIT/.gitconfig ~/.gitconfig-work
+
+[ -f "$HOME/.gitconfig" ] && unlink "$HOME/.gitconfig"
+[ -f "$HOME/.gitconfig-work" ] && unlink "$HOME/.gitconfig-work"
+ln -snf ~/workspaces/rakesh-mth/dotfiles/GIT/.gitconfig ~/.gitconfig
+ln -snf ~/workspaces/scripts/GIT/.gitconfig ~/.gitconfig-work
 
 # symlink related to editors
-ln -snf ~/workspace/rakesh-mth/dotfiles/EDITORS/VIM/init.vim ~/.vimrc
-ln -snf ~/workspace/rakesh-mth/dotfiles/EDITORS/VIM/init.vim ~/.config/nvim/init.vim
+[ -f "$HOME/.vimrc" ] && unlink "$HOME/.vimrc"
+[ -f "$HOME/.config/nvim/init.vim" ] && unlink "$HOME/.config/nvim/init.vim"
+ln -snf ~/workspaces/rakesh-mth/dotfiles/EDITORS/VIM/init.vim ~/.vimrc
+ln -snf ~/workspaces/rakesh-mth/dotfiles/EDITORS/VIM/init.vim ~/.config/nvim/init.vim
