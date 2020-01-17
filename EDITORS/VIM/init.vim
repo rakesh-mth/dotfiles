@@ -433,6 +433,13 @@
         nnoremap <silent> <leader>ascs :sp \| term<cr><insert>
         nnoremap <silent> <leader>ascv :vs \| term<cr><insert>
         nnoremap <silent> <leader>asct :tabe \| term<cr><insert>
+        nnoremap <silent> <leader>asbs :sp \| term /bin/bash<cr><insert>
+        nnoremap <silent> <leader>asbv :vs \| term /bin/bash<cr><insert>
+        nnoremap <silent> <leader>asbt :tabe \| term /bin/bash<cr><insert>
+        nmap <leader>' <leader>ascs
+        nmap <leader><leader>' <leader>ascv
+        nmap <leader>" <leader>asbs 
+        nmap <leader><leader>" <leader>asbv
     endif
 
 " auto commands on events
