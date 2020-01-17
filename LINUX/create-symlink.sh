@@ -7,6 +7,8 @@ ln -snf ~/workspaces/scripts/GIT/.gitconfig ~/.gitconfig-work
 
 # symlink related to editors
 [ -f "$HOME/.vimrc" ] && unlink "$HOME/.vimrc"
+[ -f "$HOME/.spacemacs" ] && unlink "$HOME/.spacemacs"
 [ -f "$HOME/.config/nvim/init.vim" ] && unlink "$HOME/.config/nvim/init.vim"
 ln -snf ~/workspaces/rakesh-mth/dotfiles/EDITORS/VIM/init.vim ~/.vimrc
 ln -snf ~/workspaces/rakesh-mth/dotfiles/EDITORS/VIM/init.vim ~/.config/nvim/init.vim
+ln -snf ~/workspaces/rakesh-mth/dotfiles/EDITORS/EMACS/.spacemacs ~/.spacemacs
