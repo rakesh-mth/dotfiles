@@ -482,10 +482,11 @@ before packages are loaded."
   ;; Dictionaries, languages and encodings
   ;; Use hunspell.exe for automatic spell checking. Available
   ;; from Chocolately as `choco install -y hunspell.portable`
-  (setenv "LANG" "en_US")
-  (setq ispell-program-name "c:\\ProgramData\\chocolatey\\bin\\hunspell.exe")
-  (setq ispell-extra-args '("-p c:\\hunspell" "-d en_US"))
-  (setq ispell-hunspell-dict-paths-alist '(("en_US" "c:\\hunspell\\en_US.aff")))
+  (when (equal system-type 'windows-nt)
+    (setenv "LANG" "en_US")
+    (setq ispell-program-name "c:\\ProgramData\\chocolatey\\bin\\hunspell.exe")
+    (setq ispell-extra-args '("-p c:\\hunspell" "-d en_US"))
+    (setq ispell-hunspell-dict-paths-alist '(("en_US" "c:\\hunspell\\en_US.aff"))))
   ;; Save dictionary without asking
   ;; (ispell-silently-savep t)
   ;; Do not issue warnings for all wrong words
@@ -511,6 +512,11 @@ before packages are loaded."
     (let ((shell-file-name "C:\\Program Files\\Git\\bin\\bash.exe"))
       (shell "*bash*"))
   )
+  ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+  ;; lsp-clangd backend
+  (when (equal system-type 'darwin)
+    (setq c-c++-backend 'lsp-clangd)
+    (setq lsp-clangd-executable "/usr/local/opt/llvm/bin/clangd"))
   )
 
 ;; Do not write anything past this comment. This is where Emacs will
