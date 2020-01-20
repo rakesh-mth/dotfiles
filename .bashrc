@@ -8,6 +8,7 @@ fi
 # source fzf bash completion and key bindings, use fd for fzf command on *nix system
 [ -f ~/.fzf.bash ] && source ~/.fzf.bash
 if [[ "$OSTYPE" == "win32" ]]; then
+    echo "looks good!"
 else
     export FZF_DEFAULT_COMMAND='fd --type f'
 fi

@@ -20,3 +20,11 @@ mkdir -p ~/software
 git clone https://github.com/adobe-fonts/source-code-pro.git ~/software/source-code-pro
 # font for vim
 git clone https://github.com/powerline/fonts.git ~/software/fonts
+
+################################################################################
+######EMACS
+# install python packages in virtualenv - required for python development
+virtualenv -p /usr/local/bin/python3.7 $HOME/virtualenvs/python37
+source $HOME/virtualenvs/python37/bin/activate
+pip install flake8 isort yapf python-language-server pyls-isort pyls-mypy importmagic epc ptvsd autoflake
+################################################################################

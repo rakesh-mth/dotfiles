@@ -12,3 +12,9 @@ ln -snf ~/workspaces/scripts/GIT/.gitconfig ~/.gitconfig-work
 ln -snf ~/workspaces/rakesh-mth/dotfiles/EDITORS/VIM/init.vim ~/.vimrc
 ln -snf ~/workspaces/rakesh-mth/dotfiles/EDITORS/VIM/init.vim ~/.config/nvim/init.vim
 ln -snf ~/workspaces/rakesh-mth/dotfiles/EDITORS/EMACS/.spacemacs ~/.spacemacs
+
+# symlink related to shell
+[ -f "$HOME/.zshrc" ] && unlink "$HOME/.zshrc"
+[ -f "$HOME/.bashrc" ] && unlink "$HOME/.bashrc"
+ln -snf $HOME/workspaces/rakesh-mth/dotfiles/.zshrc $HOME/.zshrc
+ln -snf $HOME/workspaces/rakesh-mth/dotfiles/.bashrc $HOME/.bashrc
