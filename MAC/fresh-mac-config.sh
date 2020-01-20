@@ -5,9 +5,9 @@ brew cask install emacs 2>&1 | tee ~/brew/emacs
 pip2 install --upgrade pip
 pip3 install --upgrade pip
 pip2 install --user pynvim
-pip3 install --user pynvim neovim-remote virtualenvwrapper
+pip3 install --user pynvim neovim-remote virtualenvwrapper # add ~/Library/Python/3.7/bin in your path
 
-npm install -g neovim tern typescript
+npm install -g neovim tern typescript yarn
 gem install --user-install neovim # add ~/.gem/ruby/2.6.0/bin in your path (change version number)
 
 
