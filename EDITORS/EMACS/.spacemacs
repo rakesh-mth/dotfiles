@@ -40,7 +40,6 @@ This function should only modify configuration layer settings."
      shell-scripts
      windows-scripts
      yaml
-     lsp
      dap
      ;; ----------------------------------------------------------------
      ;; Example of useful layers you may want to use right away.
@@ -52,14 +51,13 @@ This function should only modify configuration layer settings."
      emacs-lisp
      git
      helm
-     ;; lsp
+     lsp
      ;; markdown
      multiple-cursors
      org
      (shell :variables
             shell-default-height 30
-            shell-default-position 'bottom
-            shell-default-term-shell "c:/Program Files/Git/bin/bash")
+            shell-default-position 'bottom)
      spell-checking
      syntax-checking
      treemacs
@@ -461,6 +459,15 @@ This function is called immediately after `dotspacemacs/init', before layer
 configuration.
 It is mostly for variables that should be set before packages are loaded.
 If you are unsure, try setting them in `dotspacemacs/user-config' first."
+  ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;; 
+  ;; default shell for shell layer
+  (when (equal system-type 'windows-nt)
+    (setq shell-default-term-shell "c:/Program Files/Git/bin/bash"))
+  ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+  ;; lsp-clangd backend (already default), set clangd path. For c-c++ layer.
+  (when (equal system-type 'darwin)
+    (setq c-c++-backend 'lsp-clangd)
+    (setq lsp-clients-clangd-executable '/usr/local/Cellar/llvm/9.0.0_1/bin/clangd))
   )
 
 (defun dotspacemacs/user-load ()
@@ -512,11 +519,6 @@ before packages are loaded."
     (let ((shell-file-name "C:\\Program Files\\Git\\bin\\bash.exe"))
       (shell "*bash*"))
   )
-  ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-  ;; lsp-clangd backend
-  (when (equal system-type 'darwin)
-    (setq c-c++-backend 'lsp-clangd)
-    (setq lsp-clangd-executable "/usr/local/opt/llvm/bin/clangd"))
   )
 
 ;; Do not write anything past this comment. This is where Emacs will
