@@ -1,4 +1,4 @@
-brew install neovim vim fd ripgrep the_silver_searcher fzf ctags wget xz python@2 python@3 nodejs golang rust llvm cmake aspell 2>&1 | tee ~/brew/fresh-mac-config
+brew install neovim vim fd ripgrep the_silver_searcher fzf ctags wget xz jfrog-cli-go python@2 python@3 nodejs golang rust llvm cmake aspell 2>&1 | tee ~/brew/fresh-mac-config
 brew cask install emacs 2>&1 | tee ~/brew/emacs
 
 
