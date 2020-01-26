@@ -16,7 +16,11 @@ POWERLEVEL9K_IGNORE_TERM_COLORS=true
 export FZF_DEFAULT_COMMAND='fd --type f'
 
 # source python 2.7 environment 
-[ -f "$HOME/virtualenvs/2.7/bin/activate" ] && source "$HOME/virtualenvs/2.7/bin/activate"
+[ -f "$HOME/virtualenvs/python27/bin/activate" ] && source "$HOME/virtualenvs/python27/bin/activate"
+
+
+# enable autocomplete (git and others)
+autoload -Uz compinit && compinit
 
 # key binding to move forward and backward using A-f and A-b
 # bindkey "^[^[[C" forward-word
