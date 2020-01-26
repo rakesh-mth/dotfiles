@@ -18,6 +18,8 @@ export FZF_DEFAULT_COMMAND='fd --type f'
 # source python 2.7 environment 
 [ -f "$HOME/virtualenvs/python27/bin/activate" ] && source "$HOME/virtualenvs/python27/bin/activate"
 
+# WORKON_HOME for virualenvs selection in emacs
+export WORKON_HOME=~/virtualenvs/
 
 # enable autocomplete (git and others)
 autoload -Uz compinit && compinit
