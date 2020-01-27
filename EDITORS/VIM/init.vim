@@ -181,6 +181,23 @@
     noremap <leader>ld mqo<Esc>`q| " add a line below
     noremap <leader>cc <Esc>6i#<Esc>A| " add 6 # and place cursor at the end (comment begin)
 
+" spacemacs key bindings
+    " Toggle buffer
+    let s:bufferState = 0
+    function! BufferToggle()
+      if(s:bufferState == 1)
+        let s:bufferState = 0
+        bp
+      else
+        let s:bufferState = 1
+        bn
+      endif
+    endfunc
+    noremap <leader><TAB> :call BufferToggle()<cr>| " Toggle between presious and current buffer.
+    noremap <leader><Space> :| " switch to command mode
+    noremap <leader>fed :e $MYVIMRC<cr>| " open vim configuration file (.vimrc or init.vim)
+    noremap <leader>gs  :Gstatus<cr>| " open git status page (from fugitive)
+
 " terminals : map esc key to switch to normal mode from terminal mode
     tnoremap <Esc> <C-\><C-n>
     for idx in range( 1, 9 )
@@ -297,7 +314,7 @@
         set rnu
       endif
     endfunc
-    nnoremap <silent> <leader>r :call NumberToggle()<cr> " Toggle between normal and relative numbering.
+    nnoremap <silent> <leader>r :call NumberToggle()<cr>| " Toggle between normal and relative numbering.
 
 " Toggle header and cpp file
     function! SwitchSourceHeader()
