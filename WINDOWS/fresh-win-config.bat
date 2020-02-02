@@ -53,6 +53,8 @@ python install.py --clang-completer --clangd-completer --go-completer --rust-com
 # for vim (refer to init.vim for path)
 cd %USERPROFILE%\.vim\plugged\YouCompleteMe
 python install.py --clang-completer --clangd-completer --go-completer --rust-completer --ts-completer --msvc 15
+# neovim disable tabline (add option to shortcut)
+nvim-qt --no-ext-tabline
 ################################################################################
 
 
@@ -60,16 +62,18 @@ python install.py --clang-completer --clangd-completer --go-completer --rust-com
 ######EMACS 
 # install spacemacs
 git clone https://github.com/syl20bnr/spacemacs ~/.emacs.d
+# set HOME environment variable
+setx HOME "%USERPROFILE%
 # font for emacs
 git clone https://github.com/adobe-fonts/source-code-pro.git
 # install python packages in virtualenv - required for python development
 py -3.7 -m pip install --user virtualenvwrapper
-virtualenv -p c:\Python37\python.exe %USERPROFILE%\python-envs\python37
-virtualenv -p c:\Python27\python.exe %USERPROFILE%\python-envs\python27
-setx WORKON_HOME "%USERPROFILE%\python-envs"
-cd %USERPROFILE%\python-envs\python37\scripts
+virtualenv -p c:\Python37\python.exe %USERPROFILE%\virtualenvs\python37
+virtualenv -p c:\Python27\python.exe %USERPROFILE%\virtualenvs\python27
+setx WORKON_HOME "%USERPROFILE%\virtualenvs"
+cd %USERPROFILE%\virtualenvs\python37\scripts
 mklink python3 python.exe
-%USERPROFILE%\python-envs\python37\scripts\activate
+%USERPROFILE%\virtualenvs\python37\scripts\activate
 pip install flake8 isort yapf python-language-server pyls-isort pyls-mypy importmagic epc ptvsd autoflake
 ######EMACS COMMAND TO SWITCH VIRTUAL ENV
 M-x pyvenv-workon (needs to be done before open a python file)
