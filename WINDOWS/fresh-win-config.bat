@@ -64,6 +64,10 @@ nvim-qt --no-ext-tabline
 git clone https://github.com/syl20bnr/spacemacs ~/.emacs.d
 # set HOME environment variable
 setx HOME "%USERPROFILE%
+# enable unicode charset in cmd.exe (run on powershell)
+sp -t d HKCU:\Console CodePage 0xfde9
+# enable unicode charset in cmd.exe (per session)
+chcp 65001
 # font for emacs
 git clone https://github.com/adobe-fonts/source-code-pro.git
 # install python packages in virtualenv - required for python development
