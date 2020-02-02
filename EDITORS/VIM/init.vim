@@ -175,11 +175,12 @@
     nnoremap <leader>nh :noh<cr>    
 
 " productivity
-    noremap <leader>] ]]zz
-    noremap <leader>[ [[zz
-    noremap <leader>lu mqO<Esc>`q| " add a line above 
-    noremap <leader>ld mqo<Esc>`q| " add a line below
-    noremap <leader>cc <Esc>6i#<Esc>A| " add 6 # and place cursor at the end (comment begin)
+    nnoremap <leader>] ]]zz
+    nnoremap <leader>[ [[zz
+    nnoremap <leader>lu mqO<Esc>`q| " add a line above 
+    nnoremap <leader>ld mqo<Esc>`q| " add a line below
+    nnoremap <leader>cc <Esc>6i#<Esc>A| " add 6 # and place cursor at the end (comment begin)
+    nnoremap <leader>vs :exe ':silent !code %'<CR>:redraw!<CR>
 
 " spacemacs key bindings
     " Toggle buffer
