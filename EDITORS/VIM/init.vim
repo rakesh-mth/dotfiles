@@ -365,11 +365,13 @@
     nnoremap <silent> <leader>au :set paste<CR>m`O<Esc>``:set nopaste<CR>
 
 " copy and paste from system clipboard using \y and \p
-    noremap <leader>y "*y
-    noremap <leader>p "*p
-    noremap <leader>Y "+y
-    noremap <leader>P "+p
-    noremap <leader>yy "+yy
+    nnoremap <leader><C-y> "*y
+    nnoremap <leader><C-p> "*p
+    nnoremap <leader>y "+y
+    nnoremap <leader>p "+p
+    nnoremap <leader>Y "+Y
+    nnoremap <leader>P "+P
+    nnoremap <leader>yy "+yy
 
 " update args with git listed files
     noremap <leader>a :args `git ls-files`<cr> 2<C-o>

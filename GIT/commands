@@ -37,13 +37,16 @@ git diff origin/master origin/feature-xyz
 # git clean 
 git clean -n
 git clean -f
+git clean -ffdx
 
+################################################################################
 #git config
 git config --list # list all of the git config 
 git config --show-origin user.name # show actual user name that will be used for a repo or global user name if not is repo
 git config --global user.name # show user name (globally) - may not be correct in overriden by a included file in .gitconfig
 git config user.name # display user name used by a repo
 git config user.name <user-name> # set user name per repo (be in repo folder)
+################################################################################
 
 ################################################################################
 #git rebase first commit
@@ -55,6 +58,25 @@ git rebase -i -p <commit-id>
 git commit --amend --author="your-name <youremail@yourcompany.com>" --no-edit
 git rebase --continue
 #repeat this proccess for each of the commits
+################################################################################
+
+################################################################################
+# git submodule
+git submodule add ssh://git@code.citrite.net/xd/buildcmake.git # add submodule to an existing repo
+git submodule init # initilize submodules in a freshly sync'ed repo
+git submodule update # update (will fetch the code) submodule in a freshly sync'ed repo
+git submodule update --init --recursive # combine submodule init and update in a single command
+git submodule update --remote # pull new changes in a submodule, update all submodule, add module name in case of single submodule update is required.
+git submodule update --remote --merge # pull and merge submodule with the local changes in submodule
+git submodule update --remote --rebase # pull and rebase submodule with the local changes in submodule
+git checkout --recurse-submodules master # checkout master (keep submodules folder in correct state in case branch does not have submodule enabled)
+git push --recurse-submodules=on-demand # push repo changes along with submodules changes
+git pull --recurse-submodules # fetch and merge change in repo and all submodules
+git log -p --submodule # git log that include information from submodule
+git config --global diff.submodule log # show submodule diff in `git diff`
+git config --global status.submodulesummary 1 # show submodule status in `git status`
+git config --global submodule.recurse true # enable --recurse-submodules to all the command those supports it (ex pull, checkout), except `git clone`
+git config --global push.recurseSubmodules check # enable "check" option for `git push`, validate submodules changes are pushed before repo changes. use "on-demand" to push both repo as well as submodules changes with `git push`.
 ################################################################################
 
 # set github branch config
