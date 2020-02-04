@@ -7,6 +7,7 @@
     default = simple
 [diff]
     tool = p4merge
+	submodule = log
 [difftool "p4merge"]
     path = C:/Program Files/Perforce/p4merge.exe
     cmd = p4merge.exe \"$LOCAL\" \"$REMOTE\"
@@ -43,3 +44,7 @@
 	prompt = false
 [include]
     path = ~/.gitconfig-work
+[submodule]
+	recurse = true
+[status]
+	submodulesummary = 1
