@@ -68,6 +68,7 @@ setx HOME "%USERPROFILE%
 sp -t d HKCU:\Console CodePage 0xfde9
 # enable unicode charset in cmd.exe (per session)
 chcp 65001
+set SHELL=C:\ProgramData\chocolatey\lib\Emacs\tools\emacs\libexec\emacs\26.2\x86_64-w64-mingw32\cmdproxy.exe
 # font for emacs
 git clone https://github.com/adobe-fonts/source-code-pro.git
 # install python packages in virtualenv - required for python development
