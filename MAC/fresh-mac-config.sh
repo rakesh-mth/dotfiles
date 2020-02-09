@@ -43,6 +43,8 @@ git clone https://github.com/adobe-fonts/source-code-pro.git ~/software/source-c
 ######VIM
 # font for vim
 git clone https://github.com/powerline/fonts.git ~/software/fonts
+# repeat key sequence (ex: repeat j/k in vscode vim movement)
+defaults write NSGlobalDomain ApplePressAndHoldEnabled -bool false
 ################################################################################
 
 
