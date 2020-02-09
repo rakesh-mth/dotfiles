@@ -194,10 +194,10 @@
         bn
       endif
     endfunc
-    noremap <leader><TAB> :call BufferToggle()<cr>| " Toggle between presious and current buffer.
-    noremap <leader><Space> :| " switch to command mode
-    noremap <leader>fed :e $MYVIMRC<cr>| " open vim configuration file (.vimrc or init.vim)
-    noremap <leader>gs  :Gstatus<cr>| " open git status page (from fugitive)
+    nnoremap <leader><TAB> :call BufferToggle()<cr>| " Toggle between presious and current buffer.
+    nnoremap <leader><leader> :| " switch to command mode
+    nnoremap <leader>fed :e $MYVIMRC<cr>| " open vim configuration file (.vimrc or init.vim)
+    nnoremap <leader>gs  :Gstatus<cr>| " open git status page (from fugitive)
 
 " terminals : map esc key to switch to normal mode from terminal mode
     tnoremap <Esc> <C-\><C-n>
@@ -451,8 +451,10 @@
         unlet curWindow insertMode
         nmap <leader>' <leader>asg
         nmap <leader><leader>' <leader>asgv
+        nmap <leader><leader><leader>' <leader>asgt
         nmap <leader>" <leader>asc
         nmap <leader><leader>" <leader>ascv
+        nmap <leader><leader><leader>" <leader>asct
     else
         nnoremap <silent> <leader>ascs :sp \| term<cr><insert>
         nnoremap <silent> <leader>ascv :vs \| term<cr><insert>
@@ -462,8 +464,10 @@
         nnoremap <silent> <leader>asbt :tabe \| term /bin/bash<cr><insert>
         nmap <leader>' <leader>ascs
         nmap <leader><leader>' <leader>ascv
+        nmap <leader><leader><leader>' <leader>asct
         nmap <leader>" <leader>asbs 
         nmap <leader><leader>" <leader>asbv
+        nmap <leader><leader><leader>" <leader>asbt
     endif
 
 " auto commands on events
