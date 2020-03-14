@@ -28,7 +28,8 @@
         branch_name=$(git rev-parse --abbrev-ref HEAD); \
         git checkout master; git pull; git checkout $branch_name; git rebase master; \
      }; f"
-    fmr = "!git fetch && git rebase origin/master"
+    f = !git fetch --prune 
+    fmr = "!git fetch --prune && git rebase origin/master"
     pf = "!git push -u origin $(git branch-name) --force"
     cr = "!git add . -u && git commit -m test && git rebase -i @~2"
     cp = "!git add . -u && git commit && git publish"
@@ -36,6 +37,13 @@
     pr = "!git pull --rebase"
     ds = "!git diff --staged"
     pb = "!git publish"
+    re = "!f() { \
+        git fetch --prune; \
+        branch_name=$(git rev-parse --abbrev-ref HEAD); \
+        git checkout @~1; \
+        git br -D $branch_name; \
+        git checkout $branch_name; \
+    }; f"
     st = status
     co = checkout
     br = branch
