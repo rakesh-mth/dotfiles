@@ -295,6 +295,8 @@
     endfunction
     " change fzf action to use ctrl-s instead of ctrl-x for horizontal split
     let g:fzf_action = { 'ctrl-c': function('s:build_quickfix_list'), 'ctrl-t': 'tab split', 'ctrl-s': 'split', 'ctrl-v': 'vsplit' }
+    " change select-all from A-a to C-a. now can use C-a C-c to bring back all results to quickfix window
+    let $FZF_DEFAULT_OPTS = '--bind ctrl-a:select-all'
 
 " move files from copen to args from https://stackoverflow.com/questions/5686206/search-replace-using-quickfix-list-in-vim
     command! -nargs=0 -bar Qargs execute 'args ' . QuickfixFilenames()
