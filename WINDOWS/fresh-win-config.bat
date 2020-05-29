@@ -23,7 +23,7 @@ alternate link: https://visualstudio.microsoft.com/downloads/#build-tools-for-vi
 # user command prompt
 py -2 -m pip install --upgrade pip
 py -3.7 -m pip install --upgrade pip
-py -2 -m pip install --user pynvim neovim-remote
+py -2 -m pip install --user pynvim 
 py -3.7 -m pip install --user pynvim neovim-remote virtualenvwrapper
 npm install -g neovim tern typescript
 gem install neovim
