@@ -1,0 +1,21 @@
+Based on the solution proposed in article https://thoughts.t37.net/merging-2-different-git-repositories-without-losing-your-history-de7a06bba804
+
+Steps to follow:
+
+# merge repo1 into repo2
+git clone <repo1>
+git clone <repo2>
+cd <repo2>
+git checkout master
+git pull
+git remote add repo1 ../repo1
+git fetch repo1
+git checkout -b bugfix-repo1
+git merge -S --allow-unrelated-histories repo1/master
+<Resolve the conflicts>
+git push origin bugfix-repo1
+git remote rm repo1
+
+
+# rever all "deleted by us" unmerged paths
+git status --porcelain | grep "DU" | cut -c4- | xargs git rm
