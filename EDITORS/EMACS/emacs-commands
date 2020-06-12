@@ -42,3 +42,11 @@ M g g - goto line number
 ################################################################################
 ###### Python development
 M-x pyvenv-workon - activate a virtual env.
+
+################################################################################
+###### resolve conflict in emacs (using smerge)
+C-c ^ - open smerge option
+C-c ^ u - select upper version in conflict (l for lower and a for all version)
+###### resolve conflict in emacs (using ediff)
+smerge-ediff
+magit-ediff-compare - compare current file with origin/master of any other branch
