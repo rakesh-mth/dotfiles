@@ -19,3 +19,4 @@ git remote rm repo1
 
 # rever all "deleted by us" unmerged paths
 git status --porcelain | grep "DU" | cut -c4- | xargs git rm
+git status --porcelain | grep "UD" | cut -c4- | xargs git rm
