@@ -59,3 +59,12 @@ C-c ^ u - select upper version in conflict (l for lower and a for all version)
 ###### resolve conflict in emacs (using ediff)
 smerge-ediff
 magit-ediff-compare - compare current file with origin/master of any other branch
+
+################################################################################
+###### MAGIT
+SPC g s - magit status
+############MAGIT commands
+TAB - open / close current section
+gj - cycle through history to the previous commit
+gk - cycle through history to the next commit
+################################################################################
