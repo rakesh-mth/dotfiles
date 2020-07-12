@@ -19,11 +19,17 @@ SPC j j - jump anywhere
 SPC j i - jump to functions / class functions in file
 
 ###### show file path
-SPC j y y
+SPC f y y
+
+###### create frame
+SPC w F
 
 ###### create workspaces
 SPC l w 2 - create workspace number 2
-2gt - switch to workspace 2
+SPC l L - load layout from file
+SPC l 1...9 - create new layout
+SPC l s - save layout
+2gt - switch to workspace 2 (use any number from 1...9 for new workspace)
 
 ###### buffer
 SPC b b - list buffers and recently opened files
