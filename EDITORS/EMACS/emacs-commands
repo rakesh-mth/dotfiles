@@ -18,6 +18,9 @@ SPC j f - search any function in spacemacs and emacs
 SPC j j - jump anywhere
 SPC j i - jump to functions / class functions in file
 
+###### show file path
+SPC j y y
+
 ###### create workspaces
 SPC l w 2 - create workspace number 2
 2gt - switch to workspace 2
