@@ -35,7 +35,7 @@ This function should only modify configuration layer settings."
    '(go
      c-c++
      rust
-     go
+     csharp
      javascript ; npm install -g tern
      python
      groovy

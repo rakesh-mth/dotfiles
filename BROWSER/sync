@@ -1,0 +1,1 @@
+echo F | xcopy "%USERPROFILE%\AppData\Local\Google\Chrome\User Data\Default\Bookmarks" "%USERPROFILE%\AppData\Local\Microsoft\Edge Beta\User Data\Default\Bookmarks" /Y
