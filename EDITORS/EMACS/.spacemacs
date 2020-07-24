@@ -39,6 +39,7 @@ This function should only modify configuration layer settings."
      javascript ; npm install -g tern
      python
      groovy
+     cmake
      docker
      shell-scripts
      windows-scripts
