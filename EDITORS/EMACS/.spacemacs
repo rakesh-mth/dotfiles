@@ -32,9 +32,12 @@ This function should only modify configuration layer settings."
 
    ;; List of configuration layers to load.
    dotspacemacs-configuration-layers
-   '(go
-     c-c++
+   '(c-c++
      rust
+     (go :variables
+         go-format-before-save t
+         godoc-at-point-function 'godoc-gogetdoc
+         go-backend 'lsp)
      csharp
      javascript ; npm install -g tern
      python
@@ -65,7 +68,8 @@ This function should only modify configuration layer settings."
             shell-default-position 'bottom)
      spell-checking
      syntax-checking
-     treemacs
+     neotree
+     ;; treemacs
      ;; version-control
      )
 
