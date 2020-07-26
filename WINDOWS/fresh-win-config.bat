@@ -63,7 +63,7 @@ nvim-qt --no-ext-tabline
 # install spacemacs
 git clone https://github.com/syl20bnr/spacemacs ~/.emacs.d
 # set HOME environment variable
-setx HOME "%USERPROFILE%
+setx HOME "%USERPROFILE%"
 # enable unicode charset in cmd.exe (run on powershell)
 sp -t d HKCU:\Console CodePage 0xfde9
 # enable unicode charset in cmd.exe (per session)
@@ -79,7 +79,7 @@ setx WORKON_HOME "%USERPROFILE%\virtualenvs"
 cd %USERPROFILE%\virtualenvs\python37\scripts
 mklink python3 python.exe
 %USERPROFILE%\virtualenvs\python37\scripts\activate
-pip install flake8 isort yapf python-language-server pyls-isort pyls-mypy importmagic epc ptvsd autoflake
+pip install flake8 isort yapf python-language-server pyls-isort pyls-mypy pyls-black importmagic epc ptvsd autoflake
 ######EMACS COMMAND TO SWITCH VIRTUAL ENV
 M-x pyvenv-workon (needs to be done before open a python file)
 ################################################################################
