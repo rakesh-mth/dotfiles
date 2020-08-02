@@ -75,6 +75,9 @@
     else
         call plug#begin('~/.vim/plugged') 
     endif
+    " set viminfo for startify to work with vim
+    if !has('nvim') && has('win32') | set viminfo+=n~/_viminfo | endif
+
     " plugins that adds custom operator, following from - https://thoughtbot.com/upcase/videos/extending-the-vim-language
     Plug 'tpope/vim-surround' " adds cs{ change scope }, ds{ delete scope } and ys{ add scope } 
     Plug 'tpope/vim-commentary' " adds gc{motion}, gcc (comment a line)   
