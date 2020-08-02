@@ -21,8 +21,8 @@ alternate link: https://visualstudio.microsoft.com/downloads/#build-tools-for-vi
 ################################################################################
 ######CONFIGURE TOOLS (PYTHON, NODE AND RUBY) - require for vim
 # user command prompt
-py -2 -m pip install --upgrade pip
-py -3.7 -m pip install --upgrade pip
+py -2 -m pip install --user --upgrade pip
+py -3.7 -m pip install --user --upgrade pip
 py -2 -m pip install --user pynvim 
 py -3.7 -m pip install --user pynvim neovim-remote virtualenvwrapper
 npm install -g neovim tern typescript
@@ -30,6 +30,15 @@ gem install neovim
 # add user script folder of python in path
 for /f "usebackq tokens=2,*" %A in (`reg query HKCU\Environment /v PATH`) do set my_user_path=%B
 setx PATH "%my_user_path%;%USERPROFILE%\AppData\Roaming\Python\Python37\Scripts"
+################################################################################
+
+
+################################################################################
+######VIRTUAL ENV PACKAGES. THESE PCKAGES ARE FOR VIM, EMACS AND ANY OTHER APPS.
+%USERPROFILE%\virtualenvs\python38\scripts\activate
+pip install pynvim neovim-remote flake8 isort yapf python-language-server pyls-isort pyls-mypy pyls-black importmagic epc ptvsd autoflake
+%USERPROFILE%\virtualenvs\python27\scripts\activate
+pip install pynvim flake8 isort yapf python-language-server pyls-isort importmagic epc ptvsd autoflake
 ################################################################################
 
 

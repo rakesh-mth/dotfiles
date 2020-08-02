@@ -32,6 +32,14 @@
     syntax on
     let mapleader = "\<Space>" " map leader key to Space
 
+" add python exe locations (virtualenvs)
+    if has('win32')
+        let python2_vp = '$USERPROFILE\virtualenvs\python27\Scripts\python.exe'
+        let python3_vp = '$USERPROFILE\virtualenvs\python38\Scripts\python.exe'
+        if !empty(glob(python2_vp)) | let g:python_host_prog = python2_vp | endif
+        if !empty(glob(python3_vp)) | let g:python3_host_prog = python3_vp | endif
+    endif
+
 " install plug.vim (bootstrap plugin)
     if has('macunix') || has('unix')
         if has('nvim')
@@ -110,7 +118,7 @@
     else
         Plug 'SirVer/ultisnips' " Track the engine. for snippets.
         Plug 'ycm-core/YouCompleteMe', { 'do': './install.py' } " code completion
-        Plug 'neoclide/coc.nvim', {'branch': 'release'} " Intellisense engine for vim8 & neovim, full language server protocol support as VSCode
+        " Plug 'neoclide/coc.nvim', {'branch': 'release'} " Intellisense engine for vim8 & neovim, full language server protocol support as VSCode. Does not work with YouCompleteMe
     endif
     Plug 'honza/vim-snippets' " Snippets are separated from the engine. Add this if you want them:
     " Code to execute when the plugin is lazily loaded on demand
