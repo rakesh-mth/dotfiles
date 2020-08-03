@@ -23,23 +23,28 @@ alternate link: https://visualstudio.microsoft.com/downloads/#build-tools-for-vi
 ######CONFIGURE TOOLS (PYTHON, NODE AND RUBY) - require for vim
 # user command prompt
 py -2 -m pip install --user --upgrade pip
-py -3.7 -m pip install --user --upgrade pip
+py -3.8 -m pip install --user --upgrade pip
 py -2 -m pip install --user pynvim 
-py -3.7 -m pip install --user pynvim neovim-remote virtualenvwrapper
+py -3.8 -m pip install --user pynvim neovim-remote virtualenvwrapper
 npm install -g neovim tern typescript
 gem install neovim
-# add user script folder of python in path
-for /f "usebackq tokens=2,*" %A in (`reg query HKCU\Environment /v PATH`) do set my_user_path=%B
-setx PATH "%my_user_path%;%USERPROFILE%\AppData\Roaming\Python\Python37\Scripts"
 ################################################################################
 
 
 ################################################################################
 ######VIRTUAL ENV PACKAGES. THESE PCKAGES ARE FOR VIM, EMACS AND ANY OTHER APPS.
+py -3.8 -m pip install --user virtualenvwrapper
+virtualenv -p c:\Python38\python.exe %USERPROFILE%\virtualenvs\python38
 %USERPROFILE%\virtualenvs\python38\scripts\activate
 pip install pynvim neovim-remote flake8 isort yapf python-language-server pyls-isort pyls-mypy pyls-black importmagic epc ptvsd autoflake
+virtualenv -p c:\Python27\python.exe %USERPROFILE%\virtualenvs\python27
 %USERPROFILE%\virtualenvs\python27\scripts\activate
 pip install pynvim flake8 isort yapf python-language-server pyls-isort importmagic epc ptvsd autoflake
+# add user script folder of python in path
+for /f "usebackq tokens=2,*" %A in (`reg query HKCU\Environment /v PATH`) do set my_user_path=%B
+setx PATH "%my_user_path%;%USERPROFILE%\AppData\Roaming\Python\Python38\Scripts"
+# needed for EMACS
+setx WORKON_HOME "%USERPROFILE%\virtualenvs"
 ################################################################################
 
 
@@ -81,15 +86,6 @@ chcp 65001
 set SHELL=C:\ProgramData\chocolatey\lib\Emacs\tools\emacs\libexec\emacs\26.2\x86_64-w64-mingw32\cmdproxy.exe
 # font for emacs
 git clone https://github.com/adobe-fonts/source-code-pro.git
-# install python packages in virtualenv - required for python development
-py -3.7 -m pip install --user virtualenvwrapper
-virtualenv -p c:\Python37\python.exe %USERPROFILE%\virtualenvs\python37
-virtualenv -p c:\Python27\python.exe %USERPROFILE%\virtualenvs\python27
-setx WORKON_HOME "%USERPROFILE%\virtualenvs"
-cd %USERPROFILE%\virtualenvs\python37\scripts
-mklink python3 python.exe
-%USERPROFILE%\virtualenvs\python37\scripts\activate
-pip install flake8 isort yapf python-language-server pyls-isort pyls-mypy pyls-black importmagic epc ptvsd autoflake
 ######EMACS COMMAND TO SWITCH VIRTUAL ENV
 M-x pyvenv-workon (needs to be done before open a python file)
 ################################################################################
