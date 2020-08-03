@@ -1,0 +1,4 @@
+go mod init github.com/rakesh-mth/ctxsl
+go build .
+go install .
+go clean -i

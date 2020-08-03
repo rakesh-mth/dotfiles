@@ -37,7 +37,10 @@ This function should only modify configuration layer settings."
      ;; Uncomment some layer names and press `SPC f e R' (Vim style) or
      ;; `M-m f e R' (Emacs style) to install them.
      ;; ----------------------------------------------------------------
-     c-c++
+     (c-c++ :variables
+            c-c++-backend 'lsp-clangd
+            c-c++-adopt-subprojects t
+            c-c++-lsp-enable-semantic-highlight 'rainbow)
      rust
      (go :variables
          go-backend 'lsp
