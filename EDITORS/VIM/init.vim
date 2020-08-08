@@ -129,7 +129,7 @@
     " language support
     Plug 'PProvost/vim-ps1' " powershell syntax coloring
     Plug 'rust-lang/rust.vim' " rust language support
-    Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' } " golang support
+    Plug 'fatih/vim-go' " , { 'do': ':GoUpdateBinaries' } " golang support
     Plug 'HerringtonDarkholme/yats.vim' " Add a syntax file for typescript. YATS is the best
     Plug 'mhartington/nvim-typescript', {'do': './install.sh'} " typescript support
     Plug 'sheerun/vim-polyglot' " used by nova color schema, multiple programming language support (basic)
