@@ -3,7 +3,8 @@
 #admin powershell
 choco install -y neovim emacs vim fd ripgrep ag fzf ctags wget 7zip git gitversion.portable cmake powershell-core python2 python3 groovy nodejs ruby jdk8 golang rustup.install llvm hunspell.portable nuget.commandline jfrog-cli gotomeeting lxrunoffline libreoffice-fresh
 # vim needs python version 3.7 
-choco install -y python --version=3.7.3
+choco install -y python --version=3.7.8
+choco install -y python --version=3.8.5
 rustup toolchain install stable-x86_64-pc-windows-msvc
 ################################################################################
 
