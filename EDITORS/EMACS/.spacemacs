@@ -473,6 +473,41 @@ variables declared in `~/.spacemacs.env' or `~/.spacemacs.d/.spacemacs.env'.
 See the header of this file for more information."
   (spacemacs/load-spacemacs-env))
 
+;; set tab width
+(defun my-setup-indent (n)
+  ;; java/c/c++
+  (setq c-basic-offset n)
+  ;; web development
+  (setq coffee-tab-width n) ; coffeescript
+  (setq javascript-indent-level n) ; javascript-mode
+  (setq js-indent-level n) ; js-mode
+  (setq js2-basic-offset n) ; js2-mode, in latest js2-mode, it's alias of js-indent-level
+  (setq web-mode-markup-indent-offset n) ; web-mode, html tag in html file
+  (setq web-mode-css-indent-offset n) ; web-mode, css in html file
+  (setq web-mode-code-indent-offset n) ; web-mode, js code in html file
+  (setq css-indent-offset n) ; css-mode
+  )
+
+;; run git bash 
+(defun run-bash ()
+  (interactive)
+  (let ((shell-file-name "C:\\Program Files\\Git\\bin\\bash.exe"))
+    (shell "*bash*"))
+  )
+
+;; toggle flycheck error window
+(defun toggle-flycheck-error-buffer ()
+  "toggle a flycheck error buffer."
+  (interactive)
+  (if (string-match-p "Flycheck errors" (format "%s" (window-list)))
+      (dolist (w (window-list))
+        (when (string-match-p "*Flycheck errors*" (buffer-name (window-buffer w)))
+          (delete-window w)
+          ))
+    (flycheck-list-errors)
+    )
+  )
+
 (defun dotspacemacs/user-init ()
   "Initialization for user code:
 This function is called immediately after `dotspacemacs/init', before layer
@@ -488,6 +523,8 @@ If you are unsure, try setting them in `dotspacemacs/user-config' first."
   (when (equal system-type 'darwin)
     (setq c-c++-backend 'lsp-clangd)
     (setq lsp-clients-clangd-executable '/usr/local/Cellar/llvm/9.0.0_1/bin/clangd))
+  ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+  (my-setup-indent 4) ; indent 4 spaces width
   )
 
 (defun dotspacemacs/user-load ()
@@ -522,26 +559,10 @@ before packages are loaded."
   ;; Do not issue warnings for all wrong words
   ;; (flyspell-issue-message-flag nil)
   ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-  ;; toggle flycheck error window
-  (defun toggle-flycheck-error-buffer ()
-    "toggle a flycheck error buffer."
-    (interactive)
-    (if (string-match-p "Flycheck errors" (format "%s" (window-list)))
-        (dolist (w (window-list))
-          (when (string-match-p "*Flycheck errors*" (buffer-name (window-buffer w)))
-            (delete-window w)
-            ))
-      (flycheck-list-errors)
-      )
-    )
+  ;; global keys
   (global-set-key (kbd "<f8>") 'toggle-flycheck-error-buffer)
+  (global-set-key (kbd "C-`") 'run-bash)
   ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-  ;; run git bash 
-  (defun run-bash ()
-    (interactive)
-    (let ((shell-file-name "C:\\Program Files\\Git\\bin\\bash.exe"))
-      (shell "*bash*"))
-  )
   )
 
 ;; Do not write anything past this comment. This is where Emacs will
@@ -558,7 +579,8 @@ This function is called at the very end of Spacemacs initialization."
  ;; If there is more than one, they won't work right.
  '(package-selected-packages
    (quote
-    (vimrc-mode helm-gtags ggtags dactyl-mode counsel-gtags counsel swiper ivy mvn meghanada maven-test-mode lsp-java web-mode tagedit slim-mode seeing-is-believing scss-mode sass-mode rvm ruby-tools ruby-test-mode ruby-refactor ruby-hash-syntax rubocopfmt rubocop rspec-mode robe rbenv rake pug-mode minitest lsp-haskell intero impatient-mode hlint-refactor hindent helm-hoogle helm-css-scss haskell-snippets haml-mode flycheck-haskell emmet-mode dante lcr company-web web-completion-data company-ghci company-ghc ghc haskell-mode company-cabal cmm-mode clojure-snippets cider-eval-sexp-fu cider sesman queue parseedn clojure-mode parseclj a chruby bundler inf-ruby attrap mmm-mode markdown-toc gh-md tern groovy-mode groovy-imports pcache dockerfile-mode docker tablist docker-tramp xterm-color hl-todo dap-mode bui tree-mode skewer-mode memoize yasnippet-snippets yapfify yaml-mode ws-butler writeroom-mode winum which-key web-beautify volatile-highlights vi-tilde-fringe uuidgen use-package unfill treemacs-projectile treemacs-magit treemacs-evil toml-mode toc-org terminal-here symon symbol-overlay string-inflection spaceline-all-the-icons smeargle simple-httpd shell-pop restart-emacs rainbow-delimiters racer pytest pyenv-mode py-isort prettier-js powershell popwin pippel pipenv pip-requirements persp-mode pcre2el password-generator paradox overseer orgit org-projectile org-present org-pomodoro org-mime org-download org-cliplink org-bullets org-brain open-junk-file nodejs-repl nameless mwim multi-term move-text magit-svn magit-gitflow macrostep lsp-ui lsp-treemacs lsp-python-ms lorem-ipsum livid-mode live-py-mode link-hint json-navigator json-mode js2-refactor js-doc insert-shebang indent-guide importmagic hybrid-mode hungry-delete htmlize highlight-parentheses highlight-numbers highlight-indentation helm-xref helm-themes helm-swoop helm-rtags helm-pydoc helm-purpose helm-projectile helm-org-rifle helm-org helm-mode-manager helm-make helm-lsp helm-ls-git helm-gitignore helm-git-grep helm-flx helm-descbinds helm-company helm-c-yasnippet helm-ag google-translate google-c-style golden-ratio godoctor go-tag go-rename go-impl go-guru go-gen-test go-fill-struct go-eldoc gnuplot gitignore-templates gitconfig-mode gitattributes-mode git-timemachine git-messenger git-link fuzzy font-lock+ flyspell-correct-helm flycheck-ycmd flycheck-rust flycheck-rtags flycheck-pos-tip flycheck-package flycheck-bashate flx-ido fish-mode fill-column-indicator fancy-battery eyebrowse expand-region evil-visualstar evil-visual-mark-mode evil-unimpaired evil-tutor evil-textobj-line evil-surround evil-org evil-numbers evil-nerd-commenter evil-mc evil-matchit evil-magit evil-lisp-state evil-lion evil-indent-plus evil-iedit-state evil-goggles evil-exchange evil-escape evil-ediff evil-cleverparens evil-args evil-anzu eval-sexp-fu eshell-z eshell-prompt-extras esh-help elisp-slime-nav editorconfig dumb-jump dotenv-mode doom-modeline disaster diminish devdocs define-word cython-mode cquery cpp-auto-include company-ycmd company-tern company-statistics company-shell company-rtags company-lsp company-go company-c-headers company-anaconda column-enforce-mode clean-aindent-mode clang-format centered-cursor-mode ccls cargo blacken auto-yasnippet auto-highlight-symbol auto-dictionary auto-compile aggressive-indent ace-link ace-jump-helm-line ac-ispell))))
+    (vimrc-mode dactyl-mode mvn meghanada maven-test-mode lsp-java web-mode tagedit slim-mode seeing-is-believing scss-mode sass-mode rvm ruby-tools ruby-test-mode ruby-refactor ruby-hash-syntax rubocopfmt rubocop rspec-mode robe rbenv rake pug-mode minitest lsp-haskell intero impatient-mode hlint-refactor hindent helm-hoogle helm-css-scss haskell-snippets haml-mode flycheck-haskell emmet-mode dante lcr company-web web-completion-data company-ghci company-ghc ghc haskell-mode company-cabal cmm-mode clojure-snippets cider-eval-sexp-fu cider sesman queue parseedn clojure-mode parseclj a chruby bundler inf-ruby attrap mmm-mode markdown-toc gh-md tern groovy-mode groovy-imports pcache dockerfile-mode docker tablist docker-tramp xterm-color hl-todo dap-mode bui tree-mode skewer-mode memoize yasnippet-snippets yapfify yaml-mode ws-butler writeroom-mode winum which-key web-beautify volatile-highlights vi-tilde-fringe uuidgen use-package unfill treemacs-projectile treemacs-magit treemacs-evil toml-mode toc-org terminal-here symon symbol-overlay string-inflection spaceline-all-the-icons smeargle simple-httpd shell-pop restart-emacs rainbow-delimiters racer pytest pyenv-mode py-isort prettier-js powershell popwin pippel pipenv pip-requirements persp-mode pcre2el password-generator paradox overseer orgit org-projectile org-present org-pomodoro org-mime org-download org-cliplink org-bullets org-brain open-junk-file nodejs-repl nameless mwim multi-term move-text magit-svn magit-gitflow macrostep lsp-ui lsp-treemacs lsp-python-ms lorem-ipsum livid-mode live-py-mode link-hint json-navigator json-mode js2-refactor js-doc insert-shebang indent-guide importmagic hybrid-mode hungry-delete htmlize highlight-parentheses highlight-numbers highlight-indentation helm-xref helm-themes helm-swoop helm-rtags helm-pydoc helm-purpose helm-projectile helm-org-rifle helm-org helm-mode-manager helm-make helm-lsp helm-ls-git helm-gitignore helm-git-grep helm-flx helm-descbinds helm-company helm-c-yasnippet helm-ag google-translate google-c-style golden-ratio godoctor go-tag go-rename go-impl go-guru go-gen-test go-fill-struct go-eldoc gnuplot gitignore-templates gitconfig-mode gitattributes-mode git-timemachine git-messenger git-link fuzzy font-lock+ flyspell-correct-helm flycheck-ycmd flycheck-rust flycheck-rtags flycheck-pos-tip flycheck-package flycheck-bashate flx-ido fish-mode fill-column-indicator fancy-battery eyebrowse expand-region evil-visualstar evil-visual-mark-mode evil-unimpaired evil-tutor evil-textobj-line evil-surround evil-org evil-numbers evil-nerd-commenter evil-mc evil-matchit evil-magit evil-lisp-state evil-lion evil-indent-plus evil-iedit-state evil-goggles evil-exchange evil-escape evil-ediff evil-cleverparens evil-args evil-anzu eval-sexp-fu eshell-z eshell-prompt-extras esh-help elisp-slime-nav editorconfig dumb-jump dotenv-mode doom-modeline disaster diminish devdocs define-word cython-mode cquery cpp-auto-include company-ycmd company-tern company-statistics company-shell company-rtags company-lsp company-go company-c-headers company-anaconda column-enforce-mode clean-aindent-mode clang-format centered-cursor-mode ccls cargo blacken auto-yasnippet auto-highlight-symbol auto-dictionary auto-compile aggressive-indent ace-link ace-jump-helm-line ac-ispell)))
+ '(standard-indent 4))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
