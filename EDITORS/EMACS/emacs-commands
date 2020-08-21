@@ -68,3 +68,7 @@ TAB - open / close current section
 gj - cycle through history to the previous commit
 gk - cycle through history to the next commit
 ################################################################################
+
+################################################################################
+###### useful commands
+ff-find-other-file - open corresponding cpp/h file
