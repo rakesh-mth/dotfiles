@@ -38,6 +38,11 @@
         let python3_vp = '$USERPROFILE\virtualenvs\python38\Scripts\python.exe'
         if !empty(glob(python2_vp)) | let g:python_host_prog = python2_vp | endif
         if !empty(glob(python3_vp)) | let g:python3_host_prog = python3_vp | endif
+    elseif has('mac')
+        let python2_vp = '$HOME/.virtualenvs/python2.7/bin/python'
+        let python3_vp = '$HOME/.virtualenvs/python3.8/bin/python'
+        if !empty(glob(python2_vp)) | let g:python_host_prog = python2_vp | endif
+        if !empty(glob(python3_vp)) | let g:python3_host_prog = python3_vp | endif
     endif
 
 " install plug.vim (bootstrap plugin)

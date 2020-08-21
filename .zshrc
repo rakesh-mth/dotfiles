@@ -15,11 +15,11 @@ POWERLEVEL9K_IGNORE_TERM_COLORS=true
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 export FZF_DEFAULT_COMMAND='fd --type f'
 
-# source python 2.7 environment 
-[ -f "$HOME/virtualenvs/python27/bin/activate" ] && source "$HOME/virtualenvs/python27/bin/activate"
-
-# WORKON_HOME for virualenvs selection in emacs
-export WORKON_HOME=~/virtualenvs/
+# Configuration for virtualenv. # WORKON_HOME for virualenvs selection in emacs
+export WORKON_HOME=$HOME/.virtualenvs
+export VIRTUALENVWRAPPER_PYTHON=/usr/local/bin/python3
+export VIRTUALENVWRAPPER_VIRTUALENV=/usr/local/bin/virtualenv
+source /usr/local/bin/virtualenvwrapper.sh
 
 # enable autocomplete (git and others)
 autoload -Uz compinit && compinit
