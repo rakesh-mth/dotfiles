@@ -1,0 +1,5 @@
+[wsl2]
+memory=3GB # Limits VM memory in WSL 2 to 3 GB
+swap=0
+# localhostForwarding=true
+# processors=5 # Makes the WSL 2 VM use two virtual processors
