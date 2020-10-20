@@ -36,8 +36,10 @@
     if has('win32')
         let python2_vp = '$USERPROFILE\virtualenvs\python27\Scripts\python.exe'
         let python3_vp = '$USERPROFILE\virtualenvs\python38\Scripts\python.exe'
+        let python39_vp = '$USERPROFILE\virtualenvs\python39\Scripts\python.exe'
         if !empty(glob(python2_vp)) | let g:python_host_prog = python2_vp | endif
         if !empty(glob(python3_vp)) | let g:python3_host_prog = python3_vp | endif
+        if !empty(glob(python39_vp)) | let g:python3_host_prog = python39_vp | endif
     elseif has('mac')
         let python2_vp = '$HOME/.virtualenvs/python2.7/bin/python'
         let python3_vp = '$HOME/.virtualenvs/python3.8/bin/python'
