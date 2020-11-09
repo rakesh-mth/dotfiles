@@ -24,7 +24,10 @@
     set mouse=a             " enable mouse support (resize splits, etc...)
     if has('win32unix')
     else
-        set termguicolors       " enable true color
+        let colorterm=$COLORTERM
+        if colorterm =~# 'truecolor' || colorterm =~# '24bit'
+            set termguicolors       " enable true color
+        endif
     endif
     set cursorline          " color the cursor line, highlight current line.
     set history=10000       " history of ex command. nvim default: 10000, vim default: 1000. keep is consistent to 10000.
