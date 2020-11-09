@@ -3,7 +3,7 @@
 RUBY_VERSION=`ruby --version | awk '{print $2}' | awk -F "." '{print $1"."$2".0"}'`
 
 # update PATH variable
-export PATH="/usr/local/bin:$HOME/.cargo/bin:$HOME/Library/Python/3.7/bin:$HOME/.gem/ruby/$RUBY_VERSION/bin:$PATH"
+export PATH="/usr/local/bin:$HOME/.cargo/bin:$HOME/.gem/ruby/$RUBY_VERSION/bin:$PATH"
 
 # powerlevel10k theme for zsh
 [ -f "$HOME/software/powerlevel10k/powerlevel10k.zsh-theme" ] && source "$HOME/software/powerlevel10k/powerlevel10k.zsh-theme"

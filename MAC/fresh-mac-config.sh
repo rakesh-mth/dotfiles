@@ -21,6 +21,7 @@ mkdir -p ~/software
 # use mkvirtualenv command to add a virtual env
 mkvirtualenv -p /usr/local/bin/python2.7 python2.7
 mkvirtualenv -p /usr/local/bin/python3.8 python3.8
+mkvirtualenv -p /usr/local/bin/python3.9 python3.9
 # switch to a virtualenv
 workon python3.8
 #deactivate a virtualenv
