@@ -19,14 +19,14 @@ mkdir -p ~/software
 ################################################################################
 ######PYTHON
 # use mkvirtualenv command to add a virtual env
-mkvirtualenv -p /usr/local/bin/python2.7 python2.7.17
+mkvirtualenv -p /usr/local/bin/python2.7 python2.7
 mkvirtualenv -p /usr/local/bin/python3.8 python3.8
 # switch to a virtualenv
 workon python3.8
 #deactivate a virtualenv
 deactivate
 # remove a virtual env with rmvirtualenv
-rmvirtualenv python2.7.17
+rmvirtualenv python2.7
 # install python packages in virtualenv - required for python development (do not use virtualenv directly)
 virtualenv -p /usr/local/bin/python2.7 $HOME/virtualenvs/python27
 virtualenv -p /usr/local/bin/python3.7 $HOME/virtualenvs/python37
