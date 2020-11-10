@@ -520,9 +520,10 @@ If you are unsure, try setting them in `dotspacemacs/user-config' first."
     (setq shell-default-term-shell "c:/Program Files/Git/bin/bash"))
   ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
   ;; lsp-clangd backend (already default), set clangd path. For c-c++ layer.
-  (when (equal system-type 'darwin)
-    (setq c-c++-backend 'lsp-clangd)
-    (setq lsp-clients-clangd-executable '/usr/local/opt/llvm/bin/clangd))
+  ;; not needed now since spacemacs can able to use clangd from xcode
+  ;; (when (equal system-type 'darwin)
+  ;;   (setq c-c++-backend 'lsp-clangd)
+  ;;   (setq lsp-clients-clangd-executable '/usr/local/opt/llvm/bin/clangd))
   ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
   (my-setup-indent 4) ; indent 4 spaces width
   )
