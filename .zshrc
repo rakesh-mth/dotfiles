@@ -50,6 +50,8 @@ alias xcode="open -a /Applications/Xcode.app"
 alias settings="open -a System\ Preferences"
 alias apps="open -a App\ Store"
 alias finder="open -a Finder"
+alias ss="open -a Screen\ Sharing"
+alias da="open -a Docker"
 alias ut="open -a uTorrent"
 alias vbox="open -a /Applications/VirtualBox.app"
 # open links
