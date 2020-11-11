@@ -27,3 +27,33 @@ autoload -Uz compinit && compinit
 # key binding to move forward and backward using A-f and A-b
 # bindkey "^[^[[C" forward-word
 # bindkey "^[^[[D" backward-word
+
+# set default EDITOR
+export EDITOR=nvim
+
+################################################################################
+##################################### aliases ##################################
+alias dus="du -sh * | sort -n -r"
+alias dfh="df -h"
+# open ~/.zshrc in using the default editor specified in $EDITOR
+alias ez="$EDITOR $HOME/.zshrc"
+# source ~/.zshrc
+alias sz="source $HOME/.zshrc"
+# applications
+if [[ $OSTYPE == darwin* ]]; then
+alias chrome="open -a /Applications/Google\ Chrome.app"
+alias safari="open -a Safari"
+fi
+alias et="emacs -nw"
+alias vcode="open -a /Applications/VSCodium.app"
+alias xcode="open -a /Applications/Xcode.app"
+alias settings="open -a System\ Preferences"
+alias apps="open -a App\ Store"
+alias finder="open -a Finder"
+alias ut="open -a uTorrent"
+alias vbox="open -a /Applications/VirtualBox.app"
+# open links
+alias gs="safari http://google.com"
+alias gc="chrome http://google.com"
+################################################################################
+
