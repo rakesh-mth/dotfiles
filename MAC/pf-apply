@@ -1,0 +1,7 @@
+#!/bin/bash
+sudo pfctl -d       # disable pfctl
+sudo pfctl -F all   # flushes all pfctl rules
+(sudo pfctl -sr 2>/dev/null; cat pf-utun.conf) | sudo pfctl -f - 2>/dev/null
+sudo pfctl -sr 2>/dev/null
+sudo pfctl -e       # enable pfctl
+
