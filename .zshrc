@@ -39,10 +39,14 @@ alias dfh="df -h"
 alias ez="$EDITOR $HOME/.zshrc"
 # source ~/.zshrc
 alias sz="source $HOME/.zshrc"
+if [[ $OSTYPE == darwin* ]]; then
+    alias route4="netstat -f inet -rl"
+    alias pfnat="sudo pfctl -sa 2>/dev/null | grep nat"
+fi
 # applications
 if [[ $OSTYPE == darwin* ]]; then
-alias chrome="open -a /Applications/Google\ Chrome.app"
-alias safari="open -a Safari"
+    alias chrome="open -a /Applications/Google\ Chrome.app"
+    alias safari="open -a Safari"
 fi
 alias et="emacs -nw"
 alias vcode="open -a /Applications/VSCodium.app"
