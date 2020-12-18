@@ -1,8 +1,13 @@
 so $MYVIMRC - source init.vim
 :so % - if currently editing init.vim
 
+###### find out config folder for init.vim - to show the exact directory
+:echo stdpath('config') 
+
 ######disable tab in nvim-qt
 nvim-qt --no-ext-tabline
+######nvim option to nvim-qt
+nvim-qt some_file.txt -- -u init.vim # open a file using speific configuration
 
 ######comments in vimrc / init.vim
 nmap <Leader>f :foo<Return>|  " Do foo -> make sure there is no space between maping and |

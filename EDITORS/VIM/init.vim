@@ -22,6 +22,7 @@
     set hlsearch            " search highlighting, not default in vim, default in neovim.
     set incsearch           " search while typing. `set is` or `set nois`. default in vim and neovim.
     set mouse=a             " enable mouse support (resize splits, etc...)
+    set cursorcolumn        " enable cursor column drawing
     if has('win32unix')
     else
         let colorterm=$COLORTERM
@@ -191,16 +192,16 @@
 " spell checker
     map <leader>sp :setlocal spell! spelllang=en_us<cr>
 
-" set source code pro font
+" disable highlights
+    nnoremap <leader>nh :noh<cr>    
+
+" set font - nvim -> source code pro font, FVIM -> Hack
     if exists('g:fvim_loaded')
         set guifont=Hack:h20
     else
         set guifont=Source\ Code\ Pro\ for\ Powerline:h16:cANSI
         " set guifont=DejaVu\ Sans\ Mono\ for\ Powerline:h16:cANSI
     endif
-
-" disable highlights
-    nnoremap <leader>nh :noh<cr>    
 
 " productivity
     nnoremap <leader>] ]]zz
@@ -231,6 +232,7 @@
         if !exists('g:fvim_loaded')
             nnoremap <A-CR> :call NVimToggleFullScreen()<CR>
         endif
+        inoremap <silent>  <S-Insert>  <C-R>+| "paste from system clipboard in insert mode
     endif
 
 " spacemacs key bindings
