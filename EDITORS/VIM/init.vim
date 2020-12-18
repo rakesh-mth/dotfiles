@@ -153,6 +153,7 @@
     " Initialize plugin system
     call plug#end()
 
+" toggle gui elements in VIM (no impact in nvim-qt)
     function! ToggleGUICruft()
       if &guioptions==''
         exec('set guioptions=imTr')
@@ -191,8 +192,12 @@
     map <leader>sp :setlocal spell! spelllang=en_us<cr>
 
 " set source code pro font
-    set guifont=Source\ Code\ Pro\ for\ Powerline:h16:cANSI
-    " set guifont=DejaVu\ Sans\ Mono\ for\ Powerline:h16:cANSI
+    if exists('g:fvim_loaded')
+        set guifont=Hack:h20
+    else
+        set guifont=Source\ Code\ Pro\ for\ Powerline:h16:cANSI
+        " set guifont=DejaVu\ Sans\ Mono\ for\ Powerline:h16:cANSI
+    endif
 
 " disable highlights
     nnoremap <leader>nh :noh<cr>    
@@ -210,6 +215,22 @@
         nnoremap <silent> <C-ScrollWheelUp> :set guifont=+<CR>
         nnoremap <silent> <C-ScrollWheelDown> :set guifont=-<CR>
         nnoremap <A-CR> :FVimToggleFullScreen<CR>
+    endif
+    if has('nvim')
+        let s:fullScreen = 0
+        function! NVimToggleFullScreen()
+            if exists('g:GuiLoaded')
+              if(s:fullScreen == 1)
+                let s:fullScreen = 0
+              else
+                let s:fullScreen = 1
+              endif
+              call GuiWindowFullScreen(s:fullScreen)
+            endif
+        endfunc
+        if !exists('g:fvim_loaded')
+            nnoremap <A-CR> :call NVimToggleFullScreen()<CR>
+        endif
     endif
 
 " spacemacs key bindings
