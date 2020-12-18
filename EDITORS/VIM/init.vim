@@ -251,6 +251,19 @@
     nnoremap <leader><leader> :| " switch to command mode
     nnoremap <leader>fed :e $MYVIMRC<cr>| " open vim configuration file (.vimrc or init.vim)
     nnoremap <leader>gs  :Gstatus<cr>| " open git status page (from fugitive)
+    nnoremap <leader>gd :tabe \| Git diff \| wincmd o<cr>| " open git diff in new tab
+    nnoremap <leader>gdd :tabe \| Git diff --staged \| wincmd o<cr>| " open git diff in new tab
+    " Toggle cursor column
+    function! ToggleCursorCol() abort
+      if &cursorcolumn
+        set nocursorcolumn
+        echo 'cursorcolumn: OFF'
+      else
+        set cursorcolumn
+        echo 'cursorcolumn: ON'
+      endif
+    endfunction
+    nnoremap <leader>tc :call ToggleCursorCol()<cr>| " toggle cursor column
 
 " terminals : map esc key to switch to normal mode from terminal mode
     tnoremap <Esc> <C-\><C-n>
