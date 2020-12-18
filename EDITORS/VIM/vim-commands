@@ -261,3 +261,10 @@ ca - amend the last commit and edit the message.
 :help key-notation
 :help map-which-keys
 :help map-special-chars
+
+
+################################################################################
+#FVIM commands
+:FVimDrawFPS v:true # draw fps
+:FVimToggleFullScreen # toggle full screen
+
