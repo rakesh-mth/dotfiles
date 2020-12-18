@@ -204,6 +204,13 @@
     nnoremap <leader>ld mqo<Esc>`q| " add a line below
     nnoremap <leader>cc <Esc>6i#<Esc>A| " add 6 # and place cursor at the end (comment begin)
     nnoremap <leader>vs :exe ':silent !code %'<CR>:redraw!<CR>
+    " fvim related
+    if exists('g:fvim_loaded')
+        " Ctrl-ScrollWheel for zooming in/out
+        nnoremap <silent> <C-ScrollWheelUp> :set guifont=+<CR>
+        nnoremap <silent> <C-ScrollWheelDown> :set guifont=-<CR>
+        nnoremap <A-CR> :FVimToggleFullScreen<CR>
+    endif
 
 " spacemacs key bindings
     " Toggle buffer
