@@ -210,12 +210,14 @@
     nnoremap <leader>ld mqo<Esc>`q| " add a line below
     nnoremap <leader>cc <Esc>6i#<Esc>A| " add 6 # and place cursor at the end (comment begin)
     nnoremap <leader>vs :exe ':silent !code %'<CR>:redraw!<CR>
-    " fvim related
-    if exists('g:fvim_loaded')
-        " Ctrl-ScrollWheel for zooming in/out
-        nnoremap <silent> <C-ScrollWheelUp> :set guifont=+<CR>
+    " Ctrl-ScrollWheel for zooming in/out
+    if exists('g:fvim_loaded') " fvim related
+        nnoremap <silent> <C-ScrollWheelUp>   :set guifont=+<CR>
         nnoremap <silent> <C-ScrollWheelDown> :set guifont=-<CR>
         nnoremap <A-CR> :FVimToggleFullScreen<CR>
+    else 
+        nnoremap <silent> <C-ScrollWheelUp>   :silent! let &guifont = substitute(&guifont, ':h\zs\d\+', '\=eval(submatch(0)+1)', 'g')<CR>
+        nnoremap <silent> <C-ScrollWheelDown> :silent! let &guifont = substitute(&guifont, ':h\zs\d\+', '\=eval(submatch(0)-1)', 'g')<CR>
     endif
     if has('nvim')
         let s:fullScreen = 0
@@ -263,7 +265,18 @@
         echo 'cursorcolumn: ON'
       endif
     endfunction
+    " toggle relativenumber
+    function! ToggleRelativeNumber() abort
+      if &relativenumber
+        set relativenumber!
+        echo 'relativenumber: OFF'
+      else
+        set relativenumber
+        echo 'relativenumber: ON'
+      endif
+    endfunction
     nnoremap <leader>tc :call ToggleCursorCol()<cr>| " toggle cursor column
+    nnoremap <leader>tr :call ToggleRelativeNumber()<cr>| " toggle cursor column
 
 " terminals : map esc key to switch to normal mode from terminal mode
     tnoremap <Esc> <C-\><C-n>
