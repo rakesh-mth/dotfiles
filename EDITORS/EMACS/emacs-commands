@@ -47,10 +47,15 @@ C-q TAB (or C-q C-i)
 ###### goto line number
 M g g - goto line number
 
+################################################################################
+######General development
+M-x electric-indent-mode - disable auto indent
+M-x ff-find-other-file - find cpp/header file corresponding to currently open file
 
 ################################################################################
 ###### Python development
 M-x pyvenv-workon - activate a virtual env.
+M-x lsp-restart-workspace - restart lsp servers
 
 ################################################################################
 ###### resolve conflict in emacs (using smerge)
