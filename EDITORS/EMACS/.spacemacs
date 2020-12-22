@@ -557,6 +557,9 @@ before packages are loaded."
     (add-hook 'python-mode-hook (lambda () (pyvenv-workon "python3.9"))))
   ;; (global-linum-mode)
   (setq-default spacemacs-show-trailing-whitespace nil)
+  ;; disable electric indent mode
+  (when (fboundp 'electric-indent-mode)
+    (electric-indent-mode -1))
   ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
   ;; Dictionaries, languages and encodings
   ;; Use hunspell.exe for automatic spell checking. Available

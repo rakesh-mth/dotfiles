@@ -9,6 +9,7 @@ SPC SPC - open emacs command history (same as M-x)
 SPC h 
 SPC h SPC - browse spacemacs layers and it's packages.el file
 SPC h v - location a variable is defined and it's current value
+SPC h l <emacs-lisp> - open emacs-lisp documentation in org mode
 
 ###### jump to editor varaible and function
 SPC j v - search any variable in spacemacs and emacs
@@ -29,6 +30,7 @@ SPC l w 2 - create workspace number 2
 SPC l L - load layout from file
 SPC l 1...9 - create new layout
 SPC l s - save layout
+SPC l l - fuzzy search layout 
 2gt - switch to workspace 2 (use any number from 1...9 for new workspace)
 
 ###### buffer
@@ -37,6 +39,9 @@ SPC TAB - quickly access last buffer
 
 ###### toogle various editor config
 SPC t - toggle various config
+SPC t E h / M-x holy-mode - enable / disable hybrid mode (hybrid)
+SPC t E e / M-x hybrid-mode - enable / disable holy mode (emacs)
+M-x holy-mode - If it's enabled, Emacs mode for every buffer. If it's disabled, switch between Vim and Emacs per buffer with C-z.
 M-x whitespace-mode
 M-x whitespace-toggle-options
 M-x toggle-relative-line-numbers-on
@@ -51,6 +56,10 @@ M g g - goto line number
 ######General development
 M-x electric-indent-mode - disable auto indent
 M-x ff-find-other-file - find cpp/header file corresponding to currently open file
+
+################################################################################
+######emacs lisp development
+M-x emacs-list-mode - switch to lisp mode
 
 ################################################################################
 ###### Python development
