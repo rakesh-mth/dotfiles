@@ -52,17 +52,22 @@ This function should only modify configuration layer settings."
              python-lsp-server 'mspyls)
      csharp
      java
-     javascript ; npm install -g tern
+     (javascript :variables ;; npm install -g eslint import-js typescript typescript-language-server flow-bin
+                 javascript-backend 'lsp
+                 javascript-import-tool 'import-js
+                 js2-mode-show-strict-warnings nil ;; prefer warnings from flycheck (install eslint using npm install -g eslint)
+                 node-add-modules-path t) ;; add project node_modules/.bin into local buffer exec_path
      groovy
      ruby
      clojure
      haskell
      html
+     json
+     yaml
      cmake
      docker
      shell-scripts
      windows-scripts
-     yaml
      auto-completion
      better-defaults
      emacs-lisp
@@ -74,6 +79,7 @@ This function should only modify configuration layer settings."
      markdown
      multiple-cursors
      org
+     emoji
      (shell :variables
             shell-default-height 30
             shell-default-position 'bottom)
@@ -508,6 +514,14 @@ See the header of this file for more information."
     )
   )
 
+;; emoji font support for linux and macos. from: https://github.com/dunn/company-emoji
+(defun set-emoji-font(frame)
+  "Adjust the font settings of FRAME so Emacs can display emoji properly."
+  (if (eq system-type 'darwin)
+      (set-fontset-font t 'symbol (font-spec :family "Apple Color Emoji") frame 'prepend)) ;; For NS/Cocoa
+  (if (eq system-type 'gnu/linux)
+    (set-fontset-font t 'symbol (font-spec :family "Symbola") frame 'prepend))) ;; For Linux
+
 (defun dotspacemacs/user-init ()
   "Initialization for user code:
 This function is called immediately after `dotspacemacs/init', before layer
@@ -578,6 +592,11 @@ before packages are loaded."
   (global-set-key (kbd "<f8>") 'toggle-flycheck-error-buffer)
   (global-set-key (kbd "C-`") 'run-bash)
   ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+  ;; For when Emacs is started in GUI mode:
+  (set-emoji-font nil)
+  ;; Hook for when a frame is created with emacsclient
+  ;; see https://www.gnu.org/software/emacs/manual/html_node/elisp/Creating-Frames.html
+  (add-hook 'after-make-frame-functions 'set-emoji-font)
   )
 
 ;; Do not write anything past this comment. This is where Emacs will
