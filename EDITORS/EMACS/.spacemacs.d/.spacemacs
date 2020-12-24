@@ -498,8 +498,13 @@ See the header of this file for more information."
 (defun run-bash ()
   (interactive)
   (let ((shell-file-name "C:\\Program Files\\Git\\bin\\bash.exe"))
-    (shell "*bash*"))
-  )
+    (shell "*bash*")))
+
+;; run git bash 
+(defun run-wsl ()
+  (interactive)
+  (let ((shell-file-name "bash"))
+    (shell "*wsl*")))
 
 ;; toggle flycheck error window
 (defun toggle-flycheck-error-buffer ()
