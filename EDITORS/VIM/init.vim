@@ -22,7 +22,7 @@
     set hlsearch            " search highlighting, not default in vim, default in neovim.
     set incsearch           " search while typing. `set is` or `set nois`. default in vim and neovim.
     set mouse=a             " enable mouse support (resize splits, etc...)
-    set cursorcolumn        " enable cursor column drawing
+    " set cursorcolumn        " enable cursor column drawing
     if has('win32unix')
     else
         let colorterm=$COLORTERM
@@ -133,8 +133,14 @@
     if has('win32unix')
     else
         Plug 'SirVer/ultisnips' " Track the engine. for snippets.
-        Plug 'ycm-core/YouCompleteMe', { 'do': './install.py' } " code completion
-        " Plug 'neoclide/coc.nvim', {'branch': 'release'} " Intellisense engine for vim8 & neovim, full language server protocol support as VSCode. Does not work with YouCompleteMe
+        if !has('nvim-0.5')
+            Plug 'ycm-core/YouCompleteMe', { 'do': './install.py' } " code completion
+            " Plug 'neoclide/coc.nvim', {'branch': 'release'} " Intellisense engine for vim8 & neovim, full language server protocol support as VSCode. Does not work with YouCompleteMe
+        endif
+    endif
+    if has('nvim-0.5')
+        Plug 'neovim/nvim-lspconfig'
+        Plug 'nvim-lua/completion-nvim'
     endif
     Plug 'honza/vim-snippets' " Snippets are separated from the engine. Add this if you want them:
     " Code to execute when the plugin is lazily loaded on demand
@@ -153,6 +159,17 @@
 
     " Initialize plugin system
     call plug#end()
+
+" lsp config for nvim version > 0.5
+if has('nvim-0.5')
+lua <<EOF
+require'lspconfig'.gopls.setup{}
+require'lspconfig'.pyls.setup{on_attach=require'completion'.on_attach}
+EOF
+endif
+
+" lsp for omni func complition
+    " autocmd Filetype python setlocal omnifunc=v:lua.vim.lsp.omnifunc
 
 " toggle gui elements in VIM (no impact in nvim-qt)
     function! ToggleGUICruft()

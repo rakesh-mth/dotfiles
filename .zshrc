@@ -31,6 +31,9 @@ autoload -Uz compinit && compinit
 # set default EDITOR
 export EDITOR=nvim
 
+# set LANG - for python3 to work over ssh
+export LANG="en_US.UTF-8"
+
 ################################################################################
 ##################################### aliases ##################################
 alias dus="du -sh * | sort -n -r"
