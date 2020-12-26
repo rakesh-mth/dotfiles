@@ -168,6 +168,11 @@ require'lspconfig'.pyls.setup{on_attach=require'completion'.on_attach}
 EOF
 endif
 
+" add git-bash in the path for fzf + bat to work correctly
+    if has('win32')
+        let $PATH='C:\Program Files\Git\bin;'.$PATH
+    endif
+
 " lsp for omni func complition
     " autocmd Filetype python setlocal omnifunc=v:lua.vim.lsp.omnifunc
 
