@@ -3,7 +3,10 @@
 RUBY_VERSION=`ruby --version | awk '{print $2}' | awk -F "." '{print $1"."$2".0"}'`
 
 # update PATH variable
-export PATH="/usr/local/bin:$HOME/.cargo/bin:$HOME/.gem/ruby/$RUBY_VERSION/bin:$PATH"
+export PATH="/usr/local/bin:$HOME/.cargo/bin:$HOME/.gem/ruby/$RUBY_VERSION/bin:$PATH:$HOME/emacs/doom-emacs/.emacs.d/bin"
+
+# DOOMDIR for doom-emacs
+export DOOMDIR=$HOME/emacs/doom-emacs/.doom.d
 
 # powerlevel10k theme for zsh
 [ -f "$HOME/software/powerlevel10k/powerlevel10k.zsh-theme" ] && source "$HOME/software/powerlevel10k/powerlevel10k.zsh-theme"
