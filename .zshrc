@@ -39,6 +39,9 @@ export LANG="en_US.UTF-8"
 
 ################################################################################
 ##################################### aliases ##################################
+alias cse="emacs -nw --with-profile spacemacs"
+alias cde="emacs -nw --with-profile doom"
+alias ce="emacs -nw --with-profile default"
 alias dus="du -sh * | sort -n -r"
 alias dfh="df -h"
 # open ~/.zshrc in using the default editor specified in $EDITOR
