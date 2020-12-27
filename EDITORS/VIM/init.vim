@@ -104,6 +104,7 @@
     Plug 'kana/vim-textobj-indent' " ai, ii, aI, iI
     Plug 'kana/vim-textobj-line' " al, il
     " productivity plugins
+    Plug 'jiangmiao/auto-pairs' " inserts quotes and parenthesis in pairs as you type
     Plug 'arcticicestudio/nord-vim' " nord color scheme
     Plug 'trevordmiller/nova-vim' " nova color schema
     Plug 'JulioJu/neovim-qt-colors-solarized-truecolor-only' " solarized color scheme for neovim
@@ -236,10 +237,17 @@ endif
     if exists('g:fvim_loaded') " fvim related
         nnoremap <silent> <C-ScrollWheelUp>   :set guifont=+<CR>
         nnoremap <silent> <C-ScrollWheelDown> :set guifont=-<CR>
+        nnoremap <silent> <C-=> :set guifont=+<CR>
+        nnoremap <silent> <C--> :set guifont=-<CR>
         nnoremap <A-CR> :FVimToggleFullScreen<CR>
     else 
-        nnoremap <silent> <C-ScrollWheelUp>   :silent! let &guifont = substitute(&guifont, ':h\zs\d\+', '\=eval(submatch(0)+1)', 'g')<CR>
-        nnoremap <silent> <C-ScrollWheelDown> :silent! let &guifont = substitute(&guifont, ':h\zs\d\+', '\=eval(submatch(0)-1)', 'g')<CR>
+        function! ZoomGuiFont(direction)
+            let &guifont = substitute(&guifont, ':h\zs\d\+', '\=eval(submatch(0)+1*a:direction)', 'g')
+        endfunc
+        nnoremap <silent> <C-ScrollWheelUp>   :silent! call ZoomGuiFont(1)<CR>
+        nnoremap <silent> <C-ScrollWheelDown> :silent! call ZoomGuiFont(-1)<CR>
+        nnoremap <silent> <C-=> :silent! call ZoomGuiFont(1)<CR>
+        nnoremap <silent> <C--> :silent! call ZoomGuiFont(-1)<CR>
     endif
     if has('nvim')
         let s:fullScreen = 0
