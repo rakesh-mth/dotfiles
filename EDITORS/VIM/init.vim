@@ -169,9 +169,12 @@ require'lspconfig'.pyls.setup{on_attach=require'completion'.on_attach}
 EOF
 endif
 
-" add git-bash in the path for fzf + bat to work correctly
+" configure option (string, number, list) and env variables
     if has('win32')
-        let $PATH='C:\Program Files\Git\bin;'.$PATH
+        let $PATH='C:\Program Files\Git\bin;'.$PATH " add git-bash in the path for fzf + bat to work correctly
+        let &cdpath='f:\DevTrees,,' " cdpath to easily change directory using lcd (lcd foldername-in-cdpath)
+    elseif has('macunix') || ('unix')
+        let &lcdpath=$HOME.'/workspaces,,'
     endif
 
 " lsp for omni func complition
