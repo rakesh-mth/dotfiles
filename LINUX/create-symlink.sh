@@ -17,15 +17,15 @@ ln -snf $HOME/workspaces/rakesh-mth/dotfiles/EDITORS/VIM/init.vim $HOME/.config/
 ln -snf $HOME/workspaces/rakesh-mth/dotfiles/EDITORS/EMACS/.emacs $HOME/.emacs
 ln -snf $HOME/workspaces/rakesh-mth/dotfiles/EDITORS/EMACS/.emacs-profiles.el $HOME/.emacs-profiles.el
 # spacemacs
-mkdir -p "$HOME/emacs/spacemacs"
-[ -f "$HOME/emacs/spacemacs/.spacemacs.d" ] && unlink "$HOME/emacs/spacemacs/.spacemacs.d"
-ln -snf $HOME/workspaces/rakesh-mth/dotfiles/EDITORS/EMACS/.spacemacs.d/ $HOME/emacs/spacemacs/.spacemacs.d
+mkdir -p "$HOME/.config/emacs/spacemacs"
+[ -f "$HOME/.config/emacs/spacemacs/.spacemacs.d" ] && unlink "$HOME/.config/emacs/spacemacs/.spacemacs.d"
+ln -snf $HOME/workspaces/rakesh-mth/dotfiles/EDITORS/EMACS/.spacemacs.d/ $HOME/.config/emacs/spacemacs/.spacemacs.d
 # doom-emacs
-mkdir -p "$HOME/emacs/doom-emacs"
-[ -f "$HOME/emacs/doom-emacs/.doom.d" ] && unlink "$HOME/emacs/doom-emacs/.doom.d"
-ln -snf $HOME/workspaces/rakesh-mth/dotfiles/EDITORS/EMACS/.doom.d $HOME/emacs/doom-emacs/.doom.d
+mkdir -p "$HOME/.config/emacs/doom-emacs"
+[ -f "$HOME/.config/emacs/doom-emacs/.doom.d" ] && unlink "$HOME/.config/emacs/doom-emacs/.doom.d"
+ln -snf $HOME/workspaces/rakesh-mth/dotfiles/EDITORS/EMACS/.doom.d $HOME/.config/emacs/doom-emacs/.doom.d
 # this is in .zshrc (it is here for current terminal)
-export DOOMDIR=$HOME/emacs/doom-emacs/.doom.d
+export DOOMDIR=$HOME/.config/emacs/doom-emacs/.doom.d
 
 # symlink related to shell
 [ -f "$HOME/.zshrc" ] && unlink "$HOME/.zshrc"

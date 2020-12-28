@@ -174,7 +174,7 @@ endif
         let $PATH='C:\Program Files\Git\bin;'.$PATH " add git-bash in the path for fzf + bat to work correctly
         let &cdpath='f:\DevTrees,,' " cdpath to easily change directory using lcd (lcd foldername-in-cdpath)
     elseif has('macunix') || ('unix')
-        let &lcdpath=$HOME.'/workspaces,,'
+        let &cdpath=$HOME.'/workspaces,,'
     endif
 
 " lsp for omni func complition

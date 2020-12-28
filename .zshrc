@@ -3,10 +3,10 @@
 RUBY_VERSION=`ruby --version | awk '{print $2}' | awk -F "." '{print $1"."$2".0"}'`
 
 # update PATH variable
-export PATH="/usr/local/bin:$HOME/.cargo/bin:$HOME/.gem/ruby/$RUBY_VERSION/bin:$PATH:$HOME/emacs/doom-emacs/.emacs.d/bin"
+export PATH="/usr/local/bin:$HOME/.cargo/bin:$HOME/.gem/ruby/$RUBY_VERSION/bin:$PATH:$HOME/.config/emacs/doom-emacs/.emacs.d/bin"
 
 # DOOMDIR for doom-emacs
-export DOOMDIR=$HOME/emacs/doom-emacs/.doom.d
+export DOOMDIR=$HOME/.config/emacs/doom-emacs/.doom.d
 
 # powerlevel10k theme for zsh
 [ -f "$HOME/software/powerlevel10k/powerlevel10k.zsh-theme" ] && source "$HOME/software/powerlevel10k/powerlevel10k.zsh-theme"
@@ -39,9 +39,12 @@ export LANG="en_US.UTF-8"
 
 ################################################################################
 ##################################### aliases ##################################
-alias cse="emacs -nw --with-profile spacemacs"
-alias cde="emacs -nw --with-profile doom"
-alias ce="emacs -nw --with-profile default"
+alias se="emacs --with-profile spacemacs"
+alias de="emacs --with-profile doom"
+alias e="emacs --with-profile default"
+alias sec="emacs -nw --with-profile spacemacs"
+alias dec="emacs -nw --with-profile doom"
+alias ec="emacs -nw --with-profile default"
 alias dus="du -sh * | sort -n -r"
 alias dfh="df -h"
 # open ~/.zshrc in using the default editor specified in $EDITOR
