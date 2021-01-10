@@ -8,9 +8,11 @@ export PATH="/usr/local/bin:$HOME/.cargo/bin:$HOME/.gem/ruby/$RUBY_VERSION/bin:$
 # DOOMDIR for doom-emacs
 export DOOMDIR=$HOME/.config/emacs/doom-emacs/.doom.d
 
-# powerlevel10k theme for zsh
-[ -f "$HOME/software/powerlevel10k/powerlevel10k.zsh-theme" ] && source "$HOME/software/powerlevel10k/powerlevel10k.zsh-theme"
-POWERLEVEL9K_IGNORE_TERM_COLORS=true
+# powerlevel10k theme for zsh - only oh-my-zsh is not used
+if [[ -z $ZSH_THEME ]]; then
+    [ -f "$HOME/software/powerlevel10k/powerlevel10k.zsh-theme" ] && source "$HOME/software/powerlevel10k/powerlevel10k.zsh-theme"
+    POWERLEVEL9K_IGNORE_TERM_COLORS=true
+fi
 
 [ -f "$HOME/software/.purepower" ] && source "$HOME/software/.purepower"
 
