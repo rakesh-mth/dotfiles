@@ -128,6 +128,7 @@
     Plug 'tpope/vim-unimpaired' " commonly used ex commands, ]q [q ]Q [Q etc...
     Plug 'tpope/vim-sensible' " some defaults agreed
     Plug 'tpope/vim-eunuch' " Vim sugar for the UNIX shell commands that need it the most. Mkdir!
+    Plug 'godlygeek/tabular' " Tabular for aligning texts in tabular format
     " NERD tree will be loaded on the first invocation of NERDTreeToggle command
     Plug 'scrooloose/nerdtree', { 'on': 'NERDTreeToggle' }
     Plug 'Xuyuanp/nerdtree-git-plugin'
@@ -146,6 +147,7 @@
     Plug 'honza/vim-snippets' " Snippets are separated from the engine. Add this if you want them:
     " Code to execute when the plugin is lazily loaded on demand
     Plug 'junegunn/goyo.vim', { 'for': 'markdown' }
+    Plug 'junegunn/limelight.vim' " limelight used with goyo (see autocmd)
     " language support
     Plug 'PProvost/vim-ps1' " powershell syntax coloring
     Plug 'rust-lang/rust.vim' " rust language support
@@ -621,6 +623,8 @@ endif
     augroup plugin_goyo
         autocmd!    
         autocmd! User goyo.vim echom 'Goyo is now loaded!'
+        autocmd! User GoyoEnter Limelight
+        autocmd! User GoyoLeave Limelight!
     augroup END
 
     function VimEnterFunction()
