@@ -272,6 +272,12 @@ endif
         inoremap <silent>  <S-Insert>  <C-R>+| "paste from system clipboard in insert mode
     endif
 
+" quickfix mappings
+    nnoremap <leader>qo :copen<cr>
+    nnoremap <leader>qc :ccl<cr>
+    nnoremap <leader>qn :cnext<cr>
+    nnoremap <leader>qp :cprev<cr>
+
 " spacemacs key bindings
     " Toggle buffer
     let s:bufferState = 0
@@ -331,7 +337,7 @@ endif
     nmap <leader>mn <C-w>1000<
 
 " tabs : change tabs using \tn1, \tn2, \tn3..., and Alt-1, Alt-2, Alt-3...
-    function AltMapping()
+    function! AltMapping()
         nnoremap <M-0> 10gt
         for idx in range( 1, 9 )
             execute 'nnoremap <M-' . idx . '> ' . '<C-[>' . idx . 'gt'
@@ -630,7 +636,7 @@ endif
         autocmd! User GoyoLeave Limelight!
     augroup END
 
-    function VimEnterFunction()
+    function! VimEnterFunction()
         call AltMapping()
     endfun
     augroup VimEnterGroup
