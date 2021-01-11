@@ -146,7 +146,7 @@
     endif
     Plug 'honza/vim-snippets' " Snippets are separated from the engine. Add this if you want them:
     " Code to execute when the plugin is lazily loaded on demand
-    Plug 'junegunn/goyo.vim', { 'for': 'markdown' }
+    Plug 'junegunn/goyo.vim' " , { 'for': 'markdown' }
     Plug 'junegunn/limelight.vim' " limelight used with goyo (see autocmd)
     " language support
     Plug 'PProvost/vim-ps1' " powershell syntax coloring
@@ -312,6 +312,9 @@ endif
     endfunction
     nnoremap <leader>tc :call ToggleCursorCol()<cr>| " toggle cursor column
     nnoremap <leader>tr :call ToggleRelativeNumber()<cr>| " toggle cursor column
+
+" keybindig for goyo
+    nnoremap <leader>go :Goyo<cr>
 
 " terminals : map esc key to switch to normal mode from terminal mode
     tnoremap <Esc> <C-\><C-n>
