@@ -1,0 +1,6 @@
+groovy-lsp
+    git clone https://github.com/prominic/groovy-language-server
+    cd groovy-language-server
+    # on windows: build and copy jar file to home dir
+        gradlew.bat build
+        copy build\libs\groovy-language-server-all.jar %USERPROFILE%\groovy-lsp-all.jar
