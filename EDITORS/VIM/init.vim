@@ -124,6 +124,7 @@
     Plug 'airblade/vim-gitgutter' " git plugin to show changed lines 
     Plug 'arp242/auto_mkdir2.vim' " auto create directory during file save if directory does not exist
     Plug 'tpope/vim-fugitive' " git plugin that wraps git commands
+    Plug 'tommcdo/vim-fubitive' " Extend fugitive.vim to support Bitbucket URLs in :Gbrowse
     Plug 'tpope/vim-dispatch' " background jobs. commands: :Make
     Plug 'tpope/vim-unimpaired' " commonly used ex commands, ]q [q ]Q [Q etc...
     Plug 'tpope/vim-sensible' " some defaults agreed
@@ -402,14 +403,14 @@ endif
         imap <c-x><c-l> <plug>(fzf-complete-line)
     endif
     " Open files in vertical horizontal split
-    nnoremap <silent> <Leader>S :call fzf#run(fzf#wrap( { 'sink': 'botright split', 'down': '40%' } ))<CR>
-    nnoremap <silent> <Leader>s :call fzf#run(fzf#wrap( { 'source': 'git ls-files', 'sink': 'botright split', 'down': '40%' } ))<CR>
+    nnoremap <silent> <Leader>pfS :call fzf#run(fzf#wrap( { 'sink': 'botright split', 'down': '40%' } ))<CR>
+    nnoremap <silent> <Leader>pfs :call fzf#run(fzf#wrap( { 'source': 'git ls-files', 'sink': 'botright split', 'down': '40%' } ))<CR>
     " Open files in horizontal split
-    nnoremap <silent> <Leader>V :call fzf#run(fzf#wrap( { 'sink':  'vertical botright split', 'right': winwidth('.') / 2 } ))<CR>
-    nnoremap <silent> <Leader>v :call fzf#run(fzf#wrap( { 'source': 'git ls-files', 'sink':  'vertical botright split', 'right': winwidth('.') / 2 } ))<CR>
+    nnoremap <silent> <Leader>pfV :call fzf#run(fzf#wrap( { 'sink':  'vertical botright split', 'right': winwidth('.') / 2 } ))<CR>
+    nnoremap <silent> <Leader>pfv :call fzf#run(fzf#wrap( { 'source': 'git ls-files', 'sink':  'vertical botright split', 'right': winwidth('.') / 2 } ))<CR>
     " Open files in another tab
-    nnoremap <silent> <Leader>T :call fzf#run(fzf#wrap( { 'sink':  'tabedit', 'window': 'botright 50vnew' } ))<CR>
-    nnoremap <silent> <Leader>t :call fzf#run(fzf#wrap( { 'source': 'git ls-files', 'sink':  'tabedit', 'window': 'botright 50vnew' } ))<CR>
+    nnoremap <silent> <Leader>pfT :call fzf#run(fzf#wrap( { 'sink':  'tabedit', 'window': 'botright 50vnew' } ))<CR>
+    nnoremap <silent> <Leader>pft :call fzf#run(fzf#wrap( { 'source': 'git ls-files', 'sink':  'tabedit', 'window': 'botright 50vnew' } ))<CR>
     " Locate every file on the system
     command! -nargs=1 -bang Locate call fzf#run(fzf#wrap({'source': 'locate <q-args>', 'options': '-m'}, <bang>0))
     " An action can be a reference to a function that processes selected lines
