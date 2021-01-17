@@ -24,6 +24,7 @@
     set mouse=a             " enable mouse support (resize splits, etc...)
     " set cursorcolumn        " enable cursor column drawing
     if has('win32unix')
+        set termguicolors   " enable true color
     else
         let colorterm=$COLORTERM
         if colorterm =~# 'truecolor' || colorterm =~# '24bit'
@@ -104,15 +105,16 @@
     Plug 'kana/vim-textobj-indent' " ai, ii, aI, iI
     Plug 'kana/vim-textobj-line' " al, il
     " productivity plugins
-    Plug 'jiangmiao/auto-pairs' " inserts quotes and parenthesis in pairs as you type
     Plug 'arcticicestudio/nord-vim' " nord color scheme
     Plug 'trevordmiller/nova-vim' " nova color schema
-    Plug 'JulioJu/neovim-qt-colors-solarized-truecolor-only' " solarized color scheme for neovim
+    Plug 'morhetz/gruvbox' " grovebox color scheme
+    Plug 'JulioJu/neovim-qt-colors-solarized-truecolor-only', Cond(has('nvim')) " solarized color scheme for neovim
     Plug 'altercation/vim-colors-solarized' " solarized color scheme. if not in gui then make sure terminal use solarized scheme.
     Plug 'vim-airline/vim-airline'
     Plug 'powerline/powerline-fonts'
     Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' } " fzf vim
     Plug 'junegunn/fzf.vim' " fzf vim extra (GFile, Buffers etc commands)
+    Plug 'stsewd/fzf-checkout.vim' " Manage branches and tags with fzf. 
     Plug 'neomake/neomake', Cond(has('nvim'))
     Plug 'vim-syntastic/syntastic' " syntax checking
     Plug 'mhinz/vim-startify' " startup page
@@ -126,6 +128,7 @@
     Plug 'tpope/vim-fugitive' " git plugin that wraps git commands
     Plug 'tommcdo/vim-fubitive' " Extend fugitive.vim to support Bitbucket URLs in :Gbrowse
     Plug 'tpope/vim-dispatch' " background jobs. commands: :Make
+    Plug 'jiangmiao/auto-pairs' " inserts quotes and parenthesis in pairs as you type
     Plug 'tpope/vim-unimpaired' " commonly used ex commands, ]q [q ]Q [Q etc...
     Plug 'tpope/vim-sensible' " some defaults agreed
     Plug 'tpope/vim-eunuch' " Vim sugar for the UNIX shell commands that need it the most. Mkdir!
@@ -138,7 +141,7 @@
         Plug 'SirVer/ultisnips' " Track the engine. for snippets.
         if !has('nvim-0.5')
             Plug 'ycm-core/YouCompleteMe', { 'do': './install.py' } " code completion
-            " Plug 'neoclide/coc.nvim', {'branch': 'release'} " Intellisense engine for vim8 & neovim, full language server protocol support as VSCode. Does not work with YouCompleteMe
+            Plug 'neoclide/coc.nvim', {'branch': 'release'} " Intellisense engine for vim8 & neovim, full language server protocol support as VSCode. complete with YouCompleteMe
         endif
     endif
     if has('nvim-0.5')
@@ -150,6 +153,7 @@
     Plug 'junegunn/goyo.vim' " , { 'for': 'markdown' }
     Plug 'junegunn/limelight.vim' " limelight used with goyo (see autocmd)
     " language support
+    Plug 'kevinoid/vim-jsonc' " vim syntax highlight plugin for json with c-style (// and /**/) comments
     Plug 'PProvost/vim-ps1' " powershell syntax coloring
     Plug 'rust-lang/rust.vim' " rust language support
     Plug 'fatih/vim-go' " , { 'do': ':GoUpdateBinaries' } " golang support
@@ -193,10 +197,11 @@ endif
     endfunction
 
 " use nord colorscheme
+    set background=dark " light or dark
+    colorscheme gruvbox
     if has('nvim')
         let $NVIM_TUI_ENABLE_TRUE_COLOR=1
-        set background=dark " light or dark
-        colorscheme solarized_nvimqt
+        " colorscheme solarized_nvimqt
     else
         if has('win32')
             set directory=~\AppData\Local\Temp
@@ -208,13 +213,12 @@ endif
             set undodir=~/temp
         endif
         if has('gui_running')
-            set background=dark
-            colorscheme solarized
+            " colorscheme solarized
             set guioptions=imTr
             set guioptions-=imTr  "no_icon, menu_bar, toolbar, scrollbar
             nnoremap <F11> <Esc>:call ToggleGUICruft()<cr>
         else
-            colorscheme nord 
+            " colorscheme nord 
         endif
     endif
 
@@ -226,9 +230,9 @@ endif
 
 " set font - nvim -> source code pro font, FVIM -> Hack
     if exists('g:fvim_loaded')
-        set guifont=Hack:h20
+        set guifont=Hack:h24
     else
-        set guifont=Source\ Code\ Pro\ for\ Powerline:h16:cANSI
+        set guifont=Source\ Code\ Pro\ for\ Powerline:h20:cANSI
         " set guifont=DejaVu\ Sans\ Mono\ for\ Powerline:h16:cANSI
     endif
 
@@ -294,6 +298,8 @@ endif
     nnoremap <leader><TAB> :call BufferToggle()<cr>| " Toggle between presious and current buffer.
     nnoremap <leader><leader> :| " switch to command mode
     nnoremap <leader>fed :e $MYVIMRC<cr>| " open vim configuration file (.vimrc or init.vim)
+    nnoremap <leader>gb  :GBranches<cr>| " open  page (from fugitive)
+    nnoremap <leader>gt  :GTags<cr>| " open  page (from fugitive)
     nnoremap <leader>gs  :Gstatus<cr>| " open git status page (from fugitive)
     nnoremap <leader>gd :tabe \| Git diff \| wincmd o<cr>| " open git diff in new tab
     nnoremap <leader>gdd :tabe \| Git diff --staged \| wincmd o<cr>| " open git diff in new tab
