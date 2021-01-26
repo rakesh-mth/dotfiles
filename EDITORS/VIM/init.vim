@@ -1,4 +1,4 @@
-" copy content of this file to ~/.config/nvim/init.vim on mac and linux when using newovim
+" copy content of this file to ~/.config/nvim/init.vim on mac and linux when using neovim
 
 " set commands : set default configs
     set showmatch           " Show matching brackets.
@@ -37,22 +37,23 @@
     syntax on
     let mapleader = "\<Space>" " map leader key to Space
 
+" user home dir
+    if has('win32') | let HOME_DIR = $USERPROFILE | else | let HOME_DIR = $HOME | endif
+    let HOME_DIR = substitute(HOME_DIR, "\\", "\/", "g")
+
 " add python exe locations (virtualenvs)
     if has('win32')
-        let python2_vp = '$USERPROFILE\virtualenvs\python27\Scripts\python.exe'
-        let python3_vp = '$USERPROFILE\virtualenvs\python38\Scripts\python.exe'
-        let python39_vp = '$USERPROFILE\virtualenvs\python39\Scripts\python.exe'
-        if !empty(glob(python2_vp)) | let g:python_host_prog = python2_vp | endif
-        if !empty(glob(python3_vp)) | let g:python3_host_prog = python3_vp | endif
-        if !empty(glob(python39_vp)) | let g:python3_host_prog = python39_vp | endif
+        let python2_vp  = HOME_DIR . '/virtualenvs/python27/Scripts/python.exe'
+        let python3_vp  = HOME_DIR . '/virtualenvs/python38/Scripts/python.exe'
+        let python39_vp = HOME_DIR . '/virtualenvs/python39/Scripts/python.exe'
     elseif has('mac')
-        let python2_vp = '$HOME/.virtualenvs/python2.7/bin/python'
-        let python3_vp = '$HOME/.virtualenvs/python3.8/bin/python'
-        let python39_vp = '$HOME/.virtualenvs/python3.9/bin/python'
-        if !empty(glob(python2_vp)) | let g:python_host_prog = python2_vp | endif
-        if !empty(glob(python3_vp)) | let g:python3_host_prog = python3_vp | endif
-        if !empty(glob(python39_vp)) | let g:python3_host_prog = python39_vp | endif
+        let python2_vp  = HOME_DIR . '/.virtualenvs/python2.7/bin/python'
+        let python3_vp  = HOME_DIR . '/.virtualenvs/python3.8/bin/python'
+        let python39_vp = HOME_DIR . '/.virtualenvs/python3.9/bin/python'
     endif
+    if !empty(glob(python2_vp))  | let g:python_host_prog = python2_vp   | endif
+    if !empty(glob(python3_vp))  | let g:python3_host_prog = python3_vp  | endif
+    if !empty(glob(python39_vp)) | let g:python3_host_prog = python39_vp | endif
 
 " install plug.vim (bootstrap plugin)
     if has('macunix') || has('unix')
@@ -85,9 +86,9 @@
     endfunction
     " Specify a directory for plugins
     if has('nvim')
-        call plug#begin('~/.nvim/plugged')
+        call plug#begin('~/.config/nvim/plugged')
     else
-        call plug#begin('~/.vim/plugged') 
+        call plug#begin('~/.config/vim/plugged') 
     endif
     " set viminfo for startify to work with vim
     if !has('nvim') && has('win32') | set viminfo+=n~/_viminfo | endif
@@ -140,7 +141,7 @@
     else
         Plug 'SirVer/ultisnips' " Track the engine. for snippets.
         if !has('nvim-0.5')
-            Plug 'ycm-core/YouCompleteMe', { 'do': './install.py' } " code completion
+            " Plug 'ycm-core/YouCompleteMe', { 'do': './install.py' } " code completion
             Plug 'neoclide/coc.nvim', {'branch': 'release'} " Intellisense engine for vim8 & neovim, full language server protocol support as VSCode. complete with YouCompleteMe
         endif
     endif
@@ -660,4 +661,9 @@ endif
     noremap <leader>bta :!msbuild CitrixReceiver\WFCAll.sln  /t:src\pal\gfxrender;src\pal\gfxvisualization;src\drivers\vd\vdtw\vdtw30n;src\drivers\vd\vdlfp /p:Configuration=Release /p:Platform=win32<CR>
 
 
+" source plug configs
+    let COC_VIM_PATH = HOME_DIR . "/.config/nvim/plug-config/coc/coc.vim"
+    let COC_EXTENSIONS_PATH = HOME_DIR . "/.config/nvim/plug-config/coc/coc-extensions.vim"
+    if filereadable(COC_VIM_PATH) | exec "source " . COC_VIM_PATH | endif
+    if filereadable(COC_EXTENSIONS_PATH) | exec "source " . COC_EXTENSIONS_PATH | endif
 
