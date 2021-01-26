@@ -40,13 +40,15 @@
 " user home dir
     if has('win32') | let HOME_DIR = $USERPROFILE | else | let HOME_DIR = $HOME | endif
     let HOME_DIR = substitute(HOME_DIR, "\\", "\/", "g")
+" vim and nvim folder
+    if has('nvim') | let VIM_FOLDER = "nvim" | else | let VIM_FOLDER = "vim" | endif
 
 " add python exe locations (virtualenvs)
-    if has('win32')
+    if has('win32') || has('win32unix')
         let python2_vp  = HOME_DIR . '/virtualenvs/python27/Scripts/python.exe'
         let python3_vp  = HOME_DIR . '/virtualenvs/python38/Scripts/python.exe'
         let python39_vp = HOME_DIR . '/virtualenvs/python39/Scripts/python.exe'
-    elseif has('mac')
+    elseif has('mac') || has('unix')
         let python2_vp  = HOME_DIR . '/.virtualenvs/python2.7/bin/python'
         let python3_vp  = HOME_DIR . '/.virtualenvs/python3.8/bin/python'
         let python39_vp = HOME_DIR . '/.virtualenvs/python3.9/bin/python'
@@ -56,28 +58,16 @@
     if !empty(glob(python39_vp)) | let g:python3_host_prog = python39_vp | endif
 
 " install plug.vim (bootstrap plugin)
-    if has('macunix') || has('unix')
-        if has('nvim')
-            let plugPath = '~/.config/nvim/autoload/plug.vim'
-            let plugPathSearch = plugPath 
-        else
-            let plugPath = '~/.vim/autoload/plug.vim'
-            let plugPathSearch = plugPath 
-        endif
-    elseif has('win32')
-        if has('nvim')
-            let plugPath = '\%USERPROFILE\%\AppData\Local\nvim\autoload\plug.vim'
-            let plugPathSearch = '$USERPROFILE\AppData\Local\nvim\autoload\plug.vim'
-        else
-            let plugPath = '\%USERPROFILE\%\vimfiles\autoload\plug.vim'
-            let plugPathSearch = '$USERPROFILE\vimfiles\autoload\plug.vim'
-        endif
-    endif
-    if empty(glob(plugPathSearch))
+    let plugRuntimePath = HOME_DIR . '/.config/' . VIM_FOLDER " internal uses only
+    let plugPath = HOME_DIR . '/.config/' . VIM_FOLDER . '/autoload/plug.vim'
+    if empty(glob(plugPath))
         silent execute '!curl -fLo ' . plugPath . ' --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim'
         autocmd VimEnter * PlugInstall --sync | source $MYVIMRC
     endif
-    unlet plugPathSearch plugPath
+    let &rtp = &rtp . ',' . plugRuntimePath
+
+" set viminfo for startify to work with vim
+    if !has('nvim') && has('win32') | set viminfo+=n~/_viminfo | endif
 
 " Plugins : add all plugins here
     function! Cond(cond, ...)
@@ -85,13 +75,7 @@
       return a:cond ? opts : extend(opts, { 'on': [], 'for': [] })
     endfunction
     " Specify a directory for plugins
-    if has('nvim')
-        call plug#begin('~/.config/nvim/plugged')
-    else
-        call plug#begin('~/.config/vim/plugged') 
-    endif
-    " set viminfo for startify to work with vim
-    if !has('nvim') && has('win32') | set viminfo+=n~/_viminfo | endif
+    call plug#begin('~/.config/' . VIM_FOLDER . '/plugged')
 
     " plugins that adds custom operator, following from - https://thoughtbot.com/upcase/videos/extending-the-vim-language
     Plug 'tpope/vim-surround' " adds cs{ change scope }, ds{ delete scope } and ys{ add scope } 
@@ -162,9 +146,7 @@
     Plug 'mhartington/nvim-typescript', {'do': './install.sh'} " typescript support
     Plug 'sheerun/vim-polyglot' " used by nova color schema, multiple programming language support (basic)
     Plug 'mattn/webapi-vim' " webapi neede by rust pluggin
-    if !has('nvim')
-        Plug 'rhysd/vim-healthcheck'
-    endif
+    Plug 'rhysd/vim-healthcheck', Cond(has('nvim'))
 
     " Initialize plugin system
     call plug#end()
