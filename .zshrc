@@ -20,6 +20,9 @@ fi
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 export FZF_DEFAULT_COMMAND='fd --type f'
 
+# brew do not use bottle from source
+export HOMEBREW_NO_BOTTLE_SOURCE_FALLBACK=1
+
 # Configuration for virtualenv. # WORKON_HOME for virualenvs selection in emacs
 export WORKON_HOME=$HOME/.virtualenvs
 export VIRTUALENVWRAPPER_PYTHON=/usr/local/bin/python3

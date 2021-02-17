@@ -376,6 +376,13 @@ endif
     " If you want :UltiSnipsEdit to split your window.
     let g:UltiSnipsEditSplit="vertical"
 
+" startify configurations
+    if has('win32')
+        let g:startify_bookmarks = ['f:\DevTrees']
+    elseif has('macunix') || ('unix')
+        let g:startify_bookmarks = ['~/workspaces/']
+    endif
+
 " for plugin fzf
     noremap <leader>pf :GFiles<CR>
     noremap <leader>pF :Files<CR>
