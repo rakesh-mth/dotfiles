@@ -234,7 +234,6 @@ endif
         nnoremap <silent> <C-ScrollWheelDown> :set guifont=-<CR>
         nnoremap <silent> <C-=> :set guifont=+<CR>
         nnoremap <silent> <C--> :set guifont=-<CR>
-        nnoremap <A-CR> :FVimToggleFullScreen<CR>
     else 
         function! ZoomGuiFont(direction)
             let &guifont = substitute(&guifont, ':h\zs\d\+', '\=eval(submatch(0)+1*a:direction)', 'g')
@@ -256,7 +255,11 @@ endif
               call GuiWindowFullScreen(s:fullScreen)
             endif
         endfunc
-        if !exists('g:fvim_loaded')
+        if exists('g:fvim_loaded')
+            nnoremap <A-CR> :FVimToggleFullScreen<CR>
+        elseif has('gui_vimr')
+            nnoremap <A-CR> :VimRToggleFullscreen<CR>
+        else
             nnoremap <A-CR> :call NVimToggleFullScreen()<CR>
         endif
         inoremap <silent>  <S-Insert>  <C-R>+| "paste from system clipboard in insert mode
