@@ -42,6 +42,8 @@
     let HOME_DIR = substitute(HOME_DIR, "\\", "\/", "g")
 " vim and nvim folder
     if has('nvim') | let VIM_FOLDER = "nvim" | else | let VIM_FOLDER = "vim" | endif
+" workspace folder
+    if has('win32') | let WORKSPACE_FOLDER='f:\DevTrees' | else | let WORKSPACE_FOLDER=$HOME . '/workspaces' | endif
 
 " add python exe locations (virtualenvs)
     if has('win32') || has('win32unix')
@@ -162,10 +164,8 @@ endif
 " configure option (string, number, list) and env variables
     if has('win32')
         let $PATH='C:\Program Files\Git\bin;'.$PATH " add git-bash in the path for fzf + bat to work correctly
-        let &cdpath='f:\DevTrees,,' " cdpath to easily change directory using lcd (lcd foldername-in-cdpath)
-    elseif has('macunix') || ('unix')
-        let &cdpath=$HOME.'/workspaces,,'
     endif
+    let &cdpath=WORKSPACE_FOLDER . ',,' " cdpath to easily change directory using lcd (lcd foldername-in-cdpath)
 
 " lsp for omni func complition
     " autocmd Filetype python setlocal omnifunc=v:lua.vim.lsp.omnifunc
@@ -212,11 +212,13 @@ endif
     nnoremap <leader>nh :noh<cr>    
 
 " set font - nvim -> source code pro font, FVIM -> Hack
-    if exists('g:fvim_loaded')
-        set guifont=Hack:h24
-    else
-        set guifont=Source\ Code\ Pro\ for\ Powerline:h20:cANSI
-        " set guifont=DejaVu\ Sans\ Mono\ for\ Powerline:h16:cANSI
+    if exists(':guifont') " vimr dees not have guifont
+        if exists('g:fvim_loaded')
+            set guifont=Hack:h24
+        else
+            set guifont=Source\ Code\ Pro\ for\ Powerline:h20:cANSI
+            " set guifont=DejaVu\ Sans\ Mono\ for\ Powerline:h16:cANSI
+        endif
     endif
 
 " productivity
@@ -377,11 +379,7 @@ endif
     let g:UltiSnipsEditSplit="vertical"
 
 " startify configurations
-    if has('win32')
-        let g:startify_bookmarks = ['f:\DevTrees']
-    elseif has('macunix') || ('unix')
-        let g:startify_bookmarks = ['~/workspaces/']
-    endif
+    let g:startify_bookmarks = [WORKSPACE_FOLDER]
 
 " for plugin fzf
     noremap <leader>pf :GFiles<CR>
