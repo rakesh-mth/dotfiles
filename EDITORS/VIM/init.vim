@@ -212,7 +212,7 @@ endif
     nnoremap <leader>nh :noh<cr>    
 
 " set font - nvim -> source code pro font, FVIM -> Hack
-    if exists(':guifont') " vimr dees not have guifont
+    if !has('gui_vimr') " vimr dees not have guifont
         if exists('g:fvim_loaded')
             set guifont=Hack:h24
         else
