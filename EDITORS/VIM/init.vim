@@ -216,7 +216,7 @@ endif
         if exists('g:fvim_loaded')
             set guifont=Hack:h24
         elseif has('gui_macvim')
-            set guifont=MesloLGS\ NF:h28
+            set guifont=MesloLGS\ NF:h24
         else
             set guifont=Source\ Code\ Pro\ for\ Powerline:h20:cANSI
             " set guifont=DejaVu\ Sans\ Mono\ for\ Powerline:h16:cANSI
