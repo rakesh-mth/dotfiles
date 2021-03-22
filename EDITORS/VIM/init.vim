@@ -213,9 +213,9 @@ endif
 
 " set font - nvim -> source code pro font, FVIM -> Hack
     if !has('gui_vimr') " vimr dees not have guifont
-        if exists('g:fvim_loaded')
+        if exists('g:fvim_loaded') " fvim - neovim gui on windows
             set guifont=Hack:h24
-        elseif has('gui_macvim')
+        elseif has('gui_macvim') " macvim - vim gui on mac
             set guifont=MesloLGS\ NF:h24
         else
             set guifont=Source\ Code\ Pro\ for\ Powerline:h20:cANSI
@@ -245,26 +245,26 @@ endif
         nnoremap <silent> <C-=> :silent! call ZoomGuiFont(1)<CR>
         nnoremap <silent> <C--> :silent! call ZoomGuiFont(-1)<CR>
     endif
+    let s:fullScreen = 0
+    function! ToggleFullScreen()
+        if (s:fullScreen == 1) | let s:fullScreen = 0 | else | let s:fullScreen = 1 | endif
+        if has('gui_macvim') " macvim
+            if (&fullscreen == 1) | set nofullscreen | else | set fullscreen | endif
+        elseif exists('g:GuiLoaded') " nvim-qt
+            call GuiWindowFullScreen(s:fullScreen)
+        endif
+    endfunc
     if has('nvim')
-        let s:fullScreen = 0
-        function! NVimToggleFullScreen()
-            if exists('g:GuiLoaded')
-              if(s:fullScreen == 1)
-                let s:fullScreen = 0
-              else
-                let s:fullScreen = 1
-              endif
-              call GuiWindowFullScreen(s:fullScreen)
-            endif
-        endfunc
         if exists('g:fvim_loaded')
             nnoremap <A-CR> :FVimToggleFullScreen<CR>
         elseif has('gui_vimr')
             nnoremap <A-CR> :VimRToggleFullscreen<CR>
         else
-            nnoremap <A-CR> :call NVimToggleFullScreen()<CR>
+            nnoremap <A-CR> :call ToggleFullScreen()<CR>
         endif
         inoremap <silent>  <S-Insert>  <C-R>+| "paste from system clipboard in insert mode
+    elseif has('gui_macvim')
+        nnoremap <A-CR> :call ToggleFullScreen()<CR>
     endif
 
 " quickfix mappings
@@ -338,7 +338,11 @@ endif
     function! AltMapping()
         nnoremap <M-0> 10gt
         for idx in range( 1, 9 )
-            execute 'nnoremap <M-' . idx . '> ' . '<C-[>' . idx . 'gt'
+            if has('nvim')
+                execute 'nnoremap <M-' . idx . '> ' . '<C-[>' . idx . 'gt'
+            else
+                execute 'nnoremap <Esc>' . idx . ' ' . '<C-[>' . idx . 'gt'
+            endif
         endfor
     endfunction
     nnoremap <silent> <leader>tn :exe "tabn" nr2char(getchar())<cr>
@@ -347,6 +351,7 @@ endif
     let g:auto_ctags = 0
     let g:auto_ctags_directory_list = ['.git', '.svn']
     let g:auto_ctags_tags_args = ['--tag-relative=yes', '--recurse=yes', '--sort=yes', '--exclude=layout', '--exclude=outputs', '--exclude=sdk']
+    let g:auto_ctags_set_tags_option = ''
     let g:vim_tags_auto_generate = 0
     let g:vim_tags_directories = ['.git', '.hg', '.svn', '.bzr', '_darcs', 'CVS']
     let g:vim_tags_ignore_files = []
