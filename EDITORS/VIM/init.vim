@@ -296,23 +296,11 @@ endif
     nnoremap <leader>gdd :tabe \| Git diff --staged \| wincmd o<cr>| " open git diff in new tab
     " Toggle cursor column
     function! ToggleCursorCol() abort
-      if &cursorcolumn
-        set nocursorcolumn
-        echo 'cursorcolumn: OFF'
-      else
-        set cursorcolumn
-        echo 'cursorcolumn: ON'
-      endif
+      if &cursorcolumn | set nocursorcolumn | else | set cursorcolumn | endif
     endfunction
     " toggle relativenumber
     function! ToggleRelativeNumber() abort
-      if &relativenumber
-        set relativenumber!
-        echo 'relativenumber: OFF'
-      else
-        set relativenumber
-        echo 'relativenumber: ON'
-      endif
+      if &relativenumber | set relativenumber! | else | set relativenumber | endif
     endfunction
     nnoremap <leader>tc :call ToggleCursorCol()<cr>| " toggle cursor column
     nnoremap <leader>tr :call ToggleRelativeNumber()<cr>| " toggle cursor column
@@ -325,27 +313,37 @@ endif
     for idx in range( 1, 9 )
         execute 'tnoremap <M-' . idx . '> <C-\><C-n>' . idx . 'gt'
     endfor
+    if has('mac')
+        let idx = 1
+        for altc in ['¡', '™', '£', '¢', '∞', '§', '¶', '•', 'ª']
+            execute 'tnoremap ' . altc . ' ' . '<C-\><C-n>' . idx . 'gt'
+            let idx += 1
+        endfor
+    endif
     for alph in ['w', 'h', 'j', 'k', 'l']
         execute 'tnoremap <C-w>' . alph . ' <C-\><C-n><C-w>' . alph
     endfor
     tnoremap <C-w><C-w> <C-\><C-n><C-w>w
 
-" windows : maximize window (virtually split only)
-    nmap <leader>mm <C-w>1000>
-    nmap <leader>mn <C-w>1000<
-
 " tabs : change tabs using \tn1, \tn2, \tn3..., and Alt-1, Alt-2, Alt-3...
     function! AltMapping()
         nnoremap <M-0> 10gt
         for idx in range( 1, 9 )
-            if has('nvim')
-                execute 'nnoremap <M-' . idx . '> ' . '<C-[>' . idx . 'gt'
-            else
-                execute 'nnoremap <Esc>' . idx . ' ' . '<C-[>' . idx . 'gt'
-            endif
+            execute 'nnoremap <M-' . idx . '> ' . '<C-[>' . idx . 'gt'
         endfor
+        if has('mac')
+            let idx = 1
+            for altc in ['¡', '™', '£', '¢', '∞', '§', '¶', '•', 'ª']
+                execute 'nnoremap ' . altc . ' ' . '<C-[>' . idx . 'gt'
+                let idx += 1
+            endfor
+        endif
     endfunction
     nnoremap <silent> <leader>tn :exe "tabn" nr2char(getchar())<cr>
+
+" windows : maximize window (virtually split only)
+    nmap <leader>mm <C-w>1000>
+    nmap <leader>mn <C-w>1000<
 
 " for plugin vim-tags and auto-ctags - auto generate tags on file saving. using vim-tags by defualt.
     let g:auto_ctags = 0
