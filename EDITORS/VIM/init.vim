@@ -277,13 +277,7 @@ endif
     " Toggle buffer
     let s:bufferState = 0
     function! BufferToggle()
-      if(s:bufferState == 1)
-        let s:bufferState = 0
-        bp
-      else
-        let s:bufferState = 1
-        bn
-      endif
+      if(s:bufferState == 1) | let s:bufferState = 0 | bp | else | let s:bufferState = 1 | bn | endif
     endfunc
     nnoremap <leader><TAB> :call BufferToggle()<cr>| " Toggle between presious and current buffer.
     nnoremap <leader><leader> :| " switch to command mode
@@ -314,10 +308,8 @@ endif
         execute 'tnoremap <M-' . idx . '> <C-\><C-n>' . idx . 'gt'
     endfor
     if has('mac')
-        let idx = 1
-        for altc in ['¡', '™', '£', '¢', '∞', '§', '¶', '•', 'ª']
-            execute 'tnoremap ' . altc . ' ' . '<C-\><C-n>' . idx . 'gt'
-            let idx += 1
+        for altc in items({'¡' : 1, '™': 2, '£': 3, '¢': 4, '∞': 5, '§': 6, '¶': 7, '•': 8, 'ª': 9}) " sed -n l => Alt + 1
+            execute 'tnoremap ' . altc[0] . ' ' . '<C-\><C-n>' . altc[1] . 'gt'
         endfor
     endif
     for alph in ['w', 'h', 'j', 'k', 'l']
@@ -332,10 +324,8 @@ endif
             execute 'nnoremap <M-' . idx . '> ' . '<C-[>' . idx . 'gt'
         endfor
         if has('mac')
-            let idx = 1
-            for altc in ['¡', '™', '£', '¢', '∞', '§', '¶', '•', 'ª']
-                execute 'nnoremap ' . altc . ' ' . '<C-[>' . idx . 'gt'
-                let idx += 1
+            for altc in items({'¡' : 1, '™': 2, '£': 3, '¢': 4, '∞': 5, '§': 6, '¶': 7, '•': 8, 'ª': 9}) " sed -n l => Alt + 1
+                execute 'nnoremap ' . altc[0] . ' ' . '<C-[>' . altc[1] . 'gt'
             endfor
         endif
     endfunction
