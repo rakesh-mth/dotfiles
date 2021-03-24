@@ -34,6 +34,7 @@
     cr = "!git add . -u && git commit -m test && git rebase -i @~2"
     cp = "!git add . -u && git commit && git publish"
     crpf = !git cr && git pf
+    p  = "!git pull --ff-only"
     pr = "!git pull --rebase"
     ds = "!git diff --staged"
     pb = "!git publish"
