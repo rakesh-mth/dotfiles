@@ -211,16 +211,17 @@ endif
 " disable highlights
     nnoremap <leader>nh :noh<cr>    
 
-" set font - nvim -> source code pro font, FVIM -> Hack
-    if !has('gui_vimr') " vimr dees not have guifont
-        if exists('g:fvim_loaded') " fvim - neovim gui on windows
-            set guifont=Hack:h24
-        elseif has('gui_macvim') " macvim - vim gui on mac
-            set guifont=MesloLGS\ NF:h24
-        else
-            set guifont=Source\ Code\ Pro\ for\ Powerline:h20:cANSI
-            " set guifont=DejaVu\ Sans\ Mono\ for\ Powerline:h16:cANSI
-        endif
+" set guifont - some gui frontend might not have guifont option (ex: vimr in mac)
+    if exists('&guifont') 
+        set guifont=MesloLGS\ NF:h24
+        " if exists('g:fvim_loaded') " fvim - neovim gui on windows
+        "     set guifont=Hack:h24
+        " elseif has('gui_macvim') " macvim - vim gui on mac
+        "     set guifont=MesloLGS\ NF:h24
+        " else
+        "     set guifont=Source\ Code\ Pro\ for\ Powerline:h20:cANSI
+        "     " set guifont=DejaVu\ Sans\ Mono\ for\ Powerline:h16:cANSI
+        " endif
     endif
 
 " productivity
