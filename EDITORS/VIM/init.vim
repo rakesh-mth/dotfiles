@@ -63,6 +63,14 @@
     if !empty(glob(python3_vp . 'nvr')) | let $PATH = python3_vp . ':' . $PATH | endif
     if !empty(glob(python39_vp . 'nvr')) | let $PATH = python39_vp . ':' . $PATH | endif
 
+" add ruby and gem (user) path to PATH. install neovim gem using `gem install --user-install neovim`
+    if has('mac') " use homebrew ruby
+        let $PATH = '/usr/local/opt/ruby/bin/:'.$PATH 
+        let gem_path = trim(system('gem environment gempath | cut -d ":" -f 1'))
+        let ruby_host_prog = gem_path . '/bin/neovim-ruby-host'
+        if !empty(glob(ruby_host_prog)) | let g:ruby_host_prog = ruby_host_prog | endif
+    endif
+
 " install plug.vim (bootstrap plugin)
     let plugRuntimePath = HOME_DIR . '/.config/' . VIM_FOLDER " internal uses only
     let plugPath = HOME_DIR . '/.config/' . VIM_FOLDER . '/autoload/plug.vim'
