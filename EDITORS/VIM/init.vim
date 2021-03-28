@@ -294,11 +294,11 @@ endif
       if &cursorcolumn | set nocursorcolumn | else | set cursorcolumn | endif
     endfunction
     " toggle relativenumber
-    function! ToggleRelativeNumber() abort
+    function! ToggleRelativeNumber() abort " can also use: nornu and rnu
       if &relativenumber | set relativenumber! | else | set relativenumber | endif
     endfunction
     nnoremap <leader>tc :call ToggleCursorCol()<cr>| " toggle cursor column
-    nnoremap <leader>tr :call ToggleRelativeNumber()<cr>| " toggle cursor column
+    nnoremap <leader>tr :call ToggleRelativeNumber()<cr>| " toggle relative number
 
 " keybindig for goyo
     nnoremap <leader>go :Goyo<cr>
@@ -426,16 +426,6 @@ endif
       endfor
       return join(values(buffer_numbers))
     endfunction
-
-" Toggle relative numbering
-    function! NumberToggle()
-      if(&relativenumber == 1)
-        set nornu
-      else
-        set rnu
-      endif
-    endfunc
-    nnoremap <silent> <leader>r :call NumberToggle()<cr>| " Toggle between normal and relative numbering.
 
 " Toggle header and cpp file
     function! SwitchSourceHeader()
