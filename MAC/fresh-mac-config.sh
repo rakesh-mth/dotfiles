@@ -1,6 +1,6 @@
 # install opengdk first as it is a dependency of groovy
 brew cask install adoptopenjdk | tee ~/brew/adoptopenjdk
-brew install neovim vim emacs fd ripgrep the_silver_searcher fzf ctags wget xz jfrog-cli-go python@2 python@3 groovy nodejs golang rust llvm cmake aspell 2>&1 | tee ~/brew/fresh-mac-config
+brew install neovim vim emacs fd ripgrep the_silver_searcher fzf ctags wget xz jfrog-cli-go python@2 python@3 groovy nodejs golang rust llvm cmake aspell hub git 2>&1 | tee ~/brew/fresh-mac-config
 # brew cask install emacs 2>&1 | tee ~/brew/emacs
 
 
