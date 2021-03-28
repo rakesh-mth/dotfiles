@@ -255,8 +255,11 @@ endif
         endfunc
         nnoremap <silent> <C-ScrollWheelUp>   :silent! call ZoomGuiFont(1)<CR>
         nnoremap <silent> <C-ScrollWheelDown> :silent! call ZoomGuiFont(-1)<CR>
+        " Ctrl mapping does not work in gvim, fvim and vimr
         nnoremap <silent> <C-=> :silent! call ZoomGuiFont(1)<CR>
         nnoremap <silent> <C--> :silent! call ZoomGuiFont(-1)<CR>
+        nnoremap <silent> <leader>= :silent! call ZoomGuiFont(1)<CR>
+        nnoremap <silent> <leader>- :silent! call ZoomGuiFont(-1)<CR>
     endif
     let s:fullScreen = 0
     function! ToggleFullScreen()
