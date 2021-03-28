@@ -47,17 +47,21 @@
 
 " add python exe locations (virtualenvs)
     if has('win32') || has('win32unix')
-        let python2_vp  = HOME_DIR . '/virtualenvs/python27/Scripts/python.exe'
-        let python3_vp  = HOME_DIR . '/virtualenvs/python38/Scripts/python.exe'
-        let python39_vp = HOME_DIR . '/virtualenvs/python39/Scripts/python.exe'
+        let python2_vp  = HOME_DIR . '/virtualenvs/python27/Scripts/'
+        let python3_vp  = HOME_DIR . '/virtualenvs/python38/Scripts/'
+        let python39_vp = HOME_DIR . '/virtualenvs/python39/Scripts/'
+        let python_exe  = 'python.exe' 
     elseif has('mac') || has('unix')
-        let python2_vp  = HOME_DIR . '/.virtualenvs/python2.7/bin/python'
-        let python3_vp  = HOME_DIR . '/.virtualenvs/python3.8/bin/python'
-        let python39_vp = HOME_DIR . '/.virtualenvs/python3.9/bin/python'
+        let python2_vp  = HOME_DIR . '/.virtualenvs/python2.7/bin/'
+        let python3_vp  = HOME_DIR . '/.virtualenvs/python3.8/bin/'
+        let python39_vp = HOME_DIR . '/.virtualenvs/python3.9/bin/'
+        let python_exe  = 'python'
     endif
-    if !empty(glob(python2_vp))  | let g:python_host_prog = python2_vp   | endif
-    if !empty(glob(python3_vp))  | let g:python3_host_prog = python3_vp  | endif
-    if !empty(glob(python39_vp)) | let g:python3_host_prog = python39_vp | endif
+    if !empty(glob(python2_vp . python_exe))  | let g:python_host_prog = python2_vp . python_exe | endif
+    if !empty(glob(python3_vp . python_exe))  | let g:python3_host_prog = python3_vp . python_exe | endif
+    if !empty(glob(python39_vp . python_exe)) | let g:python3_host_prog = python39_vp . python_exe | endif
+    if !empty(glob(python3_vp . 'nvr')) | let $PATH = python3_vp . ':' . $PATH | endif
+    if !empty(glob(python39_vp . 'nvr')) | let $PATH = python39_vp . ':' . $PATH | endif
 
 " install plug.vim (bootstrap plugin)
     let plugRuntimePath = HOME_DIR . '/.config/' . VIM_FOLDER " internal uses only
@@ -148,7 +152,7 @@
     Plug 'mhartington/nvim-typescript', {'do': './install.sh'} " typescript support
     Plug 'sheerun/vim-polyglot' " used by nova color schema, multiple programming language support (basic)
     Plug 'mattn/webapi-vim' " webapi neede by rust pluggin
-    Plug 'rhysd/vim-healthcheck', Cond(has('nvim'))
+    Plug 'rhysd/vim-healthcheck', Cond(!has('nvim'))
 
     " Initialize plugin system
     call plug#end()
