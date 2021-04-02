@@ -36,6 +36,7 @@
     crpf = !git cr && git pf
     p  = "!git pull --ff-only"
     pr = "!git pull --rebase"
+    d  = "!git diff"
     ds = "!git diff --staged"
     pb = "!git publish"
     re = "!f() { \

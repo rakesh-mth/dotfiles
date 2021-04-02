@@ -6,7 +6,7 @@
 " vim and nvim folder
     if has('nvim') | let VIM_FOLDER = "nvim" | else | let VIM_FOLDER = "vim" | endif
 " workspace folder
-    let PLUGGED_DIR = HOME_DIR . '/.config/' . VIM_FOLDER . '/plugged'
+    let PLUGGED_DIR = HOME_DIR . '/.config/' . VIM_FOLDER . '/plugged' " Specify a directory for plugins 
 
 " install plug.vim (bootstrap plugin)
     let plugRuntimePath = HOME_DIR . '/.config/' . VIM_FOLDER " internal uses only
@@ -23,7 +23,7 @@
         autocmd VimEnter * PlugInstall --sync | source $MYVIMRC
     endif
 
-" Plugins : add all plugins here, Specify a directory for plugins
+" Plugins : add all plugins here
     call plug#begin(PLUGGED_DIR)
         Plug 'rakesh-mth/vim-user-config' 
         if filereadable(VIM_USER_CONFIG_PLUGIN) | exec 'source ' . VIM_USER_CONFIG_PLUGIN | endif
