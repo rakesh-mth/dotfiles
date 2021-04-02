@@ -46,6 +46,7 @@
         git br -D $branch_name; \
         git checkout $branch_name; \
     }; f"
+    s  = status
     st = status
     co = checkout
     br = branch
