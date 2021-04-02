@@ -1,5 +1,6 @@
-" copy content of this file to ~/.config/nvim/init.vim on mac and linux when using neovim
-
+" this file can be used as .vimrc or init.vim on windows, linux and mac
+" works with neovim-qt, gvim (windows), fvim (windows), vimr (mac), macvim (mac)
+ 
 " user home dir
     if has('win32') | let HOME_DIR = $USERPROFILE | else | let HOME_DIR = $HOME | endif
     let HOME_DIR = substitute(HOME_DIR, "\\", "\/", "g")
@@ -10,7 +11,7 @@
 
 " install plug.vim (bootstrap plugin)
     let plugRuntimePath = HOME_DIR . '/.config/' . VIM_FOLDER " internal uses only
-    let plugPath = HOME_DIR . '/.config/' . VIM_FOLDER . '/autoload/plug.vim'
+    let plugPath = plugRuntimePath . '/autoload/plug.vim'
     if empty(glob(plugPath))
         silent execute '!curl -fLo ' . plugPath . ' --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim'
         autocmd VimEnter * PlugInstall --sync | source $MYVIMRC
