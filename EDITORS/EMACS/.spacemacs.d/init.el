@@ -534,12 +534,12 @@ If you are unsure, try setting them in `dotspacemacs/user-config' first."
   ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
   ;; font size sepcific for OS
   ;; (if (eq system-type 'gnu/linux)
-  (if (eq system-type 'darwin)
-    (setq-default dotspacemacs-default-font '("Source Code Pro"
-                                              :size 24.0
-                                              :weight normal
-                                              :width normal
-                                              :powerline-scale 1.1)))
+  ;; (if (eq system-type 'darwin)
+  (setq-default dotspacemacs-default-font '("MesloLGS NF"
+                                            :size 24.0
+                                            :weight normal
+                                            :width normal
+                                            :powerline-scale 1.1))
   ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
   ;; lsp-clangd backend (already default), set clangd path. For c-c++ layer.
   ;; not needed now since spacemacs can able to use clangd from xcode
