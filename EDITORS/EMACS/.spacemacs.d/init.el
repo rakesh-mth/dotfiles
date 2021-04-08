@@ -566,7 +566,7 @@ Put your configuration code here, except for variables that should be set
 before packages are loaded."
   ;; python pyvenv workon
   (when (equal system-type 'windows-nt)
-    (add-hook 'python-mode-hook (lambda () (pyvenv-workon "python37"))))
+    (add-hook 'python-mode-hook (lambda () (pyvenv-workon "python39"))))
   (when (equal system-type 'darwin)
     (add-hook 'python-mode-hook (lambda () (pyvenv-workon "python3.9"))))
   ;; (global-linum-mode)
