@@ -37,7 +37,7 @@ gem install neovim
 py -3.8 -m pip install --user virtualenvwrapper
 virtualenv -p c:\Python38\python.exe %USERPROFILE%\virtualenvs\python38
 %USERPROFILE%\virtualenvs\python38\scripts\activate
-pip install pynvim neovim-remote flake8 isort yapf python-language-server pyls-isort pyls-mypy pyls-black importmagic epc ptvsd autoflake
+pip install pynvim neovim-remote flake8 isort yapf python-language-server pyls-isort pyls-mypy pyls-black importmagic epc ptvsd autoflake cmake-language-server
 virtualenv -p c:\Python27\python.exe %USERPROFILE%\virtualenvs\python27
 %USERPROFILE%\virtualenvs\python27\scripts\activate
 pip install pynvim flake8 isort yapf python-language-server pyls-isort importmagic epc ptvsd autoflake

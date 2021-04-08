@@ -64,7 +64,8 @@ This function should only modify configuration layer settings."
      html
      json
      yaml
-     cmake
+     (cmake :variables
+            cmake-backend 'lsp)
      docker
      shell-scripts
      windows-scripts
