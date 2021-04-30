@@ -1,6 +1,9 @@
 ###### test plugging in headless mode (look for messages in console)
 nvim --headless +qa
 
+###### install plugin in headless mode
+nvim --headless +PlugInstall +qall
+
 ###### source .vimrc / init.vim
 so $MYVIMRC - source init.vim
 :so % - if currently editing init.vim
