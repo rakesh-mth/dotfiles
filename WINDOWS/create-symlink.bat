@@ -1,3 +1,4 @@
+REM delete existing files or symlink
 if exist %USERPROFILE%\.gitconfig del %USERPROFILE%\.gitconfig
 if exist %USERPROFILE%\.gitconfig-work del %USERPROFILE%\.gitconfig-work
 if exist %USERPROFILE%\.wslconfig del %USERPROFILE%\.wslconfig
@@ -7,7 +8,9 @@ if exist %USERPROFILE%\.config\emacs\spacemacs\.spacemacs.d rmdir %USERPROFILE%\
 if exist %USERPROFILE%\.config\emacs\doom-emacs\.doom.d rmdir %USERPROFILE%\.config\emacs\doom-emacs\.doom.d
 if exist %USERPROFILE%\.vimrc del %USERPROFILE%\.vimrc
 if exist %USERPROFILE%\AppData\Local\nvim\init.vim del %USERPROFILE%\AppData\Local\nvim\init.vim
+if exist %USERPROFILE%\.vsvimrc del %USERPROFILE%\.vsvimrc
 
+REM create folders for symlinks
 if not exist %USERPROFILE%\AppData\Local\nvim mkdir %USERPROFILE%\AppData\Local\nvim
 if not exist %USERPROFILE%\.vim mkdir %USERPROFILE%\.vim
 if not exist %USERPROFILE%\.config\emacs\spacemacs mkdir %USERPROFILE%\.config\emacs\spacemacs
@@ -21,6 +24,7 @@ mklink %USERPROFILE%\.gitconfig %DOTFILES%\GIT\.gitconfig
 mklink %USERPROFILE%\.wslconfig %DOTFILES%\WSL\.wslconfig
 mklink %USERPROFILE%\.vimrc %DOTFILES%\EDITORS\VIM\init.vim
 mklink %USERPROFILE%\AppData\Local\nvim\init.vim %DOTFILES%\EDITORS\VIM\init.vim
+mklink %USERPROFILE%\.vsvimrc %DOTFILES%\EDITORS\VIM\.vsvimrc
 REM chemacs - spacemacs and doom-emacs
 mklink %USERPROFILE%\.emacs %DOTFILES%\EDITORS\EMACS\.emacs
 mklink %USERPROFILE%\.emacs-profiles.el %DOTFILES%\EDITORS\EMACS\.emacs-profiles.el
