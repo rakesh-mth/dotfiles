@@ -78,7 +78,7 @@ alias vbox="open -a /Applications/VirtualBox.app"
 # open links
 alias gs="safari http://google.com"
 alias gc="chrome http://google.com"
-" network
+# network
 alias dns="scutil --dns | grep 'nameserver\[[0-9]*\]'"
 ################################################################################
 
