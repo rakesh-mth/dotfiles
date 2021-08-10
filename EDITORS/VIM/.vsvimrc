@@ -23,6 +23,8 @@ nnoremap <space>i :vcs Build.CMake.Install<cr>
 nnoremap gr :vsc Edit.FindAllReferences<cr>
 nnoremap g* :vsc Edit.FindAllReferences<cr>
 " grep everything
+nnoremap <space>* :vsc Edit.FindinFiles<cr>
+nnoremap <space># :vsc Edit.Find<cr>
 nnoremap g// :vsc Edit.FindinFiles<cr>
 " find/replace in current buffer
 nnoremap g/r :vsc Edit.Replace<cr>
@@ -42,8 +44,9 @@ nnoremap <space>tr :set number<cr>
 " mapping for file search and open
 nnoremap <space>pf :vsc Edit.GoToFile<cr>
 
-" mapping for toggle header code file
+" mapping for toggle header code file (map twice - one vscode mapping(<A-o>))
 nnoremap <space>o :vsc EditorContextMenus.CodeWindow.ToggleHeaderCodeFile<cr>
+nnoremap <A-o> :vsc EditorContextMenus.CodeWindow.ToggleHeaderCodeFile<cr>
 
 " mapping for completion selection
 nnoremap <C-n> :vsc Edit.LineUp<cr>
