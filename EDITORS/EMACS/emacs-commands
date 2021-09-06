@@ -31,6 +31,7 @@ SPC l L - load layout from file
 SPC l 1...9 - create new layout
 SPC l s - save layout
 SPC l l - fuzzy search layout 
+SPC l w 1...9 switch to workspace
 2gt - switch to workspace 2 (use any number from 1...9 for new workspace)
 
 ###### buffer
