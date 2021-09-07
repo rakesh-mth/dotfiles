@@ -532,6 +532,8 @@ If you are unsure, try setting them in `dotspacemacs/user-config' first."
   ;; default shell for shell layer
   (when (equal system-type 'windows-nt)
     (setq shell-default-term-shell "c:/Program Files/Git/bin/bash"))
+  (when (equal system-type 'darwin)
+    (setq shell-default-shell 'vterm))
   ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
   ;; font size sepcific for OS
   ;; (if (eq system-type 'gnu/linux)
