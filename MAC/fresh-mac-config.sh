@@ -1,20 +1,32 @@
 # install opengdk first as it is a dependency of groovy
 brew cask install adoptopenjdk | tee ~/brew/adoptopenjdk
-brew install neovim vim emacs fd ripgrep the_silver_searcher fzf ctags wget xz jfrog-cli-go python@2 python@3 groovy nodejs golang rust llvm cmake aspell hub git 2>&1 | tee ~/brew/fresh-mac-config
+brew install neovim vim emacs fd ripgrep the_silver_searcher fzf ctags wget xz jfrog-cli-go python@2 python@3 groovy nodejs golang rust llvm cmake aspell hub git iperf3 2>&1 | tee ~/brew/fresh-mac-config
 # brew cask install emacs 2>&1 | tee ~/brew/emacs
 
+# create software folder for fonts and other opensource
+mkdir -p ~/software 
 
+################################################################################
+######PYTHON
 pip2 install --upgrade pip
 pip3 install --upgrade pip
 pip2 install --user pynvim
 pip3 install --user pynvim neovim-remote virtualenvwrapper # add ~/Library/Python/3.7/bin in your path
 
+################################################################################
+######NPM AND NODE
 npm install -g neovim tern typescript yarn
-gem install --user-install neovim # add ~/.gem/ruby/2.6.0/bin in your path (change version number)
 
-# create software folder for fonts and other opensource
-mkdir -p ~/software 
-
+################################################################################
+######RUBY
+# add ~/.gem/ruby/2.6.0/bin in your path (change version number)
+# for ruby support in vim/nvim.
+gem install --user-install neovim 
+# for ruby development in spacemacs
+gem install --user-install solargraph pry pry-doc ruby_parser rubocop prettier seeing_is_believing
+# for ruby development in vscode
+gem install --user-install ruby-debug-ide
+gem install --user-install debase -v 0.2.5.beta2
 
 ################################################################################
 ######PYTHON

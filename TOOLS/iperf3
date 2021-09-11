@@ -1,0 +1,8 @@
+# install iperf3 using brew on mac
+brew install iperf3
+
+# on server run 
+iperf -s
+
+# on client run
+iperf -s <server_ip>

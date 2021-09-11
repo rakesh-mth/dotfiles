@@ -42,6 +42,9 @@ export EDITOR=nvim
 # set LANG - for python3 to work over ssh
 export LANG="en_US.UTF-8"
 
+# exit terminal app
+alias quit='osascript -e "do shell script \"osascript -e \\\"tell application \\\\\\\"Terminal\\\\\\\" to quit\\\" &> /dev/null &\""; exit'
+
 ################################################################################
 ##################################### aliases ##################################
 alias se="emacs --with-profile spacemacs"
