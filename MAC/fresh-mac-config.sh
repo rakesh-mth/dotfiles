@@ -27,6 +27,8 @@ gem install --user-install solargraph pry pry-doc ruby_parser rubocop prettier s
 # for ruby development in vscode
 gem install --user-install ruby-debug-ide
 gem install --user-install debase -v 0.2.5.beta2
+# vscode plugin for ruby
+code --install-extension rebornix.ruby castwide.solargraph wingrunr21.vscode-ruby
 
 ################################################################################
 ######PYTHON
