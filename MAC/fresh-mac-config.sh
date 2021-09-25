@@ -24,6 +24,7 @@ npm install -g neovim tern typescript yarn
 gem install --user-install neovim 
 # for ruby development in spacemacs
 gem install --user-install solargraph pry pry-doc ruby_parser rubocop prettier seeing_is_believing
+# run `M-x dap-ruby-setup <enter>`
 # for ruby development in vscode
 gem install --user-install ruby-debug-ide
 gem install --user-install debase -v 0.2.5.beta2
