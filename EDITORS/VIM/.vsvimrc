@@ -27,9 +27,9 @@ nnoremap <space>* :vsc Edit.FindinFiles<cr>
 nnoremap <space># :vsc Edit.Find<cr>
 nnoremap g// :vsc Edit.FindinFiles<cr>
 " find/replace in current buffer
-nnoremap g/r :vsc Edit.Replace<cr>
+nnoremap g/r :vsc Edit.ReplaceInFiles<cr>
 " find/replace in all files
-nnoremap g/R :vsc Edit.ReplaceinFiles<cr>
+nnoremap g/R :vsc Edit.Replace<cr>
 " open containing folder
 nnoremap gof :vsc File.OpenContainingFolder<cr>
 " open error message tool
