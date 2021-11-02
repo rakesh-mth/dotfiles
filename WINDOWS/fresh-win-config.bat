@@ -1,7 +1,7 @@
 ################################################################################
 ######INSTALL TOOLS USING CHOCO
 #admin powershell
-choco install -y neovim emacs vim fd ripgrep ag fzf bat ctags wget 7zip git gitversion.portable cmake powershell-core python2 python3 groovy nodejs ruby jdk8 dotnetcore dotnetcore-sdk golang lua53 rustup.install rust-analyzer llvm hunspell.portable nuget.commandline jfrog-cli lxrunoffline libreoffice-fresh rufus nasm yasm
+choco install -y neovim emacs vim fd ripgrep ag fzf bat ctags wget 7zip git gitversion.portable cmake powershell-core python2 python3 groovy nodejs ruby jdk8 dotnetcore dotnetcore-sdk golang lua53 rustup.install rust-analyzer llvm hunspell.portable nuget.commandline jfrog-cli lxrunoffline libreoffice-fresh rufus nasm yasm jq
 # vim needs python version 3.7 
 choco install -y python --version=3.7.8
 choco install -y python --version=3.8.5
