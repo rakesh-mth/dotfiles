@@ -1,6 +1,6 @@
 # install opengdk first as it is a dependency of groovy
 brew cask install adoptopenjdk | tee ~/brew/adoptopenjdk
-brew install neovim vim emacs fd ripgrep the_silver_searcher fzf ctags wget xz jfrog-cli-go python@2 python@3 groovy nodejs golang rust llvm cmake aspell hub git iperf3 2>&1 | tee ~/brew/fresh-mac-config
+brew install neovim vim emacs fd ripgrep the_silver_searcher fzf ctags wget xz jfrog-cli-go python@2 python@3 groovy nodejs golang rust llvm cmake aspell hub git iperf3 gnupg
 # brew cask install emacs 2>&1 | tee ~/brew/emacs
 
 # create software folder for fonts and other opensource
@@ -20,6 +20,10 @@ npm install -g neovim tern typescript yarn
 ################################################################################
 ######RUBY
 # add ~/.gem/ruby/2.6.0/bin in your path (change version number)
+# install rvm
+gpg --recv-keys 409B6B1796C275462A1703113804BB82D39DC0E3 7D2BAF1CF37B13E2069D6956105BD0E739499BDB
+\curl -sSL https://get.rvm.io | bash -s stable # use \curl
+rvm mount /usr/local/opt/ruby@3/bin/ruby # mount existing ruby from homebrew
 # for ruby support in vim/nvim.
 gem install --user-install neovim 
 # for ruby development in spacemacs
