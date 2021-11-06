@@ -30,6 +30,7 @@ ln -snf $HOME/workspaces/rakesh-mth/dotfiles/EDITORS/EMACS/.doom.d $HOME/.config
 export DOOMDIR=$HOME/.config/emacs/doom-emacs/.doom.d
 
 # symlink related to shell. do not link .zshrc by default since it may override .zshrc from oh-my-zsh 
+# do not replace .bashrc, instead source this bashrc into ~/.bashrc file towards the end.
 # [ -f "$HOME/.zshrc" ] && unlink "$HOME/.zshrc"
 # ln -snf $HOME/workspaces/rakesh-mth/dotfiles/.zshrc $HOME/.zshrc
 # [ -f "$HOME/.bashrc" ] && unlink "$HOME/.bashrc"

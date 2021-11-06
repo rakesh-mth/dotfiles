@@ -13,5 +13,12 @@ else
     export FZF_DEFAULT_COMMAND='fd --type f'
 fi
 
+# add user script folder to path
+export PATH=~/scripts:$PATH
+
+# add doom emacs bin to path
+export PATH=~/.config/emacs/doom-emacs/.emacs.d/bin/:$PATH
+
 # Add RVM to PATH for scripting. Make sure this is the last PATH variable change.
 export PATH="$PATH:$HOME/.rvm/bin"
+
