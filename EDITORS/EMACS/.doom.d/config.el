@@ -36,7 +36,14 @@
 (setq display-line-numbers-type t)
 
 ;; save this file: M-x eval-buffer and M-x projectile-discover-projects-in-search-path
-(setq projectile-project-search-path '(("~/.config/emacs" . 2) "F:\\DevTrees\\opensource" ("F:\\DevTrees" . 1)))
+(setq projectile-project-search-path '(("~/.config/emacs" . 2) ("~/workspaces" . 2) ("F:\\DevTrees" . 1) "F:\\DevTrees\\opensource"))
+
+;; maximize in full screen on startup
+(add-to-list 'default-frame-alist '(fullscreen . maximized))
+
+;; to solve issue in MacBook Pro. will look on why to increase these limits.
+(setq max-specpdl-size 5000) ;; default is 1000
+(setq max-lisp-eval-depth 1000) ;; default is 500
 
 
 ;; Here are some additional functions/macros that could help you configure Doom:

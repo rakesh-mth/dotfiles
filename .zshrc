@@ -85,6 +85,8 @@ alias gc="chrome http://google.com"
 alias dns="scutil --dns | grep 'nameserver\[[0-9]*\]'"
 ################################################################################
 
+# add doom emacs bin to path
+export PATH=~/.config/emacs/doom-emacs/.emacs.d/bin/:$PATH
 
 # Add RVM to PATH for scripting. Make sure this is the last PATH variable change.
 export PATH="$PATH:$HOME/.rvm/bin"
