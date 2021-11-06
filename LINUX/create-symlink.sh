@@ -7,6 +7,7 @@ ln -snf $HOME/workspaces/rakesh-mth/dotfiles/GIT/.gitconfig $HOME/.gitconfig
 ln -snf $HOME/workspaces/scripts/GIT/.gitconfig $HOME/.gitconfig-work
 
 # symlink related to editors
+mkdir -p "$HOME/.config/nvim"
 [ -f "$HOME/.vimrc" ] && unlink "$HOME/.vimrc"
 [ -f "$HOME/.config/nvim/init.vim" ] && unlink "$HOME/.config/nvim/init.vim"
 ln -snf $HOME/workspaces/rakesh-mth/dotfiles/EDITORS/VIM/init.vim $HOME/.vimrc
@@ -31,6 +32,6 @@ export DOOMDIR=$HOME/.config/emacs/doom-emacs/.doom.d
 # symlink related to shell. do not link .zshrc by default since it may override .zshrc from oh-my-zsh 
 # [ -f "$HOME/.zshrc" ] && unlink "$HOME/.zshrc"
 # ln -snf $HOME/workspaces/rakesh-mth/dotfiles/.zshrc $HOME/.zshrc
-[ -f "$HOME/.bashrc" ] && unlink "$HOME/.bashrc"
-ln -snf $HOME/workspaces/rakesh-mth/dotfiles/.bashrc $HOME/.bashrc
+# [ -f "$HOME/.bashrc" ] && unlink "$HOME/.bashrc"
+# ln -snf $HOME/workspaces/rakesh-mth/dotfiles/.bashrc $HOME/.bashrc
 
