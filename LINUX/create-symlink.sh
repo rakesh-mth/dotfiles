@@ -7,6 +7,8 @@ ln -snf $HOME/workspaces/rakesh-mth/dotfiles/GIT/.gitconfig $HOME/.gitconfig
 ln -snf $HOME/workspaces/scripts/GIT/.gitconfig $HOME/.gitconfig-work
 
 # symlink related to editors
+# neovim and vim
+mkdir -p ~/temp # create temp folder for backup files in vim
 mkdir -p "$HOME/.config/nvim"
 [ -f "$HOME/.vimrc" ] && unlink "$HOME/.vimrc"
 [ -f "$HOME/.config/nvim/init.vim" ] && unlink "$HOME/.config/nvim/init.vim"
