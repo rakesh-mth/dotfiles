@@ -1,0 +1,36 @@
+#!/usr/bin/env bash
+
+################################################################################
+##################################### aliases ##################################
+alias et="emacs -nw"
+alias se="emacs --with-profile spacemacs"
+alias de="emacs --with-profile doom"
+alias e="emacs --with-profile default"
+alias sec="emacs -nw --with-profile spacemacs"
+alias dec="emacs -nw --with-profile doom"
+alias ec="emacs -nw --with-profile default"
+alias dus="du -sh * | sort -n -r"
+alias dfh="df -h"
+# open links
+alias gs="safari http://google.com"
+alias gc="chrome http://google.com"
+
+# applications
+if [[ $OSTYPE == darwin* ]]; then
+    alias chrome="open -a /Applications/Google\ Chrome.app"
+    alias safari="open -a Safari"
+    alias xcode="open -a /Applications/Xcode.app"
+    alias settings="open -a System\ Preferences"
+    alias apps="open -a App\ Store"
+    alias finder="open -a Finder"
+    alias ss="open -a Screen\ Sharing"
+    alias da="open -a Docker"
+    alias ut="open -a uTorrent"
+    alias vbox="open -a /Applications/VirtualBox.app"
+    alias vcode="open -a /Applications/VSCodium.app"
+    # network
+    alias route4="netstat -f inet -rl"
+    alias pfnat="sudo pfctl -sa 2>/dev/null | grep nat"
+    alias dns="scutil --dns | grep 'nameserver\[[0-9]*\]'"
+fi
+

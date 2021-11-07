@@ -13,6 +13,9 @@ else
     export FZF_DEFAULT_COMMAND='fd --type f'
 fi
 
+# set DOOMDIR for DOOM to use our config
+export DOOMDIR=$HOME/.config/emacs/doom-emacs/.doom.d
+
 # add user script folder to path
 export PATH=~/scripts:$PATH
 

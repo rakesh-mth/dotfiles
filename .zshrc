@@ -8,6 +8,9 @@ export PATH="/usr/local/sbin:/usr/local/bin:$HOME/.cargo/bin:$HOME/.gem/ruby/$RU
 # DOOMDIR for doom-emacs
 export DOOMDIR=$HOME/.config/emacs/doom-emacs/.doom.d
 
+# add doom emacs bin to path
+export PATH=~/.config/emacs/doom-emacs/.emacs.d/bin/:$PATH
+
 # powerlevel10k theme for zsh - only oh-my-zsh is not used
 if [[ -z $ZSH_THEME ]]; then
     [ -f "$HOME/software/powerlevel10k/powerlevel10k.zsh-theme" ] && source "$HOME/software/powerlevel10k/powerlevel10k.zsh-theme"
@@ -47,46 +50,12 @@ alias quit='osascript -e "do shell script \"osascript -e \\\"tell application \\
 
 ################################################################################
 ##################################### aliases ##################################
-alias se="emacs --with-profile spacemacs"
-alias de="emacs --with-profile doom"
-alias e="emacs --with-profile default"
-alias sec="emacs -nw --with-profile spacemacs"
-alias dec="emacs -nw --with-profile doom"
-alias ec="emacs -nw --with-profile default"
-alias dus="du -sh * | sort -n -r"
-alias dfh="df -h"
 # open ~/.zshrc in using the default editor specified in $EDITOR
 alias ez="$EDITOR $HOME/.zshrc"
 # source ~/.zshrc
 alias sz="source $HOME/.zshrc"
-if [[ $OSTYPE == darwin* ]]; then
-    alias route4="netstat -f inet -rl"
-    alias pfnat="sudo pfctl -sa 2>/dev/null | grep nat"
-fi
-# applications
-if [[ $OSTYPE == darwin* ]]; then
-    alias chrome="open -a /Applications/Google\ Chrome.app"
-    alias safari="open -a Safari"
-fi
-alias et="emacs -nw"
-alias vcode="open -a /Applications/VSCodium.app"
-alias xcode="open -a /Applications/Xcode.app"
-alias settings="open -a System\ Preferences"
-alias apps="open -a App\ Store"
-alias finder="open -a Finder"
-alias ss="open -a Screen\ Sharing"
-alias da="open -a Docker"
-alias ut="open -a uTorrent"
-alias vbox="open -a /Applications/VirtualBox.app"
-# open links
-alias gs="safari http://google.com"
-alias gc="chrome http://google.com"
-# network
-alias dns="scutil --dns | grep 'nameserver\[[0-9]*\]'"
 ################################################################################
-
-# add doom emacs bin to path
-export PATH=~/.config/emacs/doom-emacs/.emacs.d/bin/:$PATH
 
 # Add RVM to PATH for scripting. Make sure this is the last PATH variable change.
 export PATH="$PATH:$HOME/.rvm/bin"
+
