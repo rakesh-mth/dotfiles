@@ -48,8 +48,8 @@ deactivate
 # remove a virtual env with rmvirtualenv
 rmvirtualenv python2.7
 # install python packages in virtualenv - required for python development (do not use virtualenv directly)
-virtualenv -p /usr/local/bin/python2.7 $HOME/virtualenvs/python27
-virtualenv -p /usr/local/bin/python3.7 $HOME/virtualenvs/python37
+virtualenv -p /usr/local/bin/python2.7 $HOME/.virtualenvs/python2.7
+virtualenv -p /usr/local/bin/python3.7 $HOME/.virtualenvs/python3.7
 # work related development
 source $HOME/virtualenvs/python27/bin/activate
 pip install pynvim setuptools dagger enum pyOpenSSL PyYAML requests decorator networkx==1.10 

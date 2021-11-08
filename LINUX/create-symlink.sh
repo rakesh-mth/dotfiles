@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env bash
 
 # symlink related to git config
 [ -f "$HOME/.gitconfig" ] && unlink "$HOME/.gitconfig"

@@ -43,7 +43,7 @@
 
 ;; to solve issue in MacBook Pro. will look on why to increase these limits.
 (setq max-specpdl-size 5000) ;; default is 1000
-(setq max-lisp-eval-depth 1000) ;; default is 500
+(setq max-lisp-eval-depth 2000) ;; default is 500
 
 
 ;; Here are some additional functions/macros that could help you configure Doom:

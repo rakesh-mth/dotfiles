@@ -1,39 +1,86 @@
+#!/usr/bin/env bash
+
+# CREATE SYMLINKS
+create_symlink=$(readlink -f $(dirname "$0")/create-symlink.sh)
+echo "running $create_symlink"
+source $create_symlink
+
+# source .bashrc and .zshrc to ~/.bashrc and ~/.zshrc
+bashrc_file=$(readlink -f $(dirname "$0")/../.bashrc)
+bashrc_content="source $bashrc_file"
+echo "adding source $bashrc_file"
+if ! grep -qF "$bashrc_content" $HOME/.bashrc ; then
+    echo "$bashrc_content" >> $HOME/.bashrc
+    source "$bashrc_content" # source for PATH and env variables
+fi
+
+
+# APT-GET
 # apt-get (uninstalled, using brew for these packages)
 # sudo add-apt-repository ppa:kelleyk/emacs
 # sudo apt-get install htop tmux vim emacs27 
-
-# apt-get (needed for brew, can install brew version too)
-sudo apt-get install curl git uswsusp
 
 # snap (uninstalled, using brew for these packages)
 # sudo snap install fzf-carroarmato0
 # sudo snap install nvim --classic
 
-# homebrew for linux
+# apt-get packages - avoid using apt-get, instead use brew packages
+sudo apt-get install uswsusp
+
+# HOMEBREW FOR LINUX
+# brew path is added in ~/.profile by the installation.
+# curl and git are needed for brew, can install brew version too
 sudo apt-get install build-essential procps curl file git
-/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
-# homebrew core
-# aspell is used with spacemacs
-# xclip is used with neovim for copy paste from clipboard
-# virtualenv is installed for python virtual envs
-brew install curl git htop tmux vim neovim emacs fd bat ripgrep the_silver_searcher fzf llvm rust golang nodejs cmake aspell iperf3 gnupg virtualenv xclip
-# homebrew cask (is not supported on linux). 
-# Error: Installing casks is supported only on macOS
-# brew install homebrew/cask/emacs
+if command -v brew &> /dev/null; then
+    echo "brew is already installed"
+else
+    echo "installing brew..."
+    /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+    # homebrew core:
+    # aspell is used with spacemacs
+    # xclip is used with neovim for copy paste from clipboard
+    # virtualenv and virtualenvwrapper is installed for python virtual envs
+    echo "installing packages using brew"
+    brew install curl git htop tmux vim neovim emacs fd bat ripgrep the_silver_searcher fzf llvm rust rust-analyzer golang python virtualenv virtualenvwrapper nodejs cmake aspell iperf3 gnupg xclip
+    # homebrew cask: (is not supported on linux).
+    # Error: Installing casks is supported only on macOS
+    # brew install homebrew/cask/emacs
+fi
 
 
-# python (path must match with config.vim in vim-user-config repo)
-virtualenv -p /home/linuxbrew/.linuxbrew/bin/python3.9 $HOME/.virtualenvs/python3.9
-source /home/rakesh/.virtualenvs/python3.9/bin/activate
-# install all python modules for vim, neovim and emacs developments
-pip install pynvim neovim-remote flake8 isort yapf python-language-server pyls-isort pyls-mypy importmagic epc ptvsd autoflake
-
+# PYTHON 
+# path must match with config.vim in vim-user-config repo
+python3=python3.9
+if [ ! -d "$HOME/.virtualenvs/$python3" ]; then
+    # do not use virtualenv directly, instead use mkvirtualenv
+    # virtualenv -p /home/linuxbrew/.linuxbrew/bin/$python3 $HOME/.virtualenvs/$python3
+    # source $HOME/.virtualenvs/$python3/bin/activate
+    # mkvirtualenv creates env under $HOME/.virtualenvs
+    echo "creating python virtual env for $python3"
+    mkvirtualenv -p /home/linuxbrew/.linuxbrew/bin/$python3 $python3
+    workon $python3
+    # install all python modules for vim, neovim and emacs developments. And deactivate python virtual env.
+    pip install pynvim neovim-remote flake8 isort yapf python-language-server pyls-isort pyls-mypy importmagic epc ptvsd autoflake
+    deactivate
+else
+    echo "virtual env for $python3 already exists."
+fi
 
 # EMACS
 # clone spacemacs (path must match from create-symlink.sh)
-git clone https://github.com/syl20bnr/spacemacs ~/.config/emacs/spacemacs/.emacs.d
+if [ ! -d "$HOME/.config/emacs/spacemacs/.emacs.d" ]; then
+    echo "cloning spacemacs"
+    git clone https://github.com/syl20bnr/spacemacs ~/.config/emacs/spacemacs/.emacs.d
+else
+    echo "spacemacs is already cloned"
+fi
 # clone doom-emacs (path must match from create-symlink.sh)
-git clone --depth 1 https://github.com/hlissner/doom-emacs ~/.config/emacs/doom-emacs/.emacs.d
+if [ ! -d "$HOME/.config/emacs/doom-emacs/.emacs.d" ]; then
+    echo "cloning doom-emacs"
+    git clone --depth 1 https://github.com/hlissner/doom-emacs ~/.config/emacs/doom-emacs/.emacs.d
+else
+    echo "doom-emacs is already cloned"
+fi
 
 
 # key gen from github (only once, not on all machine)
