@@ -1,0 +1,7 @@
+######to upgrade a pin package, first unpin, then upgrade and then pin again
+choco pin remove -n=jfrog-cli
+choco upgrade jfrog-cli
+choco pin add -n=jfrog-cli
+
+######view list of pinned packages
+choco pin
