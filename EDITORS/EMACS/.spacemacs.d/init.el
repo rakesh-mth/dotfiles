@@ -594,6 +594,9 @@ before packages are loaded."
   (global-set-key (kbd "<f8>") 'toggle-flycheck-error-buffer)
   (global-set-key (kbd "C-`") 'run-bash)
   ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+  ;; projectile project search path
+  (setq projectile-project-search-path '(("~/.config/emacs" . 2) ("~/workspaces" . 2) ("F:\\DevTrees" . 1) "F:\\DevTrees\\opensource"))
+  ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
   )
 
 (defun dotspacemacs/emacs-custom-settings ()
