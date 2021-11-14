@@ -1,4 +1,5 @@
 REM delete existing files or symlink
+if exist %USERPROFILE%\.bashrc del %USERPROFILE%\.bashrc
 if exist %USERPROFILE%\.gitconfig del %USERPROFILE%\.gitconfig
 if exist %USERPROFILE%\.gitconfig-work del %USERPROFILE%\.gitconfig-work
 if exist %USERPROFILE%\.wslconfig del %USERPROFILE%\.wslconfig
@@ -19,7 +20,8 @@ if not exist %USERPROFILE%\.config\emacs\doom-emacs mkdir %USERPROFILE%\.config\
 SET SCRIPTS=f:\DevTrees\scripts
 SET DOTFILES=f:\DevTrees\rakesh-mth\dotfiles
 
-mklink %USERPROFILE%\.gitconfig-work %SCRIPTS%\GIT\.gitconfig
+mklink %USERPROFILE%\.bashrc %DOTFILES%\WINDOWS\.bashrc
+if exist %SCRIPTS%\GIT\.gitconfig mklink %USERPROFILE%\.gitconfig-work %SCRIPTS%\GIT\.gitconfig
 mklink %USERPROFILE%\.gitconfig %DOTFILES%\GIT\.gitconfig
 mklink %USERPROFILE%\.wslconfig %DOTFILES%\WSL\.wslconfig
 mklink %USERPROFILE%\.vimrc %DOTFILES%\EDITORS\VIM\init.vim
