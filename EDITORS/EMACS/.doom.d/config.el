@@ -40,6 +40,10 @@
 
 ;; maximize in full screen on startup
 (add-to-list 'default-frame-alist '(fullscreen . maximized))
+;; relative line number
+(setq display-line-numbers-type 'relative)
+;; do not ask for confirmation on exit
+(setq confirm-kill-emacs nil)
 
 ;; to solve issue in MacBook Pro. will look on why to increase these limits.
 (setq max-specpdl-size 5000) ;; default is 1000
