@@ -1,7 +1,7 @@
 ################################################################################
 ######INSTALL TOOLS USING CHOCO
 #admin powershell
-choco install -y neovim emacs vim fd ripgrep ag fzf bat ctags wget 7zip git gitversion.portable cmake powershell-core python2 python3 r.project r.studio groovy nodejs ruby jdk8 dotnetcore dotnetcore-sdk golang lua53 rustup.install rust-analyzer llvm hunspell.portable nuget.commandline jfrog-cli lxrunoffline libreoffice-fresh rufus nasm yasm jq
+choco install -y neovim emacs vim fd ripgrep ag fzf bat ctags wget 7zip git gitversion.portable cmake powershell-core python2 python3 r.project r.studio groovy nodejs ruby jdk8 dotnetcore dotnetcore-sdk golang lua53 rustup.install rust-analyzer llvm hunspell.portable nuget.commandline jfrog-cli lxrunoffline libreoffice-fresh rufus nasm yasm jq shellcheck
 ######pin a package (jfrog-cli) to the installed version (1.51.1 - last working)
 choco pin add -n=jfrog-cli
 ######vim needs python version 3.7
@@ -23,14 +23,17 @@ alternate link: https://visualstudio.microsoft.com/downloads/#build-tools-for-vi
 
 
 ################################################################################
-######CONFIGURE TOOLS (PYTHON, NODE AND RUBY) - require for vim
+######CONFIGURE TOOLS (PYTHON, NODE, RUBY, GO) - require for vim and emacs
 # user command prompt
+REM upgrade pip
 py -2 -m pip install --user --upgrade pip
 py -3.8 -m pip install --user --upgrade pip
-py -2 -m pip install --user pynvim 
-py -3.8 -m pip install --user pynvim neovim-remote virtualenvwrapper
-npm install -g neovim tern typescript
+REM install npm packages
+npm install -g neovim tern typescript marked :: marked: for markdown in doom-emacs
+REM install gem packages
 gem install neovim
+REM install go packages
+go install github.com/x-motemen/gore/cmd/gore@latest :: install gore for doom-emacs
 ################################################################################
 
 
@@ -45,14 +48,14 @@ REM install virtual env and python packages. using virtualenv command.
 :: %USERPROFILE%\virtualenvs\python27\scripts\activate
 :: pip install pynvim flake8 isort yapf python-language-server importmagic epc ptvsd autoflake
 REM install virtual env and python packages. using mkvirtualenv command.
-py -3 -m pip install virtualenvwrapper virtualenvwrapper-win
-REM add user script folder of python in path
+py -3 -m pip install wheel virtualenvwrapper virtualenvwrapper-win
+REM add user script folder of python in path, and npm global module folder in path
 for /f "usebackq tokens=2,*" %A in (`reg query HKCU\Environment /v PATH`) do set my_user_path=%B
-setx PATH "%my_user_path%;%USERPROFILE%\AppData\Roaming\Python\Python39\Scripts"
+setx PATH "%my_user_path%;%USERPROFILE%\AppData\Roaming\Python\Python39\Scripts;%USERPROFILE%\AppData\Roaming\npm\node_modules"
 setx WORKON_HOME "%USERPROFILE%\virtualenvs" :: needed for mkvirtualenv and EMACS
 FOR /F "tokens=* USEBACKQ" %%F IN (`where python ^| findstr Python39`) DO (SET python39=%%F)
 mkvirtualenv -p "%python39%" python39 :: this will activate virtual env
-pip install pynvim neovim-remote flake8 isort yapf python-language-server pyls-isort pyls-mypy pyls-black importmagic epc ptvsd autoflake cmake-language-server
+pip install pynvim neovim-remote flake8 isort yapf python-language-server pyls-isort pyls-mypy pyls-black importmagic epc ptvsd autoflake cmake-language-server pytest pipenv nose :: pytest, pipenv and nose is added for UT in doom-emacs
 FOR /F "tokens=* USEBACKQ" %%F IN (`where python ^| findstr Python27`) DO (SET python27=%%F)
 mkvirtualenv -p "%python27%" python27 :: this will activate virtual env
 pip install pynvim flake8 isort yapf python-language-server importmagic epc ptvsd autoflake
