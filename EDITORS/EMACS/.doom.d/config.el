@@ -45,6 +45,11 @@
 (setq max-specpdl-size 5000) ;; default is 1000
 (setq max-lisp-eval-depth 2000) ;; default is 500
 
+;; c/c++ lsp, Use "clangd" in eglot if in PATH
+  (when (featurep! +lsp)
+    (when (executable-find "clangd")
+        (set-eglot-client! 'cc-mode '("clangd" "-j=3" "--clang-tidy"))))
+
 
 ;; Here are some additional functions/macros that could help you configure Doom:
 ;;
