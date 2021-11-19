@@ -50,10 +50,15 @@
 (setq max-lisp-eval-depth 2000) ;; default is 500
 
 ;; c/c++ lsp, Use "clangd" in eglot if in PATH
-  (when (featurep! +lsp)
-    (when (executable-find "clangd")
-        (set-eglot-client! 'cc-mode '("clangd" "-j=3" "--clang-tidy"))))
+(when (featurep! +lsp)
+  (when (executable-find "clangd")
+    (set-eglot-client! 'cc-mode '("clangd" "-j=3" "--clang-tidy"))))
 
+;; c/c++ specific
+;; (global-set-key (kbd "C-x C-o") 'ff-find-other-file) ;; will use local-set-key and only for c/c++ files.
+(add-hook 'c-mode-common-hook
+  (lambda()
+    (local-set-key  (kbd "C-x C-o") 'ff-find-other-file)))
 
 ;; Here are some additional functions/macros that could help you configure Doom:
 ;;
