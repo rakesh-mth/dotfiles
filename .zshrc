@@ -3,7 +3,7 @@
 RUBY_VERSION=`ruby --version | awk '{print $2}' | awk -F "." '{print $1"."$2".0"}'`
 
 # update PATH variable
-export PATH="/usr/local/sbin:/usr/local/bin:$HOME/.cargo/bin:$HOME/.gem/ruby/$RUBY_VERSION/bin:$PATH:$HOME/.config/emacs/doom-emacs/.emacs.d/bin"
+export PATH="/usr/local/sbin:/usr/local/bin:$HOME/go/bin:$HOME/.cargo/bin:$HOME/.gem/ruby/$RUBY_VERSION/bin:$PATH:$HOME/.config/emacs/doom-emacs/.emacs.d/bin"
 
 # DOOMDIR for doom-emacs
 export DOOMDIR=$HOME/.config/emacs/doom-emacs/.doom.d
@@ -47,6 +47,7 @@ export LANG="en_US.UTF-8"
 
 # exit terminal app
 alias quit='osascript -e "do shell script \"osascript -e \\\"tell application \\\\\\\"Terminal\\\\\\\" to quit\\\" &> /dev/null &\""; exit'
+alias q=quit
 
 ################################################################################
 ##################################### aliases ##################################

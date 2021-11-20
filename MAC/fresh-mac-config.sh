@@ -1,6 +1,8 @@
 # install opengdk first as it is a dependency of groovy
 brew cask install adoptopenjdk | tee ~/brew/adoptopenjdk
-brew install neovim vim emacs fd ripgrep the_silver_searcher fzf ctags wget xz jfrog-cli-go python@2 python@3 groovy nodejs golang rust llvm cmake aspell hub git iperf3 gnupg
+# some packages available using npm or other package manager, do not install them using brew.
+# list of packages not to be installed using brew: marked
+brew install neovim vim emacs fd ripgrep the_silver_searcher fzf ctags wget xz jfrog-cli-go python@2 python@3 groovy nodejs golang rust rust-analyzer llvm sbcl glslang cmake aspell hub git iperf3 gnupg jq shellcheck coreutils
 # brew cask install emacs 2>&1 | tee ~/brew/emacs
 
 # create software folder for fonts and other opensource
@@ -15,7 +17,7 @@ pip3 install --user pynvim neovim-remote virtualenvwrapper # add ~/Library/Pytho
 
 ################################################################################
 ######NPM AND NODE
-npm install -g neovim tern typescript yarn
+npm install -g neovim tern typescript yarn marked
 
 ################################################################################
 ######RUBY
@@ -55,9 +57,21 @@ source $HOME/virtualenvs/python27/bin/activate
 pip install pynvim setuptools dagger enum pyOpenSSL PyYAML requests decorator networkx==1.10 
 # python development in emacs or vim
 source $HOME/virtualenvs/python37/bin/activate
-pip install pynvim neovim-remote flake8 isort yapf python-language-server pyls-isort pyls-mypy importmagic epc ptvsd autoflake 
+pip install pynvim neovim-remote flake8 isort yapf python-language-server pyls-isort pyls-mypy importmagic epc ptvsd autoflake pytest pipenv nose # pytest, pipenv and nose is added for UT in doom-emacs
 ################################################################################
 
+################################################################################
+######GO LANG
+# default GOPATH is $HOME/go
+# These are for doom-emacs
+go install github.com/x-motemen/gore/cmd/gore@latest
+go install github.com/stamblerre/gocode@latest
+go install golang.org/x/tools/cmd/godoc@latest
+go install golang.org/x/tools/cmd/goimports@latest
+go install golang.org/x/tools/cmd/gorename@latest
+go install golang.org/x/tools/cmd/guru@latest
+go install github.com/cweill/gotests/gotests@latest
+go install github.com/fatih/gomodifytags@latest
 
 ################################################################################
 ######EMACS
