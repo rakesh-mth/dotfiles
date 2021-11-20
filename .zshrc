@@ -54,6 +54,9 @@ alias quit='osascript -e "do shell script \"osascript -e \\\"tell application \\
 alias ez="$EDITOR $HOME/.zshrc"
 # source ~/.zshrc
 alias sz="source $HOME/.zshrc"
+# source aliases
+source ${0:a:h}/aliases
+################################################################################
 ################################################################################
 
 # Add RVM to PATH for scripting. Make sure this is the last PATH variable change.
