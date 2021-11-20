@@ -46,8 +46,8 @@
 (setq confirm-kill-emacs nil)
 
 ;; to solve issue in MacBook Pro. will look on why to increase these limits.
-(setq max-specpdl-size 5000) ;; default is 1000
-(setq max-lisp-eval-depth 2000) ;; default is 500
+(setq max-specpdl-size 8000) ;; default is 1000
+(setq max-lisp-eval-depth 8000) ;; default is 500
 
 ;; c/c++ lsp, Use "clangd" in eglot if in PATH
 (when (featurep! +lsp)
