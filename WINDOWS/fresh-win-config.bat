@@ -4,6 +4,10 @@
 choco install -y neovim emacs vim fd ripgrep ag fzf bat ctags wget 7zip git gitversion.portable cmake powershell-core python2 python3 r.project r.studio groovy nodejs ruby jdk8 dotnetcore dotnetcore-sdk golang lua53 rustup.install rust-analyzer llvm hunspell.portable nuget.commandline jfrog-cli lxrunoffline libreoffice-fresh rufus nasm yasm jq shellcheck
 ######pin a package (jfrog-cli) to the installed version (1.51.1 - last working)
 choco pin add -n=jfrog-cli
+######install glslang
+# download, extract and add to path: https://github.com/KhronosGroup/glslang/releases/tag/master-tot
+######install sbcl
+# download and install: https://sourceforge.net/projects/sbcl/files/sbcl/2.1.10/
 ######vim needs python version 3.7
 choco install -y python --version=3.7.8
 choco install -y python --version=3.8.5
@@ -33,7 +37,16 @@ npm install -g neovim tern typescript marked :: marked: for markdown in doom-ema
 REM install gem packages
 gem install neovim
 REM install go packages
-go install github.com/x-motemen/gore/cmd/gore@latest :: install gore for doom-emacs
+REM default GOPATH is $HOME/go
+REM These are for doom-emacs
+go install github.com/x-motemen/gore/cmd/gore@latest
+go install github.com/stamblerre/gocode@latest
+go install golang.org/x/tools/cmd/godoc@latest
+go install golang.org/x/tools/cmd/goimports@latest
+go install golang.org/x/tools/cmd/gorename@latest
+go install golang.org/x/tools/cmd/guru@latest
+go install github.com/cweill/gotests/gotests@latest
+go install github.com/fatih/gomodifytags@latest
 ################################################################################
 
 
