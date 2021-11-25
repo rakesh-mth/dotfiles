@@ -11,7 +11,7 @@ bashrc_content="source $bashrc_file"
 echo "adding source $bashrc_file"
 if ! grep -qF "$bashrc_content" $HOME/.bashrc ; then
     echo "$bashrc_content" >> $HOME/.bashrc
-    source "$bashrc_content" # source for PATH and env variables
+    source "$bashrc_content" # source for PATH and env variables in current shell
 fi
 
 
@@ -41,7 +41,7 @@ else
     # xclip is used with neovim for copy paste from clipboard
     # virtualenv and virtualenvwrapper is installed for python virtual envs
     echo "installing packages using brew"
-    brew install curl git htop tmux vim neovim emacs fd bat ripgrep the_silver_searcher fzf llvm rust rust-analyzer golang python virtualenv virtualenvwrapper nodejs cmake aspell iperf3 gnupg xclip
+    brew install curl git htop tmux vim neovim emacs fd bat ripgrep the_silver_searcher fzf llvm rust rust-analyzer golang python virtualenv virtualenvwrapper nodejs sbcl glslang cmake aspell iperf3 gnupg xclip jq shellcheck
     # homebrew cask: (is not supported on linux).
     # Error: Installing casks is supported only on macOS
     # brew install homebrew/cask/emacs
@@ -60,11 +60,26 @@ if [ ! -d "$HOME/.virtualenvs/$python3" ]; then
     mkvirtualenv -p /home/linuxbrew/.linuxbrew/bin/$python3 $python3
     workon $python3
     # install all python modules for vim, neovim and emacs developments. And deactivate python virtual env.
-    pip install pynvim neovim-remote flake8 isort yapf python-language-server pyls-isort pyls-mypy importmagic epc ptvsd autoflake
+    pip install pynvim neovim-remote flake8 isort yapf python-language-server pyls-isort pyls-mypy importmagic epc ptvsd autoflake pytest pipenv nose # pytest, pipenv and nose is added for UT in doom-emacs
     deactivate
 else
     echo "virtual env for $python3 already exists."
 fi
+
+# NPM and NODEJS
+npm install -g neovim tern typescript yarn marked # marked is used with doom-emacs
+
+# GO LANG
+# default GOPATH is $HOME/go
+# These are for doom-emacs
+go install github.com/x-motemen/gore/cmd/gore@latest
+go install github.com/stamblerre/gocode@latest
+go install golang.org/x/tools/cmd/godoc@latest
+go install golang.org/x/tools/cmd/goimports@latest
+go install golang.org/x/tools/cmd/gorename@latest
+go install golang.org/x/tools/cmd/guru@latest
+go install github.com/cweill/gotests/gotests@latest
+go install github.com/fatih/gomodifytags@latest
 
 # EMACS
 # clone spacemacs (path must match from create-symlink.sh)
