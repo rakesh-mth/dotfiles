@@ -2,13 +2,12 @@
 
 ################################################################################
 ##################################### aliases ##################################
-alias et="emacs -nw"
+alias e="emacs --with-profile default"
 alias se="emacs --with-profile spacemacs"
 alias de="emacs --with-profile doom"
-alias e="emacs --with-profile default"
+alias ec="emacs -nw --with-profile default"
 alias sec="emacs -nw --with-profile spacemacs"
 alias dec="emacs -nw --with-profile doom"
-alias ec="emacs -nw --with-profile default"
 alias dus="du -sh * | sort -n -r"
 alias dfh="df -h"
 # open links
