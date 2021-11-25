@@ -60,6 +60,17 @@
   (lambda()
     (local-set-key  (kbd "C-x C-o") 'ff-find-other-file)))
 
+;; add a function for clear ielm buffer, and a key mapping (C-l)
+(with-eval-after-load 'comint
+        (unless (fboundp 'comint-clear-buffer)
+                (defun comint-clear-buffer ()
+                        "clean ielm window"
+                        (interactive)
+                        (let ((comint-buffer-maximum-size 0))
+                                (comint-truncate-buffer)))))
+
+(define-key comint-mode-map "\C-l" #'comint-clear-buffer)
+
 ;; Here are some additional functions/macros that could help you configure Doom:
 ;;
 ;; - `load!' for loading external *.el files relative to this one
