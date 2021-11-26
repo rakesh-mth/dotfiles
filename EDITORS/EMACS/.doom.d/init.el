@@ -83,7 +83,7 @@
        ;;spell             ; tasing you for misspelling mispelling
        ;;grammar           ; tasing grammar mistake every you make
 
-       :tools (lsp +eglot) ; remove eglot if you prefer lsp-mode (lsp-mode is default)
+       :tools
        ;;ansible
        ;;debugger          ; FIXME stepping through code, to help you add bugs
        ;;direnv
