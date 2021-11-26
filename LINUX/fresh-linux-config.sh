@@ -78,7 +78,8 @@ else
 fi
 
 # NPM and NODEJS
-npm install -g neovim tern typescript yarn marked # marked is used with doom-emacs
+# marked, bash-language-server is used with doom-emacs
+npm install -g neovim tern typescript yarn marked bash-language-server 
 
 # GO LANG
 # default GOPATH is $HOME/go
