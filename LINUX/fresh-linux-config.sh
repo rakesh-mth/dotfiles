@@ -1,5 +1,13 @@
 #!/usr/bin/env bash
 
+# close dotfiles repo from github
+if [ ! -d "$HOME/workspaces/rakesh-mth" ]; then
+    mkdir -p $HOME/workspaces/rakesh-mth
+    pushd $HOME/workspaces/rakesh-mth
+    git clone https://github.com/rakesh-mth/dotfiles.git
+    popd
+fi
+
 # CREATE SYMLINKS
 create_symlink=$(readlink -f $(dirname "$0")/create-symlink.sh)
 echo "running $create_symlink"

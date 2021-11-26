@@ -28,7 +28,7 @@ source virtualenvwrapper.sh
 export DOOMDIR=$HOME/.config/emacs/doom-emacs/.doom.d
 
 # source aliases
-script_full_path=$(dirname "$0")
-aliases_file=$(readlink -f $script_full_path/aliases)
+script_full_path="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)/$(basename "${BASH_SOURCE[0]}")"
+aliases_file=$(readlink -f $(dirname "$script_full_path")/aliases)
 source $aliases_file
 
