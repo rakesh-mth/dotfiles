@@ -69,17 +69,19 @@ if [ ! -d "$HOME/.virtualenvs/$python3" ]; then
     # mkvirtualenv creates env under $HOME/.virtualenvs
     echo "creating python virtual env for $python3"
     mkvirtualenv -p /home/linuxbrew/.linuxbrew/bin/$python3 $python3
+    # activate python virtual env
     workon $python3
-    # install all python modules for vim, neovim and emacs developments. And deactivate python virtual env.
-    pip install pynvim neovim-remote flake8 isort yapf python-language-server pyls-isort pyls-mypy importmagic epc ptvsd autoflake pytest pipenv nose # pytest, pipenv and nose is added for UT in doom-emacs
+    # install all python modules for vim, neovim and emacs developments.
+    pip install pynvim neovim-remote flake8 isort yapf python-language-server[all] pyls-isort pyls-mypy importmagic epc ptvsd autoflake pytest pipenv nose # pytest, pipenv and nose is added for UT in doom-emacs
+    # deactivate python virtual env.
     deactivate
 else
     echo "virtual env for $python3 already exists."
 fi
 
 # NPM and NODEJS
-# marked, bash-language-server is used with doom-emacs
-npm install -g neovim tern typescript yarn marked bash-language-server 
+# marked, bash-language-server, typescript-language-server is used with doom-emacs
+npm install -g neovim tern typescript yarn marked bash-language-server typescript-language-server
 
 # GO LANG
 # default GOPATH is $HOME/go
