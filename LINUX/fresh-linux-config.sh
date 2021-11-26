@@ -19,7 +19,7 @@ bashrc_content="source $bashrc_file"
 echo "adding source $bashrc_file"
 if ! grep -qF "$bashrc_content" $HOME/.bashrc ; then
     echo "$bashrc_content" >> $HOME/.bashrc
-    source "$bashrc_content" # source for PATH and env variables in current shell
+    source "$bashrc_file" # source for PATH and env variables in current shell
 fi
 
 
@@ -58,6 +58,19 @@ else
     # brew install homebrew/cask/emacs
 fi
 
+# RUBY (with RVM)
+if [ ! -d "$HOME/.rvm" ]; then
+    RUBY_VERSION=3.0.3
+    curl -sSL https://get.rvm.io | bash -s -- --ignore-dotfiles
+    # install ruby-3.0.3 using rvm
+    rvm install ruby-$RUBY_VERSION --binary
+    # switch to use ruby from rvm
+    rvm use $RUBY_VERSION
+    # install gems (--user-install option is not used if rvm is used)
+    gem install neovim solargraph pry pry-doc ruby_parser rubocop prettier seeing_is_believing ruby-debug-ide debase
+else
+    echo "rvm is already installed"
+fi
 
 # PYTHON 
 # path must match with config.vim in vim-user-config repo
