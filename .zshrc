@@ -56,7 +56,9 @@ alias ez="$EDITOR $HOME/.zshrc"
 # source ~/.zshrc
 alias sz="source $HOME/.zshrc"
 # source aliases
-source ${0:a:h}/aliases
+script_full_path=$(realpath ${(%):-%N})
+source $(dirname $script_full_path)/aliases
+# source ${0:a:h}/aliases # does not work with link
 ################################################################################
 ################################################################################
 
