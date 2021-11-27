@@ -1,4 +1,11 @@
 [ -f "$HOME/.codex/codex.sh" ] && . "$HOME/.codex/codex.sh"
+[ -f "$HOME/software/.purepower" ] && source "$HOME/software/.purepower"
+
+# powerlevel10k theme for zsh - only oh-my-zsh is not used
+if [[ -z $ZSH_THEME ]]; then
+    [ -f "$HOME/software/powerlevel10k/powerlevel10k.zsh-theme" ] && source "$HOME/software/powerlevel10k/powerlevel10k.zsh-theme"
+    POWERLEVEL9K_IGNORE_TERM_COLORS=true
+fi
 
 RUBY_VERSION=`ruby --version | awk '{print $2}' | awk -F "." '{print $1"."$2".0"}'`
 
@@ -8,17 +15,6 @@ export PATH="/usr/local/sbin:/usr/local/bin:$HOME/go/bin:$HOME/.cargo/bin:$HOME/
 # DOOMDIR for doom-emacs
 export DOOMDIR=$HOME/.config/emacs/doom-emacs/.doom.d
 
-# add doom emacs bin to path
-export PATH=~/.config/emacs/doom-emacs/.emacs.d/bin/:$PATH
-
-# powerlevel10k theme for zsh - only oh-my-zsh is not used
-if [[ -z $ZSH_THEME ]]; then
-    [ -f "$HOME/software/powerlevel10k/powerlevel10k.zsh-theme" ] && source "$HOME/software/powerlevel10k/powerlevel10k.zsh-theme"
-    POWERLEVEL9K_IGNORE_TERM_COLORS=true
-fi
-
-[ -f "$HOME/software/.purepower" ] && source "$HOME/software/.purepower"
-
 # source fzf completion and key binding, use fd as default fzf command
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 export FZF_DEFAULT_COMMAND='fd --type f'
@@ -27,10 +23,14 @@ export FZF_DEFAULT_COMMAND='fd --type f'
 export HOMEBREW_NO_BOTTLE_SOURCE_FALLBACK=1
 
 # Configuration for virtualenv. # WORKON_HOME for virualenvs selection in emacs
-export WORKON_HOME=$HOME/.virtualenvs
-export VIRTUALENVWRAPPER_PYTHON=/usr/local/bin/python3
-export VIRTUALENVWRAPPER_VIRTUALENV=/usr/local/bin/virtualenv
-source /usr/local/bin/virtualenvwrapper.sh
+# WORKON_HOME is set by vierualenvwrapper.sh if it is not set.
+# export WORKON_HOME=$HOME/.virtualenvs
+export VIRTUALENVWRAPPER_PYTHON=`which python3`
+export VIRTUALENVWRAPPER_VIRTUALENV=`which virtualenv`
+[ -f "/usr/local/bin/virtualenvwrapper.sh" ] && source "/usr/local/bin/virtualenvwrapper.sh"
+
+# source rvm for ruby
+[ -f "$HOME/.rvm/scripts/rvm" ] && source "$HOME/.rvm/scripts/rvm"
 
 # enable autocomplete (git and others)
 autoload -Uz compinit && compinit
@@ -61,7 +61,4 @@ source $(dirname $script_full_path)/aliases
 # source ${0:a:h}/aliases # does not work with link
 ################################################################################
 ################################################################################
-
-# Add RVM to PATH for scripting. Make sure this is the last PATH variable change.
-export PATH="$PATH:$HOME/.rvm/bin"
 
