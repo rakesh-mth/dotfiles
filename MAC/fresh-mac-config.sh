@@ -9,36 +9,12 @@ brew install neovim vim emacs fd ripgrep the_silver_searcher fzf ctags wget xz j
 mkdir -p ~/software 
 
 ################################################################################
-######PYTHON
+###### PYTHON
+# update system pip and install virtualenvwrapper
 pip2 install --upgrade pip
 pip3 install --upgrade pip
 pip2 install --user pynvim
 pip3 install --user pynvim neovim-remote virtualenvwrapper # add ~/Library/Python/3.7/bin in your path
-
-################################################################################
-######NPM AND NODE
-npm install -g neovim tern typescript yarn marked # marked is used with doom-emacs
-
-################################################################################
-######RUBY
-# add ~/.gem/ruby/2.6.0/bin in your path (change version number)
-# install rvm
-gpg --recv-keys 409B6B1796C275462A1703113804BB82D39DC0E3 7D2BAF1CF37B13E2069D6956105BD0E739499BDB
-curl -sSL https://get.rvm.io | bash -s stable
-rvm mount /usr/local/opt/ruby@3/bin/ruby # mount existing ruby from homebrew
-# for ruby support in vim/nvim.
-gem install --user-install neovim 
-# for ruby development in spacemacs
-gem install --user-install solargraph pry pry-doc ruby_parser rubocop prettier seeing_is_believing
-# run `M-x dap-ruby-setup <enter>`
-# for ruby development in vscode
-gem install --user-install ruby-debug-ide
-gem install --user-install debase -v 0.2.5.beta2
-# vscode plugin for ruby
-code --install-extension rebornix.ruby castwide.solargraph wingrunr21.vscode-ruby
-
-################################################################################
-######PYTHON
 # use mkvirtualenv command to add a virtual env
 mkvirtualenv -p /usr/local/bin/python2.7 python2.7
 mkvirtualenv -p /usr/local/bin/python3.8 python3.8
@@ -61,7 +37,56 @@ pip install pynvim neovim-remote flake8 isort yapf python-language-server pyls-i
 ################################################################################
 
 ################################################################################
-######GO LANG
+###### RUBY (with RVM)
+if [ ! -d "$HOME/.rvm" ]; then
+    RUBY_VERSION=3.0.3
+    # install rvm. most likely gpg key is not needed
+    gpg --recv-keys 409B6B1796C275462A1703113804BB82D39DC0E3 7D2BAF1CF37B13E2069D6956105BD0E739499BDB
+    # curl -sSL https://get.rvm.io | bash -s stable
+    curl -sSL https://get.rvm.io | bash -s -- --ignore-dotfiles
+    # source rvm in current shell
+    source "$HOME/.rvm/scripts/rvm"
+    # mount existing ruby from homebrew. import gem will fail for bundler, run below command to install it.
+    rvm mount /usr/local/opt/ruby@3/bin/ruby
+    sudo gem install rubygems-bundler # bundler fails to install, needs sudo access for /us/local folder.
+    # install ruby-3.0.3 using rvm, --binary option does not find a pre-build binary in mac
+    rvm install ruby-$RUBY_VERSION # --binary
+    # switch to use ruby from rvm. This will be default in all shell now onwards.
+    rvm --default use $RUBY_VERSION
+    # install gems (--user-install option is not used if rvm is used)
+    # for ruby support in vim, nvim, spacemacs, doom-emacs
+    # gem for ruby development in vscode: ruby-debug-ide, debase
+    gem install neovim solargraph pry pry-doc ruby_parser rubocop prettier seeing_is_believing ruby-debug-ide
+    gem install debase -v 0.2.5.beta2
+    # emacs: configure ruby for debugging
+    # run `M-x dap-ruby-setup <enter>`
+    # vscode: plugin for ruby
+    code --install-extension rebornix.ruby castwide.solargraph wingrunr21.vscode-ruby
+else
+    echo "rvm is already installed"
+fi
+################################################################################
+
+################################################################################
+###### NPM and NODEJS (with NVM)
+if [ ! -d "$HOME/.nvm" ]; then
+    NODE_VERSION=17.1.0
+    curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.0/install.sh | bash
+    # source nvm in current shell
+    source "$HOME/.nvm/nvm.sh"
+    # install a node 
+    nvm install $NODE_VERSION
+    # switch to use npm from nvm. This will be default in all shell now onwards.
+    nvm use $NODE_VERSION
+    # marked, bash-language-server, typescript-language-server is used with doom-emacs
+    npm install -g neovim tern typescript yarn marked bash-language-server typescript-language-server
+else
+    echo "nvm is already installed"
+fi
+################################################################################
+
+################################################################################
+###### GO LANG
 # default GOPATH is $HOME/go
 # These are for doom-emacs
 go install github.com/x-motemen/gore/cmd/gore@latest
@@ -72,18 +97,18 @@ go install golang.org/x/tools/cmd/gorename@latest
 go install golang.org/x/tools/cmd/guru@latest
 go install github.com/cweill/gotests/gotests@latest
 go install github.com/fatih/gomodifytags@latest
+################################################################################
 
 ################################################################################
-######EMACS
+###### EMACS
 # install spacemacs
 git clone https://github.com/syl20bnr/spacemacs ~/.emacs.d
 # font for emacs
 git clone https://github.com/adobe-fonts/source-code-pro.git ~/software/source-code-pro
 ################################################################################
 
-
 ################################################################################
-######VIM
+###### VIM
 # font for vim
 git clone https://github.com/powerline/fonts.git ~/software/fonts
 # repeat key sequence (ex: repeat j/k in vscode vim movement)
