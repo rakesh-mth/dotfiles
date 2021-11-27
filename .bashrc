@@ -13,23 +13,24 @@ else
     export FZF_DEFAULT_COMMAND='fd --type f'
 fi
 
-# get ruby version
-RUBY_VERSION=`ruby --version | awk '{print $2}' | awk -F "." '{print $1"."$2".0"}'`
+# get ruby version, not using system ruby path since rvm is used below.
+# RUBY_VERSION=`ruby --version | awk '{print $2}' | awk -F "." '{print $1"."$2".0"}'`
+# export PATH="$HOME/.gem/ruby/$RUBY_VERSION/bin:$PATH"
 
 # update PATH variable
 # add go, cargo, ruby, doom-emacs-bin, user-scripts-folder to path
-export PATH="$HOME/scripts:/usr/local/sbin:/usr/local/bin:$HOME/go/bin:$HOME/.cargo/bin:$HOME/.gem/ruby/$RUBY_VERSION/bin:$PATH:$HOME/.config/emacs/doom-emacs/.emacs.d/bin"
+export PATH="$HOME/scripts:/usr/local/sbin:/usr/local/bin:$HOME/go/bin:$HOME/.cargo/bin:$HOME/.config/emacs/doom-emacs/.emacs.d/bin:$PATH"
 
 # source virualenvwrapper for mkvirtualenv. virtualenvwrapper.sh must be in path.
 source virtualenvwrapper.sh
-
-# source rvm for ruby
-source $HOME/.rvm/scripts/rvm
 
 # source nvm for npm and nodejs
 export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+
+# source rvm for ruby
+source $HOME/.rvm/scripts/rvm
 
 # set DOOMDIR for DOOM to use our config
 export DOOMDIR=$HOME/.config/emacs/doom-emacs/.doom.d
