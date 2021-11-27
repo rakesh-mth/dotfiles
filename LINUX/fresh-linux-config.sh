@@ -58,20 +58,6 @@ else
     # brew install homebrew/cask/emacs
 fi
 
-# RUBY (with RVM)
-if [ ! -d "$HOME/.rvm" ]; then
-    RUBY_VERSION=3.0.3
-    curl -sSL https://get.rvm.io | bash -s -- --ignore-dotfiles
-    # install ruby-3.0.3 using rvm
-    rvm install ruby-$RUBY_VERSION --binary
-    # switch to use ruby from rvm
-    rvm use $RUBY_VERSION
-    # install gems (--user-install option is not used if rvm is used)
-    gem install neovim solargraph pry pry-doc ruby_parser rubocop prettier seeing_is_believing ruby-debug-ide debase
-else
-    echo "rvm is already installed"
-fi
-
 # PYTHON 
 # path must match with config.vim in vim-user-config repo
 python3=python3.9
@@ -92,9 +78,35 @@ else
     echo "virtual env for $python3 already exists."
 fi
 
+# RUBY (with RVM)
+if [ ! -d "$HOME/.rvm" ]; then
+    RUBY_VERSION=3.0.3
+    curl -sSL https://get.rvm.io | bash -s -- --ignore-dotfiles
+    # install ruby-3.0.3 using rvm
+    rvm install ruby-$RUBY_VERSION --binary
+    # switch to use ruby from rvm. This will be default in all shell now onwards.
+    rvm use $RUBY_VERSION
+    # install gems (--user-install option is not used if rvm is used)
+    gem install neovim solargraph pry pry-doc ruby_parser rubocop prettier seeing_is_believing ruby-debug-ide debase
+else
+    echo "rvm is already installed"
+fi
+
 # NPM and NODEJS
-# marked, bash-language-server, typescript-language-server is used with doom-emacs
-npm install -g neovim tern typescript yarn marked bash-language-server typescript-language-server
+if [ ! -d "$HOME/.nvm" ]; then
+    NODE_VERSION=17.1.0
+    curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.0/install.sh | bash
+    # source nvm in current shell
+    source "$HOME/.nvm/nvm.sh"
+    # install a node 
+    nvm install $NODE_VERSION
+    # switch to use npm from nvm. This will be default in all shell now onwards.
+    nvm use $NODE_VERSION
+    # marked, bash-language-server, typescript-language-server is used with doom-emacs
+    npm install -g neovim tern typescript yarn marked bash-language-server typescript-language-server
+else
+    echo "nvm is already installed"
+fi
 
 # GO LANG
 # default GOPATH is $HOME/go

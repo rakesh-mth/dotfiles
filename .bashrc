@@ -17,7 +17,7 @@ fi
 RUBY_VERSION=`ruby --version | awk '{print $2}' | awk -F "." '{print $1"."$2".0"}'`
 
 # update PATH variable
-# add go, cargo, ruby, rvm, doom-emacs-bin, user-scripts-folder to path
+# add go, cargo, ruby, doom-emacs-bin, user-scripts-folder to path
 export PATH="$HOME/scripts:/usr/local/sbin:/usr/local/bin:$HOME/go/bin:$HOME/.cargo/bin:$HOME/.gem/ruby/$RUBY_VERSION/bin:$PATH:$HOME/.config/emacs/doom-emacs/.emacs.d/bin"
 
 # source virualenvwrapper for mkvirtualenv. virtualenvwrapper.sh must be in path.
@@ -25,6 +25,11 @@ source virtualenvwrapper.sh
 
 # source rvm for ruby
 source $HOME/.rvm/scripts/rvm
+
+# source nvm for npm and nodejs
+export NVM_DIR="$HOME/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
+[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
 
 # set DOOMDIR for DOOM to use our config
 export DOOMDIR=$HOME/.config/emacs/doom-emacs/.doom.d
