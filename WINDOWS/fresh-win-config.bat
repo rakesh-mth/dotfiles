@@ -32,10 +32,11 @@ alternate link: https://visualstudio.microsoft.com/downloads/#build-tools-for-vi
 REM upgrade pip
 py -2 -m pip install --user --upgrade pip
 py -3.8 -m pip install --user --upgrade pip
-REM install npm packages
-npm install -g neovim tern typescript marked :: marked: for markdown in doom-emacs
+REM install npm packages. npm modules path is added to PATH below, under python section.
+REM marked, bash-language-server, typescript-language-server is used with doom-emacs
+npm install -g neovim tern typescript yarn marked bash-language-server typescript-language-server
 REM install gem packages
-gem install neovim
+gem install neovim solargraph pry pry-doc ruby_parser rubocop prettier seeing_is_believing ruby-debug-ide debase
 REM install go packages
 REM default GOPATH is $HOME/go
 REM These are for doom-emacs
