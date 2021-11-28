@@ -33,7 +33,10 @@ source $HOME/virtualenvs/python27/bin/activate
 pip install pynvim setuptools dagger enum pyOpenSSL PyYAML requests decorator networkx==1.10 
 # python development in emacs or vim
 source $HOME/virtualenvs/python37/bin/activate
-pip install pynvim neovim-remote flake8 isort yapf python-language-server pyls-isort pyls-mypy importmagic epc ptvsd autoflake pytest pipenv nose # pytest, pipenv and nose is added for UT in doom-emacs
+# flake8 is not installed because this is conflicting with autopep8 on version of pycodestyle
+pip install pynvim neovim-remote isort yapf python-language-server pyls-isort pyls-mypy importmagic epc ptvsd autoflake 
+# for python with eglot in doom-emacs. pytest, pipenv and nose is added for UT in doom-emacs
+pip install autopep8 pydocstyle pylint rope future pytest pipenv nose
 ################################################################################
 
 ################################################################################
