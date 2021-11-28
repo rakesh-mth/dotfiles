@@ -49,10 +49,11 @@
 (setq max-specpdl-size 8000) ;; default is 1000
 (setq max-lisp-eval-depth 8000) ;; default is 500
 
-;; c/c++ lsp, Use "clangd" in eglot if in PATH
+;; c/c++ lsp, Use "clangd" in eglot if in PATH. on mac use clang from llvm with brew.
 (when (featurep! +lsp)
-  (when (executable-find "clangd")
-    (set-eglot-client! 'cc-mode '("clangd" "-j=3" "--clang-tidy"))))
+  (setq clangd (if IS-MAC "/usr/local/opt/llvm/bin/clangd" "clangd"))
+  (when (executable-find clangd)
+    (set-eglot-client! 'cc-mode `(,clangd "-j=3" "--clang-tidy"))))
 
 ;; c/c++ specific
 ;; (global-set-key (kbd "C-x C-o") 'ff-find-other-file) ;; will use local-set-key and only for c/c++ files.
