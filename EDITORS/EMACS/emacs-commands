@@ -59,8 +59,10 @@ M-x electric-indent-mode - disable auto indent
 M-x ff-find-other-file - find cpp/header file corresponding to currently open file
 
 ################################################################################
-######emacs lisp development
-M-x emacs-list-mode - switch to lisp mode
+###### Emacs lisp development
+M-x ielm - open elisp REPL
+    C-c C-b - to associate REPL to a buffer (for example *scratch* buffer)
+M-x emacs-list-mode - switch to lisp mode on current buffer
 
 ################################################################################
 ###### Python development
@@ -77,9 +79,13 @@ magit-ediff-compare - compare current file with origin/master of any other branc
 
 ################################################################################
 ###### MAGIT
-SPC g s - magit status
+SPC g s - magit status in spacemacs
+SPC g g - magit status in doom-emacs
 ############MAGIT commands
+q   - close any magit window
 TAB - open / close current section
+cc - commit staged changes
+dd - to open a commit, stash
 gj - cycle through history to the previous commit
 gk - cycle through history to the next commit
 ################################################################################
