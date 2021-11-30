@@ -1,3 +1,5 @@
+################################################################################
+###### DOTFILES repo
 git remote -v
 	origin  https://github.com/rakesh-mth/dotfiles.git (fetch)
 	origin  https://github.com/rakesh-mth/dotfiles.git (push)
@@ -8,3 +10,8 @@ git remote -v
 	origin  git@github.com:rakesh-mth/dotfiles.git (fetch)
 	origin  git@github.com:rakesh-mth/dotfiles.git (push)
 
+
+################################################################################
+###### VIM-USER-CONFIG repo
+
+git remote set-url origin git@github.com:rakesh-mth/vim-user-config.git
