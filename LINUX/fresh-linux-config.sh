@@ -71,7 +71,8 @@ if [ ! -d "$HOME/.virtualenvs/$python3" ]; then
     # activate python virtual env
     workon $python3
     # install all python modules for vim, neovim and emacs developments.
-    pip install pynvim neovim-remote flake8 isort yapf python-language-server[all] pyls-isort pyls-mypy importmagic epc ptvsd autoflake pytest pipenv nose # pytest, pipenv and nose is added for UT in doom-emacs
+    # pytest, pipenv and nose is added for UT in doom-emacs
+    pip install pynvim neovim-remote flake8 isort yapf python-language-server[all] pyls-isort pyls-mypy importmagic epc ptvsd autoflake pytest pipenv nose ipython
     # deactivate python virtual env.
     deactivate
 else

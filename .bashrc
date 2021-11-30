@@ -23,6 +23,8 @@ export PATH="$HOME/scripts:/usr/local/sbin:/usr/local/bin:$HOME/go/bin:$HOME/.ca
 
 # source virualenvwrapper for mkvirtualenv. virtualenvwrapper.sh must be in path.
 source virtualenvwrapper.sh
+# use virtual python3.9
+workon python3.9
 
 # source nvm for npm and nodejs
 export NVM_DIR="$HOME/.nvm"

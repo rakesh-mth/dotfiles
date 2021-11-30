@@ -93,3 +93,14 @@ gk - cycle through history to the next commit
 ################################################################################
 ###### useful commands
 ff-find-other-file - open corresponding cpp/h file
+
+################################################################################
+###### REPL
+doom-emacs:
+    M-x ielm - emacs-lisp repl
+    M-x sly  - common-lisp repl
+    M-x open-ipython-repl - python repl
+spacemacs:
+    M-x ielm - emacs-lisp repl
+
+
