@@ -31,5 +31,7 @@ if [[ $OSTYPE == darwin* ]]; then
     alias route4="netstat -f inet -rl"
     alias pfnat="sudo pfctl -sa 2>/dev/null | grep nat"
     alias dns="scutil --dns | grep 'nameserver\[[0-9]*\]'"
+    alias dnsport="lsof +c 15 -Pni :6053"
+    alias stubbyport="lsof +c 15 -Pni :5053"
 fi
 
