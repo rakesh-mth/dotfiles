@@ -6,7 +6,7 @@
     let HOME_DIR = substitute(HOME_DIR, "\\", "\/", "g")
 " vim and nvim folder
     if has('nvim') | let VIM_FOLDER = "nvim" | else | let VIM_FOLDER = "vim" | endif
-" workspace folder
+" plugged folder
     let PLUGGED_DIR = HOME_DIR . '/.config/' . VIM_FOLDER . '/plugged' " Specify a directory for plugins 
 
 " install plug.vim (bootstrap plugin)

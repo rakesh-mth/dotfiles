@@ -100,6 +100,9 @@ go install golang.org/x/tools/cmd/gorename@latest
 go install golang.org/x/tools/cmd/guru@latest
 go install github.com/cweill/gotests/gotests@latest
 go install github.com/fatih/gomodifytags@latest
+# go language lint server and client for neovim and vim
+go install github.com/nametake/golangci-lint-langserver@latest
+go install github.com/golangci/golangci-lint/cmd/golangci-lint@latest
 ################################################################################
 
 ################################################################################
