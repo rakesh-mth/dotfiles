@@ -26,7 +26,12 @@
 
 " Plugins : add all plugins here
     call plug#begin(PLUGGED_DIR)
+        " install vim-user-config plugin for plugin.vim from vim-user-config
+        if !filereadable(VIM_USER_CONFIG_PLUGIN) | Plug 'rakesh-mth/vim-user-config' | endif
+        if filereadable(VIM_USER_CONFIG_PLUGIN)  | exec 'source ' . VIM_USER_CONFIG_PLUGIN | endif
+        " include vim-user-config towards end so that all other plugin are
+        " loaded by now. except in the case when there are no plugin
+        " installed, and in that case it is included before all.
         Plug 'rakesh-mth/vim-user-config' 
-        if filereadable(VIM_USER_CONFIG_PLUGIN) | exec 'source ' . VIM_USER_CONFIG_PLUGIN | endif
     call plug#end()
 
