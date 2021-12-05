@@ -6,9 +6,12 @@ nvim --headless +PlugInstall +qall
 
 ###### capture traces from vim / neovim
 nvim -V9nvim.log - log will be saved to current dir, file name will be nvim.log.
+:messages - shows all warnings, errors, and informational messages that appeared (possibly briefly) in the vim statusline
+:echo errmsg - prints the most recent error message
+g< - normal mode command to see the last page of previous command output. 
 
 ###### source .vimrc / init.vim
-so $MYVIMRC - source init.vim
+:so $MYVIMRC - source init.vim
 :so % - if currently editing init.vim
 
 ###### find out config folder for init.vim - to show the exact directory
