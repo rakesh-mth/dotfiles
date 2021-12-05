@@ -4,6 +4,9 @@ nvim --headless +qa
 ###### install plugin in headless mode
 nvim --headless +PlugInstall +qall
 
+###### capture traces from vim / neovim
+nvim -V9nvim.log - log will be saved to current dir, file name will be nvim.log.
+
 ###### source .vimrc / init.vim
 so $MYVIMRC - source init.vim
 :so % - if currently editing init.vim
