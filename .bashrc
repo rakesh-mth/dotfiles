@@ -27,9 +27,11 @@ fi
 export PATH="$HOME/scripts:/usr/local/sbin:/usr/local/bin:$HOME/go/bin:$HOME/.cargo/bin:$HOME/.config/emacs/doom-emacs/.emacs.d/bin:$PATH"
 
 # source virualenvwrapper for mkvirtualenv. virtualenvwrapper.sh must be in path.
-source virtualenvwrapper.sh
+if command -v virtualenvwrapper.sh &> /dev/null ; then
+    source virtualenvwrapper.sh
+fi
 # use virtual python3.9
-workon python3.9
+[ -d $HOME/.virtualenvs/python3.9/ ] && workon python3.9
 
 # source nvm for npm and nodejs
 export NVM_DIR="$HOME/.nvm"
