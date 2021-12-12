@@ -52,7 +52,7 @@ else
     # sbcl is common-lisp interpreter
     # glslang, jq, shellcheck is is installed for doom-emacs
     echo "installing packages using brew"
-    brew install curl git htop tmux vim neovim emacs fd bat ripgrep the_silver_searcher fzf gcc@5 llvm rust rust-analyzer golang python virtualenv virtualenvwrapper nodejs sbcl glslang cmake aspell iperf3 gnupg xclip jq shellcheck
+    brew install curl git htop tmux vim neovim emacs fd bat ripgrep the_silver_searcher fzf gcc@5 llvm rust rust-analyzer golang python virtualenv virtualenvwrapper nodejs sbcl glslang cmake aspell iperf3 gnupg xclip jq shellcheck zoxide
     # homebrew cask: (is not supported on linux).
     # Error: Installing casks is supported only on macOS
     # brew install homebrew/cask/emacs

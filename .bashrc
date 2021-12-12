@@ -13,6 +13,11 @@ else
     export FZF_DEFAULT_COMMAND='fd --type f'
 fi
 
+# zoxide (a better cd)
+if command -v zoxide &> /dev/null ; then
+    eval "$(zoxide init bash)"
+fi
+
 # get ruby version, not using system ruby path since rvm is used below.
 # RUBY_VERSION=`ruby --version | awk '{print $2}' | awk -F "." '{print $1"."$2".0"}'`
 # export PATH="$HOME/.gem/ruby/$RUBY_VERSION/bin:$PATH"
