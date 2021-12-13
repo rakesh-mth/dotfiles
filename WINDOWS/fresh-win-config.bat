@@ -18,8 +18,10 @@ rustup toolchain install stable-x86_64-pc-windows-msvc
 ################################################################################
 ######ADDITIONAL TOOLS
 # powershell: git color on powershell prompt
-Install-Module posh-git -Scope CurrentUser -force
-Enable-GitColors
+Install-Module -Name posh-git -Scope CurrentUser -force
+Add-PoshGitToProfile
+# powershell: install fzf extention for powershell
+Install-Module -Name PSFzf -RequiredVersion 2.2.9
 # install BuildTools for Visual Studio 2017 (do not need full VS)
 https://visualstudio.microsoft.com/thank-you-downloading-visual-studio/?sku=BuildTools&rel=16
 alternate link: https://visualstudio.microsoft.com/downloads/#build-tools-for-visual-studio-2019
