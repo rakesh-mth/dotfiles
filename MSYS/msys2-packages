@@ -1,0 +1,9 @@
+# mingw-x64 packages
+pacman -S mingw64/mingw-w64-x86_64-python3-pip mingw64/mingw-w64-x86_64-cmake mingw64/mingw-w64-x86_64-ninja
+pacman -S mingw64/mingw-w64-x86_64-clang-analyzer mingw64/mingw-w64-x86_64-clang-tools-extra
+
+# install nodejs in msys for mingw-x64
+pacman -S mingw-w64-x86_64-nodejs
+
+# clang64 packages
+pacman -S mingw-w64-clang-x86_64-llvm mingw-w64-clang-x86_64-clang mingw-w64-clang-x86_64-cmake

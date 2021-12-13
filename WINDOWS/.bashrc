@@ -25,3 +25,5 @@ if [ -f "${SSH_ENV}" ]; then
 else
     start_agent
 fi
+
+[ -f ~/.fzf.bash ] && source ~/.fzf.bash

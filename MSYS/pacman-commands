@@ -1,0 +1,32 @@
+pacman -Sy              # update database
+pacman -Syu             # install all updates
+pacman -Syup            # list packages avilable for update
+pacman -Sl | grep emacs # search for available package 
+pacman -Sc              # clear cache of old installed files
+pacman -Qu              # list outdated packages
+pacman -Qqe             # installed packages
+pacman -Qk              # check packages. check missing files from packages.
+pacman -Qkk python3     # check for file properties from a package
+pacman -Qo /etc/pacman.d/mirrorlist.clang64 # file owned by a package
+pacman -Qqe | wc -l     # count number of installed packages
+
+
+# list all installed packages in mingw64
+pacman -Sl | grep installed | grep mingw64 
+# list all installed packages in clang64
+pacman -Sl | grep installed | grep clang64 
+
+# command to find all warning with installed files
+pacman -Qk 2>&1 | egrep "^warning:*."
+
+# command for file not installed by any package (careful sore files are git initialized, do not remove all)
+find /etc /usr /opt | LC_ALL=C pacman -Qqo - 2>&1 >&- >/dev/null | cut -d ' ' -f 5- 
+
+
+# regerate keys
+rm -r /etc/pacman.d/gnupg/
+pacman-key --init
+pacman-key --populate msys2
+pacman-key --populate git-for-windows
+
+
