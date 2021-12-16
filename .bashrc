@@ -35,11 +35,11 @@ fi
 
 # source nvm for npm and nodejs
 export NVM_DIR="$HOME/.nvm"
-[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
-[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+[ -s "$NVM_DIR/nvm.sh" ] && source "$NVM_DIR/nvm.sh"  # This loads nvm
+[ -s "$NVM_DIR/bash_completion" ] && source "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
 
 # source rvm for ruby
-source $HOME/.rvm/scripts/rvm
+[ -s $HOME/.rvm/scripts/rvm ] && source $HOME/.rvm/scripts/rvm
 
 # set DOOMDIR for DOOM to use our config
 export DOOMDIR=$HOME/.config/emacs/doom-emacs/.doom.d
