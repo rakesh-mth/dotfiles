@@ -3,17 +3,24 @@
 	email = 46665723+rakesh-mth@users.noreply.github.com
 [core]
 	editor = vim
+    pager = delta
+[interactive]
+    diffFilter = delta --color-only
+[delta]
+    navigate = true
 [push]
     default = simple
 	recurseSubmodules = on-demand
 [diff]
     tool = p4merge
 	submodule = log
+    colorMoved = default
 [difftool "p4merge"]
     path = C:/Program Files/Perforce/p4merge.exe
     cmd = p4merge.exe \"$LOCAL\" \"$REMOTE\"
 [merge]
     tool = p4merge
+    conflictstyle = diff3
 [mergetool "p4merge"]
     path = C:/Program Files/Perforce/p4merge.exe
     cmd = p4merge.exe \"$BASE\" \"$LOCAL\" \"$REMOTE\" \"$MERGED\"
