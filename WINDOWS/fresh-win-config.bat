@@ -1,7 +1,10 @@
 ################################################################################
 ######INSTALL TOOLS USING CHOCO
 #admin powershell
-choco install -y neovim emacs vim codeblocks fd ripgrep ag fzf bat ctags wget 7zip git gitversion.portable cmake powershell-core python2 python3 r.project r.studio groovy nodejs ruby jdk8 dotnetcore dotnetcore-sdk golang lua53 rustup.install rust-analyzer llvm hunspell.portable nuget.commandline jfrog-cli lxrunoffline libreoffice-fresh rufus nasm yasm jq shellcheck zoxide delta
+choco install -y neovim emacs vim codeblocks fd ripgrep ag fzf bat ctags wget 7zip git gitversion.portable cmake powershell-core python2 python3 r.project r.studio groovy nodejs ruby jdk8 dotnetcore dotnetcore-sdk golang lua53 rustup.install rust-analyzer llvm hunspell.portable nuget.commandline jfrog-cli lxrunoffline libreoffice-fresh rufus nasm yasm 
+
+# modern unit tools
+choco install jq shellcheck zoxide delta lsd
 ######pin a package (jfrog-cli) to the installed version (1.51.1 - last working)
 choco pin add -n=jfrog-cli
 ######install glslang

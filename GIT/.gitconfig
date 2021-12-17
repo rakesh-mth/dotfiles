@@ -8,6 +8,8 @@
     diffFilter = delta --color-only
 [delta]
     navigate = true
+    line-numbers = true
+    side-by-side = false
 [push]
     default = simple
 	recurseSubmodules = on-demand
