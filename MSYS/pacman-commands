@@ -3,12 +3,16 @@ pacman -Syu             # install all updates
 pacman -Syup            # list packages avilable for update
 pacman -Sl | grep emacs # search for available package 
 pacman -Sc              # clear cache of old installed files
+pacman -Qg              # list all group packages
 pacman -Qu              # list outdated packages
 pacman -Qqe             # installed packages
 pacman -Qk              # check packages. check missing files from packages.
 pacman -Qkk python3     # check for file properties from a package
 pacman -Qo /etc/pacman.d/mirrorlist.clang64 # file owned by a package
 pacman -Qqe | wc -l     # count number of installed packages
+
+# jump to a help section of pacman
+man pacman | less -p --groups
 
 
 # list all installed packages in mingw64

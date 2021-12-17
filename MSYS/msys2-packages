@@ -7,3 +7,8 @@ pacman -S mingw-w64-x86_64-nodejs
 
 # clang64 packages
 pacman -S mingw-w64-clang-x86_64-llvm mingw-w64-clang-x86_64-clang mingw-w64-clang-x86_64-cmake
+
+# groups for development in clang64 and mingw64
+pacman -S base-devel # choose range and skip pacman. ex: 1-8,9-15
+pacman -S mingw-w64-x86_64-toolchain
+pacman -S mingw-w64-clang-x86_64-toolchain
