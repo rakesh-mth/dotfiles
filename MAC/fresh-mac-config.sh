@@ -1,8 +1,11 @@
 # install opengdk first as it is a dependency of groovy
 brew cask install adoptopenjdk | tee ~/brew/adoptopenjdk
+# install modern unix tools
+brew tap cantino/mcfly
+brew install lsd git-delta dust duf broot fd ripgrep the_silver_searcher fzf mcfly jq 
 # some packages available using npm or other package manager, do not install them using brew.
 # list of packages not to be installed using brew: marked
-brew install neovim vim emacs fd ripgrep the_silver_searcher fzf ctags wget xz jfrog-cli-go python@2 python@3 groovy nodejs golang rust rust-analyzer llvm sbcl glslang cmake aspell hub git iperf3 gnupg jq shellcheck coreutils fontconfig
+brew install neovim vim emacs ctags wget xz jfrog-cli-go python@2 python@3 groovy nodejs golang rust rust-analyzer llvm sbcl glslang cmake aspell hub git iperf3 gnupg shellcheck coreutils fontconfig
 # brew cask install emacs 2>&1 | tee ~/brew/emacs
 
 # create software folder for fonts and other opensource

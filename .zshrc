@@ -41,6 +41,11 @@ export NVM_DIR="$HOME/.nvm"
 # source rvm for ruby
 [ -f "$HOME/.rvm/scripts/rvm" ] && source "$HOME/.rvm/scripts/rvm"
 
+# source McFly (after fzf)
+if type "mcfly" > /dev/null; then
+    eval "$(mcfly init zsh)"
+fi
+
 # enable autocomplete (git and others)
 autoload -Uz compinit && compinit
 
