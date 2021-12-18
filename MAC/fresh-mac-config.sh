@@ -86,6 +86,8 @@ if [ ! -d "$HOME/.nvm" ]; then
     nvm use $NODE_VERSION
     # marked, bash-language-server, typescript-language-server is used with doom-emacs
     npm install -g neovim tern typescript yarn marked bash-language-server typescript-language-server
+    # install modern unix tools
+    npm install -g tldr
 else
     echo "nvm is already installed"
 fi
