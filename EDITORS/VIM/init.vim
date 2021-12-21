@@ -2,15 +2,17 @@
 " works with neovim-qt, gvim (windows), fvim (windows), vimr (mac), macvim (mac)
  
 " user home dir
-    if has('win32') | let HOME_DIR = $USERPROFILE | else | let HOME_DIR = $HOME | endif
-    let HOME_DIR = substitute(HOME_DIR, "\\", "\/", "g")
+    if has('win32') | let g:UC_HOME_DIR = $USERPROFILE | else | let g:UC_HOME_DIR = $HOME | endif
+    let g:UC_HOME_DIR = substitute(g:UC_HOME_DIR, "\\", "\/", "g")
 " vim and nvim folder
-    if has('nvim') | let VIM_FOLDER = "nvim" | else | let VIM_FOLDER = "vim" | endif
+    if has('nvim') | let g:UC_VIM_FOLDER = "nvim-config/rakesh-mth" | else | let g:UC_VIM_FOLDER = "vim-config/rakesh-mth" | endif
+" vim folder full path
+    let g:UC_VIM_CONFIG_FOLDER_FULL_PATH = g:UC_HOME_DIR . '/.config/' . g:UC_VIM_FOLDER
 " plugged folder
-    let PLUGGED_DIR = HOME_DIR . '/.config/' . VIM_FOLDER . '/plugged' " Specify a directory for plugins 
+    let g:UC_PLUGGED_DIR = g:UC_VIM_CONFIG_FOLDER_FULL_PATH . '/plugged' " Specify a directory for plugins 
 
 " install plug.vim (bootstrap plugin)
-    let plugRuntimePath = HOME_DIR . '/.config/' . VIM_FOLDER " internal uses only
+    let plugRuntimePath = g:UC_VIM_CONFIG_FOLDER_FULL_PATH " internal uses only
     let plugPath = plugRuntimePath . '/autoload/plug.vim'
     if empty(glob(plugPath))
         silent execute '!curl -fLo ' . plugPath . ' --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim'
@@ -19,13 +21,13 @@
     let &rtp = &rtp . ',' . plugRuntimePath
 
 " auto install all plugin if vim-user-config is missing (bootstrap vim-user-config). 
-    let VIM_USER_CONFIG_PLUGIN = PLUGGED_DIR . '/vim-user-config/core/plugins.vim'
+    let VIM_USER_CONFIG_PLUGIN = g:UC_PLUGGED_DIR . '/vim-user-config/core/plugins.vim'
     if !filereadable(VIM_USER_CONFIG_PLUGIN)
         autocmd VimEnter * PlugInstall --sync | source $MYVIMRC
     endif
 
 " Plugins : add all plugins here
-    call plug#begin(PLUGGED_DIR)
+    call plug#begin(g:UC_PLUGGED_DIR)
         " install vim-user-config plugin for plugin.vim from vim-user-config
         if !filereadable(VIM_USER_CONFIG_PLUGIN) | Plug 'rakesh-mth/vim-user-config' | endif
         if filereadable(VIM_USER_CONFIG_PLUGIN)  | exec 'source ' . VIM_USER_CONFIG_PLUGIN | endif

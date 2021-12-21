@@ -125,6 +125,16 @@ go install golang.org/x/tools/cmd/guru@latest
 go install github.com/cweill/gotests/gotests@latest
 go install github.com/fatih/gomodifytags@latest
 
+# VIM
+# clone cheovim
+if [ ! -d "$HOME/.config/nvim" ]; then
+    git clone https://github.com/NTBBloodbath/cheovim ~/.config/nvim/
+fi
+# clone doom-nvim
+if [ ! -d "$HOME/.config/nvim-config/doom-nvim" ]; then
+    git clone --depth 1 https://github.com/NTBBloodbath/doom-nvim.git ${XDG_CONFIG_HOME:-$HOME/.config}/nvim-config/doom-nvim
+fi
+
 # EMACS
 # clone spacemacs (path must match from create-symlink.sh)
 if [ ! -d "$HOME/.config/emacs/spacemacs/.emacs.d" ]; then
