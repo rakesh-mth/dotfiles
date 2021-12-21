@@ -14,6 +14,9 @@ mkdir -p "$HOME/.config/nvim"
 [ -f "$HOME/.config/nvim/init.vim" ] && unlink "$HOME/.config/nvim/init.vim"
 ln -snf $HOME/workspaces/rakesh-mth/dotfiles/EDITORS/VIM/init.vim $HOME/.vimrc
 ln -snf $HOME/workspaces/rakesh-mth/dotfiles/EDITORS/VIM/init.vim $HOME/.config/nvim/init.vim
+# cheovim
+[ -f "$HOME/.config/nvim/profiles.lua" ] && unlink "$HOME/.config/nvim/profiles.lua"
+ln -snf $HOME/workspaces/rakesh-mth/dotfiles/EDITORS/VIM/profiles.lua $HOME/.config/nvim/
 # chemacs condif files
 [ -f "$HOME/.emacs" ] && unlink "$HOME/.emacs"
 [ -f "$HOME/.emacs-profiles.el" ] && unlink "$HOME/.emacs-profiles.el"
