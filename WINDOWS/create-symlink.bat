@@ -7,6 +7,7 @@ if exist %USERPROFILE%\.emacs del %USERPROFILE%\.emacs
 if exist %USERPROFILE%\.emacs-profiles.el del %USERPROFILE%\.emacs-profiles.el
 if exist %USERPROFILE%\.config\emacs\spacemacs\.spacemacs.d rmdir %USERPROFILE%\.config\emacs\spacemacs\.spacemacs.d
 if exist %USERPROFILE%\.config\emacs\doom-emacs\.doom.d rmdir %USERPROFILE%\.config\emacs\doom-emacs\.doom.d
+if exist %USERPROFILE%\.config\nvim\profiles.lua del %USERPROFILE%\.config\nvim\profiles.lua
 if exist %USERPROFILE%\.vimrc del %USERPROFILE%\.vimrc
 if exist %USERPROFILE%\AppData\Local\nvim\init.vim del %USERPROFILE%\AppData\Local\nvim\init.vim
 if exist %USERPROFILE%\.vsvimrc del %USERPROFILE%\.vsvimrc
@@ -24,6 +25,8 @@ mklink %USERPROFILE%\.bashrc %DOTFILES%\WINDOWS\.bashrc
 if exist %SCRIPTS%\GIT\.gitconfig mklink %USERPROFILE%\.gitconfig-work %SCRIPTS%\GIT\.gitconfig
 mklink %USERPROFILE%\.gitconfig %DOTFILES%\GIT\.gitconfig
 mklink %USERPROFILE%\.wslconfig %DOTFILES%\WSL\.wslconfig
+REM cheovim - for nvim
+mklink %USERPROFILE%\.config\nvim\profiles.lua %DOTFILES%\EDITORS\VIM\profiles.lua
 mklink %USERPROFILE%\.vimrc %DOTFILES%\EDITORS\VIM\init.vim
 mklink %USERPROFILE%\AppData\Local\nvim\init.vim %DOTFILES%\EDITORS\VIM\init.vim
 mklink %USERPROFILE%\.vsvimrc %DOTFILES%\EDITORS\VIM\.vsvimrc
