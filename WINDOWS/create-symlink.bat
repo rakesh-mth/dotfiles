@@ -27,10 +27,16 @@ mklink %USERPROFILE%\.gitconfig %DOTFILES%\GIT\.gitconfig
 mklink %USERPROFILE%\.wslconfig %DOTFILES%\WSL\.wslconfig
 REM directory link from F:\DevTrees to ~/workspaces
 mklink /D %USERPROFILE%\workspaces F:\DevTrees
-REM cheovim - for nvim
+REM cheovim - clone the repo and create a symlink for profiles.lua file 
+REM path is not %USERPROFILE%\.config\nvim on windows since that's not the default path for init.vim or init.lua on windows
+if not exist %USERPROFILE%\AppData\Local\nvim git clone https://github.com/NTBBloodbath/cheovim %USERPROFILE%\AppData\Local\nvim
 mklink %USERPROFILE%\.config\nvim\profiles.lua %DOTFILES%\EDITORS\VIM\profiles.lua
+REM LunarVIm - clone the repo and create symlick for config.lua file
+if not exist %USERPROFILE%\.config\nvim-config\LunarVim git clone https://github.com/LunarVim/LunarVim.git %USERPROFILE%\.config\nvim-config\LunarVim
+mklink %USERPROFILE%\.config\nvim-config\LunarVim\config.lua %DOTFILES%\EDITORS\VIM\LunarVim\config.lua
 mklink %USERPROFILE%\.vimrc %DOTFILES%\EDITORS\VIM\init.vim
-mklink %USERPROFILE%\AppData\Local\nvim\init.vim %DOTFILES%\EDITORS\VIM\init.vim
+REM init.vim for neovim. do not create this symlink anymore since cheovim is used
+REM mklink %USERPROFILE%\AppData\Local\nvim\init.vim %DOTFILES%\EDITORS\VIM\init.vim
 mklink %USERPROFILE%\.vsvimrc %DOTFILES%\EDITORS\VIM\.vsvimrc
 REM chemacs - spacemacs and doom-emacs
 mklink %USERPROFILE%\.emacs %DOTFILES%\EDITORS\EMACS\.emacs
