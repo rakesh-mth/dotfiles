@@ -4,6 +4,9 @@ nvim --headless +qa
 ###### install plugin in headless mode
 nvim --headless +PlugInstall +qall
 
+###### to check the diectory for init.vim
+:echo stdpath('config') 
+
 ###### capture traces from vim / neovim
 nvim -V9nvim.log - log will be saved to current dir, file name will be nvim.log.
 :messages - shows all warnings, errors, and informational messages that appeared (possibly briefly) in the vim statusline

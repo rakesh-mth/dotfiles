@@ -93,10 +93,16 @@ wget http://downloads.sourceforge.net/wordlist/hunspell-en_US-2019.10.06.zip
 
 ################################################################################
 ######VIM
-# clone cheovim
-git clone https://github.com/NTBBloodbath/cheovim ~/.config/nvim
+# clone cheovim (do not use ~/.config/nvim in windows since that's not the default location for init.vim or init.lua)
+git clone https://github.com/NTBBloodbath/cheovim ~/AppData/Local/nvim
 # clone doom-nvim (use develop branch)
 git clone --depth 1 -b develop https://github.com/NTBBloodbath/doom-nvim.git ${XDG_CONFIG_HOME:-$HOME/.config}/nvim-config/doom-nvim
+# LunarVim (clone LunarVim)
+git clone https://github.com/LunarVim/LunarVim.git ~/.config/nvim-config/LunarVim
+# install plugins using PackerInstall. telescope-fzf-native will fail to compile. use next step to compile it. and run PackerInstall again.
+# use mingw64 or clang64 to compile fzf-native
+cd ~/AppData/Local/nvim-data/site/pack/packer/start/telescope-fzf-native.nvim
+make
 # font for vim
 git clone https://github.com/powerline/fonts.git
 # neovim (refer to init.vim for path), # using vs 2017 (use 14 for 2015)

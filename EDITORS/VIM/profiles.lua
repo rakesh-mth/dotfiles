@@ -26,11 +26,16 @@ local profiles = {
 
 	More in-depth information can be found in cheovim's README on GitHub.
 	--]]
-	my_config = { "~/workspaces/rakesh-mth/dotfiles/EDITORS/VIM/", {
+	rakesh_mth = { "~/workspaces/rakesh-mth/dotfiles/EDITORS/VIM/", {
 			plugins = "packer",
 			preconfigure = "nil",
 		}
 	},
+    lunar_nvim = { "~/.config/nvim-config/LunarVim", {
+            plugins = "packer",
+            preconfigure = "nil"
+        }
+    },
     doom_nvim = { "~/.config/nvim-config/doom-nvim", {
             plugins = "packer",
             preconfigure = "doom-nvim"
@@ -39,4 +44,6 @@ local profiles = {
 }
 
 -- return <name_of_config>, <list_of_profiles>
-return "my_config", profiles
+-- return "rakesh_mth", profiles
+return "lunar_nvim", profiles
+-- return "doom_nvim", profiles

@@ -25,6 +25,8 @@ mklink %USERPROFILE%\.bashrc %DOTFILES%\WINDOWS\.bashrc
 if exist %SCRIPTS%\GIT\.gitconfig mklink %USERPROFILE%\.gitconfig-work %SCRIPTS%\GIT\.gitconfig
 mklink %USERPROFILE%\.gitconfig %DOTFILES%\GIT\.gitconfig
 mklink %USERPROFILE%\.wslconfig %DOTFILES%\WSL\.wslconfig
+REM directory link from F:\DevTrees to ~/workspaces
+mklink /D %USERPROFILE%\workspaces F:\DevTrees
 REM cheovim - for nvim
 mklink %USERPROFILE%\.config\nvim\profiles.lua %DOTFILES%\EDITORS\VIM\profiles.lua
 mklink %USERPROFILE%\.vimrc %DOTFILES%\EDITORS\VIM\init.vim
