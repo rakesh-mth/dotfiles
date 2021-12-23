@@ -33,7 +33,7 @@ local profiles = {
 	},
     lunar_nvim = { "~/.config/nvim-config/LunarVim", {
             plugins = "packer",
-            preconfigure = "nil"
+            preconfigure = "lunarvim"
         }
     },
     doom_nvim = { "~/.config/nvim-config/doom-nvim", {
