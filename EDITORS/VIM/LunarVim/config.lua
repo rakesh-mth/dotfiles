@@ -64,8 +64,8 @@ lvim.builtin.telescope.defaults.mappings = {
 }
 
 -- Use which-key to add extra bindings with the leader-key prefix
+-- lvim.builtin.which_key.mappings["P"] = { "<cmd>Telescope projects<CR>", "Projects" }
 -- [rakesh] uncommented - 10 lines
-lvim.builtin.which_key.mappings["P"] = { "<cmd>Telescope projects<CR>", "Projects" }
 lvim.builtin.which_key.mappings["t"] = {
   name = "+Telescope",
   r = { "<cmd>Telescope lsp_references<cr>", "References" },
@@ -76,6 +76,13 @@ lvim.builtin.which_key.mappings["t"] = {
   l = { "<cmd>Telescope loclist<cr>", "LocationList" },
   w = { "<cmd>Telescope lsp_workspace_diagnostics<cr>", "Diagnostics" },
 }
+-- [rakesh] - additional which key
+lvim.builtin.which_key.mappings["p"]["p"] = { "<cmd>Telescope projects<CR>", "Projects" }
+lvim.builtin.which_key.mappings["p"]["f"] = { "<cmd>Telescope find_files<CR>", "Files" }
+lvim.builtin.which_key.mappings["b"]["b"] = { "<cmd>Telescope buffers<CR>", "Buffers" }
+lvim.builtin.which_key.mappings["b"]["p"] = { "<cmd>b#<CR>", "Previous" }
+lvim.builtin.which_key.mappings["'"] = { "<cmd>ToggleTerm<CR>", "Open Terminal" }
+lvim.builtin.which_key.mappings["g"]["g"] = { "<cmd>Git|wincmd _|normal gu<CR>", "Git Status" }
 
 -- TODO: User Config for predefined plugins
 -- After changing plugin config exit and reopen LunarVim, Run :PackerInstall :PackerCompile
@@ -173,13 +180,16 @@ lvim.builtin.treesitter.highlight.enabled = true
 -- }
 
 -- Additional Plugins
--- lvim.plugins = {
+-- [rakesh] uncommented, added few plugins
+lvim.plugins = {
 --     {"folke/tokyonight.nvim"},
 --     {
 --       "folke/trouble.nvim",
 --       cmd = "TroubleToggle",
 --     },
--- }
+      {"tpope/vim-fugitive"}
+}
+
 
 -- Autocommands (https://neovim.io/doc/user/autocmd.html)
 -- lvim.autocommands.custom_groups = {
