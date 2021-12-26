@@ -81,8 +81,12 @@ lvim.builtin.which_key.mappings["p"]["p"] = { "<cmd>Telescope projects<CR>", "Pr
 lvim.builtin.which_key.mappings["p"]["f"] = { "<cmd>Telescope find_files<CR>", "Files" }
 lvim.builtin.which_key.mappings["b"]["b"] = { "<cmd>Telescope buffers<CR>", "Buffers" }
 lvim.builtin.which_key.mappings["b"]["p"] = { "<cmd>b#<CR>", "Previous" }
-lvim.builtin.which_key.mappings["'"] = { "<cmd>ToggleTerm<CR>", "Open Terminal" }
+lvim.builtin.which_key.mappings["'"]      = { "<cmd>ToggleTerm<CR>", "Open Terminal" }
 lvim.builtin.which_key.mappings["g"]["g"] = { "<cmd>Git|wincmd _|normal gu<CR>", "Git Status" }
+lvim.builtin.which_key.mappings["n"]      = {
+  name = "Extras",
+  h = { "<cmd>noh<CR>", "no highlight" }
+}
 
 -- TODO: User Config for predefined plugins
 -- After changing plugin config exit and reopen LunarVim, Run :PackerInstall :PackerCompile
@@ -187,7 +191,8 @@ lvim.plugins = {
 --       "folke/trouble.nvim",
 --       cmd = "TroubleToggle",
 --     },
-      {"tpope/vim-fugitive"}
+      {"tpope/vim-fugitive"},
+      {"godlygeek/tabular"}
 }
 
 
