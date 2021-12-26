@@ -17,6 +17,9 @@ export PATH="/usr/local/sbin:/usr/local/bin:$HOME/go/bin:$HOME/.cargo/bin:$HOME/
 # DOOMDIR for doom-emacs
 export DOOMDIR=$HOME/.config/emacs/doom-emacs/.doom.d
 
+# set runtime path for LunarVim - this is to make sure multiple config can work together.
+export LUNARVIM_RUNTIME_DIR=$HOME/.local/share/nvim/LunarVim
+
 # source fzf completion and key binding, use fd as default fzf command
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 export FZF_DEFAULT_COMMAND='fd --type f'

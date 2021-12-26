@@ -44,6 +44,9 @@ export NVM_DIR="$HOME/.nvm"
 # set DOOMDIR for DOOM to use our config
 export DOOMDIR=$HOME/.config/emacs/doom-emacs/.doom.d
 
+# set runtime path for LunarVim - this is to make sure multiple config can work together.
+export LUNARVIM_RUNTIME_DIR=$HOME/.local/share/nvim/LunarVim
+
 # source aliases
 script_full_path="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)/$(basename "${BASH_SOURCE[0]}")"
 aliases_file=$(readlink -f $(dirname "$script_full_path")/aliases)
