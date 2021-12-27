@@ -12,8 +12,7 @@
     let g:UC_PLUGGED_DIR = g:UC_VIM_CONFIG_FOLDER_FULL_PATH . '/plugged' " Specify a directory for plugins 
 
 " install plug.vim (bootstrap plugin)
-    let plugRuntimePath = g:UC_VIM_CONFIG_FOLDER_FULL_PATH " internal uses only
-    let plugPath = plugRuntimePath . '/autoload/plug.vim'
+    let plugPath = g:UC_VIM_CONFIG_FOLDER_FULL_PATH . '/autoload/plug.vim'
     if empty(glob(plugPath))
         silent execute '!curl -fLo ' . plugPath . ' --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim'
         autocmd VimEnter * PlugInstall --sync | source $MYVIMRC
@@ -24,7 +23,7 @@
         set runtimepath-=~\AppData\Local\nvim
     endif
 " add path of rakesh-mth to rtp 
-    let &rtp = &rtp . ',' . plugRuntimePath
+    let &rtp = &rtp . ',' . g:UC_VIM_CONFIG_FOLDER_FULL_PATH
 
 " auto install all plugin if vim-user-config is missing (bootstrap vim-user-config). 
     let VIM_USER_CONFIG_PLUGIN = g:UC_PLUGGED_DIR . '/vim-user-config/core/plugins.vim'
