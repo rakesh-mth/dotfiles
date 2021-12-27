@@ -38,6 +38,9 @@ local profiles = {
     },
     doom_nvim = { "~/.config/nvim-config/doom-nvim", {
             plugins = "packer",
+            setup = function()
+                vim.opt.rtp:append(vim.fn.expand("~") .. "/.config/nvim-config/doom-nvim")
+            end,
             preconfigure = "doom-nvim"
         }
     }
