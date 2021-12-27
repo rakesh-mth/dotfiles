@@ -45,5 +45,10 @@ local profiles = {
 
 -- return <name_of_config>, <list_of_profiles>
 -- return "rakesh_mth", profiles
-return "lunar_nvim", profiles
+-- return "lunar_nvim", profiles
 -- return "doom_nvim", profiles
+
+local default_profile = 'lunar_nvim'
+
+return load_profile or default_profile, profiles
+

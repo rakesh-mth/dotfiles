@@ -18,6 +18,12 @@
         silent execute '!curl -fLo ' . plugPath . ' --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim'
         autocmd VimEnter * PlugInstall --sync | source $MYVIMRC
     endif
+
+" remove default config path on windows from rtp list
+    if has('win32')
+        set runtimepath-=~\AppData\Local\nvim
+    endif
+" add path of rakesh-mth to rtp 
     let &rtp = &rtp . ',' . plugRuntimePath
 
 " auto install all plugin if vim-user-config is missing (bootstrap vim-user-config). 
