@@ -197,6 +197,12 @@ lvim.plugins = {
 
 
 -- Autocommands (https://neovim.io/doc/user/autocmd.html)
--- lvim.autocommands.custom_groups = {
---   { "BufWinEnter", "*.lua", "setlocal ts=8 sw=8" },
--- }
+lvim.autocommands.custom_groups = {
+  -- { "BufWinEnter", "*.lua", "setlocal ts=8 sw=8" },
+        -- map <tab> to = to match it with magit in emacs.
+  { "FileType", "fugitive", "nmap <buffer> <tab> =" },
+  -- map q to gq for quit to match with magit in emacs. Note: q for
+  -- recording macro will not work if it is mapped to gq
+  { "FileType", "fugitive", "nmap <buffer> q gq" }
+}
+

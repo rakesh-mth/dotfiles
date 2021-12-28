@@ -40,6 +40,7 @@ local profiles = {
             plugins = "packer",
             setup = function()
                 vim.opt.rtp:append(vim.fn.expand("~") .. "/.config/nvim-config/doom-nvim")
+                -- vim.fn.delete(vim.fn.stdpath("config") .. "/plugin/packer_compiled.lua")
             end,
             preconfigure = "doom-nvim"
         }
