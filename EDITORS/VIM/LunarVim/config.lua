@@ -71,6 +71,7 @@ lvim.builtin.which_key.mappings["t"] = {
   r = { "<cmd>Telescope lsp_references<cr>", "References" },
   f = { "<cmd>Telescope lsp_definitions<cr>", "Definitions" },
   d = { "<cmd>Telescope lsp_document_diagnostics<cr>", "Diagnostics" },
+  b = { "<cmd>Telescope builtin<cr>", "Builtin" },
   g = { "<cmd>Telescope live_grep<cr>", "LiveGrep" },
   q = { "<cmd>Telescope quickfix<cr>", "QuickFix" },
   l = { "<cmd>Telescope loclist<cr>", "LocationList" },
@@ -83,6 +84,8 @@ lvim.builtin.which_key.mappings["b"]["b"] = { "<cmd>Telescope buffers<CR>", "Buf
 lvim.builtin.which_key.mappings["b"]["p"] = { "<cmd>b#<CR>", "Previous" }
 lvim.builtin.which_key.mappings["'"]      = { "<cmd>ToggleTerm<CR>", "Open Terminal" }
 lvim.builtin.which_key.mappings["g"]["g"] = { "<cmd>Git|wincmd _|normal gu<CR>", "Git Status" }
+lvim.builtin.which_key.mappings["s"]["s"] = { "<cmd>Telescope grep_string<cr>", "GrepStringUnderWord" }
+lvim.builtin.which_key.mappings["*"]      = { "<cmd>Telescope grep_string<cr>", "GrepStringUnderWord" }
 lvim.builtin.which_key.mappings["n"]      = {
   name = "Extras",
   h = { "<cmd>noh<CR>", "no highlight" }
@@ -94,6 +97,8 @@ lvim.builtin.dashboard.active = true
 lvim.builtin.terminal.active = true
 lvim.builtin.nvimtree.setup.view.side = "left"
 lvim.builtin.nvimtree.show_icons.git = 0
+-- [rakesh] - enable dap
+lvim.builtin.dap.active = true
 
 -- if you don't want all the parsers change this to a table of the ones you want
 lvim.builtin.treesitter.ensure_installed = {
@@ -103,9 +108,11 @@ lvim.builtin.treesitter.ensure_installed = {
   "json",
   "lua",
   "python",
+  "ruby",
   "typescript",
   "css",
   "rust",
+  "go",
   "java",
   "yaml",
 }
@@ -199,7 +206,8 @@ lvim.plugins = {
 -- Autocommands (https://neovim.io/doc/user/autocmd.html)
 lvim.autocommands.custom_groups = {
   -- { "BufWinEnter", "*.lua", "setlocal ts=8 sw=8" },
-        -- map <tab> to = to match it with magit in emacs.
+
+  -- map <tab> to = to match it with magit in emacs.
   { "FileType", "fugitive", "nmap <buffer> <tab> =" },
   -- map q to gq for quit to match with magit in emacs. Note: q for
   -- recording macro will not work if it is mapped to gq
