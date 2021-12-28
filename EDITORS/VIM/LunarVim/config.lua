@@ -207,6 +207,9 @@ lvim.plugins = {
 lvim.autocommands.custom_groups = {
   -- { "BufWinEnter", "*.lua", "setlocal ts=8 sw=8" },
 
+
+  -- delete git commit buffer after :wq, git waits for nvr to finish
+  { "FileType", "gitcommit,gitrebase", "set bufhidden=delete" },
   -- map <tab> to = to match it with magit in emacs.
   { "FileType", "fugitive", "nmap <buffer> <tab> =" },
   -- map q to gq for quit to match with magit in emacs. Note: q for
