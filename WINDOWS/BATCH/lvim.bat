@@ -1,5 +1,5 @@
 REM using cheovim - choose lunar_nvim config.
-start "" nvim-qt.exe --no-ext-tabline -- --cmd "lua load_profile='lunar_nvim'"
+start "" nvim-qt.exe --no-ext-tabline -- --cmd "lua load_profile='LunarVim'"
 
 
 REM using environment variable and -u option with init.lua in LunarVim
