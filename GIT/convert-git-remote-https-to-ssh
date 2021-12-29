@@ -14,4 +14,8 @@ git remote -v
 ################################################################################
 ###### VIM-USER-CONFIG repo
 
+###### change origin
 git remote set-url origin git@github.com:rakesh-mth/vim-user-config.git
+
+###### add another upstream
+git remote add upstream git@github.com:rakesh-mth/fzf-project.git
