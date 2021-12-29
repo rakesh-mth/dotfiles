@@ -1,0 +1,7 @@
+#!/usr/bin/env bash
+
+if [ $# -ne 1 ]; then
+	echo "only single package can be used"
+else 
+	brew install $1 | tee ~/brew/$1
+fi

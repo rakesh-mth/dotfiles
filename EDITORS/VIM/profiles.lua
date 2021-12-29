@@ -15,7 +15,7 @@
 
 -- rakesh - helper setup function
 
-_G.cheovim_profile_setup = function(config_name)
+_G.cheovim_profile_setup = function(selected_profile)
     -- helper function to join paths
     local path_sep = vim.loop.os_uname().version:match "Windows" and "\\" or "/"
     function _G.join_paths(...)
@@ -25,7 +25,7 @@ _G.cheovim_profile_setup = function(config_name)
     -- no need to delete packer_compiled.lua, since config path will be from current cheovim config.
     -- vim.fn.delete(vim.fn.stdpath("config") .. "/plugin/packer_compiled.lua")
     -- make sure doom-nvim path for config is in runtimepath
-    vim.opt.rtp:append(join_paths(vim.fn.expand("~"), ".config", "nvim-config", config_name))
+    vim.opt.rtp:append(join_paths(vim.fn.expand("~"), ".config", "nvim-config", selected_profile))
     -- remove original data/site and data/site/after
     vim.opt.rtp:remove(join_paths(vim.fn.stdpath "data", "site"))
     vim.opt.rtp:remove(join_paths(vim.fn.stdpath "data", "site", "after"))
@@ -35,8 +35,8 @@ _G.cheovim_profile_setup = function(config_name)
 
     -- Clone the current stdpath function definition into an unused func
     vim.fn._stdpath_setup = vim.fn.stdpath
-    -- query original data path and append config_name in the path
-    local data_path = join_paths(vim.fn._stdpath_setup("data"), config_name)
+    -- query original data path and append selected_profile in the path
+    local data_path = join_paths(vim.fn._stdpath_setup("data"), selected_profile)
 
     -- Override vim.fn.stdpath to manipulate the data returned by it. Yes, I know, changing core functions
     -- is really bad practice in any codebase, however this is our only way to make things like doom-nvim etc. work
@@ -73,18 +73,18 @@ local profiles = {
           preconfigure = "packer:start",
         }
     },
-    lunar_nvim = { "~/.config/nvim-config/LunarVim", {
+    LunarVim = { "~/.config/nvim-config/LunarVim", {
             plugins = "packer",
             setup = function()
-              cheovim_profile_setup("LunarVim")
+              -- cheovim_profile_setup("LunarVim")
             end,
             preconfigure = "lunarvim"
         }
     },
-    doom_nvim = { "~/.config/nvim-config/doom-nvim", {
+    DoomNvim = { "~/.config/nvim-config/doom-nvim", {
             plugins = "packer",
             setup = function()
-              cheovim_profile_setup("doom-nvim")
+              -- cheovim_profile_setup("DoomNvim")
             end,
             preconfigure = "doom-nvim"
         }
@@ -97,6 +97,7 @@ local profiles = {
 -- return "doom_nvim", profiles
 
 local default_profile = 'lunar_nvim'
-
-return load_profile or default_profile, profiles
+local selected_profile = load_profile or default_profile
+cheovim_profile_setup(selected_profile)
+return selected_profile, profiles
 

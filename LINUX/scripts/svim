@@ -1,0 +1,7 @@
+#!/bin/bash
+
+# using cheovim - choose rakesh_mth config.
+nvim --cmd "lua load_profile='rakesh_mth'"
+
+# use init.vim file directly
+# nvim -u f:\DevTrees\rakesh-mth\dotfiles\EDITORS\VIM\init.vim

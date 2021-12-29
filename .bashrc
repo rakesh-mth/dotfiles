@@ -24,7 +24,7 @@ fi
 
 # update PATH variable
 # add go, cargo, ruby, doom-emacs-bin, user-scripts-folder to path
-export PATH="$HOME/scripts:/usr/local/sbin:/usr/local/bin:$HOME/go/bin:$HOME/.cargo/bin:$HOME/.config/emacs/doom-emacs/.emacs.d/bin:$PATH"
+export PATH="$HOME/scripts:$HOME/workspaces/rakesh-mth/dotfiles/LINUX/scripts:/usr/local/sbin:/usr/local/bin:$HOME/go/bin:$HOME/.cargo/bin:$HOME/.config/emacs/doom-emacs/.emacs.d/bin:$PATH"
 
 # source virualenvwrapper for mkvirtualenv. virtualenvwrapper.sh must be in path.
 if command -v virtualenvwrapper.sh &> /dev/null ; then

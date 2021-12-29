@@ -26,8 +26,10 @@ local init_custom_options = function()
 end
 init_custom_options()
 -- update PATH - both are same (vim.cmd and vim.env version)
--- vim.cmd [[let $PATH='C:\Program Files\Git\bin;'.$PATH]]
-vim.env.PATH = table.concat({ 'C:\\Program Files\\Git\\bin;', vim.env.PATH }, ";")
+if vim.loop.os_uname().version:match "Windows" then
+    -- vim.cmd [[let $PATH='C:\Program Files\Git\bin;'.$PATH]]
+    vim.env.PATH = table.concat({ 'C:\\Program Files\\Git\\bin;', vim.env.PATH }, ";")
+end
 
 -- *
 -- [rakesh] Settings by me [END]

@@ -12,7 +12,7 @@ fi
 # export PATH="$HOME/.gem/ruby/$RUBY_VERSION/bin:$PATH"
 
 # update PATH variable
-export PATH="/usr/local/sbin:/usr/local/bin:$HOME/go/bin:$HOME/.cargo/bin:$HOME/.config/emacs/doom-emacs/.emacs.d/bin:$PATH"
+export PATH="$HOME/workspaces/rakesh-mth/dotfiles/LINUX/scripts:/usr/local/sbin:/usr/local/bin:$HOME/go/bin:$HOME/.cargo/bin:$HOME/.config/emacs/doom-emacs/.emacs.d/bin:$PATH"
 
 # DOOMDIR for doom-emacs
 export DOOMDIR=$HOME/.config/emacs/doom-emacs/.doom.d
