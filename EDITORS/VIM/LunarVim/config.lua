@@ -25,7 +25,7 @@ local init_custom_options = function()
 	end
 end
 init_custom_options()
--- update PATH
+-- update PATH - both are same (vim.cmd and vim.env version)
 -- vim.cmd [[let $PATH='C:\Program Files\Git\bin;'.$PATH]]
 vim.env.PATH = table.concat({ 'C:\\Program Files\\Git\\bin;', vim.env.PATH }, ";")
 
@@ -36,7 +36,9 @@ vim.env.PATH = table.concat({ 'C:\\Program Files\\Git\\bin;', vim.env.PATH }, ";
 -- general
 lvim.log.level = "warn"
 lvim.format_on_save = true
-lvim.colorscheme = "onedarker"
+-- rakesh - colorscheme changed to kanagawa from onedarker
+-- lvim.colorscheme = "onedarker"
+lvim.colorscheme = "kanagawa"
 
 -- keymappings [view all the defaults by pressing <leader>Lk]
 lvim.leader = "space"
@@ -83,6 +85,7 @@ lvim.builtin.which_key.mappings["t"] = {
 -- [rakesh] - additional which key
 lvim.builtin.which_key.mappings["p"]["p"] = { "<cmd>Telescope projects<CR>", "Projects" }
 lvim.builtin.which_key.mappings["p"]["f"] = { "<cmd>Telescope find_files<CR>", "Files" }
+lvim.builtin.which_key.mappings["p"]["F"] = { "<cmd>lua require\"telescope.builtin\".find_files({ find_command = {'fd', '--type', 'f', '--no-ignore-vcs', '--hidden', '--follow', '-E', '.git' } })<CR>", "Files (All)" }
 lvim.builtin.which_key.mappings["b"]["b"] = { "<cmd>Telescope buffers<CR>", "Buffers" }
 lvim.builtin.which_key.mappings["b"]["p"] = { "<cmd>b#<CR>", "Previous" }
 lvim.builtin.which_key.mappings["'"]      = { "<cmd>ToggleTerm<CR>", "Open Terminal" }
@@ -202,7 +205,10 @@ lvim.plugins = {
 --       cmd = "TroubleToggle",
 --     },
       {"tpope/vim-fugitive"},
-      {"godlygeek/tabular"}
+      {"godlygeek/tabular"},
+
+      -- color schema
+      {"rebelot/kanagawa.nvim"}
 }
 
 

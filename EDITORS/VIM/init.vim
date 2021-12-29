@@ -18,10 +18,11 @@
         autocmd VimEnter * PlugInstall --sync | source $MYVIMRC
     endif
 
-" remove default config path on windows from rtp list
-    if has('win32')
-        set runtimepath-=~\AppData\Local\nvim
-    endif
+" remove default config path on windows from rtp list, not needed now after setup callback in cheovim
+    " if has('win32')
+    "     set runtimepath-=~\AppData\Local\nvim
+    " endif
+
 " add path of rakesh-mth to rtp 
     let &rtp = &rtp . ',' . g:UC_VIM_CONFIG_FOLDER_FULL_PATH
 

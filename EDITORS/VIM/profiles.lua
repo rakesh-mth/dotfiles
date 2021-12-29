@@ -70,7 +70,7 @@ local profiles = {
 	--]]
     rakesh_mth = { "~/workspaces/rakesh-mth/dotfiles/EDITORS/VIM/", {
           plugins = "packer",
-          preconfigure = "nil",
+          preconfigure = "packer:start",
         }
     },
     lunar_nvim = { "~/.config/nvim-config/LunarVim", {
