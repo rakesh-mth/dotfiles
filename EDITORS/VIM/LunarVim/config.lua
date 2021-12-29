@@ -25,6 +25,9 @@ local init_custom_options = function()
 	end
 end
 init_custom_options()
+-- update PATH
+-- vim.cmd [[let $PATH='C:\Program Files\Git\bin;'.$PATH]]
+vim.env.PATH = table.concat({ 'C:\\Program Files\\Git\\bin;', vim.env.PATH }, ";")
 
 -- *
 -- [rakesh] Settings by me [END]
@@ -84,8 +87,8 @@ lvim.builtin.which_key.mappings["b"]["b"] = { "<cmd>Telescope buffers<CR>", "Buf
 lvim.builtin.which_key.mappings["b"]["p"] = { "<cmd>b#<CR>", "Previous" }
 lvim.builtin.which_key.mappings["'"]      = { "<cmd>ToggleTerm<CR>", "Open Terminal" }
 lvim.builtin.which_key.mappings["g"]["g"] = { "<cmd>Git|wincmd _|normal gu<CR>", "Git Status" }
-lvim.builtin.which_key.mappings["s"]["s"] = { "<cmd>Telescope grep_string<cr>", "GrepStringUnderWord" }
-lvim.builtin.which_key.mappings["*"]      = { "<cmd>Telescope grep_string<cr>", "GrepStringUnderWord" }
+lvim.builtin.which_key.mappings["s"]["s"] = { "<cmd>Telescope grep_string<cr>", "Grep String" }
+lvim.builtin.which_key.mappings["*"]      = { "<cmd>Telescope grep_string<cr>", "Grep String" }
 lvim.builtin.which_key.mappings["n"]      = {
   name = "Extras",
   h = { "<cmd>noh<CR>", "no highlight" }

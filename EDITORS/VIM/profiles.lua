@@ -35,20 +35,21 @@ _G.cheovim_profile_setup = function(config_name)
 
     -- Clone the current stdpath function definition into an unused func
     vim.fn._stdpath_setup = vim.fn.stdpath
+    -- query original data path and append config_name in the path
+    local data_path = join_paths(vim.fn._stdpath_setup("data"), config_name)
 
     -- Override vim.fn.stdpath to manipulate the data returned by it. Yes, I know, changing core functions
     -- is really bad practice in any codebase, however this is our only way to make things like doom-nvim etc. work
     vim.fn.stdpath = function(what)
-      if what:lower() == "data" then
-          local data_path = join_paths(vim.fn._stdpath_setup(what), config_name)
-          vim.opt.rtp:prepend(join_paths(data_path, "site"))
-          vim.opt.rtp:append(join_paths(data_path, "site", "after"))
-          vim.cmd [[let &packpath = &runtimepath]]
-          -- vim.cmd(("echom \"%s\""):format(data_path))
-          return data_path
+        if what:lower() == "data" then
+            vim.opt.rtp:prepend(join_paths(data_path, "site"))
+            vim.opt.rtp:append(join_paths(data_path, "site", "after"))
+            vim.cmd [[let &packpath = &runtimepath]]
+            -- vim.cmd(("echom \"%s\""):format(data_path))
+            return data_path
       elseif what:lower() == "cache" then
-          local cache_path = join_paths(vim.fn._stdpath_setup(what), config_name, ".cache")
-          return cache_path
+            local cache_path = join_paths(data_path, ".cache")
+            return cache_path
       end
       return vim.fn._stdpath_setup(what)
     end

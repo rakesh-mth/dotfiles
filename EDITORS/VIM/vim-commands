@@ -201,7 +201,7 @@ CMD++ / CMD+- - zoom text in neovim in terminal (iterm2) in mac
 ######paste cureent word under cursur in current buffer
 :<C-r><C-w>
 
-######list down all options od a command
+######list down all options of a command
 :colorscheme <C-d>
 
 ######Find files in any directory
@@ -274,6 +274,10 @@ ca - amend the last commit and edit the message.
 
 ######enable spell checking
 :set spell
+
+######plugin related options
+:set packpath?
+:set runtimepath?
 
 ######find mapping
 :verbose noremap <M-1> - display file and location where <M-1> mapping is defined
