@@ -36,9 +36,9 @@ vim.env.PATH = table.concat({ 'C:\\Program Files\\Git\\bin;', vim.env.PATH }, ";
 -- general
 lvim.log.level = "warn"
 lvim.format_on_save = true
--- rakesh - colorscheme changed to kanagawa from onedarker
--- lvim.colorscheme = "onedarker"
-lvim.colorscheme = "kanagawa"
+-- rakesh - colorscheme kanagawa was installed
+lvim.colorscheme = "onedarker"
+-- lvim.colorscheme = "kanagawa"
 
 -- keymappings [view all the defaults by pressing <leader>Lk]
 lvim.leader = "space"
@@ -87,6 +87,7 @@ lvim.builtin.which_key.mappings["p"]["p"] = { "<cmd>Telescope projects<CR>", "Pr
 lvim.builtin.which_key.mappings["p"]["f"] = { "<cmd>Telescope find_files<CR>", "Files" }
 lvim.builtin.which_key.mappings["p"]["F"] = { "<cmd>lua require\"telescope.builtin\".find_files({ find_command = {'fd', '--type', 'f', '--no-ignore-vcs', '--hidden', '--follow', '-E', '.git' } })<CR>", "Files (All)" }
 lvim.builtin.which_key.mappings["b"]["b"] = { "<cmd>Telescope buffers<CR>", "Buffers" }
+lvim.builtin.which_key.mappings["b"]["d"] = { "<cmd>bd<CR>", "Buffer Delete" }
 lvim.builtin.which_key.mappings["b"]["p"] = { "<cmd>b#<CR>", "Previous" }
 lvim.builtin.which_key.mappings["'"]      = { "<cmd>ToggleTerm<CR>", "Open Terminal" }
 lvim.builtin.which_key.mappings["g"]["g"] = { "<cmd>Git|wincmd _|normal gu<CR>", "Git Status" }
