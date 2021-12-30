@@ -10,6 +10,8 @@ if exist %USERPROFILE%\.config\emacs\doom-emacs\.doom.d rmdir %USERPROFILE%\.con
 if exist %USERPROFILE%\.config\nvim\profiles.lua del %USERPROFILE%\.config\nvim\profiles.lua
 if exist %USERPROFILE%\.vimrc del %USERPROFILE%\.vimrc
 if exist %USERPROFILE%\AppData\Local\nvim\init.vim del %USERPROFILE%\AppData\Local\nvim\init.vim
+if exist %USERPROFILE%\.config\nvim-config\rakesh-mth\init.vim del %USERPROFILE%\.config\nvim-config\rakesh-mth\init.vim
+if exist %USERPROFILE%\.config\nvim-config\rakesh-mth\init.lua del %USERPROFILE%\.config\nvim-config\rakesh-mth\init.lua
 if exist %USERPROFILE%\.vsvimrc del %USERPROFILE%\.vsvimrc
 
 REM create folders for symlinks
@@ -35,8 +37,9 @@ REM LunarVIm - clone the repo and create symlick for config.lua file
 if not exist %USERPROFILE%\.config\nvim-config\LunarVim git clone https://github.com/LunarVim/LunarVim.git %USERPROFILE%\.config\nvim-config\LunarVim
 mklink %USERPROFILE%\.config\nvim-config\LunarVim\config.lua %DOTFILES%\EDITORS\VIM\LunarVim\config.lua
 mklink %USERPROFILE%\.vimrc %DOTFILES%\EDITORS\VIM\init.vim
-REM init.vim for neovim. do not create this symlink anymore since cheovim is used
-REM mklink %USERPROFILE%\AppData\Local\nvim\init.vim %DOTFILES%\EDITORS\VIM\init.vim
+REM init.vim and init.lua symlink
+mklink %USERPROFILE%\.config\nvim-config\rakesh-mth\init.vim %DOTFILES%\EDITORS\VIM\init.vim
+mklink %USERPROFILE%\.config\nvim-config\rakesh-mth\init.lua %DOTFILES%\EDITORS\VIM\init.lua
 mklink %USERPROFILE%\.vsvimrc %DOTFILES%\EDITORS\VIM\.vsvimrc
 REM chemacs - spacemacs and doom-emacs
 mklink %USERPROFILE%\.emacs %DOTFILES%\EDITORS\EMACS\.emacs

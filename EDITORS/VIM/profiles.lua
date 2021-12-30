@@ -69,7 +69,7 @@ local profiles = {
 
 	More in-depth information can be found in cheovim's README on GitHub.
 	--]]
-    rakesh_mth = { "~/workspaces/rakesh-mth/dotfiles/EDITORS/VIM/", {
+    rakesh_mth = { "~/.config/nvim-config/rakesh-mth", {
           plugins = "packer",
           preconfigure = "packer:start",
         }
