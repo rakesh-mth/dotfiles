@@ -15,7 +15,7 @@
 
 -- rakesh - helper setup function
 
-_G.cheovim_profile_setup = function(selected_profile)
+_G.cheovim_profile_setup = function(selected_profile, profile_path)
     -- helper function to join paths
     local path_sep = vim.loop.os_uname().version:match "Windows" and "\\" or "/"
     function _G.join_paths(...)
@@ -24,18 +24,19 @@ _G.cheovim_profile_setup = function(selected_profile)
     end
     -- no need to delete packer_compiled.lua, since config path will be from current cheovim config.
     -- vim.fn.delete(vim.fn.stdpath("config") .. "/plugin/packer_compiled.lua")
-    -- make sure doom-nvim path for config is in runtimepath
-    vim.opt.rtp:append(join_paths(vim.fn.expand("~"), ".config", "nvim-config", selected_profile))
+    -- make sure profile_path is in runtimepath for modules to work (ex doom-nvim)
+    vim.opt.rtp:append(profile_path)
     -- remove original data/site and data/site/after
     vim.opt.rtp:remove(join_paths(vim.fn.stdpath "data", "site"))
     vim.opt.rtp:remove(join_paths(vim.fn.stdpath "data", "site", "after"))
     -- these will not work since cheovim will override default config path
+    -- default config path needs to be in rtp for cheovim to work correctly.
     -- vim.opt.rtp:remove(vim.fn.stdpath "config")
     -- vim.opt.rtp:remove(join_paths(vim.fn.stdpath "config", "after"))
 
     -- Clone the current stdpath function definition into an unused func
     vim.fn._stdpath_setup = vim.fn.stdpath
-    -- query original data path and append selected_profile in the path
+    -- query original data path and append selected_profile in the path for new stdpath("data")
     local data_path = join_paths(vim.fn._stdpath_setup("data"), selected_profile)
 
     -- Override vim.fn.stdpath to manipulate the data returned by it. Yes, I know, changing core functions
@@ -98,6 +99,6 @@ local profiles = {
 
 local default_profile = 'lunar_nvim'
 local selected_profile = load_profile or default_profile
-cheovim_profile_setup(selected_profile)
+cheovim_profile_setup(selected_profile, vim.fn.expand(profiles[selected_profile][1]))
 return selected_profile, profiles
 
