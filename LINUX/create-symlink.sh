@@ -7,6 +7,8 @@ ln -snf $HOME/workspaces/rakesh-mth/dotfiles/GIT/.gitconfig $HOME/.gitconfig
 ln -snf $HOME/workspaces/scripts/GIT/.gitconfig $HOME/.gitconfig-work
 
 # symlink related to editors
+
+###### VIM and NVIM
 # neovim and vim
 mkdir -p ~/temp # create temp folder for backup files in vim
 mkdir -p "$HOME/.config/nvim"
@@ -27,6 +29,8 @@ ln -snf $HOME/workspaces/rakesh-mth/dotfiles/EDITORS/VIM/LunarVim/config.lua $HO
 # rakesh-mth - symlinks
 ln -snf $HOME/workspaces/rakesh-mth/dotfiles/EDITORS/VIM/init.vim $HOME/.config/nvim-config/rakesh-mth/init.vim
 ln -snf $HOME/workspaces/rakesh-mth/dotfiles/EDITORS/VIM/init.lua $HOME/.config/nvim-config/rakesh-mth/init.lua
+
+###### EMACS
 # chemacs config files
 [ -f "$HOME/.emacs" ] && unlink "$HOME/.emacs"
 [ -f "$HOME/.emacs-profiles.el" ] && unlink "$HOME/.emacs-profiles.el"
@@ -34,11 +38,15 @@ ln -snf $HOME/workspaces/rakesh-mth/dotfiles/EDITORS/EMACS/.emacs $HOME/.emacs
 ln -snf $HOME/workspaces/rakesh-mth/dotfiles/EDITORS/EMACS/.emacs-profiles.el $HOME/.emacs-profiles.el
 # spacemacs
 mkdir -p "$HOME/.config/emacs/spacemacs"
+# clone spacemacs if it is not already
+[ ! -d "$HOME/.config/emacs/spacemacs/.emacs.d" ] && git clone https://github.com/syl20bnr/spacemacs ~/.config/emacs/spacemacs/.emacs.d
 [ -d "$HOME/.config/emacs/spacemacs/.spacemacs.d" ] && rm -rf "$HOME/.config/emacs/spacemacs/.spacemacs.d"
 mkdir -p "$HOME/.config/emacs/spacemacs/.spacemacs.d"
 ln -snf $HOME/workspaces/rakesh-mth/dotfiles/EDITORS/EMACS/.spacemacs.d/init.el $HOME/.config/emacs/spacemacs/.spacemacs.d
 # doom-emacs
 mkdir -p "$HOME/.config/emacs/doom-emacs"
+# clone doom-emacs if it is not already
+[ ! -d "$HOME/.config/emacs/doom-emacs/.emacs.d" ] && git clone --depth 1 https://github.com/hlissner/doom-emacs ~/.config/emacs/doom-emacs/.emacs.d
 [ -f "$HOME/.config/emacs/doom-emacs/.doom.d" ] && unlink "$HOME/.config/emacs/doom-emacs/.doom.d"
 ln -snf $HOME/workspaces/rakesh-mth/dotfiles/EDITORS/EMACS/.doom.d $HOME/.config/emacs/doom-emacs/.doom.d
 # this is in .zshrc (it is here for current terminal)

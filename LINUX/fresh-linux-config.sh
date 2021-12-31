@@ -1,11 +1,48 @@
 #!/usr/bin/env bash
 
-# close dotfiles repo from github
+# APT-GET
+# apt-get (uninstalled, using brew for these packages)
+# sudo add-apt-repository ppa:kelleyk/emacs
+# sudo apt-get install htop tmux vim emacs27 
+
+# snap (uninstalled, using brew for these packages)
+# sudo snap install fzf-carroarmato0
+# sudo snap install nvim --classic
+
+# apt-get packages - avoid using apt-get, instead use brew packages
+sudo apt-get update
+sudo apt-get install openssh-server uswsusp
+
+# HOMEBREW FOR LINUX
+# brew path is added in ~/.profile by the installation.
+# curl and git are needed for brew, can install brew version too
+sudo apt-get install build-essential procps curl file git
+if command -v brew &> /dev/null; then
+    echo "brew is already installed"
+else
+    echo "installing brew..."
+    mkdir -p $HOME/brew
+    /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+    # homebrew core:
+    # aspell is used with spacemacs
+    # xclip is used with neovim for copy paste from clipboard
+    # virtualenv and virtualenvwrapper is installed for python virtual envs
+    # gcc@5 is installed for compiling vterm module in doom-emacs
+    # sbcl is common-lisp interpreter
+    # glslang, jq, shellcheck is is installed for doom-emacs
+    echo "installing packages using brew"
+    # modern unix tools
+    brew install bat lsd git-delta dust duf broot fd ripgrep the_silver_searcher fzf mcfly jq tldr bottom glances gtop zoxide | tee -a $HOME/brew/fresh-install
+    # editors, compilers and tools
+    brew install curl git htop tmux vim neovim emacs gcc@5 llvm rust rust-analyzer golang python virtualenv virtualenvwrapper nodejs sbcl glslang cmake aspell iperf3 gnupg xclip shellcheck | tee -a $HOME/brew/fresh-install
+    # homebrew cask: (is not supported on linux).
+    # Error: Installing casks is supported only on macOS
+    # brew install homebrew/cask/emacs
+fi
+
+# clone dotfiles repo from github
 if [ ! -d "$HOME/workspaces/rakesh-mth" ]; then
-    mkdir -p $HOME/workspaces/rakesh-mth
-    pushd $HOME/workspaces/rakesh-mth
-    git clone https://github.com/rakesh-mth/dotfiles.git
-    popd
+    git clone https://github.com/rakesh-mth/dotfiles.git $HOME/workspaces/rakesh-mth
 fi
 
 # CREATE SYMLINKS
@@ -20,45 +57,6 @@ echo "adding source $bashrc_file"
 if ! grep -qF "$bashrc_content" $HOME/.bashrc ; then
     echo "$bashrc_content" >> $HOME/.bashrc
     source "$bashrc_file" # source for PATH and env variables in current shell
-fi
-
-
-# APT-GET
-# apt-get (uninstalled, using brew for these packages)
-# sudo add-apt-repository ppa:kelleyk/emacs
-# sudo apt-get install htop tmux vim emacs27 
-
-# snap (uninstalled, using brew for these packages)
-# sudo snap install fzf-carroarmato0
-# sudo snap install nvim --classic
-
-# apt-get packages - avoid using apt-get, instead use brew packages
-sudo apt-get install openssh-server uswsusp
-
-# HOMEBREW FOR LINUX
-# brew path is added in ~/.profile by the installation.
-# curl and git are needed for brew, can install brew version too
-sudo apt-get install build-essential procps curl file git
-if command -v brew &> /dev/null; then
-    echo "brew is already installed"
-else
-    echo "installing brew..."
-    /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
-    # homebrew core:
-    # aspell is used with spacemacs
-    # xclip is used with neovim for copy paste from clipboard
-    # virtualenv and virtualenvwrapper is installed for python virtual envs
-    # gcc@5 is installed for compiling vterm module in doom-emacs
-    # sbcl is common-lisp interpreter
-    # glslang, jq, shellcheck is is installed for doom-emacs
-    echo "installing packages using brew"
-    # modern unix tools
-    brew install bat lsd git-delta dust duf broot fd ripgrep the_silver_searcher fzf mcfly jq tldr bottom glances gtop zoxide
-    # editors, compilers and tools
-    brew install curl git htop tmux vim neovim emacs gcc@5 llvm rust rust-analyzer golang python virtualenv virtualenvwrapper nodejs sbcl glslang cmake aspell iperf3 gnupg xclip shellcheck 
-    # homebrew cask: (is not supported on linux).
-    # Error: Installing casks is supported only on macOS
-    # brew install homebrew/cask/emacs
 fi
 
 # PYTHON 
