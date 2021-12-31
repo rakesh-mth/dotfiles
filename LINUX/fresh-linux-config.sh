@@ -1,5 +1,11 @@
 #!/usr/bin/env bash
 
+# define a color
+RED='\033[0;31m'
+GREEN='\033[0;32m'
+# No Color
+NC='\033[0m' 
+
 # APT-GET
 # apt-get (uninstalled, using brew for these packages)
 # sudo add-apt-repository ppa:kelleyk/emacs
@@ -10,7 +16,9 @@
 # sudo snap install nvim --classic
 
 # apt-get packages - avoid using apt-get, instead use brew packages
+echo -e "${RED}updating apt mirror list${NC}"
 sudo apt-get update
+echo -e "${RED}installing apt packages${NC}"
 sudo apt-get install openssh-server uswsusp
 
 # HOMEBREW FOR LINUX
@@ -18,7 +26,7 @@ sudo apt-get install openssh-server uswsusp
 # curl and git are needed for brew, can install brew version too
 sudo apt-get install build-essential procps curl file git
 if command -v brew &> /dev/null; then
-    echo "brew is already installed"
+    echo -e "${GREEN}brew is already installed${NC}"
 else
     echo "installing brew..."
     mkdir -p $HOME/brew
@@ -34,7 +42,7 @@ else
     # modern unix tools
     brew install bat lsd git-delta dust duf broot fd ripgrep the_silver_searcher fzf mcfly jq tldr bottom glances gtop zoxide | tee -a $HOME/brew/fresh-install
     # editors, compilers and tools
-    brew install curl git htop tmux vim neovim emacs gcc@5 llvm rust rust-analyzer golang python virtualenv virtualenvwrapper nodejs sbcl glslang cmake aspell iperf3 gnupg xclip shellcheck | tee -a $HOME/brew/fresh-install
+    brew install curl git htop tmux vim neovim emacs gcc@5 llvm rust rust-analyzer golang python@3.9 virtualenv virtualenvwrapper nodejs sbcl glslang cmake aspell iperf3 gnupg xclip shellcheck | tee -a $HOME/brew/fresh-install
     # homebrew cask: (is not supported on linux).
     # Error: Installing casks is supported only on macOS
     # brew install homebrew/cask/emacs
@@ -47,16 +55,18 @@ fi
 
 # CREATE SYMLINKS
 create_symlink=$(readlink -f $(dirname "$0")/create-symlink.sh)
-echo "running $create_symlink"
+echo -e "${RED}running $create_symlink${NC}"
 source $create_symlink
 
 # source .bashrc and .zshrc to ~/.bashrc and ~/.zshrc
-bashrc_file=$(readlink -f $(dirname "$0")/../.bashrc)
-bashrc_content="source $bashrc_file"
-echo "adding source $bashrc_file"
-if ! grep -qF "$bashrc_content" $HOME/.bashrc ; then
-    echo "$bashrc_content" >> $HOME/.bashrc
-    source "$bashrc_file" # source for PATH and env variables in current shell
+shell_config_file=".zshrc"
+[ "$SHELL" = "/bin/bash" ] && shell_config_file=".bashrc"
+config_file=$(readlink -f $(dirname "$0")/../$shell_config_file)
+bashrc_content="source $config_file"
+echo -e "${RED}adding source $config_file${NC}"
+if ! grep -qF "$bashrc_content" $HOME/$shell_config_file ; then
+    echo "$bashrc_content" >> $HOME/$shell_config_file
+    source "$config_file" # source for PATH and env variables in current shell
 fi
 
 # PYTHON 
@@ -78,7 +88,7 @@ if [ ! -d "$HOME/.virtualenvs/$python3" ]; then
     # deactivate python virtual env.
     deactivate
 else
-    echo "virtual env for $python3 already exists."
+    echo -e "${GREEN}virtual env for $python3 already exists.${NC}"
 fi
 
 # RUBY (with RVM)
@@ -92,7 +102,7 @@ if [ ! -d "$HOME/.rvm" ]; then
     # install gems (--user-install option is not used if rvm is used)
     gem install neovim solargraph pry pry-doc ruby_parser rubocop prettier seeing_is_believing ruby-debug-ide debase
 else
-    echo "rvm is already installed"
+    echo -e "${GREEN}rvm is already installed${NC}"
 fi
 
 # NPM and NODEJS
@@ -108,29 +118,40 @@ if [ ! -d "$HOME/.nvm" ]; then
     # marked, bash-language-server, typescript-language-server is used with doom-emacs
     npm install -g neovim tern typescript yarn marked bash-language-server typescript-language-server
 else
-    echo "nvm is already installed"
+    echo -e "${GREEN}nvm is already installed${NC}"
 fi
 
 # GO LANG
 # default GOPATH is $HOME/go
 # These are for doom-emacs
-go install github.com/x-motemen/gore/cmd/gore@latest
-go install github.com/stamblerre/gocode@latest
-go install golang.org/x/tools/cmd/godoc@latest
-go install golang.org/x/tools/cmd/goimports@latest
-go install golang.org/x/tools/cmd/gorename@latest
-go install golang.org/x/tools/cmd/guru@latest
-go install github.com/cweill/gotests/gotests@latest
-go install github.com/fatih/gomodifytags@latest
+echo -e "${RED}installing go tools${NC}"
+! command -v gore &> /dev/null && go install github.com/x-motemen/gore/cmd/gore@latest
+! command -v gocode &> /dev/null && go install github.com/stamblerre/gocode@latest
+! command -v godoc &> /dev/null && go install golang.org/x/tools/cmd/godoc@latest
+! command -v goimports &> /dev/null && go install golang.org/x/tools/cmd/goimports@latest
+! command -v gorename &> /dev/null && go install golang.org/x/tools/cmd/gorename@latest
+! command -v guru &> /dev/null && go install golang.org/x/tools/cmd/guru@latest
+! command -v gotests &> /dev/null && go install github.com/cweill/gotests/gotests@latest
+! command -v gomodifytags &> /dev/null && go install github.com/fatih/gomodifytags@latest
 
 # VIM
 # clone cheovim
 if [ ! -d "$HOME/.config/nvim" ]; then
     git clone https://github.com/NTBBloodbath/cheovim ~/.config/nvim/
+else
+    echo -e "${GREEN}cheovim is already cloned${NC}"
+fi
+# clone LunarVim
+if [ ! -d $HOME/.config/nvim-config/LunarVim ]; then
+    git clone https://github.com/LunarVim/LunarVim.git $HOME/.config/nvim-config/LunarVim
+else
+    echo -e "${GREEN}LunarVim is already cloned${NC}"
 fi
 # clone doom-nvim
 if [ ! -d "$HOME/.config/nvim-config/doom-nvim" ]; then
     git clone --depth 1 https://github.com/NTBBloodbath/doom-nvim.git ${XDG_CONFIG_HOME:-$HOME/.config}/nvim-config/doom-nvim
+else
+    echo -e "${GREEN}doom-nvim is already cloned${NC}"
 fi
 
 # EMACS
@@ -139,14 +160,14 @@ if [ ! -d "$HOME/.config/emacs/spacemacs/.emacs.d" ]; then
     echo "cloning spacemacs"
     git clone https://github.com/syl20bnr/spacemacs ~/.config/emacs/spacemacs/.emacs.d
 else
-    echo "spacemacs is already cloned"
+    echo -e "${GREEN}spacemacs is already cloned${NC}"
 fi
 # clone doom-emacs (path must match from create-symlink.sh)
 if [ ! -d "$HOME/.config/emacs/doom-emacs/.emacs.d" ]; then
     echo "cloning doom-emacs"
     git clone --depth 1 https://github.com/hlissner/doom-emacs ~/.config/emacs/doom-emacs/.emacs.d
 else
-    echo "doom-emacs is already cloned"
+    echo -e "${GREEN}doom-emacs is already cloned${NC}"
 fi
 
 
