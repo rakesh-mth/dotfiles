@@ -33,7 +33,7 @@ fi
 # sudo snap install nvim --classic
 
 # apt-get packages - avoid using apt-get, instead use brew packages
-sudo apt-get install uswsusp
+sudo apt-get install openssh-server uswsusp
 
 # HOMEBREW FOR LINUX
 # brew path is added in ~/.profile by the installation.
