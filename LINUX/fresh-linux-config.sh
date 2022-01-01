@@ -31,6 +31,9 @@ else
     echo "installing brew..."
     mkdir -p $HOME/brew
     /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+    # upate current and future shell by adding path to brew
+    echo 'eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"' >> $HOME/.profile
+    eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
     # homebrew core:
     # aspell is used with spacemacs
     # xclip is used with neovim for copy paste from clipboard
