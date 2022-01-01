@@ -99,6 +99,8 @@ if [ ! -d "$HOME/.rvm" ]; then
     RUBY_VERSION=3.0.3
     echo -e "${RED}creating RVM env for $RUBY_VERSION${NC}"
     curl -sSL https://get.rvm.io | bash -s -- --ignore-dotfiles
+    # source rvm path in current shell. for future shell it will be part of .bashrc / .zshrc
+    source /home/rakesh/.rvm/scripts/rvm 
     # install ruby-3.0.3 using rvm
     rvm install ruby-$RUBY_VERSION --binary
     # switch to use ruby from rvm. This will be default in all shell now onwards.
@@ -113,7 +115,7 @@ fi
 if [ ! -d "$HOME/.nvm" ]; then
     NODE_VERSION=17.1.0
     curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.0/install.sh | bash
-    # source nvm in current shell
+    # source nvm in current shell. for future shell it will be part of .bashrc / .zshrc
     source "$HOME/.nvm/nvm.sh"
     # install a node 
     nvm install $NODE_VERSION
