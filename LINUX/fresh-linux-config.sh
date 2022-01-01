@@ -80,7 +80,7 @@ if [ ! -d "$HOME/.virtualenvs/$python3" ]; then
     # virtualenv -p /home/linuxbrew/.linuxbrew/bin/$python3 $HOME/.virtualenvs/$python3
     # source $HOME/.virtualenvs/$python3/bin/activate
     # mkvirtualenv creates env under $HOME/.virtualenvs
-    echo "creating python virtual env for $python3"
+    echo -e "${RED}creating python virtual env for $python3${NC}"
     mkvirtualenv -p /home/linuxbrew/.linuxbrew/bin/$python3 $python3
     # activate python virtual env
     workon $python3
@@ -97,6 +97,7 @@ fi
 # RUBY (with RVM)
 if [ ! -d "$HOME/.rvm" ]; then
     RUBY_VERSION=3.0.3
+    echo -e "${RED}creating RVM env for $RUBY_VERSION${NC}"
     curl -sSL https://get.rvm.io | bash -s -- --ignore-dotfiles
     # install ruby-3.0.3 using rvm
     rvm install ruby-$RUBY_VERSION --binary
