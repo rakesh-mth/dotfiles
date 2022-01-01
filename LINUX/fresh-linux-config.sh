@@ -155,7 +155,7 @@ else
 fi
 # clone doom-nvim
 if [ ! -d "$HOME/.config/nvim-config/doom-nvim" ]; then
-    git clone --depth 1 https://github.com/NTBBloodbath/doom-nvim.git ${XDG_CONFIG_HOME:-$HOME/.config}/nvim-config/doom-nvim
+    git clone --depth 1 https://github.com/NTBBloodbath/doom-nvim.git $HOME/.config/nvim-config/doom-nvim
 else
     echo -e "${GREEN}doom-nvim is already cloned${NC}"
 fi
