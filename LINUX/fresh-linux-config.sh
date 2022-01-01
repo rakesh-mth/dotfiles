@@ -19,12 +19,12 @@ NC='\033[0m'
 echo -e "${RED}updating apt mirror list${NC}"
 sudo apt-get update
 echo -e "${RED}installing apt packages${NC}"
-sudo apt-get install openssh-server uswsusp
+sudo apt-get install -y openssh-server uswsusp
 
 # HOMEBREW FOR LINUX
 # brew path is added in ~/.profile by the installation.
 # curl and git are needed for brew, can install brew version too
-sudo apt-get install build-essential procps curl file git
+sudo apt-get install -y build-essential procps curl file git
 if command -v brew &> /dev/null; then
     echo -e "${GREEN}brew is already installed${NC}"
 else
@@ -38,7 +38,7 @@ else
     # gcc@5 is installed for compiling vterm module in doom-emacs
     # sbcl is common-lisp interpreter
     # glslang, jq, shellcheck is is installed for doom-emacs
-    echo "installing packages using brew"
+    echo -e "${RED}installing packages using brew${NC}"
     # modern unix tools
     brew install bat lsd git-delta dust duf broot fd ripgrep the_silver_searcher fzf mcfly jq tldr bottom glances gtop zoxide | tee -a $HOME/brew/fresh-install
     # editors, compilers and tools
