@@ -81,6 +81,8 @@ if [ ! -d "$HOME/.virtualenvs/$python3" ]; then
     # source $HOME/.virtualenvs/$python3/bin/activate
     # mkvirtualenv creates env under $HOME/.virtualenvs
     echo -e "${RED}creating python virtual env for $python3${NC}"
+    # source virtualenvwrapper.sh to bring mkvirtualenv and workon
+    source virtualenvwrapper.sh
     mkvirtualenv -p /home/linuxbrew/.linuxbrew/bin/$python3 $python3
     # activate python virtual env
     workon $python3
