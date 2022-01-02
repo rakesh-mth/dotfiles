@@ -32,9 +32,10 @@ export HOMEBREW_NO_BOTTLE_SOURCE_FALLBACK=1
 # export WORKON_HOME=$HOME/.virtualenvs
 export VIRTUALENVWRAPPER_PYTHON=`which python3`
 export VIRTUALENVWRAPPER_VIRTUALENV=`which virtualenv`
-[ -f "/usr/local/bin/virtualenvwrapper.sh" ] && source "/usr/local/bin/virtualenvwrapper.sh"
+# source virualenvwrapper for mkvirtualenv. virtualenvwrapper.sh must be in path.
+command -v virtualenvwrapper.sh &> /dev/null && source virtualenvwrapper.sh
 # use virtual python3.9
-workon python3.9
+[ -d $HOME/.virtualenvs/python3.9/ ] && workon python3.9
 
 # source nvm for npm and nodejs
 export NVM_DIR="$HOME/.nvm"
