@@ -14,9 +14,7 @@ else
 fi
 
 # zoxide (a better cd)
-if command -v zoxide &> /dev/null ; then
-    eval "$(zoxide init bash)"
-fi
+command -v zoxide &> /dev/null && eval "$(zoxide init bash)"
 
 # get ruby version, not using system ruby path since rvm is used below.
 # RUBY_VERSION=`ruby --version | awk '{print $2}' | awk -F "." '{print $1"."$2".0"}'`
@@ -44,6 +42,14 @@ export DOOMDIR=$HOME/.config/emacs/doom-emacs/.doom.d
 
 # set runtime path for LunarVim - this is to make sure multiple config can work together.
 export LUNARVIM_RUNTIME_DIR=$HOME/.local/share/nvim/LunarVim
+
+# brew do not use bottle from source
+export HOMEBREW_NO_BOTTLE_SOURCE_FALLBACK=1
+
+# source McFly (after fzf)
+if type "mcfly" > /dev/null; then
+    eval "$(mcfly init zsh)"
+fi
 
 # source aliases
 script_full_path="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)/$(basename "${BASH_SOURCE[0]}")"
