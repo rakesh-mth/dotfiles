@@ -12,7 +12,7 @@ fi
 export FZF_DEFAULT_COMMAND='fd --type f'
 
 # zoxide (a better cd)
-command -v zoxide &> /dev/null && eval "$(zoxide init bash)"
+command -v zoxide &> /dev/null && eval "$(zoxide init zsh)"
 
 # get ruby version, not using system ruby path since rvm is used below.
 # RUBY_VERSION=`ruby --version | awk '{print $2}' | awk -F "." '{print $1"."$2".0"}'`
