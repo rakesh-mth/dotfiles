@@ -97,7 +97,7 @@ local profiles = {
 -- return "lunar_nvim", profiles
 -- return "doom_nvim", profiles
 
-local default_profile = 'lunar_nvim'
+local default_profile = 'LunarVim'
 local selected_profile = load_profile or default_profile
 cheovim_profile_setup(selected_profile, vim.fn.expand(profiles[selected_profile][1]))
 return selected_profile, profiles
