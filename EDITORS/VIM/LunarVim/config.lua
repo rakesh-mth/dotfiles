@@ -38,6 +38,7 @@ end
 -- general
 lvim.log.level = "warn"
 lvim.format_on_save = true
+lvim.transparent_window = false
 -- rakesh - colorscheme kanagawa was installed
 lvim.colorscheme = "onedarker"
 -- lvim.colorscheme = "kanagawa"
@@ -202,11 +203,11 @@ lvim.builtin.treesitter.highlight.enabled = true
 -- Additional Plugins
 -- [rakesh] uncommented, added few plugins
 lvim.plugins = {
---     {"folke/tokyonight.nvim"},
---     {
---       "folke/trouble.nvim",
---       cmd = "TroubleToggle",
---     },
+      {"folke/tokyonight.nvim"},
+      {
+        "folke/trouble.nvim",
+        cmd = "TroubleToggle",
+      },
       {"tpope/vim-fugitive"},
       {"godlygeek/tabular"},
 
