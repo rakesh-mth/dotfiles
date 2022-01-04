@@ -90,7 +90,8 @@ lvim.builtin.which_key.mappings["p"]["p"] = { "<cmd>Telescope projects<CR>", "Pr
 lvim.builtin.which_key.mappings["p"]["f"] = { "<cmd>Telescope find_files<CR>", "Files" }
 lvim.builtin.which_key.mappings["p"]["F"] = { "<cmd>lua require\"telescope.builtin\".find_files({ find_command = {'fd', '--type', 'f', '--no-ignore-vcs', '--hidden', '--follow', '-E', '.git' } })<CR>", "Files (All)" }
 lvim.builtin.which_key.mappings["b"]["b"] = { "<cmd>Telescope buffers<CR>", "Buffers" }
-lvim.builtin.which_key.mappings["b"]["d"] = { "<cmd>bd<CR>", "Buffer Delete" }
+lvim.builtin.which_key.mappings["b"]["c"] = { "<cmd>BufferClose<CR>", "Buffer Close" }
+lvim.builtin.which_key.mappings["b"]["d"] = { "<cmd>BufferDelete<CR>", "Buffer Delete" }
 lvim.builtin.which_key.mappings["b"]["p"] = { "<cmd>b#<CR>", "Previous" }
 lvim.builtin.which_key.mappings["'"]      = { "<cmd>ToggleTerm<CR>", "Open Terminal" }
 lvim.builtin.which_key.mappings["g"]["g"] = { "<cmd>Git|wincmd _|normal gu<CR>", "Git Status" }

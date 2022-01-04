@@ -282,6 +282,11 @@ ca - amend the last commit and edit the message.
 ######find mapping
 :verbose noremap <M-1> - display file and location where <M-1> mapping is defined
 
+###### important commands for debugging
+:functions
+:scriptnames
+:messages
+
 ######help: key-notation
 :help key-notation
 :help map-which-keys
