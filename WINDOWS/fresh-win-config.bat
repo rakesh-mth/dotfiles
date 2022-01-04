@@ -7,6 +7,9 @@ REM ###### modern unit tools
 choco install jq shellcheck zoxide delta lsd dust
 REM ###### pin a package (jfrog-cli) to the installed version (1.51.1 - last working)
 choco pin add -n=jfrog-cli
+REM ###### install neovide and fvim editor frontend for neovim
+REM download neovide and put it is path: https://github.com/neovide/neovide/releases/latest
+REM download fvim and put it in path: https://github.com/yatli/fvim/releases/latest
 REM ###### install glslang
 REM # download, extract and add to path: https://github.com/KhronosGroup/glslang/releases/tag/master-tot
 REM ###### install sbcl
