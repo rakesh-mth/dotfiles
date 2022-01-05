@@ -17,7 +17,8 @@ local init_custom_options = function()
 		colorcolumn = "120", -- Indent line at what column? Set something like '99999' to not display it
 		scrolloff = 5, -- Determines the number of context lines you would like to see above and below the cursor
 		ignorecase = true, -- Ignore case in search
-		smartcase = true, -- Case-sensitive search when search term contains uppercase characters. Otherwise, case-sensitive search.  timeoutlen = 200, -- Time to wait for a mapped sequence to complete (in milliseconds)
+		smartcase = true, -- Case-sensitive search when search term contains uppercase characters. Otherwise, case-sensitive search.
+        -- timeoutlen = 200, -- Time to wait for a mapped sequence to complete (in milliseconds)
 	}
 
 	for k, v in pairs(custom_options) do
