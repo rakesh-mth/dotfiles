@@ -2,7 +2,7 @@
 brew cask install adoptopenjdk | tee ~/brew/adoptopenjdk
 # install modern unix tools
 brew tap cantino/mcfly
-brew install lsd git-delta dust duf broot fd ripgrep the_silver_searcher fzf mcfly jq 
+brew install lsd git-delta dust duf broot fd ripgrep the_silver_searcher fzf mcfly jq lazygit
 # some packages available using npm or other package manager, do not install them using brew.
 # list of packages not to be installed using brew: marked
 brew install neovim vim emacs ctags wget xz jfrog-cli-go python@2 python@3 groovy nodejs golang rust rust-analyzer llvm sbcl glslang cmake aspell hub git iperf3 gnupg shellcheck coreutils fontconfig

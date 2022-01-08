@@ -43,7 +43,7 @@ else
     # glslang, jq, shellcheck is is installed for doom-emacs
     echo -e "${RED}installing packages using brew${NC}"
     # modern unix tools
-    brew install bat lsd git-delta dust duf broot fd ripgrep the_silver_searcher fzf mcfly jq tldr bottom glances gtop zoxide | tee -a $HOME/brew/fresh-install
+    brew install bat lsd git-delta dust duf broot fd ripgrep the_silver_searcher fzf mcfly jq tldr bottom glances gtop zoxide lazygit | tee -a $HOME/brew/fresh-install
     # editors, compilers and tools
     brew install curl git htop tmux vim neovim emacs gcc@5 llvm rust rust-analyzer golang python@3.9 virtualenv virtualenvwrapper nodejs sbcl glslang cmake aspell iperf3 gnupg xclip shellcheck | tee -a $HOME/brew/fresh-install
     # homebrew cask: (is not supported on linux).
