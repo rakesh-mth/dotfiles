@@ -1,8 +1,14 @@
+# define a color
+RED='\033[0;31m'
+GREEN='\033[0;32m'
+# No Color
+NC='\033[0m' 
+
 # install opengdk first as it is a dependency of groovy
 brew cask install adoptopenjdk | tee ~/brew/adoptopenjdk
 # install modern unix tools
 brew tap cantino/mcfly
-brew install lsd git-delta dust duf broot fd ripgrep the_silver_searcher fzf mcfly jq lazygit
+brew install bat lsd git-delta dust duf broot fd ripgrep the_silver_searcher fzf mcfly jq tldr bottom glances gtop zoxide lazygit
 # some packages available using npm or other package manager, do not install them using brew.
 # list of packages not to be installed using brew: marked
 brew install neovim vim emacs ctags wget xz jfrog-cli-go python@2 python@3 groovy nodejs golang rust rust-analyzer llvm sbcl glslang cmake aspell hub git iperf3 gnupg shellcheck coreutils fontconfig
@@ -97,39 +103,79 @@ fi
 ###### GO LANG
 # default GOPATH is $HOME/go
 # These are for doom-emacs
-go install github.com/x-motemen/gore/cmd/gore@latest
-go install github.com/stamblerre/gocode@latest
-go install golang.org/x/tools/cmd/godoc@latest
-go install golang.org/x/tools/cmd/goimports@latest
-go install golang.org/x/tools/cmd/gorename@latest
-go install golang.org/x/tools/cmd/guru@latest
-go install github.com/cweill/gotests/gotests@latest
-go install github.com/fatih/gomodifytags@latest
+echo -e "${RED}installing go tools${NC}"
+! command -v gore &> /dev/null && go install github.com/x-motemen/gore/cmd/gore@latest
+! command -v gocode &> /dev/null && go install github.com/stamblerre/gocode@latest
+! command -v godoc &> /dev/null && go install golang.org/x/tools/cmd/godoc@latest
+! command -v goimports &> /dev/null && go install golang.org/x/tools/cmd/goimports@latest
+! command -v gorename &> /dev/null && go install golang.org/x/tools/cmd/gorename@latest
+! command -v guru &> /dev/null && go install golang.org/x/tools/cmd/guru@latest
+! command -v gotests &> /dev/null && go install github.com/cweill/gotests/gotests@latest
+! command -v gomodifytags &> /dev/null && go install github.com/fatih/gomodifytags@latest
 # go language lint server and client for neovim and vim
-go install github.com/nametake/golangci-lint-langserver@latest
-go install github.com/golangci/golangci-lint/cmd/golangci-lint@latest
+! command -v golangci-lint-langserver &> /dev/null && go install github.com/nametake/golangci-lint-langserver@latest
+! command -v golangci-lint &> /dev/null && go install github.com/golangci/golangci-lint/cmd/golangci-lint@latest
 ################################################################################
+
+# VIM
+# clone cheovim
+if [ ! -d "$HOME/.config/nvim" ]; then
+    git clone https://github.com/NTBBloodbath/cheovim ~/.config/nvim/
+else
+    echo -e "${GREEN}cheovim is already cloned${NC}"
+fi
+# clone LunarVim
+if [ ! -d $HOME/.config/nvim-config/LunarVim ]; then
+    git clone https://github.com/LunarVim/LunarVim.git $HOME/.config/nvim-config/LunarVim
+else
+    echo -e "${GREEN}LunarVim is already cloned${NC}"
+fi
+# clone doom-nvim
+if [ ! -d "$HOME/.config/nvim-config/doom-nvim" ]; then
+    git clone --depth 1 https://github.com/NTBBloodbath/doom-nvim.git $HOME/.config/nvim-config/doom-nvim
+else
+    echo -e "${GREEN}doom-nvim is already cloned${NC}"
+fi
+
+# EMACS
+# clone spacemacs (path must match from create-symlink.sh)
+if [ ! -d "$HOME/.config/emacs/spacemacs/.emacs.d" ]; then
+    echo "cloning spacemacs"
+    git clone https://github.com/syl20bnr/spacemacs ~/.config/emacs/spacemacs/.emacs.d
+else
+    echo -e "${GREEN}spacemacs is already cloned${NC}"
+fi
+# clone doom-emacs (path must match from create-symlink.sh)
+if [ ! -d "$HOME/.config/emacs/doom-emacs/.emacs.d" ]; then
+    echo "cloning doom-emacs"
+    git clone --depth 1 https://github.com/hlissner/doom-emacs ~/.config/emacs/doom-emacs/.emacs.d
+else
+    echo -e "${GREEN}doom-emacs is already cloned${NC}"
+fi
+
 
 ################################################################################
 ###### EMACS
-# install spacemacs
-git clone https://github.com/syl20bnr/spacemacs ~/.emacs.d
 # font for emacs
-git clone https://github.com/adobe-fonts/source-code-pro.git ~/software/source-code-pro
+if [ ! -d "$HOME/software/source-code-pro" ]; then
+    git clone https://github.com/adobe-fonts/source-code-pro.git $HOME/software/source-code-pro
+fi
 ################################################################################
 
 ################################################################################
 ###### VIM
 # font for vim
-git clone https://github.com/powerline/fonts.git ~/software/fonts
+if [ ! -d "$HOME/software/fonts" ]; then
+    git clone https://github.com/powerline/fonts.git $HOME/software/fonts
+fi
 # repeat key sequence (ex: repeat j/k in vscode vim movement)
 defaults write NSGlobalDomain ApplePressAndHoldEnabled -bool false
-# neovim (refer to init.vim for path), # using vs 2017 (use 14 for 2015)
-cd $HOME/.nvim/plugged/YouCompleteMe
-python install.py --clang-completer --clangd-completer --go-completer --rust-completer --ts-completer
-# for vim (refer to init.vim for path)
-cd $HOME/.vim/plugged/YouCompleteMe
-python install.py --clang-completer --clangd-completer --go-completer --rust-completer --ts-completer
+###### neovim (refer to init.vim for path), # using vs 2017 (use 14 for 2015)
+# cd $HOME/.nvim/plugged/YouCompleteMe
+# python install.py --clang-completer --clangd-completer --go-completer --rust-completer --ts-completer
+###### for vim (refer to init.vim for path)
+# cd $HOME/.vim/plugged/YouCompleteMe
+# python install.py --clang-completer --clangd-completer --go-completer --rust-completer --ts-completer
 ################################################################################
 
 
