@@ -95,7 +95,7 @@ lvim.builtin.which_key.mappings["b"]["c"] = { "<cmd>BufferClose<CR>", "Buffer Cl
 lvim.builtin.which_key.mappings["b"]["d"] = { "<cmd>BufferDelete<CR>", "Buffer Delete" }
 lvim.builtin.which_key.mappings["b"]["p"] = { "<cmd>b#<CR>", "Previous" }
 lvim.builtin.which_key.mappings["'"]      = { "<cmd>ToggleTerm<CR>", "Open Terminal" }
-lvim.builtin.which_key.mappings["g"]["g"] = { "<cmd>Git|wincmd _|normal gu<CR>", "Git Status" }
+-- lvim.builtin.which_key.mappings["g"]["g"] = { "<cmd>Git|wincmd _|normal gu<CR>", "Git Status" }
 lvim.builtin.which_key.mappings["s"]["s"] = { "<cmd>Telescope grep_string<cr>", "Grep String" }
 lvim.builtin.which_key.mappings["*"]      = { "<cmd>Telescope grep_string<cr>", "Grep String" }
 lvim.builtin.which_key.mappings["n"]      = {
@@ -210,7 +210,8 @@ lvim.plugins = {
         "folke/trouble.nvim",
         cmd = "TroubleToggle",
       },
-      {"tpope/vim-fugitive"},
+      -- use lazygit instead of vim-fugitive
+      -- {"tpope/vim-fugitive"},
       {"godlygeek/tabular"},
 
       -- color schema
