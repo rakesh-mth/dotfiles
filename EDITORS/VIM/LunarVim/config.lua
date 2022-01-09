@@ -79,12 +79,13 @@ lvim.builtin.which_key.mappings["t"] = {
   name = "+Telescope",
   r = { "<cmd>Telescope lsp_references<cr>", "References" },
   f = { "<cmd>Telescope lsp_definitions<cr>", "Definitions" },
-  d = { "<cmd>Telescope lsp_document_diagnostics<cr>", "Diagnostics" },
+  d = { "<cmd>Telescope diagnostics bufnr=0<cr>", "Diagnostics" },
   b = { "<cmd>Telescope builtin<cr>", "Builtin" },
   g = { "<cmd>Telescope live_grep<cr>", "LiveGrep" },
   q = { "<cmd>Telescope quickfix<cr>", "QuickFix" },
   l = { "<cmd>Telescope loclist<cr>", "LocationList" },
   w = { "<cmd>Telescope lsp_workspace_diagnostics<cr>", "Diagnostics" },
+  o = { "<cmd>Telescope oldfiles<cr>", "Recently Used Files" },
 }
 -- [rakesh] - additional which key
 lvim.builtin.which_key.mappings["p"]["p"] = { "<cmd>Telescope projects<CR>", "Projects" }
