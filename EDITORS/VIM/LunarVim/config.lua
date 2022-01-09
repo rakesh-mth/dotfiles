@@ -207,6 +207,13 @@ formatters.setup {
 --   },
 -- }
 
+-- rakesh: add linters with null-ls
+local linters = require "lvim.lsp.null-ls.linters"
+linters.setup {
+  { exe = "flake8", filetypes = { "python" } },
+  { exe = "shellcheck" }
+}
+
 -- Additional Plugins
 -- [rakesh] uncommented, added few plugins
 lvim.plugins = {
