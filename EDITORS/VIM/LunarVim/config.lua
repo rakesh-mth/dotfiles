@@ -211,6 +211,7 @@ formatters.setup {
 local linters = require "lvim.lsp.null-ls.linters"
 linters.setup {
   { exe = "flake8", filetypes = { "python" } },
+  { exe = "luacheck", filetypes = { "sumneko_lua" } },
   { exe = "shellcheck" }
 }
 

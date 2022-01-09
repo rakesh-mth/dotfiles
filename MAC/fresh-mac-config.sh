@@ -22,6 +22,10 @@ mkdir -p ~/software
 cargo install stylua # formatter for lua
 
 ################################################################################
+###### LUA
+luarocks install luacheck
+
+################################################################################
 ###### PYTHON
 # update system pip and install virtualenvwrapper
 pip2 install --upgrade pip

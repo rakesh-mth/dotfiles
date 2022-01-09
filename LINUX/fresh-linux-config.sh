@@ -75,6 +75,9 @@ fi
 # RUST
 cargo install stylua # formatter for lua
 
+# LUA
+luarocks install luacheck
+
 # PYTHON 
 # path must match with config.vim in vim-user-config repo
 python3=python3.9
