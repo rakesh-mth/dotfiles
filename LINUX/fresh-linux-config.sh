@@ -72,6 +72,9 @@ if ! grep -qF "$bashrc_content" $HOME/$shell_config_file ; then
     source "$config_file" # source for PATH and env variables in current shell
 fi
 
+# RUST
+cargo install stylua # formatter for lua
+
 # PYTHON 
 # path must match with config.vim in vim-user-config repo
 python3=python3.9
@@ -89,7 +92,7 @@ if [ ! -d "$HOME/.virtualenvs/$python3" ]; then
     # install all python modules for vim, neovim and emacs developments.
     # pytest, pipenv and nose is added for UT in doom-emacs. ipython is for python repl in doom emacs.
 
-    pip install pynvim neovim-remote flake8 isort yapf python-language-server[all] pyls-isort pyls-mypy importmagic epc ptvsd autoflake pytest pipenv nose ipython
+    pip install pynvim neovim-remote flake8 isort yapf python-language-server[all] pyls-isort pyls-mypy importmagic epc ptvsd autoflake pytest pipenv nose ipython black
     # deactivate python virtual env.
     deactivate
 else

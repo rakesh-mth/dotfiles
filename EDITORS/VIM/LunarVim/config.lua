@@ -18,7 +18,7 @@ local init_custom_options = function()
 		scrolloff = 5, -- Determines the number of context lines you would like to see above and below the cursor
 		ignorecase = true, -- Ignore case in search
 		smartcase = true, -- Case-sensitive search when search term contains uppercase characters. Otherwise, case-sensitive search.
-        -- timeoutlen = 200, -- Time to wait for a mapped sequence to complete (in milliseconds)
+    timeoutlen = 200, -- Time to wait for a mapped sequence to complete (in milliseconds)
 	}
 
 	for k, v in pairs(custom_options) do
@@ -94,7 +94,7 @@ lvim.builtin.which_key.mappings["b"]["b"] = { "<cmd>Telescope buffers<CR>", "Buf
 lvim.builtin.which_key.mappings["b"]["c"] = { "<cmd>BufferClose<CR>", "Buffer Close" }
 lvim.builtin.which_key.mappings["b"]["d"] = { "<cmd>BufferDelete<CR>", "Buffer Delete" }
 lvim.builtin.which_key.mappings["b"]["p"] = { "<cmd>b#<CR>", "Previous" }
-lvim.builtin.which_key.mappings["'"]      = { "<cmd>ToggleTerm<CR>", "Open Terminal" }
+-- lvim.builtin.which_key.mappings["'"]      = { "<cmd>ToggleTerm<CR>", "Open Terminal" }
 -- lvim.builtin.which_key.mappings["g"]["g"] = { "<cmd>Git|wincmd _|normal gu<CR>", "Git Status" }
 lvim.builtin.which_key.mappings["s"]["s"] = { "<cmd>Telescope grep_string<cr>", "Grep String" }
 lvim.builtin.which_key.mappings["*"]      = { "<cmd>Telescope grep_string<cr>", "Grep String" }
@@ -114,28 +114,15 @@ lvim.builtin.dap.active = true
 
 -- if you don't want all the parsers change this to a table of the ones you want
 lvim.builtin.treesitter.ensure_installed = {
-  "bash",
-  "cmake",
-  "c",
-  "cpp",
-  "javascript",
-  "json",
-  "lua",
-  "commonlisp",
-  "python",
-  "ruby",
-  "typescript",
-  "css",
-  "rust",
-  "go",
-  "java",
-  "yaml",
+  "bash", "cmake", "c", "cpp", "javascript", "json", "lua", "commonlisp",
+  "python", "ruby", "typescript", "css", "rust", "go", "java", "yaml",
 }
 
 lvim.builtin.treesitter.ignore_install = { "haskell" }
 lvim.builtin.treesitter.highlight.enabled = true
 
--- terminal settings
+-- rakesh: terminal settings
+-- lvim.builtin.terminal.open_mapping = [[<leader>']]
 lvim.builtin.which_key.mappings["a"] = {
   name = "+Applications",
 }
@@ -195,6 +182,13 @@ lvim.builtin.terminal.execs[#lvim.builtin.terminal.execs+1] = {"ipython3", "<lea
 --     filetypes = { "typescript", "typescriptreact" },
 --   },
 -- }
+
+-- rakesh: add formatters with null-ls
+local formatters = require "lvim.lsp.null-ls.formatters"
+formatters.setup {
+  { exe = "black", filetypes = { "python" } },
+  { exe = "stylua", filetypes = { "sumneko_lua" } },
+}
 
 -- -- set additional linters
 -- local linters = require "lvim.lsp.null-ls.linters"
