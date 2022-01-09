@@ -226,6 +226,8 @@ lvim.plugins = {
       -- use lazygit instead of vim-fugitive
       -- {"tpope/vim-fugitive"},
       {"godlygeek/tabular"},
+      {"tpope/vim-surround"},
+      {"tpope/vim-repeat"},
 
       -- color schema
       {"rebelot/kanagawa.nvim"}

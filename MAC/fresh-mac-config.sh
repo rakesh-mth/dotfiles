@@ -4,6 +4,11 @@ GREEN='\033[0;32m'
 # No Color
 NC='\033[0m' 
 
+# create software folder for fonts and other opensource
+mkdir -p ~/software 
+
+################################################################################
+###### HOMEBREW FOR MACOSX
 # install opengdk first as it is a dependency of groovy
 brew cask install adoptopenjdk | tee ~/brew/adoptopenjdk
 # install modern unix tools
@@ -13,17 +18,17 @@ brew install bat lsd git-delta dust duf broot fd ripgrep the_silver_searcher fzf
 # list of packages not to be installed using brew: marked
 brew install neovim vim emacs ctags wget xz jfrog-cli-go python@2 python@3 groovy nodejs golang rust rust-analyzer llvm sbcl glslang cmake aspell hub git iperf3 gnupg shellcheck luarocks coreutils fontconfig
 # brew cask install emacs 2>&1 | tee ~/brew/emacs
-
-# create software folder for fonts and other opensource
-mkdir -p ~/software 
+################################################################################
 
 ################################################################################
 ###### RUST
-cargo install stylua # formatter for lua
+! command -v stylua &> /dev/null && cargo install stylua # formatter for lua
+################################################################################
 
 ################################################################################
 ###### LUA
-luarocks install luacheck
+! command -v luacheck &> /dev/null && luarocks install luacheck
+################################################################################
 
 ################################################################################
 ###### PYTHON
@@ -125,7 +130,8 @@ echo -e "${RED}installing go tools${NC}"
 ! command -v golangci-lint &> /dev/null && go install github.com/golangci/golangci-lint/cmd/golangci-lint@latest
 ################################################################################
 
-# VIM
+################################################################################
+###### VIM
 # clone cheovim
 if [ ! -d "$HOME/.config/nvim" ]; then
     git clone https://github.com/NTBBloodbath/cheovim ~/.config/nvim/
@@ -144,8 +150,10 @@ if [ ! -d "$HOME/.config/nvim-config/doom-nvim" ]; then
 else
     echo -e "${GREEN}doom-nvim is already cloned${NC}"
 fi
+################################################################################
 
-# EMACS
+################################################################################
+###### EMACS
 # clone spacemacs (path must match from create-symlink.sh)
 if [ ! -d "$HOME/.config/emacs/spacemacs/.emacs.d" ]; then
     echo "cloning spacemacs"
@@ -160,6 +168,7 @@ if [ ! -d "$HOME/.config/emacs/doom-emacs/.emacs.d" ]; then
 else
     echo -e "${GREEN}doom-emacs is already cloned${NC}"
 fi
+################################################################################
 
 
 ################################################################################
