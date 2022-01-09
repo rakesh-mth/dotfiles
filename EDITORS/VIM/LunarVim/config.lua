@@ -115,10 +115,13 @@ lvim.builtin.dap.active = true
 -- if you don't want all the parsers change this to a table of the ones you want
 lvim.builtin.treesitter.ensure_installed = {
   "bash",
+  "cmake",
   "c",
+  "cpp",
   "javascript",
   "json",
   "lua",
+  "commonlisp",
   "python",
   "ruby",
   "typescript",
@@ -131,6 +134,14 @@ lvim.builtin.treesitter.ensure_installed = {
 
 lvim.builtin.treesitter.ignore_install = { "haskell" }
 lvim.builtin.treesitter.highlight.enabled = true
+
+-- terminal settings
+lvim.builtin.which_key.mappings["a"] = {
+  name = "+Applications",
+}
+lvim.builtin.terminal.execs[#lvim.builtin.terminal.execs+1] = {"htop", "<leader>ah", "htop"}
+lvim.builtin.terminal.execs[#lvim.builtin.terminal.execs+1] = {"btm", "<leader>ab", "bottom"}
+lvim.builtin.terminal.execs[#lvim.builtin.terminal.execs+1] = {"ipython3", "<leader>ap", "IPython3"}
 
 -- generic LSP settings
 
