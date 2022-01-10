@@ -55,8 +55,9 @@ lvim.keys.normal_mode["<C-s>"] = ":w<cr>"
 
 -- Change Telescope navigation to use j and k for navigation and n and p for history in both input and normal mode.
 -- we use protected-mode (pcall) just in case the plugin wasn't loaded yet.
--- [rakesh] uncommented - 15 lines
+-- [rakesh] uncommented - 15 lines, add <c-t> mapping to open results with Trouble
 local _, actions = pcall(require, "telescope.actions")
+local _, trouble = pcall(require, "trouble.providers.telescope")
 lvim.builtin.telescope.defaults.mappings = {
   -- for input mode
   i = {
@@ -64,11 +65,13 @@ lvim.builtin.telescope.defaults.mappings = {
     ["<C-k>"] = actions.move_selection_previous,
     ["<C-n>"] = actions.cycle_history_next,
     ["<C-p>"] = actions.cycle_history_prev,
+    ["<c-t>"] = trouble.open_with_trouble,
   },
   -- for normal mode
   n = {
     ["<C-j>"] = actions.move_selection_next,
     ["<C-k>"] = actions.move_selection_previous,
+    ["<c-t>"] = trouble.open_with_trouble,
   },
 }
 
