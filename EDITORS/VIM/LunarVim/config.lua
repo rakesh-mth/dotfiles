@@ -40,7 +40,7 @@ end
 lvim.log.level = "warn"
 lvim.format_on_save = true
 lvim.transparent_window = false
--- rakesh - colorscheme kanagawa was installed
+-- [rakesh] - colorscheme kanagawa was installed
 lvim.colorscheme = "onedarker"
 -- lvim.colorscheme = "kanagawa"
 
@@ -87,6 +87,8 @@ lvim.builtin.which_key.mappings["t"] = {
   w = { "<cmd>Telescope lsp_workspace_diagnostics<cr>", "Diagnostics" },
   o = { "<cmd>Telescope oldfiles<cr>", "Recently Used Files" },
 }
+-- [rakesh] lsp and null-ls mappings
+lvim.builtin.which_key.mappings["l"]["n"] = { "<cmd>NullLsInfo<CR>", "null-ls info" }
 -- [rakesh] - additional which key
 lvim.builtin.which_key.mappings["p"]["p"] = { "<cmd>Telescope projects<CR>", "Projects" }
 lvim.builtin.which_key.mappings["p"]["f"] = { "<cmd>Telescope find_files<CR>", "Files" }
@@ -139,7 +141,7 @@ lvim.builtin.treesitter.ensure_installed = {
 lvim.builtin.treesitter.ignore_install = { "haskell" }
 lvim.builtin.treesitter.highlight.enabled = true
 
--- rakesh: terminal settings
+-- [rakesh] terminal settings
 -- lvim.builtin.terminal.open_mapping = [[<leader>']]
 lvim.builtin.which_key.mappings["a"] = {
   name = "+Applications",
@@ -201,7 +203,7 @@ lvim.builtin.terminal.execs[#lvim.builtin.terminal.execs + 1] = { "ipython3", "<
 --   },
 -- }
 
--- rakesh: add formatters with null-ls
+-- [rakesh] add formatters with null-ls
 local formatters = require "lvim.lsp.null-ls.formatters"
 formatters.setup {
   { exe = "black", filetypes = { "python" } },
@@ -225,7 +227,7 @@ formatters.setup {
 --   },
 -- }
 
--- rakesh: add linters with null-ls
+-- [rakesh] add linters with null-ls
 local linters = require "lvim.lsp.null-ls.linters"
 linters.setup {
   { exe = "flake8", filetypes = { "python" } },
