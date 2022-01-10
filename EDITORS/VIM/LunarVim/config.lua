@@ -12,24 +12,24 @@ an executable
 -- [rakesh] Settings by me [begin]
 -- *
 local init_custom_options = function()
-	local custom_options = {
-		relativenumber = true, -- Set relative numbered lines
-		colorcolumn = "120", -- Indent line at what column? Set something like '99999' to not display it
-		scrolloff = 5, -- Determines the number of context lines you would like to see above and below the cursor
-		ignorecase = true, -- Ignore case in search
-		smartcase = true, -- Case-sensitive search when search term contains uppercase characters. Otherwise, case-sensitive search.
+  local custom_options = {
+    relativenumber = true, -- Set relative numbered lines
+    colorcolumn = "120", -- Indent line at what column? Set something like '99999' to not display it
+    scrolloff = 5, -- Determines the number of context lines you would like to see above and below the cursor
+    ignorecase = true, -- Ignore case in search
+    smartcase = true, -- Case-sensitive search when search term contains uppercase characters. Otherwise, case-sensitive search.
     timeoutlen = 200, -- Time to wait for a mapped sequence to complete (in milliseconds)
-	}
+  }
 
-	for k, v in pairs(custom_options) do
-		vim.opt[k] = v
-	end
+  for k, v in pairs(custom_options) do
+    vim.opt[k] = v
+  end
 end
 init_custom_options()
 -- update PATH - both are same (vim.cmd and vim.env version)
 if vim.loop.os_uname().version:match "Windows" then
-    -- vim.cmd [[let $PATH='C:\Program Files\Git\bin;'.$PATH]]
-    vim.env.PATH = table.concat({ 'C:\\Program Files\\Git\\bin;', vim.env.PATH }, ";")
+  -- vim.cmd [[let $PATH='C:\Program Files\Git\bin;'.$PATH]]
+  vim.env.PATH = table.concat({ "C:\\Program Files\\Git\\bin;", vim.env.PATH }, ";")
 end
 
 -- *
@@ -90,7 +90,10 @@ lvim.builtin.which_key.mappings["t"] = {
 -- [rakesh] - additional which key
 lvim.builtin.which_key.mappings["p"]["p"] = { "<cmd>Telescope projects<CR>", "Projects" }
 lvim.builtin.which_key.mappings["p"]["f"] = { "<cmd>Telescope find_files<CR>", "Files" }
-lvim.builtin.which_key.mappings["p"]["F"] = { "<cmd>lua require\"telescope.builtin\".find_files({ find_command = {'fd', '--type', 'f', '--no-ignore-vcs', '--hidden', '--follow', '-E', '.git' } })<CR>", "Files (All)" }
+lvim.builtin.which_key.mappings["p"]["F"] = {
+  "<cmd>lua require\"telescope.builtin\".find_files({ find_command = {'fd', '--type', 'f', '--no-ignore-vcs', '--hidden', '--follow', '-E', '.git' } })<CR>",
+  "Files (All)",
+}
 lvim.builtin.which_key.mappings["b"]["b"] = { "<cmd>Telescope buffers<CR>", "Buffers" }
 lvim.builtin.which_key.mappings["b"]["c"] = { "<cmd>BufferClose<CR>", "Buffer Close" }
 lvim.builtin.which_key.mappings["b"]["d"] = { "<cmd>BufferDelete<CR>", "Buffer Delete" }
@@ -98,10 +101,10 @@ lvim.builtin.which_key.mappings["b"]["p"] = { "<cmd>b#<CR>", "Previous" }
 -- lvim.builtin.which_key.mappings["'"]      = { "<cmd>ToggleTerm<CR>", "Open Terminal" }
 -- lvim.builtin.which_key.mappings["g"]["g"] = { "<cmd>Git|wincmd _|normal gu<CR>", "Git Status" }
 lvim.builtin.which_key.mappings["s"]["s"] = { "<cmd>Telescope grep_string<cr>", "Grep String" }
-lvim.builtin.which_key.mappings["*"]      = { "<cmd>Telescope grep_string<cr>", "Grep String" }
-lvim.builtin.which_key.mappings["n"]      = {
+lvim.builtin.which_key.mappings["*"] = { "<cmd>Telescope grep_string<cr>", "Grep String" }
+lvim.builtin.which_key.mappings["n"] = {
   name = "Extras",
-  h = { "<cmd>noh<CR>", "no highlight" }
+  h = { "<cmd>noh<CR>", "no highlight" },
 }
 
 -- TODO: User Config for predefined plugins
@@ -115,8 +118,22 @@ lvim.builtin.dap.active = true
 
 -- if you don't want all the parsers change this to a table of the ones you want
 lvim.builtin.treesitter.ensure_installed = {
-  "bash", "cmake", "c", "cpp", "javascript", "json", "lua", "commonlisp",
-  "python", "ruby", "typescript", "css", "rust", "go", "java", "yaml",
+  "bash",
+  "cmake",
+  "c",
+  "cpp",
+  "javascript",
+  "json",
+  "lua",
+  "commonlisp",
+  "python",
+  "ruby",
+  "typescript",
+  "css",
+  "rust",
+  "go",
+  "java",
+  "yaml",
 }
 
 lvim.builtin.treesitter.ignore_install = { "haskell" }
@@ -127,9 +144,9 @@ lvim.builtin.treesitter.highlight.enabled = true
 lvim.builtin.which_key.mappings["a"] = {
   name = "+Applications",
 }
-lvim.builtin.terminal.execs[#lvim.builtin.terminal.execs+1] = {"htop", "<leader>ah", "htop"}
-lvim.builtin.terminal.execs[#lvim.builtin.terminal.execs+1] = {"btm", "<leader>ab", "bottom"}
-lvim.builtin.terminal.execs[#lvim.builtin.terminal.execs+1] = {"ipython3", "<leader>ap", "IPython3"}
+lvim.builtin.terminal.execs[#lvim.builtin.terminal.execs + 1] = { "htop", "<leader>ah", "htop" }
+lvim.builtin.terminal.execs[#lvim.builtin.terminal.execs + 1] = { "btm", "<leader>ab", "bottom" }
+lvim.builtin.terminal.execs[#lvim.builtin.terminal.execs + 1] = { "ipython3", "<leader>ap", "IPython3" }
 
 -- generic LSP settings
 
@@ -188,7 +205,7 @@ lvim.builtin.terminal.execs[#lvim.builtin.terminal.execs+1] = {"ipython3", "<lea
 local formatters = require "lvim.lsp.null-ls.formatters"
 formatters.setup {
   { exe = "black", filetypes = { "python" } },
-  { exe = "stylua", filetypes = { "sumneko_lua" } },
+  { exe = "stylua", filetypes = { "lua" } },
 }
 
 -- -- set additional linters
@@ -212,33 +229,31 @@ formatters.setup {
 local linters = require "lvim.lsp.null-ls.linters"
 linters.setup {
   { exe = "flake8", filetypes = { "python" } },
-  { exe = "luacheck", filetypes = { "sumneko_lua" } },
-  { exe = "shellcheck" }
+  { exe = "luacheck", filetypes = { "lua" } },
+  { exe = "shellcheck" },
 }
 
 -- Additional Plugins
 -- [rakesh] uncommented, added few plugins
 lvim.plugins = {
-      {"folke/tokyonight.nvim"},
-      {
-        "folke/trouble.nvim",
-        cmd = "TroubleToggle",
-      },
-      -- use lazygit instead of vim-fugitive
-      -- {"tpope/vim-fugitive"},
-      {"godlygeek/tabular"},
-      {"tpope/vim-surround"},
-      {"tpope/vim-repeat"},
+  { "folke/tokyonight.nvim" },
+  {
+    "folke/trouble.nvim",
+    cmd = "TroubleToggle",
+  },
+  -- use lazygit instead of vim-fugitive
+  -- {"tpope/vim-fugitive"},
+  { "godlygeek/tabular" },
+  { "tpope/vim-surround" },
+  { "tpope/vim-repeat" },
 
-      -- color schema
-      {"rebelot/kanagawa.nvim"}
+  -- color schema
+  { "rebelot/kanagawa.nvim" },
 }
-
 
 -- Autocommands (https://neovim.io/doc/user/autocmd.html)
 lvim.autocommands.custom_groups = {
   -- { "BufWinEnter", "*.lua", "setlocal ts=8 sw=8" },
-
 
   -- delete git commit buffer after :wq, git waits for nvr to finish
   { "FileType", "gitcommit,gitrebase", "set bufhidden=delete" },
@@ -246,6 +261,5 @@ lvim.autocommands.custom_groups = {
   { "FileType", "fugitive", "nmap <buffer> <tab> =" },
   -- map q to gq for quit to match with magit in emacs. Note: q for
   -- recording macro will not work if it is mapped to gq
-  { "FileType", "fugitive", "nmap <buffer> q gq" }
+  { "FileType", "fugitive", "nmap <buffer> q gq" },
 }
-
