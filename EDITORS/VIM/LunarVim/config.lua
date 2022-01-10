@@ -79,7 +79,8 @@ lvim.builtin.which_key.mappings["t"] = {
   name = "+Telescope",
   r = { "<cmd>Telescope lsp_references<cr>", "References" },
   f = { "<cmd>Telescope lsp_definitions<cr>", "Definitions" },
-  d = { "<cmd>Telescope diagnostics bufnr=0<cr>", "Diagnostics" },
+  d = { "<cmd>Telescope diagnostics bufnr=0<cr>", "Document Diagnostics" },
+  D = { "<cmd>Telescope diagnostics<cr>", "Workspace Diagnostics" },
   b = { "<cmd>Telescope builtin<cr>", "Builtin" },
   g = { "<cmd>Telescope live_grep<cr>", "LiveGrep" },
   q = { "<cmd>Telescope quickfix<cr>", "QuickFix" },
@@ -106,6 +107,8 @@ lvim.builtin.which_key.mappings["s"]["s"] = { "<cmd>Telescope grep_string<cr>", 
 lvim.builtin.which_key.mappings["*"] = { "<cmd>Telescope grep_string<cr>", "Grep String" }
 lvim.builtin.which_key.mappings["n"] = {
   name = "Extras",
+  d = { "<cmd>Trouble document_diagnostics<cr>", "Trouble Document Diagnostics" },
+  D = { "<cmd>Trouble workspace_diagnostics<cr>", "Trouble Workspace Diagnostics" },
   h = { "<cmd>noh<CR>", "no highlight" },
 }
 
