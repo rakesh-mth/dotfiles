@@ -31,6 +31,7 @@ if vim.loop.os_uname().version:match "Windows" then
   -- vim.cmd [[let $PATH='C:\Program Files\Git\bin;'.$PATH]]
   vim.env.PATH = table.concat({
     "C:\\Program Files\\Git\\bin;",
+    vim.env.USERPROFILE .. "\\virtualenvs\\python39\\Scripts",
     "C:\\ProgramData\\chocolatey\\lib\\luarocks\\luarocks-2.4.4-win32\\systree\\bin",
     vim.env.PATH,
   }, ";")
