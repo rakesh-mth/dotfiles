@@ -29,7 +29,11 @@ init_custom_options()
 -- update PATH - both are same (vim.cmd and vim.env version)
 if vim.loop.os_uname().version:match "Windows" then
   -- vim.cmd [[let $PATH='C:\Program Files\Git\bin;'.$PATH]]
-  vim.env.PATH = table.concat({ "C:\\Program Files\\Git\\bin;", vim.env.PATH }, ";")
+  vim.env.PATH = table.concat({
+    "C:\\Program Files\\Git\\bin;",
+    "C:\\ProgramData\\chocolatey\\lib\\luarocks\\luarocks-2.4.4-win32\\systree\\bin",
+    vim.env.PATH,
+  }, ";")
 end
 
 -- *

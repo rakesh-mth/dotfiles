@@ -1,7 +1,7 @@
 REM ################################################################################
 REM ###### INSTALL TOOLS USING CHOCO
 REM ###### admin powershell
-choco install -y neovim emacs vim codeblocks fd ripgrep ag fzf bat ctags wget 7zip git gitversion.portable cmake powershell-core python2 python3 r.project r.studio groovy nodejs ruby jdk8 dotnetcore dotnetcore-sdk golang lua53 rustup.install rust-analyzer llvm hunspell.portable nuget.commandline jfrog-cli lxrunoffline libreoffice-fresh rufus nasm yasm 
+choco install -y neovim emacs vim codeblocks fd ripgrep ag fzf bat ctags wget 7zip git gitversion.portable cmake buck powershell-core python2 python3 r.project r.studio groovy nodejs ruby jdk8 dotnetcore dotnetcore-sdk lua53 luarocks golang rustup.install rust-analyzer llvm hunspell.portable nuget.commandline jfrog-cli lxrunoffline libreoffice-fresh rufus nasm yasm
 
 REM ###### modern unit tools
 choco install jq shellcheck zoxide delta lsd dust lazygit
@@ -35,7 +35,7 @@ REM ############################################################################
 
 
 REM ################################################################################
-REM ######CONFIGURE TOOLS (PYTHON, NODE, RUBY, GO) - require for vim and emacs
+REM ######CONFIGURE TOOLS (PYTHON, NODE, RUBY, GO, RUST, LUA) - require for vim and emacs
 REM user command prompt
 REM upgrade pip
 py -2 -m pip install --user --upgrade pip
@@ -56,6 +56,10 @@ go install golang.org/x/tools/cmd/gorename@latest
 go install golang.org/x/tools/cmd/guru@latest
 go install github.com/cweill/gotests/gotests@latest
 go install github.com/fatih/gomodifytags@latest
+REM install stylua for LunarVim
+cargo install stylua
+REM run VS 2017 x86 command prompt in admin mode and run this command
+luarocks install luacheck
 REM ################################################################################
 
 
