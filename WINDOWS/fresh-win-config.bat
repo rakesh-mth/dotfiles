@@ -1,10 +1,10 @@
 REM ################################################################################
 REM ###### INSTALL TOOLS USING CHOCO
 REM ###### admin powershell
-choco install -y neovim emacs vim codeblocks fd ripgrep ag fzf bat ctags wget 7zip git gitversion.portable cmake buck powershell-core python2 python3 r.project r.studio groovy nodejs ruby jdk8 dotnetcore dotnetcore-sdk lua53 luarocks golang rustup.install rust-analyzer llvm hunspell.portable nuget.commandline jfrog-cli lxrunoffline libreoffice-fresh rufus nasm yasm
+choco install -y neovim emacs vim ctags wget 7zip git gitversion.portable cmake buck powershell-core python2 python3 r.project r.studio groovy nodejs ruby jdk8 dotnetcore dotnetcore-sdk lua53 luarocks golang rustup.install rust-analyzer llvm hunspell.portable nuget.commandline jfrog-cli lxrunoffline libreoffice-fresh rufus nasm yasm shellcheck 
 
 REM ###### modern unit tools
-choco install jq shellcheck zoxide delta lsd dust lazygit
+choco install bat lsd delta dust broot fd ripgrep ag fzf jq tldr bottom zoxide lazygit
 REM ###### pin a package (jfrog-cli) to the installed version (1.51.1 - last working)
 choco pin add -n=jfrog-cli
 REM ###### install neovide and fvim editor frontend for neovim
