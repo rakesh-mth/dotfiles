@@ -28,6 +28,9 @@
 " add path of rakesh-mth to rtp 
     let &rtp = &rtp . ',' . g:UC_VIM_CONFIG_FOLDER_FULL_PATH
 
+" plugin settings
+    let g:airline_powerline_fonts = 1 " enable powerline font in airline status plugin
+
 " auto install all plugin if vim-user-config is missing (bootstrap vim-user-config). 
     let VIM_USER_CONFIG_PLUGIN = g:UC_PLUGGED_DIR . '/vim-user-config/core/plugins.vim'
     if !filereadable(VIM_USER_CONFIG_PLUGIN)
