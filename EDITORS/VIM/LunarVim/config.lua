@@ -53,6 +53,8 @@ lvim.colorscheme = "onedarker"
 lvim.leader = "space"
 -- add your own keymapping
 lvim.keys.normal_mode["<C-s>"] = ":w<cr>"
+-- [rakesh] better paste in visual mode, yank once and paste multiple times
+lvim.keys.visual_mode["p"] = '"_dP'
 -- unmap a default keymapping
 -- lvim.keys.normal_mode["<C-Up>"] = false
 -- edit a default keymapping
