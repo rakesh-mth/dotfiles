@@ -20,31 +20,31 @@
         autocmd VimEnter * PlugInstall --sync | source $MYVIMRC
     endif
 
+" add path of rakesh-mth to rtp 
+    let &rtp = &rtp . ',' . g:UC_VIM_CONFIG_FOLDER_FULL_PATH
+
 " remove default config path on windows from rtp list, not needed now after setup callback in cheovim
     " if has('win32')
     "     set runtimepath-=~\AppData\Local\nvim
     " endif
 
-" add path of rakesh-mth to rtp 
-    let &rtp = &rtp . ',' . g:UC_VIM_CONFIG_FOLDER_FULL_PATH
-
 " plugin settings
     let g:airline_powerline_fonts = 1 " enable powerline font in airline status plugin
 
-" auto install all plugin if vim-user-config is missing (bootstrap vim-user-config). 
-    let VIM_USER_CONFIG_PLUGIN = g:UC_PLUGGED_DIR . '/vim-user-config/core/plugins.vim'
-    if !filereadable(VIM_USER_CONFIG_PLUGIN)
-        autocmd VimEnter * PlugInstall --sync | source $MYVIMRC
-    endif
-
 " Plugins : add all plugins here
-    call plug#begin(g:UC_PLUGGED_DIR)
-        " install vim-user-config plugin for plugin.vim from vim-user-config
-        if !filereadable(VIM_USER_CONFIG_PLUGIN) | Plug 'rakesh-mth/vim-user-config' | endif
-        if filereadable(VIM_USER_CONFIG_PLUGIN)  | exec 'source ' . VIM_USER_CONFIG_PLUGIN | endif
-        " include vim-user-config towards end so that all other plugin are
-        " loaded by now. except in the case when there are no plugin
-        " installed, and in that case it is included before all.
-        Plug 'rakesh-mth/vim-user-config' 
-    call plug#end()
+    function LoadPlug(plugins)
+        call plug#begin(g:UC_PLUGGED_DIR)
+            if filereadable(a:plugins)  
+                exec 'source ' . a:plugins
+            endif
+            Plug 'rakesh-mth/vim-user-config' 
+        call plug#end()
+    endfunction
+    let VIM_USER_CONFIG_PLUGIN = g:UC_PLUGGED_DIR . '/vim-user-config/core/plugins.vim'
+    call LoadPlug(VIM_USER_CONFIG_PLUGIN)
+
+" auto install all plugin if vim-user-config is missing (bootstrap vim-user-config). 
+    if !filereadable(VIM_USER_CONFIG_PLUGIN)
+        autocmd VimEnter * PlugInstall --sync | call LoadPlug(VIM_USER_CONFIG_PLUGIN)  | PlugInstall | source $MYVIMRC
+    endif
 
