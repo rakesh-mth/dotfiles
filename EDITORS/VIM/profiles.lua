@@ -74,6 +74,11 @@ local profiles = {
           preconfigure = "packer:start",
         }
     },
+    svim = { "~/.config/nvim-config/svim", {
+          plugins = "packer",
+          preconfigure = "packer:start",
+        }
+    },
     LunarVim = { "~/.config/nvim-config/LunarVim", {
             plugins = "packer",
             setup = function()
