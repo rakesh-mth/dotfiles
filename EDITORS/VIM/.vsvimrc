@@ -52,6 +52,9 @@ nnoremap <A-o> :vsc EditorContextMenus.CodeWindow.ToggleHeaderCodeFile<cr>
 nnoremap <C-n> :vsc Edit.LineUp<cr>
 nnoremap <C-p> :vsc Edit.LineDown<cr>
 
+" mapping for no highlight
+nnoremap <space>h :noh<cr>
+
 " Alt mapping for switching tabs
 nnoremap <A-1> 1gt
 nnoremap <A-2> 2gt
