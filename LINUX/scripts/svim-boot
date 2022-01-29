@@ -1,0 +1,8 @@
+#!/bin/bash
+
+pushd $HOME/.config/nvim-config
+rm -rf svim
+git clone git@github.com:rakesh-mth/svim.git
+popd
+svim
+
