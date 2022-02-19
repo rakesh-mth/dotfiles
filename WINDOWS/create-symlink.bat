@@ -37,6 +37,8 @@ REM LunarVIm - clone the repo and create symlick for config.lua file
 if not exist %USERPROFILE%\.config\nvim-config\LunarVim git clone https://github.com/LunarVim/LunarVim.git %USERPROFILE%\.config\nvim-config\LunarVim
 mklink %USERPROFILE%\.config\nvim-config\LunarVim\config.lua %DOTFILES%\EDITORS\VIM\LunarVim\config.lua
 mklink %USERPROFILE%\.vimrc %DOTFILES%\EDITORS\VIM\init.vim
+REM svim - clone the repo
+if not exist %USERPROFILE%\.config\nvim-config\svim git clone git@github.com:rakesh-mth/svim.git %USERPROFILE%\.config\nvim-config\svim
 REM init.vim and init.lua symlink
 mklink %USERPROFILE%\.config\nvim-config\rakesh-mth\init.vim %DOTFILES%\EDITORS\VIM\init.vim
 mklink %USERPROFILE%\.config\nvim-config\rakesh-mth\init.lua %DOTFILES%\EDITORS\VIM\init.lua

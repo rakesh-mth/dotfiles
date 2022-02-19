@@ -26,6 +26,8 @@ ln -snf $HOME/workspaces/rakesh-mth/dotfiles/EDITORS/VIM/profiles.lua $HOME/.con
 ln -snf $HOME/workspaces/rakesh-mth/dotfiles/EDITORS/VIM/LunarVim/config.lua $HOME/.config/nvim-config/LunarVim/
 # doom-nvim - clone the repo
 [ ! -d $HOME/.config/nvim-config/doom-nvim ] && git clone --depth 1 https://github.com/NTBBloodbath/doom-nvim.git $HOME/.config/nvim-config/doom-nvim
+# svim - clone the repo
+[ ! -d $HOME/.config/nvim-config/svim ] && git clone git@github.com:rakesh-mth/svim.git $HOME/.config/nvim-config/svim
 # rakesh-mth - symlinks
 mkdir -p $HOME/.config/nvim-config/rakesh-mth
 ln -snf $HOME/workspaces/rakesh-mth/dotfiles/EDITORS/VIM/init.vim $HOME/.config/nvim-config/rakesh-mth/init.vim
