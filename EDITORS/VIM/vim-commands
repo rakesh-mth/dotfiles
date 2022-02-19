@@ -291,6 +291,7 @@ ca - amend the last commit and edit the message.
 :help key-notation
 :help map-which-keys
 :help map-special-chars
+:help index - all mappings and functions
 
 
 ################################################################################
