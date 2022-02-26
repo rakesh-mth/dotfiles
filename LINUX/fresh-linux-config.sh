@@ -106,7 +106,7 @@ if [ ! -d "$HOME/.virtualenvs/$python3" ]; then
     # install all python modules for vim, neovim and emacs developments.
     # pytest, pipenv and nose is added for UT in doom-emacs. ipython is for python repl in doom emacs.
 
-    pip install pynvim neovim-remote flake8 isort yapf python-language-server[all] pyls-isort pyls-mypy importmagic epc ptvsd autoflake pytest pipenv nose ipython black
+    pip install pynvim neovim-remote flake8 isort yapf python-language-server[all] pyls-isort pyls-mypy importmagic epc ptvsd autoflake pytest pipenv nose ipython black vim-vint
     # deactivate python virtual env.
     deactivate
 else

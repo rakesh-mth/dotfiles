@@ -81,7 +81,8 @@ setx PATH "%my_user_path%;%USERPROFILE%\AppData\Roaming\Python\Python39\Scripts;
 setx WORKON_HOME "%USERPROFILE%\virtualenvs" :: needed for mkvirtualenv and EMACS
 FOR /F "tokens=* USEBACKQ" %%F IN (`where python ^| findstr Python39`) DO (SET python39=%%F)
 mkvirtualenv -p "%python39%" python39 :: this will activate virtual env
-pip install pynvim neovim-remote flake8 isort yapf python-language-server pyls-isort pyls-mypy pyls-black importmagic epc ptvsd autoflake cmake-language-server pytest pipenv nose :: pytest, pipenv and nose is added for UT in doom-emacs
+:: pytest, pipenv and nose is added for UT in doom-emacs
+pip install pynvim neovim-remote flake8 isort yapf python-language-server pyls-isort pyls-mypy pyls-black importmagic epc ptvsd autoflake cmake-language-server pytest pipenv nose ipython black vim-vint
 FOR /F "tokens=* USEBACKQ" %%F IN (`where python ^| findstr Python27`) DO (SET python27=%%F)
 mkvirtualenv -p "%python27%" python27 :: this will activate virtual env
 pip install pynvim flake8 isort yapf python-language-server importmagic epc ptvsd autoflake
