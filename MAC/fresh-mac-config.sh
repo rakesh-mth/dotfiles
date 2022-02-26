@@ -13,10 +13,12 @@ mkdir -p ~/software
 brew cask install adoptopenjdk | tee ~/brew/adoptopenjdk
 # install modern unix tools
 brew tap cantino/mcfly
-brew install bat lsd git-delta dust duf broot fd ripgrep the_silver_searcher fzf mcfly jq tldr bottom glances gtop zoxide lazygit
+# list of packages also available in npm but brew is used: marked, tldr
+brew install bat lsd git-delta dust duf broot fd ripgrep the_silver_searcher fzf mcfly jq tldr bottom glances gtop zoxide lazygit marked
 # some packages available using npm or other package manager, do not install them using brew.
-# list of packages not to be installed using brew: marked
-brew install neovim vim emacs ctags wget xz jfrog-cli-go python@2 python@3 groovy nodejs golang rust rust-analyzer llvm sbcl glslang cmake aspell hub git iperf3 gnupg shellcheck luarocks coreutils fontconfig
+# installed cask version of emacs
+brew install --cask emacs
+brew install neovim vim ctags wget xz jfrog-cli-go python@2 python@3 groovy nodejs golang rust rust-analyzer llvm sbcl glslang cmake aspell hub git iperf3 gnupg shellcheck luarocks coreutils fontconfig
 # brew cask install emacs 2>&1 | tee ~/brew/emacs
 ################################################################################
 
@@ -103,10 +105,8 @@ if [ ! -d "$HOME/.nvm" ]; then
     nvm install $NODE_VERSION
     # switch to use npm from nvm. This will be default in all shell now onwards.
     nvm use $NODE_VERSION
-    # marked, bash-language-server, typescript-language-server is used with doom-emacs
-    npm install -g neovim tern typescript yarn marked bash-language-server typescript-language-server
-    # install modern unix tools, using brew to install tldr
-    # npm install -g tldr
+    # bash-language-server, typescript-language-server is used with doom-emacs
+    npm install -g neovim tern typescript yarn bash-language-server typescript-language-server
 else
     echo "nvm is already installed"
 fi
