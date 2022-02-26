@@ -95,7 +95,7 @@ fi
 ################################################################################
 ###### NPM and NODEJS (with NVM)
 if [ ! -d "$HOME/.nvm" ]; then
-    NODE_VERSION=17.1.0
+    NODE_VERSION=17.6.0
     curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.0/install.sh | bash
     # source nvm in current shell
     source "$HOME/.nvm/nvm.sh"
@@ -105,8 +105,8 @@ if [ ! -d "$HOME/.nvm" ]; then
     nvm use $NODE_VERSION
     # marked, bash-language-server, typescript-language-server is used with doom-emacs
     npm install -g neovim tern typescript yarn marked bash-language-server typescript-language-server
-    # install modern unix tools
-    npm install -g tldr
+    # install modern unix tools, using brew to install tldr
+    # npm install -g tldr
 else
     echo "nvm is already installed"
 fi
