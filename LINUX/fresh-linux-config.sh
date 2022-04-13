@@ -15,6 +15,8 @@ NC='\033[0m'
 # snap (uninstalled, using brew for these packages)
 # sudo snap install fzf-carroarmato0
 # sudo snap install nvim --classic
+# visual-studio-code is part of cask, but cask is not supported on linux
+sudo snap install code --classic
 
 # apt-get packages - avoid using apt-get, instead use brew packages
 echo -e "${RED}updating apt mirror list${NC}"
