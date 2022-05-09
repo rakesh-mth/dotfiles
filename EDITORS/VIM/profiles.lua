@@ -36,23 +36,43 @@ _G.cheovim_profile_setup = function(selected_profile, profile_path)
 
     -- Clone the current stdpath function definition into an unused func
     vim.fn._stdpath_setup = vim.fn.stdpath
+    vim._call_setup = vim.call
     -- query original data path and append selected_profile in the path for new stdpath("data")
     local data_path = join_paths(vim.fn._stdpath_setup("data"), selected_profile)
+    vim.opt.rtp:prepend(join_paths(data_path, "site"))
+    vim.opt.rtp:append(join_paths(data_path, "site", "after"))
+    vim.cmd [[let &packpath = &runtimepath]]
+    -- vim.cmd(("echom \"%s\""):format(data_path))
 
     -- Override vim.fn.stdpath to manipulate the data returned by it. Yes, I know, changing core functions
     -- is really bad practice in any codebase, however this is our only way to make things like doom-nvim etc. work
     vim.fn.stdpath = function(what)
         if what:lower() == "data" then
-            vim.opt.rtp:prepend(join_paths(data_path, "site"))
-            vim.opt.rtp:append(join_paths(data_path, "site", "after"))
-            vim.cmd [[let &packpath = &runtimepath]]
-            -- vim.cmd(("echom \"%s\""):format(data_path))
             return data_path
-      elseif what:lower() == "cache" then
-            local cache_path = join_paths(data_path, ".cache")
-            return cache_path
+        elseif what:lower() == "cache" then
+            return join_paths(data_path, ".cache")
+        elseif what:lower() == "config" then
+            return profile_path
+        end
+        return vim.fn._stdpath_setup(what)
+    end
+    vim.call = function(...)
+      local n = select('#', ...)
+      if n == 2 then
+        local name = select(1, ...)
+        if name:lower() == 'stdpath' then
+            local option = select(2, ...)
+            if option:lower() == "data" then
+                -- vim.cmd(("echom \"%s\""):format(data_path))
+                return data_path
+            elseif option:lower() == "cache" then
+                return join_paths(data_path, ".cache")
+            elseif option:lower() == "config" then
+                return profile_path
+            end
+        end
       end
-      return vim.fn._stdpath_setup(what)
+      return vim._call_setup(...)
     end
 end
 
