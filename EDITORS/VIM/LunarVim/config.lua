@@ -43,7 +43,7 @@ end
 
 -- general
 lvim.log.level = "warn"
-lvim.format_on_save = true
+lvim.format_on_save = false -- disable format on save
 lvim.transparent_window = false
 -- [rakesh] - colorscheme kanagawa was installed
 lvim.colorscheme = "onedarker"
