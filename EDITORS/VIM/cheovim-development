@@ -1,0 +1,2 @@
+# list files in folder where cheovim create symlink
+ls -al ~/.config/nvim site/pack/ site/pack/cheovim/start

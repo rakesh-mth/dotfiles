@@ -13,7 +13,8 @@
 	A config switcher written in Lua by NTBBloodbath and Vhyrro.
 --]]
 
--- rakesh - helper setup function
+-- rakesh - helper setup function. do not use this file instead use profiles.lua
+-- from rakesh-mth/cheovim repo. profiles.lua is updated in rakesh-mth/cheovim repo.
 
 _G.cheovim_profile_setup = function(selected_profile, profile_path)
     -- helper function to join paths
