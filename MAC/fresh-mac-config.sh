@@ -4,6 +4,9 @@ GREEN='\033[0;32m'
 # No Color
 NC='\033[0m' 
 
+# increase number of file descriptor. verify using `ulimit -a` command
+ulimit -n 8192
+
 # create software folder for fonts and other opensource
 mkdir -p ~/software 
 
