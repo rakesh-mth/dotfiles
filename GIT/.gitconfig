@@ -37,6 +37,8 @@
         branch_name=$(git rev-parse --abbrev-ref HEAD); \
         git checkout master; git pull; git checkout $branch_name; git rebase master; \
      }; f"
+    a = !git add . -u
+    c = !git clean -f -d
     f = !git fetch --prune 
     fmr = "!git fetch --prune && git rebase origin/master"
     pf = "!git push -u origin $(git branch-name) --force"
