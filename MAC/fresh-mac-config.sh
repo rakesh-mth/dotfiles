@@ -4,8 +4,8 @@ GREEN='\033[0;32m'
 # No Color
 NC='\033[0m' 
 
-# increase number of file descriptor. verify using `ulimit -a` command
-ulimit -n 8192
+# increase number of file descriptor. verify using `ulimit -a` command. Needed for xcode-ccls plugin in vscode.
+ulimit -n 32768
 
 # create software folder for fonts and other opensource
 mkdir -p ~/software 
@@ -21,7 +21,7 @@ brew install bat lsd git-delta dust duf broot fd ripgrep the_silver_searcher fzf
 # some packages available using npm or other package manager, do not install them using brew.
 # installed cask version of emacs
 brew install --cask emacs | tee ~/brew/emacs
-brew install neovim vim ctags wget xz jfrog-cli-go python@2 python@3 groovy nodejs golang rust rust-analyzer llvm sbcl glslang cmake aspell hub git iperf3 gnupg shellcheck luarocks coreutils fontconfig
+brew install neovim vim ctags wget xz jfrog-cli-go python@2 python@3 groovy nodejs golang rust rust-analyzer llvm sbcl glslang cmake aspell hub git iperf3 gnupg shellcheck luarocks coreutils fontconfig ccls 
 ################################################################################
 
 ################################################################################
