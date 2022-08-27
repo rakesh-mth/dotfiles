@@ -4,7 +4,7 @@ REM ###### admin powershell
 choco install -y neovim emacs vim ctags wget 7zip git gitversion.portable cmake buck powershell-core python2 python3 r.project r.studio groovy nodejs ruby jdk8 dotnetcore dotnetcore-sdk lua53 luarocks golang rustup.install rust-analyzer llvm hunspell.portable nuget.commandline jfrog-cli lxrunoffline libreoffice-fresh rufus nasm yasm shellcheck 
 
 REM ###### modern unit tools
-choco install bat lsd delta dust broot fd ripgrep ag fzf jq tldr bottom zoxide lazygit
+choco install bat lsd delta dust fd ripgrep ag fzf jq tldr bottom zoxide lazygit :: broot is not available in choco
 REM ###### pin a package (jfrog-cli) to the installed version (1.51.1 - last working)
 choco pin add -n=jfrog-cli
 REM ###### install neovide and fvim editor frontend for neovim
@@ -107,6 +107,8 @@ REM clone doom-nvim (use develop branch)
 if not exist %USERPROFILE%\.config\nvim-config\doom-nvim git clone --depth 1 -b develop https://github.com/NTBBloodbath/doom-nvim.git %USERPROFILE%\.config\nvim-config\doom-nvim
 REM LunarVim (clone LunarVim)
 if not exist %USERPROFILE%\.config\nvim-config\LunarVim git clone https://github.com/LunarVim/LunarVim.git %USERPROFILE%/.config/nvim-config/LunarVim
+REM svim (clone svim)
+if not exist %USERPROFILE%\.config\nvim-config\svim git clone git@github.com:rakesh-mth/svim.git %USERPROFILE%/.config/nvim-config/svim
 REM install plugins using PackerInstall. telescope-fzf-native will fail to compile. use next step to compile it. and run PackerInstall again.
 REM use mingw64 or clang64 to compile fzf-native
 cd ~/AppData/Local/nvim-data/site/pack/packer/start/telescope-fzf-native.nvim
@@ -126,10 +128,13 @@ REM ############################################################################
 
 REM ################################################################################
 REM ######EMACS 
-REM install spacemacs
-git clone https://github.com/syl20bnr/spacemacs ~/.emacs.d
-REM set HOME environment variable
+REM set HOME environment variable. without this emacs will not look for .emacs file in %USERPROFILE% dir.
 setx HOME "%USERPROFILE%"
+mkdir %USERPROFILE%\.config\emacs\spacemacs %USERPROFILE%\.config\emacs\doom-emacs
+REM install spacemacs
+git clone https://github.com/syl20bnr/spacemacs %USERPROFILE%\.config\emacs\spacemacs\.emacs.d
+REM install doom-emacs
+git clone --depth 1 https://github.com/doomemacs/doomemacs %USERPROFILE%\.config\emacs\doom-emacs\.emacs.d
 REM enable unicode charset in cmd.exe (run on powershell)
 sp -t d HKCU:\Console CodePage 0xfde9
 REM enable unicode charset in cmd.exe (per session)

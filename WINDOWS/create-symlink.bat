@@ -23,6 +23,8 @@ if not exist %USERPROFILE%\.config\emacs\doom-emacs mkdir %USERPROFILE%\.config\
 SET SCRIPTS=f:\DevTrees\scripts
 SET DOTFILES=f:\DevTrees\rakesh-mth\dotfiles
 
+REM directory link from %DOTFILES%\WINDOWS\BATCH to f:\BATCH
+if not exist f:\BATCH mklink /D f:\BATCH %DOTFILES%\WINDOWS\BATCH
 mklink %USERPROFILE%\.bashrc %DOTFILES%\WINDOWS\.bashrc
 if exist %SCRIPTS%\GIT\.gitconfig mklink %USERPROFILE%\.gitconfig-work %SCRIPTS%\GIT\.gitconfig
 mklink %USERPROFILE%\.gitconfig %DOTFILES%\GIT\.gitconfig
