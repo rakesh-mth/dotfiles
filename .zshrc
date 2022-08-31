@@ -22,6 +22,10 @@ command -v zoxide &> /dev/null && eval "$(zoxide init zsh)"
 # update PATH variable. make sure $HOME/github/dotfiles exists
 export PATH="$HOME/scripts:$HOME/github/dotfiles/LINUX/scripts:/usr/local/sbin:/usr/local/bin:$HOME/go/bin:$HOME/.cargo/bin:$HOME/.config/emacs/doom-emacs/.emacs.d/bin:$PATH"
 
+if command -v pyenv 1>/dev/null 2>&1; then
+    PATH=$(pyenv root)/shims:$PATH
+fi
+
 # Configuration for virtualenv. # WORKON_HOME for virualenvs selection in emacs
 # WORKON_HOME is set by vierualenvwrapper.sh if it is not set.
 # export WORKON_HOME=$HOME/.virtualenvs
