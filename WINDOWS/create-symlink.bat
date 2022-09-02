@@ -23,9 +23,12 @@ if not exist %USERPROFILE%\.config\emacs\doom-emacs mkdir %USERPROFILE%\.config\
 SET SCRIPTS=f:\DevTrees\scripts
 SET DOTFILES=f:\DevTrees\rakesh-mth\dotfiles
 
-REM directory link from %DOTFILES%\WINDOWS\BATCH to f:\BATCH
+REM directory link from %DOTFILES%\WINDOWS\BATCH to f:\BATCH and from %SCRIPTS%\WINDOWS\BATCH to F:\BATCH-SCRIPTS
 if not exist f:\BATCH mklink /D f:\BATCH %DOTFILES%\WINDOWS\BATCH
 if not exist F:\BATCH-SCRIPTS mklink /D F:\BATCH-SCRIPTS %SCRIPTS%\WINDOWS\BATCH
+REM add BATCH folders to path
+for /f "usebackq tokens=2,*" %A in (`reg query HKCU\Environment /v PATH`) do set my_user_path=%B
+setx PATH "%my_user_path%;f:\BATCH;f:\BATCH-SCRIPTS
 REM directory link from F:\DevTrees to ~/workspaces
 mklink /D %USERPROFILE%\workspaces F:\DevTrees
 if not exist %USERPROFILE%\.bashrc mklink %USERPROFILE%\.bashrc %DOTFILES%\WINDOWS\.bashrc
