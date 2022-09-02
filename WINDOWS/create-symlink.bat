@@ -25,12 +25,13 @@ SET DOTFILES=f:\DevTrees\rakesh-mth\dotfiles
 
 REM directory link from %DOTFILES%\WINDOWS\BATCH to f:\BATCH
 if not exist f:\BATCH mklink /D f:\BATCH %DOTFILES%\WINDOWS\BATCH
-mklink %USERPROFILE%\.bashrc %DOTFILES%\WINDOWS\.bashrc
+if not exist F:\BATCH-SCRIPTS mklink /D F:\BATCH-SCRIPTS %SCRIPTS%\WINDOWS\BATCH
+REM directory link from F:\DevTrees to ~/workspaces
+mklink /D %USERPROFILE%\workspaces F:\DevTrees
+if not exist %USERPROFILE%\.bashrc mklink %USERPROFILE%\.bashrc %DOTFILES%\WINDOWS\.bashrc
 if exist %SCRIPTS%\GIT\.gitconfig mklink %USERPROFILE%\.gitconfig-work %SCRIPTS%\GIT\.gitconfig
 mklink %USERPROFILE%\.gitconfig %DOTFILES%\GIT\.gitconfig
 mklink %USERPROFILE%\.wslconfig %DOTFILES%\WSL\.wslconfig
-REM directory link from F:\DevTrees to ~/workspaces
-mklink /D %USERPROFILE%\workspaces F:\DevTrees
 REM cheovim - clone the repo and create a symlink for profiles.lua file 
 REM path is not %USERPROFILE%\.config\nvim on windows since that's not the default path for init.vim or init.lua on windows
 if not exist %USERPROFILE%\AppData\Local\nvim git clone https://github.com/NTBBloodbath/cheovim %USERPROFILE%\AppData\Local\nvim
