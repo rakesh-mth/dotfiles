@@ -22,6 +22,7 @@ brew install bat lsd git-delta dust duf broot fd ripgrep the_silver_searcher fzf
 # installed cask version of emacs
 brew install --cask emacs | tee ~/brew/emacs
 brew install neovim vim ctags wget xz jfrog-cli-go python@2 python@3 groovy nodejs golang rust rust-analyzer llvm sbcl glslang cmake aspell hub git iperf3 gnupg shellcheck luarocks coreutils fontconfig ccls 
+brew install watch
 ################################################################################
 
 ################################################################################
