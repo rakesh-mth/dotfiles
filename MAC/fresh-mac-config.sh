@@ -21,9 +21,15 @@ brew install bat lsd git-delta dust duf broot fd ripgrep the_silver_searcher fzf
 # some packages available using npm or other package manager, do not install them using brew.
 # installed cask version of emacs
 brew install --cask emacs | tee ~/brew/emacs
-brew install neovim vim ctags wget xz jfrog-cli-go python@2 python@3 groovy nodejs golang rust rust-analyzer llvm sbcl glslang cmake aspell hub git iperf3 gnupg shellcheck luarocks coreutils fontconfig ccls 
-brew install watch
+brew install neovim vim ctags wget xz jfrog-cli-go python@2 python@3 groovy nodejs golang rust rust-analyzer llvm sbcl glslang cmake aspell hub git iperf3 gnupg shellcheck luarocks coreutils fontconfig ccls watch hunspell
 ################################################################################
+
+################################################################################
+###### FONT FOR HUNSPELL
+pushd $HOME/Library/Spelling
+wget -O en_US.aff  https://cgit.freedesktop.org/libreoffice/dictionaries/plain/en/en_US.aff?id=a4473e06b56bfe35187e302754f6baaa8d75e54f
+wget -O en_US.dic https://cgit.freedesktop.org/libreoffice/dictionaries/plain/en/en_US.dic?id=a4473e06b56bfe35187e302754f6baaa8d75e54f
+popd
 
 ################################################################################
 ###### RUST
