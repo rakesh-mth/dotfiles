@@ -1,8 +1,8 @@
 [user]
-	name = rakesh-mth
-	email = 46665723+rakesh-mth@users.noreply.github.com
+    name = rakesh-mth
+    email = 46665723+rakesh-mth@users.noreply.github.com
 [core]
-	editor = vim
+    editor = vim
     pager = delta
 [interactive]
     diffFilter = delta --color-only
@@ -27,7 +27,8 @@
     path = C:/Program Files/Perforce/p4merge.exe
     cmd = p4merge.exe \"$BASE\" \"$LOCAL\" \"$REMOTE\" \"$MERGED\"
 [credential]
-    helper = wincred
+    # do not use helper (for credential manager). this will slow down git status command pn git-bash.
+    # helper = wincred
 [alias]
     lg = log --pretty=format:'%Cred%h%Creset %C(bold yellow)<%an>%Creset -%Cgreen%ad%Creset %s'
     pm = !git checkout master && git pull
