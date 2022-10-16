@@ -46,10 +46,10 @@ export LUNARVIM_RUNTIME_DIR=$HOME/.local/share/nvim/LunarVim
 # brew do not use bottle from source
 export HOMEBREW_NO_BOTTLE_SOURCE_FALLBACK=1
 
-# source McFly (after fzf)
-if type "mcfly" > /dev/null; then
-    eval "$(mcfly init zsh)"
-fi
+# source McFly (after fzf). disabled: prefer fzf instead.
+# if type "mcfly" > /dev/null; then
+#     eval "$(mcfly init bash)"
+# fi
 
 # source aliases
 script_full_path="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)/$(basename "${BASH_SOURCE[0]}")"
