@@ -52,9 +52,9 @@ command -v virtualenvwrapper.sh &> /dev/null && source virtualenvwrapper.sh
 # brew do not use bottle from source
 export HOMEBREW_NO_BOTTLE_SOURCE_FALLBACK=1
 
-# source McFly (after fzf)
+# source McFly (only if fzf not found)
 if type "mcfly" > /dev/null; then
-    eval "$(mcfly init zsh)"
+   [ ! -f ~/.fzf.zsh ] && eval "$(mcfly init zsh)"
 fi
 
 # enable autocomplete (git and others)
