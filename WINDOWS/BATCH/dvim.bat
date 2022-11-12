@@ -1,1 +1,1 @@
-start "" nvim-qt.exe --no-ext-tabline -- --cmd "lua load_profile='DoomNvim'"
+start "" nvim-qt.exe -- --cmd "lua load_profile='DoomNvim'"
