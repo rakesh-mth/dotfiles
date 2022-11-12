@@ -19,3 +19,9 @@ git remote set-url origin git@github.com:rakesh-mth/vim-user-config.git
 
 ###### add another upstream
 git remote add upstream git@github.com:rakesh-mth/fzf-project.git
+
+################################################################################
+###### CHEOVIM
+git remote add rakesh https://github.com/rakesh-mth/cheovim
+git fetch rakesh
+git checkout multi/distro
