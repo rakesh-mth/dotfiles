@@ -18,7 +18,7 @@ ln -snf $HOME/workspaces/rakesh-mth/dotfiles/EDITORS/VIM/init.vim $HOME/.vimrc
 # neovim will be using cheovim - symlink will be part of rakesh-mth config below
 # cheovim - clone the repo and create a symlink for profiles.lua file
 [ ! -f $HOME/.config/nvim/lua/cheovim.lua ] && git clone https://github.com/NTBBloodbath/cheovim $HOME/.config/nvim/
-[ -f "$HOME/.config/nvim/profiles.lua" ] && unlink "$HOME/.config/nvim/profiles.lua"
+# [ -f "$HOME/.config/nvim/profiles.lua" ] && unlink "$HOME/.config/nvim/profiles.lua" # use profile.lua from forked cheovim
 ln -snf $HOME/workspaces/rakesh-mth/dotfiles/EDITORS/VIM/profiles.lua $HOME/.config/nvim/
 # LunarVIm - clone the repo and create symlick for config.lua file
 [ ! -d $HOME/.config/nvim-config/LunarVim ] && git clone https://github.com/LunarVim/LunarVim.git $HOME/.config/nvim-config/LunarVim
