@@ -20,7 +20,7 @@ command -v zoxide &> /dev/null && eval "$(zoxide init zsh)"
 # export PATH="$HOME/.gem/ruby/$RUBY_VERSION/bin:$PATH"
 
 # update PATH variable. make sure $HOME/github/dotfiles exists
-export PATH="$HOME/scripts:$HOME/github/dotfiles/LINUX/scripts:/usr/local/sbin:/usr/local/bin:$HOME/go/bin:$HOME/.cargo/bin:$HOME/.config/emacs/doom-emacs/.emacs.d/bin:$PATH"
+export PATH="$HOME/scripts:$HOME/windows:$HOME/github/dotfiles/LINUX/scripts:/usr/local/sbin:/usr/local/bin:$HOME/go/bin:$HOME/.cargo/bin:$HOME/.config/emacs/doom-emacs/.emacs.d/bin:$PATH"
 
 if command -v pyenv 1>/dev/null 2>&1; then
     PATH=$(pyenv root)/shims:$PATH
