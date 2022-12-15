@@ -1,0 +1,42 @@
+=================================================================================
+===================================== TASKS =====================================
+
+# - name: "get all facts"
+#   hosts: all
+#   tags:
+#     - always
+#   tasks:
+#     - name:
+#       setup:
+#       become: true
+
+# - name: "hello ansible"
+#   hosts: all
+#   tasks:
+#     - name: "generate hosts file for win11"
+#       ansible.builtin.debug:
+#         var: hostvars['controller']
+#	  var: inventory_hostname
+#	  var: ansible_hostname 
+#	  var: ansible_facts
+
+
+# - name: Enable test signing
+#   ansible.windows.win_command: bcdedit /set testsigning on
+
+
+# - name: copy abc.zip
+#   win_copy:
+#     src: c:\vagrant\abc.zip
+#     dest: c:\icahost\abc.zip
+#     remote_src: yes
+#     become: true
+# - name: copy abc.zip from shared location to c:\abc
+#   ansible.windows.win_command: cmd /C xcopy c:\vagrant\abc.zip c:\abc\
+
+
+# - name: print all returned values
+#   debug:
+#     msg: "{{ item.path }}"
+#   loop: "{{ cert_files.files }}"
+
