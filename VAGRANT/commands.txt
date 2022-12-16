@@ -22,6 +22,8 @@ vagrant init --minimal gusztavvargadr/windows-11
 
 # use hyperv for creating machine
 vagrant up --provider hyperv
+# measure timing for vagrant up
+Measure-Command { vagrant up --provider hyperv | Out-Default }
 
 # use virtualbox for creating machine
 vagrant up --provider virtualbox
@@ -60,6 +62,9 @@ vagrant snapshot restore win11 before_install
 # vagrant save ssh config. use winrm-config for winrm
 vagrant ssh-config win11 > ssh-config-win11
 vagrant winrm-config win11
+
+# vagrant ssh into a machine
+vagrant ssh controller
 
 # vagrant install plugins
 vagrant plugin install vagrant-reload
@@ -101,4 +106,11 @@ LINKS:
 https://github.com/marcinbojko/hv-packer
 https://github.com/haidaraM/vagrant-to-ansible-inventory
 https://blog.crisp.se/2016/10/20/maxwenzin/how-to-append-to-lists-in-ansible
+
+
+# build vagrant-xenserver plugin (remove version number for nokogiri in vagrant-xenserver.gemspec)
+gem build vagrant-xenserver.gemspec
+vagrant plugin install F:\DevTrees\OpenSource\vagrant\vagrant-xenserver\vagrant-xenserver-0.0.16.gem
+
+
 
