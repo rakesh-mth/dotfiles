@@ -1,0 +1,14 @@
+# packer validate
+packer validate
+
+# format packer file:
+packer fmt .\win11_clone.pkr.hcl
+
+# Build using packer:
+packer build .\win11_clone.pkr.hcl
+
+# Debug build using packer:
+packer build -debug .\win11_clone.pkr.hcl
+
+# skip some build by name
+packer build -except="packer-ubuntu-clone.hyperv-vmcx.vm" .\ubuntu_clone.pkr.hcl
