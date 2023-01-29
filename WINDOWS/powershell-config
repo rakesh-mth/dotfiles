@@ -1,0 +1,10 @@
+Install-Module PSReadLine -Force
+Import-Module PSReadLine
+
+Set-PSReadLineOption -PredictionSource History
+Set-PSReadLineOption -PredictionViewStyle ListView
+
+# other helpful command
+Get-PSReadLineOption
+Get-PSReadLineKeyHandler
+Get-PSReadLineOption | Select-Object -Property PredictionSource

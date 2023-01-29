@@ -50,6 +50,9 @@ vagrant status
 # run a provisioner
 vagrant provision controller --provision-with ansible_remote
 
+# create a box file from a hyperv VM (source is VM name)
+vagrant package source --output package.box
+
 # save a VM snapshot
 vagrant snapshot save win11 before_install
 

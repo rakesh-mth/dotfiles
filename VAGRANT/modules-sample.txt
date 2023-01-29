@@ -10,6 +10,13 @@
 #       setup:
 #       become: true
 
+- name: "display ansible facts"
+  hosts: all
+  tasks:
+    - name: "generate hosts file for win11"
+      ansible.builtin.debug:
+        var: ansible_facts
+
 # - name: "hello ansible"
 #   hosts: all
 #   tasks:
@@ -39,4 +46,17 @@
 #   debug:
 #     msg: "{{ item.path }}"
 #   loop: "{{ cert_files.files }}"
+
+
+##############VAGRANT PROVISIONER / TRIGGER#####################
+
+      # win.trigger.after :up do |t|
+      #   t.info = "Restart VM and wait for restart to complete."
+      #   t.run = {inline: "Restart-VM -Name #{vmName} -Wait -Force"}
+      # end
+      # win.vm.provision "shell" do |shell|
+      #   shell.name = "enable_test_signing"
+      #   shell.privileged = true
+      #   shell.inline = "bcdedit /set testsigning on; shutdown /r /t 0"
+      # end
 

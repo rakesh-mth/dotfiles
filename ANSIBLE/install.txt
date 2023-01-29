@@ -1,0 +1,3 @@
+# install ansible in linux or wsl
+python3 -m pip install --upgrade pip
+python3 -m pip install ansible
