@@ -54,6 +54,12 @@
     re = "!f() { \
         git fetch --prune; \
         branch_name=$(git rev-parse --abbrev-ref HEAD); \
+        git reset --hard origin/$branch_name; \
+    }; f"
+    # old re is renamed to reo
+    reo = "!f() { \
+        git fetch --prune; \
+        branch_name=$(git rev-parse --abbrev-ref HEAD); \
         git checkout @~1; \
         git br -D $branch_name; \
         git checkout $branch_name; \
