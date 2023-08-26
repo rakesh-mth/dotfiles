@@ -1,0 +1,1 @@
+wsl.exe -d wsl-vpnkit --cd /app wsl-vpnkit
