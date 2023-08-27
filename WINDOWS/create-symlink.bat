@@ -58,3 +58,6 @@ REM set DOOMDIR env variable in current shell for `doom sync` and other doom com
 set DOOMDIR="%USERPROFILE%"\.config\emacs\doom-emacs\.doom.d
 REM set DOOMDIR env variable permanently for `doom sync` and other doom commands
 setx DOOMDIR "%USERPROFILE%"\.config\emacs\doom-emacs\.doom.d
+
+REM SIMPLE emacs config
+mklink "%APPDATA%"\.emacs %DOTFILES%\EDITORS\EMACS\simple\.emacs
