@@ -50,6 +50,7 @@
     pr = "!git pull --rebase"
     d  = "!git diff"
     ds = "!git diff --staged"
+    dm = "!git diff origin/master"
     pb = "!git publish"
     re = "!f() { \
         git fetch --prune; \
