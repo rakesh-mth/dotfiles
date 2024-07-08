@@ -34,6 +34,25 @@
    )
 )
 
+;; install company
+(unless (package-installed-p 'company)
+  (package-install 'company))
+;;(use-package company
+;;  :init
+;;  (setq company-backends '((company-files company-keywords company-capf company-dabbrev-code company-etags company-dabbrev)))
+;;  :config
+;;  (global-company-mode 1))
+;;(use-package company
+;;  :init
+;;  :config (progn
+;;	    (add-to-list 'company-backends '(company-capf company-dabbrev))
+;;	    (add-to-list 'company-backends '(company-lsp company-dabbrev))
+;;	    (add-to-list 'company-backends '(company-css company-dabbrev))
+;;	    (add-to-list 'company-backends '(company-elisp company-dabbrev))
+;;	    (add-to-list 'company-backends '(company-nxml company-dabbrev))
+;;	    (add-to-list 'company-backends '(company-files company-dabbrev))
+;;	    (setq company-dabbrev-downcase nil)
+;;	    (global-company-mode)))
 
 ;; dependencies of Projectile
 ;; counsel
@@ -75,6 +94,12 @@
 (add-hook 'prog-mode-hook (lambda () (setq display-line-numbers 'relative)))
 ;; disable toolbar
 (tool-bar-mode -1)
+;; enable company mode in all buffer
+(add-hook 'after-init-hook 'global-company-mode)
+;; add company-backends
+;;(add-to-list company-backends '((company-files company-keywords company-capf company-dabbrev-code company-etags company-dabbrev)))
+;;(setq company-backends '((company-capf) (company-dabbrev)))
+;;(setq company-backends '((company-dabbrev)))
 
 
 ;; open this config file
@@ -90,7 +115,7 @@
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
  '(package-selected-packages
-   '(magit undo-fu undo-tree goto-last-change use-package counsel ivy projectile evil)))
+   '(company magit undo-fu undo-tree goto-last-change use-package counsel ivy projectile evil)))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
