@@ -1,0 +1,5 @@
+[core]
+    autocrlf = true
+[include]
+    path = ~/.gitconfig-orig
+    path = ~/.gitconfig-work
