@@ -191,6 +191,8 @@
 #
 
 # Rakesh Kumar
+# Get the directory of the current script
+SCRIPT_DIR="$( cd "$( dirname "$(readlink -f ${BASH_SOURCE[0]})" )" &> /dev/null && pwd )"
 export PATH=~/scripts:$PATH
 export XDG_CONFIG_HOME=~/.config/
 # starship
@@ -205,4 +207,5 @@ fi
 if command -v zoxide &> /dev/null; then
   eval "$(zoxide init bash)"
 fi
-
+# source ssh-agent
+[ -f $SCRIPT_DIR/ssh-agent ] && source $SCRIPT_DIR/ssh-agent

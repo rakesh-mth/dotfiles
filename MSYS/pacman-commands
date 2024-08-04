@@ -33,4 +33,10 @@ pacman-key --init
 pacman-key --populate msys2
 pacman-key --populate git-for-windows
 
-
+# Search for the package that contains the specific file:
+# Update the package database:
+pacman -Fy
+# To find an exact match:
+pacman -F <filename>
+# To find a substring match:
+pacman -Fx <filename>
