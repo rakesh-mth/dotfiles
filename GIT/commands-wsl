@@ -1,3 +1,0 @@
-ln -snf /f/DevTrees/rakesh-mth/dotfiles/GIT/.gitconfig-msys2 ~/.gitconfig
-ln -snf /f/DevTrees/rakesh-mth/dotfiles/GIT/.gitconfig ~/.gitconfig-orig
-ln -snf /f/DevTrees/scripts/GIT/.gitconfig ~/.gitconfig-work

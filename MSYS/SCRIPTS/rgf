@@ -1,0 +1,3 @@
+#!/bin/bash
+
+rg --color=always --line-number --no-heading --smart-case "$@" | fzf -d ':' --ansi --preview-window 'down:60%:+{2}-5' --preview 'bat --style=numbers --color=always --highlight-line {2} {1}'
