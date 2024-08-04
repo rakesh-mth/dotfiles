@@ -20,6 +20,12 @@ pacman -Sl | grep installed | grep mingw64
 # list all installed packages in clang64
 pacman -Sl | grep installed | grep clang64 
 
+# save installed packages
+pacman -Qq > pkglist.txt
+# apply saved packages
+pacman -S --needed - < pkglist.txt
+
+
 # command to find all warning with installed files
 pacman -Qk 2>&1 | egrep "^warning:*."
 

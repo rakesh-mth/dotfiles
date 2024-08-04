@@ -1,16 +1,21 @@
+SET HOMEDIR=F:\msys64\home\RakeshKumar
+
 @REM BASH
-mklink F:\msys64\home\RakeshKumar\.bashrc F:\DevTrees\rakesh-mth\dotfiles\MSYS\BASH\.bashrc
+mklink %HOMEDIR%\.bashrc F:\DevTrees\rakesh-mth\dotfiles\MSYS\BASH\.bashrc
 
 
 @REM GIT
-mklink F:\msys64\home\RakeshKumar\.gitconfig F:\DevTrees\rakesh-mth\dotfiles\MSYS\GIT\.gitconfig
-mklink F:\msys64\home\RakeshKumar\.gitconfig-orig F:\DevTrees\rakesh-mth\dotfiles\GIT\.gitconfig
-mklink F:\msys64\home\RakeshKumar\.gitconfig-work F:\DevTrees\scripts\GIT\.gitconfig
+mklink %HOMEDIR%\.gitconfig F:\DevTrees\rakesh-mth\dotfiles\MSYS\GIT\.gitconfig
+mklink %HOMEDIR%\.gitconfig-orig F:\DevTrees\rakesh-mth\dotfiles\GIT\.gitconfig
+mklink %HOMEDIR%\.gitconfig-work F:\DevTrees\scripts\GIT\.gitconfig
 
 
 @REM neovim
-mklink F:\msys64\home\RakeshKumar\.config\nvim\init.vim F:\DevTrees\rakesh-mth\dotfiles\EDITORS\VIM\MSYS2\init.vim
+mklink %HOMEDIR%\.config\nvim\init.vim F:\DevTrees\rakesh-mth\dotfiles\EDITORS\VIM\MSYS2\init.vim
 
 
 @REM all other scripts
-mklink /D F:\msys64\home\RakeshKumar\scripts F:\DevTrees\rakesh-mth\dotfiles\MSYS\SCRIPTS
+mklink /D %HOMEDIR%\scripts F:\DevTrees\rakesh-mth\dotfiles\MSYS\SCRIPTS
+
+mkdir %HOMEDIR%\workspaces
+mklink /D %HOMEDIR%\workspaces\dotfiles F:\DevTrees\rakesh-mth\dotfiles
