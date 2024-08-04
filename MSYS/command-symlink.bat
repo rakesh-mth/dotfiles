@@ -1,5 +1,11 @@
 SET HOMEDIR=F:\msys64\home\RakeshKumar
 
+@REM create .config dir
+mkdir %HOMEDIR%\workspaces
+mkdir %HOMEDIR%\.config
+mkdir %HOMEDIR%\.config\nvim
+mkdir %HOMEDIR%\.config\nvim-data
+
 @REM BASH
 mklink %HOMEDIR%\.bashrc F:\DevTrees\rakesh-mth\dotfiles\MSYS\BASH\.bashrc
 
@@ -11,11 +17,15 @@ mklink %HOMEDIR%\.gitconfig-work F:\DevTrees\scripts\GIT\.gitconfig
 
 
 @REM neovim
-mklink %HOMEDIR%\.config\nvim\init.vim F:\DevTrees\rakesh-mth\dotfiles\EDITORS\VIM\MSYS2\init.vim
+@REM vim-plug pluggin. iwr is a powershell command
+@REM mklink %HOMEDIR%\.config\nvim\init.vim F:\DevTrees\rakesh-mth\dotfiles\EDITORS\VIM\MSYS2\init.vim
+@REM iwr -useb https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim | ni "$(@($env:XDG_DATA_HOME, $env:LOCALAPPDATA)[$null -eq $env:XDG_DATA_HOME])/nvim-data/site/autoload/plug.vim" -Force
+@REM packer plugin
+mklink %HOMEDIR%\.config\nvim\init.lua F:\DevTrees\rakesh-mth\dotfiles\EDITORS\VIM\MSYS2\init.lua
+git clone --depth 1 https://github.com/wbthomason/packer.nvim %HOMEDIR%/.config/nvim-data/site/pack/packer/start/packer.nvim
 
 
 @REM all other scripts
 mklink /D %HOMEDIR%\scripts F:\DevTrees\rakesh-mth\dotfiles\MSYS\SCRIPTS
-
-mkdir %HOMEDIR%\workspaces
+@REM dotfiles symlink
 mklink /D %HOMEDIR%\workspaces\dotfiles F:\DevTrees\rakesh-mth\dotfiles

@@ -18,6 +18,3 @@ else
     "command fzf${args} <'${tmpdir}'/input >'${tmpdir}'/output"
   cat "${tmpdir}"/output
 fi
-EOF
-chmod +x "${fzf_winpty}"
-fzf() { "${fzf_winpty}" "$@" ; }

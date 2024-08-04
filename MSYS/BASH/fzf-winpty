@@ -1,0 +1,25 @@
+fzf_winpty=~/.config/fzf-winpty
+cat >"${fzf_winpty}" <<'EOF'
+#!/usr/bin/env bash
+set -eo pipefail
+
+prefix="$(basename "${BASH_SOURCE:-$0}")-${UID:-$(id -u)}"
+tmpdir=$(mktemp -dp "${TMPDIR:-/tmp}" "${prefix}.XXXXX")
+trap "rm -rf -- '${tmpdir}'" EXIT
+
+args=
+[[ $# -ge 1 ]] && args=$(printf ' %q' "$@")
+
+if [[ -t 0 ]]; then
+  winpty </dev/tty >/dev/tty -- bash -c \
+    "command fzf${args} >'${tmpdir}'/output"
+  cat "${tmpdir}"/output
+else
+  cat - >"${tmpdir}"/input
+  winpty </dev/tty >/dev/tty -- bash -c \
+    "command fzf${args} <'${tmpdir}'/input >'${tmpdir}'/output"
+  cat "${tmpdir}"/output
+fi
+EOF
+chmod +x "${fzf_winpty}"
+fzfw() { "${fzf_winpty}" "$@" ; }

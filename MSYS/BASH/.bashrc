@@ -195,6 +195,7 @@
 SCRIPT_DIR="$( cd "$( dirname "$(readlink -f ${BASH_SOURCE[0]})" )" &> /dev/null && pwd )"
 export PATH=~/scripts:$PATH
 export XDG_CONFIG_HOME=~/.config/
+export XDG_DATA_HOME=~/.config/
 # starship
 if command -v starship &> /dev/null; then
   eval "$(starship init bash)"
@@ -209,3 +210,4 @@ if command -v zoxide &> /dev/null; then
 fi
 # source ssh-agent
 [ -f $SCRIPT_DIR/ssh-agent ] && source $SCRIPT_DIR/ssh-agent
+[ -f $SCRIPT_DIR/fzf-winpty ] && source $SCRIPT_DIR/fzf-winpty
