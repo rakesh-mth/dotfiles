@@ -34,15 +34,22 @@ require'packer'.startup(function()
         -- requires = { "echasnovski/mini.icons" }
     }
 
-    use { 'nvim-telescope/telescope.nvim', tag = '0.1.8',
-        requires = { {'nvim-lua/plenary.nvim'} }
-    }
+    use { 'nvim-telescope/telescope.nvim', tag = '0.1.8', requires = { {'nvim-lua/plenary.nvim'} } }
+    use { 'nvim-treesitter/nvim-treesitter', run = ':TSUpdate' }
 end)
 
 require('fzf-lua').setup({
   -- fzf_bin = 'fzf-winpty',
   -- fzf_bin = 'fzfw',
 })
+
+-- Function to loop through the quickfix list
+function LoopThroughQuickfix()
+  local success, result = pcall(vim.cmd, 'cnext')
+  if not success then
+    vim.cmd('cfirst')
+  end
+end
 
 -- telescope settings
 local builtin = require('telescope.builtin')
@@ -54,4 +61,6 @@ vim.keymap.set('n', '<leader>fb', builtin.buffers, {})
 vim.keymap.set('n', '<leader>fh', builtin.help_tags, {})
 
 -- Key mappings
+-- Map the function to a key (e.g., F4)
+vim.api.nvim_set_keymap('n', '<F4>', ':lua LoopThroughQuickfix()<CR>', { noremap = true, silent = true })
 -- vim.api.nvim_set_keymap('n', '<C-p>', ':Files<CR>', { noremap = true, silent = true })
