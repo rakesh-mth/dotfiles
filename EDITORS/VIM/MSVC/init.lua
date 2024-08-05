@@ -7,36 +7,37 @@ vim.o.expandtab = true            -- Use spaces instead of tabs
 vim.o.mouse = 'a'                 -- Enable mouse support
 -- vim.o.path+=**
 vim.o.wildmenu = true
-vim.o.nocompatible = true
+-- vim.o.nocompatible = true
 -- vim.o.clipboard = 'unnamedplus'   -- Use system clipboard
 
 vim.g.mapleader = " "
+vim.g.maplocalleader = "\\"
 
--- bootstrap plugin manager: packer
-local ensure_packer = function()
-  local fn = vim.fn
-  local install_path = fn.stdpath('data')..'/site/pack/packer/start/packer.nvim'
-  if fn.empty(fn.glob(install_path)) > 0 then
-    fn.system({'git', 'clone', '--depth', '1', 'https://github.com/wbthomason/packer.nvim', install_path})
-    vim.cmd [[packadd packer.nvim]]
-    return true
+-- bootstrap plugin manager: lazy.nvim
+local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
+if not (vim.uv or vim.loop).fs_stat(lazypath) then
+  local lazyrepo = "https://github.com/folke/lazy.nvim.git"
+  local out = vim.fn.system({ "git", "clone", "--filter=blob:none", "--branch=stable", lazyrepo, lazypath })
+  if vim.v.shell_error ~= 0 then
+    vim.api.nvim_echo({
+      { "Failed to clone lazy.nvim:\n", "ErrorMsg" },
+      { out, "WarningMsg" },
+      { "\nPress any key to exit..." },
+    }, true, {})
+    vim.fn.getchar()
+    os.exit(1)
   end
-  return false
 end
-local packer_bootstrap = ensure_packer()
+vim.opt.rtp:prepend(lazypath)
 
--- Plugin manager setup (packer.nvim example)
+-- Plugin manager setup (lazy.nvim example)
 
-require'packer'.startup(function()
-    use { "ibhagwan/fzf-lua", requires = { "nvim-tree/nvim-web-devicons" } }
-    use { "ellisonleao/gruvbox.nvim" }
-    use { 'nvim-telescope/telescope.nvim', tag = '0.1.8', requires = { {'nvim-lua/plenary.nvim'} } }
-    use { 'nvim-treesitter/nvim-treesitter', tag = '0.9.2', run = ':TSUpdate' }
-    use { "williamboman/mason.nvim",
-        "williamboman/mason-lspconfig.nvim",
-        "neovim/nvim-lspconfig",
-    }
-end)
+-- Setup lazy.nvim
+require("lazy").setup({
+  spec = { { import = "plugins" }, },
+  install = { colorscheme = { "habamax" } },
+  checker = { enabled = true },
+})
 
 -- Plugin config
 

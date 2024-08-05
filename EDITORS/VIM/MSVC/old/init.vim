@@ -27,6 +27,7 @@ augroup END
 nnoremap <Space>p :Vex<CR>
 
 call plug#begin('~/.config/nvim-data/plugged')
-Plug 'ibhagwan/fzf-lua', {'branch': 'main'}
-Plug 'nvim-tree/nvim-web-devicons' " optional for icon support
+    Plug 'ibhagwan/fzf-lua', {'branch': 'main'}
+    Plug 'nvim-tree/nvim-web-devicons' " optional for icon support
+    Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}  " We recommend updating the parsers on update
 call plug#end()

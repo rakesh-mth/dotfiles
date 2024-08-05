@@ -196,6 +196,8 @@ SCRIPT_DIR="$( cd "$( dirname "$(readlink -f ${BASH_SOURCE[0]})" )" &> /dev/null
 export PATH=~/scripts:$PATH
 export XDG_CONFIG_HOME=~/.config/
 export XDG_DATA_HOME=~/.config/
+export XDG_CACHE_HOME=~/.config/
+export XDG_STATE_HOME=~/.config/
 # starship
 if command -v starship &> /dev/null; then
   eval "$(starship init bash)"

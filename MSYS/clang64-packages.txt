@@ -1,12 +1,22 @@
 pacman -S msys/man-db 
 pacman -S winpty
 
+# build tools
 pacman -S mingw-w64-clang-x86_64-ninja mingw-w64-clang-x86_64-cmake mingw-w64-clang-x86_64-cninja
-pacman -S mingw-w64-clang-x86_64-clang
 
+# compilers
 pacman -S mingw-w64-x86_64-lua
+pacman -S mingw-w64-clang-x86_64-clang
+pasman -S mingw-w64-clang-x86_64-nodejs
+pacman -S mingw-w64-clang-x86_64-python
+
+# editors
 pacman -S mingw-w64-clang-x86_64-neovim 
 
-pacman -S mingw-w64-clang-x86_64-starship mingw-w64-clang-x86_64-delta mingw-w64-clang-x86_64-yazi mingw-w64-clang-x86_64-fd mingw-w64-clang-x86_64-ag mingw-w64-clang-x86_64-ripgrep mingw-w64-clang-x86_64-ripgrep-all mingw-w64-clang-x86_64-bat mingw-w64-clang-x86_64-zoxide mingw-w64-clang-x86_64-procs
+# tools
+pacman -S mingw-w64-clang-x86_64-starship mingw-w64-clang-x86_64-delta mingw-w64-clang-x86_64-yazi 
+pacman -S mingw-w64-clang-x86_64-fd mingw-w64-clang-x86_64-ag mingw-w64-clang-x86_64-ripgrep 
+pacman -S mingw-w64-clang-x86_64-ripgrep-all mingw-w64-clang-x86_64-bat mingw-w64-clang-x86_64-zoxide 
+pacman -S mingw-w64-clang-x86_64-procs
 
 pacman -S mingw-w64-clang-x86_64-winpty

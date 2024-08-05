@@ -20,9 +20,9 @@ mklink %HOMEDIR%\.gitconfig-work F:\DevTrees\scripts\GIT\.gitconfig
 @REM vim-plug pluggin. iwr is a powershell command
 @REM mklink %HOMEDIR%\.config\nvim\init.vim F:\DevTrees\rakesh-mth\dotfiles\EDITORS\VIM\MSYS2\init.vim
 @REM iwr -useb https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim | ni "$(@($env:XDG_DATA_HOME, $env:LOCALAPPDATA)[$null -eq $env:XDG_DATA_HOME])/nvim-data/site/autoload/plug.vim" -Force
-@REM packer plugin
+@REM packer plugin - install is not needed as this is done from the init.lua
+@REM git clone --depth 1 https://github.com/wbthomason/packer.nvim %HOMEDIR%/.config/nvim-data/site/pack/packer/start/packer.nvim
 mklink %HOMEDIR%\.config\nvim\init.lua F:\DevTrees\rakesh-mth\dotfiles\EDITORS\VIM\MSYS2\init.lua
-git clone --depth 1 https://github.com/wbthomason/packer.nvim %HOMEDIR%/.config/nvim-data/site/pack/packer/start/packer.nvim
 
 
 @REM all other scripts
