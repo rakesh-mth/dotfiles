@@ -1,0 +1,9 @@
+pacman -S --needed base-devel git
+
+pacman -S mingw-w64-clang-x86_64-clang mingw-w64-clang-x86_64-cmake mingw-w64-clang-x86_64-ninja
+
+pacman -S mingw-w64-clang-x86_64-python mingw-w64-clang-x86_64-nodejs
+
+pacman -S mingw-w64-clang-x86_64-starship mingw-w64-clang-x86_64-fzf mingw-w64-clang-x86_64-ag mingw-w64-clang-x86_64-zoxide mingw-w64-clang-x86_64-ripgrep mingw-w64-clang-x86_64-bat mingw-w64-clang-x86_64-bottom mingw-w64-clang-x86_64-gitui mingw-w64-clang-x86_64-delta 
+
+pacman -S mingw-w64-clang-x86_64-neovim mingw-w64-clang-x86_64-nodejs-neovim mingw-w64-clang-x86_64-python-pynvim
