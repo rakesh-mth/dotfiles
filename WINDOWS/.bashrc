@@ -27,3 +27,6 @@ else
 fi
 
 [ -f ~/.fzf.bash ] && source ~/.fzf.bash
+
+command -v zoxide &> /dev/null && eval "$(zoxide init bash)"
+
