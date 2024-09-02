@@ -35,6 +35,9 @@ if not exist "%USERPROFILE%"\.bashrc mklink "%USERPROFILE%"\.bashrc %DOTFILES%\W
 if exist %SCRIPTS%\GIT\.gitconfig mklink "%USERPROFILE%"\.gitconfig-work %SCRIPTS%\GIT\.gitconfig
 mklink "%USERPROFILE%"\.gitconfig %DOTFILES%\GIT\.gitconfig
 mklink "%USERPROFILE%"\.wslconfig %DOTFILES%\WSL\.wslconfig
+REM POWERSHELL profile
+mklink %USERPROFILE%\Documents\PowerShell\Microsoft.PowerShell_profile.ps1 F:\DevTrees\scripts\WINDOWS\Powershell\Microsoft.PowerShell_profile.ps1
+mklink %USERPROFILE%\Documents\WindowsPowerShell\Microsoft.PowerShell_profile.ps1 F:\DevTrees\scripts\WINDOWS\Powershell\Microsoft.PowerShell_profile.ps1
 REM cheovim - clone the repo and create a symlink for profiles.lua file 
 REM path is not "%USERPROFILE%"\.config\nvim on windows since that's not the default path for init.vim or init.lua on windows
 if not exist "%USERPROFILE%"\AppData\Local\nvim git clone https://github.com/NTBBloodbath/cheovim "%USERPROFILE%"\AppData\Local\nvim
