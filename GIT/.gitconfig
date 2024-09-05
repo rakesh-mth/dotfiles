@@ -77,5 +77,6 @@
     path = ~/.gitconfig-work
 [submodule]
 	recurse = true
-[status]
-	submodulesummary = 1
+# git bash is slow by 2.5 sec when submodulesummary is enabled
+#[status]
+#	submodulesummary = 1
