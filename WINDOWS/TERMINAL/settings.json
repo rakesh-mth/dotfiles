@@ -125,7 +125,6 @@
             },
             {
                 "commandline": "cmd.exe /k \"C:\\Program Files\\Microsoft Visual Studio\\2022\\Professional\\Common7\\Tools\\VsDevCmd.bat\" -arch=x64  -host_arch=x64",
-                "elevate": true,
                 "font": 
                 {
                     "size": 18.0
@@ -138,7 +137,6 @@
             },
             {
                 "commandline": "cmd.exe /k \"C:\\Program Files\\Microsoft Visual Studio\\2022\\Professional\\Common7\\Tools\\VsDevCmd.bat\" -arch=x86  -host_arch=x64",
-                "elevate": true,
                 "font": 
                 {
                     "size": 18.0
