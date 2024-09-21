@@ -26,8 +26,8 @@ REM ###### ADDITIONAL TOOLS
 REM powershell: git color on powershell prompt
 Install-Module -Name posh-git -Scope CurrentUser -force
 Add-PoshGitToProfile
-REM powershell: install fzf extention for powershell
-Install-Module -Name PSFzf -RequiredVersion 2.2.9
+REM powershell and powershell core: install fzf extention for powershell (run on none admin command prompt)
+Install-Module -Name PSFzf -Scope CurrentUser
 REM install BuildTools for Visual Studio 2017 (do not need full VS)
 REM https://visualstudio.microsoft.com/thank-you-downloading-visual-studio/?sku=BuildTools&rel=16
 REM alternate link: https://visualstudio.microsoft.com/downloads/#build-tools-for-visual-studio-2019
