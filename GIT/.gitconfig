@@ -4,6 +4,8 @@
 [core]
     editor = vim
     pager = delta
+	fsmonitor = false
+	untrackedCache = false
 [interactive]
     diffFilter = delta --color-only
 [delta]

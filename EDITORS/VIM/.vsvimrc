@@ -44,6 +44,12 @@ nnoremap <space>tr :set number<cr>
 " mapping for file search and open
 nnoremap <space>pf :vsc Edit.GoToFile<cr>
 
+" open solution explorer
+nnoremap <space>s :vsc View.SolutionExplorer<CR>
+
+" open the Copilot Chat window
+nnoremap <space>c :vsc View.Github.Copilot.Chat<CR>
+
 " mapping for toggle header code file (map twice - one vscode mapping(<A-o>))
 nnoremap <space>o :vsc EditorContextMenus.CodeWindow.ToggleHeaderCodeFile<cr>
 nnoremap <A-o> :vsc EditorContextMenus.CodeWindow.ToggleHeaderCodeFile<cr>
